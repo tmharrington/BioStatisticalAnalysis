@@ -1,0 +1,26 @@
+---
+title: "Palmer Penguins Initial Analysis"
+author: "Trevor Harrington"
+format: html
+editor: visual
+keep-md: TRUE
+---
+
+## Palmer Penguines
+
+Some Informative blurb
+
+```{r}
+library(tidyverse) #load the tidyverse
+
+#Read the penguines_sampl data off GITHub
+
+penguins<- read_csv("https://raw.githubusercontent.com/mcduryea/Intro-to-Bioinformatics/main/data/penguins_samp1.csv")
+
+#See the first six rows of data added to notebook
+
+penguins %>% head()
+
+```
+
+A dataset containing general characteristics from a sample of the Gentoo penguin population on Biscoe Island.
