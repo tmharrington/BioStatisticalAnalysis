@@ -130,8 +130,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="palmer-penguines" class="level2">
-<h2 class="anchored" data-anchor-id="palmer-penguines">Palmer Penguines</h2>
+<section id="palmer-penguins" class="level2">
+<h2 class="anchored" data-anchor-id="palmer-penguins">Palmer Penguins</h2>
 <p>Some Informative blurb</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co">#load the tidyverse</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -174,7 +174,22 @@ dbl (5): bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, year
 # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g</code></pre>
 </div>
 </div>
-<p>A dataset containing general characteristics from a sample of the Gentoo penguin population on Biscoe Island.</p>
+<p>A data set containing general characteristics from a sample of the Gentoo penguin population on Biscoe Island.</p>
+</section>
+<section id="data-manipulation" class="level2">
+<h2 class="anchored" data-anchor-id="data-manipulation">Data Manipulation</h2>
+<p>This section covers techniques for filtering rows, subsetting columns, grouping data, and computing summary statistics in R. Filtering rows allows you to select only those rows that meet certain criteria, while subsetting columns allows you to select only a subset of the available columns. R allows for these functions, as well as dividing the data set into groups based on common characteristics that can create new ways of interpreting information. Using Computing to create summary statistics involves calculating statistical measures such as mean, median, and standard deviation for each group. Understanding how to use R to accomplish this analysis is crucial for grouping and summarizing large quantities of data, which can be combined to answer complex questions about the whole set.</p>
+<p><strong>Questions to consider about Penguins</strong></p>
+<ul>
+<li><p>How does the body mass of different penguin species compare?</p></li>
+<li><p>What is the distribution of beak length and depth among penguin species?</p></li>
+<li><p>How does flipper size vary among different penguin species?</p></li>
+<li><p>Is there a correlation between flipper size and body mass in penguins?</p></li>
+<li><p>How does flipper size vary within a single penguin species over time?</p></li>
+<li><p>How does flipper size differ between male and female penguins of the same species?</p></li>
+<li><p>How does flipper size relate to the preferred habitat of a penguin species (is it larger in species that inhabit colder environments)?</p></li>
+</ul>
+<p>penguins %&gt;% count(species,island) %&gt;% pivot_wider(names_from = species, values_from = n,values_fill = 0)</p>
 </section>
 
 </main>

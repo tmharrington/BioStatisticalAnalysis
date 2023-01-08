@@ -8,7 +8,7 @@ keep-md: TRUE
 
 
 
-## Palmer Penguines
+## Palmer Penguins
 
 Some Informative blurb
 
@@ -74,4 +74,28 @@ penguins %>% head()
 :::
 
 
-A dataset containing general characteristics from a sample of the Gentoo penguin population on Biscoe Island.
+A data set containing general characteristics from a sample of the Gentoo penguin population on Biscoe Island.
+
+## Data Manipulation
+
+This section covers techniques for filtering rows, subsetting columns, grouping data, and computing summary statistics in R. Filtering rows allows you to select only those rows that meet certain criteria, while subsetting columns allows you to select only a subset of the available columns. R allows for these functions, as well as dividing the data set into groups based on common characteristics that can create new ways of interpreting information. Using Computing to create summary statistics involves calculating statistical measures such as mean, median, and standard deviation for each group. Understanding how to use R to accomplish this analysis is crucial for grouping and summarizing large quantities of data, which can be combined to answer complex questions about the whole set.
+
+**Questions to consider about Penguins**
+
+-   How does the body mass of different penguin species compare?
+
+-   What is the distribution of beak length and depth among penguin species?
+
+-   How does flipper size vary among different penguin species?
+
+-   Is there a correlation between flipper size and body mass in penguins?
+
+-   How does flipper size vary within a single penguin species over time?
+
+-   How does flipper size differ between male and female penguins of the same species?
+
+-   How does flipper size relate to the preferred habitat of a penguin species (is it larger in species that inhabit colder environments)?
+
+penguins %>%
+count(species,island) %>%
+pivot_wider(names_from = species, values_from = n,values_fill = 0)
