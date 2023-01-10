@@ -174,12 +174,12 @@ penguins %>%
 ```{.r .cell-code}
 penguins %>%
   summarize(
-    min_bill_length = min(bill_length_mm, na.rm = TRUE),
-    first_quartile_bill_length = quantile(bill_length_mm, 0.25, na.rm = TRUE),
-    median_bill_length = median(bill_length_mm, na.rm = TRUE),
-    mean_bill_length_mm = mean(bill_length_mm, na.rm = TRUE),
-    third_quartile_bill_length = quantile(bill_length_mm, 0.75, na.rm = TRUE),
-    standard_deviation_bill_length = sd(bill_length_mm, na.rm = TRUE)
+    "Minimum Bill Length (mm)" = min(bill_length_mm, na.rm = TRUE),
+    "First Quartile Bill Length" = quantile(bill_length_mm, 0.25, na.rm = TRUE),
+    "Median Bill Length" = median(bill_length_mm, na.rm = TRUE),
+    "Average Bill Length (mm)" = mean(bill_length_mm, na.rm = TRUE),
+    "Third Quartile Bill Length" = quantile(bill_length_mm, 0.75, na.rm = TRUE),
+    "Standard Deviation of Bill Length" = sd(bill_length_mm, na.rm = TRUE)
     ) %>%
   pivot_longer(cols = everything()) %>%
   kable() %>%
@@ -198,27 +198,27 @@ penguins %>%
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> min_bill_length </td>
+   <td style="text-align:left;"> Minimum Bill Length (mm) </td>
    <td style="text-align:right;"> 36.200000 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> first_quartile_bill_length </td>
+   <td style="text-align:left;"> First Quartile Bill Length </td>
    <td style="text-align:right;"> 44.550000 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> median_bill_length </td>
+   <td style="text-align:left;"> Median Bill Length </td>
    <td style="text-align:right;"> 46.450000 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> mean_bill_length_mm </td>
+   <td style="text-align:left;"> Average Bill Length (mm) </td>
    <td style="text-align:right;"> 46.370455 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> third_quartile_bill_length </td>
+   <td style="text-align:left;"> Third Quartile Bill Length </td>
    <td style="text-align:right;"> 49.125000 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> standard_deviation_bill_length </td>
+   <td style="text-align:left;"> Standard Deviation of Bill Length </td>
    <td style="text-align:right;"> 4.930379 </td>
   </tr>
 </tbody>
@@ -346,3 +346,141 @@ penguins %>%
 -   Bill size seems to average around the 45-50mm length and 14-16mm depth.
 
 -   Some outlying data in this set were around 40mm length and 17-18mm length
+
+**Two-Variable Categorical Analysis**
+
+
+::: {.cell}
+
+```{.r .cell-code}
+penguins %>%
+  ggplot() +
+  geom_bar(mapping = aes(x = island, fill = species)) +
+  labs(title = "species by Island",
+       x = "Island",
+       y = "Species")
+```
+
+::: {.cell-output-display}
+![](PalmerPenguins_Initial_files/figure-html/unnamed-chunk-10-1.png){width=672}
+:::
+:::
+
+
+**conclusions:**
+
+**Numerical & Categorical Comparison**: Boxplots
+
+
+::: {.cell}
+
+```{.r .cell-code}
+penguins %>%
+  ggplot() + 
+  geom_boxplot(mapping = aes(x = bill_length_mm, y = species)) +
+  labs(title = "Bill Depth by Species",
+       x = "Bill Depth (mm)",
+       y = "")
+```
+
+::: {.cell-output-display}
+![](PalmerPenguins_Initial_files/figure-html/unnamed-chunk-11-1.png){width=672}
+:::
+:::
+
+
+**Numerical & Categorical Comparison**: Faceted Plots
+
+
+::: {.cell}
+
+```{.r .cell-code}
+penguins %>%
+  ggplot() +
+  geom_histogram(mapping = aes(x = bill_depth_mm)) +
+  facet_wrap(~species, ncol = 1) + 
+  
+  # 'facet' is group of variables or expressions within the aes. 'wrap' allows for alterations of the col (ncol) and line (nrow) 
+  
+  labs(title = "Bill Depth by Species",
+       x = "Bill Depth (mm)",
+       y = "" )
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+```
+:::
+
+::: {.cell-output-display}
+![](PalmerPenguins_Initial_files/figure-html/unnamed-chunk-12-1.png){width=672}
+:::
+:::
+
+
+**Conclusions:**
+
+## Advanced Plotting
+
+**Two Continuous-Variable Comparison**
+
+-   works with [both]{.underline} numerical and categorical variables
+
+-   "continuous" may be one, or both of the variables
+
+
+::: {.cell}
+
+```{.r .cell-code}
+penguins %>%
+  filter(!is.na(sex)) %>%
+  ggplot() +
+  geom_point(mapping = aes(x = bill_length_mm, 
+                           y = flipper_length_mm,
+                           color = species,
+                           shape = sex)) +
+  
+  # geom_point = SCATTERPLOT; useful for numerical, categorical, or combined comparisons. 
+  
+  geom_smooth(mapping = aes(x = bill_length_mm,
+                            y = flipper_length_mm,
+                            color = species),
+              method = "lm") +
+  # 'smooth' reduces the visual complexity of the geom (graph), can be altered in many different ways.
+  
+  facet_grid(island ~ sex, scales = "free") +
+  labs(title = "Flipper and Bill Lengths by Species and Sex",
+       x = "Bill Length (mm)",
+       y = "Flipper Length(mm)") +
+  theme_light()
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+`geom_smooth()` using formula = 'y ~ x'
+```
+:::
+
+::: {.cell-output .cell-output-stderr}
+```
+Warning in qt((1 - level)/2, df): NaNs produced
+
+Warning in qt((1 - level)/2, df): NaNs produced
+```
+:::
+
+::: {.cell-output .cell-output-stderr}
+```
+Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning
+-Inf
+
+Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning
+-Inf
+```
+:::
+
+::: {.cell-output-display}
+![](PalmerPenguins_Initial_files/figure-html/unnamed-chunk-13-1.png){width=672}
+:::
+:::
