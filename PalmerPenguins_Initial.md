@@ -3,7 +3,8 @@ title: "Palmer Penguins Initial Analysis"
 author: "Trevor Harrington"
 format: html
 editor: visual
-keep-md: TRUE
+execute: 
+  keep-md: TRUE
 ---
 
 
@@ -96,6 +97,252 @@ This section covers techniques for filtering rows, subsetting columns, grouping 
 
 -   How does flipper size relate to the preferred habitat of a penguin species (is it larger in species that inhabit colder environments)?
 
+
+    ::: {.cell}
+    
+    ```{.r .cell-code}
+    library(kableExtra)
+    ```
+    
+    ::: {.cell-output .cell-output-stderr}
+    ```
+    
+    Attaching package: 'kableExtra'
+    ```
+    :::
+    
+    ::: {.cell-output .cell-output-stderr}
+    ```
+    The following object is masked from 'package:dplyr':
+    
+        group_rows
+    ```
+    :::
+    :::
+
+::: {.cell}
+
+```{.r .cell-code}
+penguins %>% 
+  count(species,island) %>% 
+  pivot_wider(names_from = species, values_from = n ,values_fill = 0) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> island </th>
+   <th style="text-align:right;"> Adelie </th>
+   <th style="text-align:right;"> Chinstrap </th>
+   <th style="text-align:right;"> Gentoo </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Biscoe </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 33 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Dream </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Torgersen </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
+
+::: {.cell}
+
+```{.r .cell-code}
 penguins %>%
-count(species,island) %>%
-pivot_wider(names_from = species, values_from = n,values_fill = 0)
+  summarize(
+    min_bill_length = min(bill_length_mm, na.rm = TRUE),
+    first_quartile_bill_length = quantile(bill_length_mm, 0.25, na.rm = TRUE),
+    median_bill_length = median(bill_length_mm, na.rm = TRUE),
+    mean_bill_length_mm = mean(bill_length_mm, na.rm = TRUE),
+    third_quartile_bill_length = quantile(bill_length_mm, 0.75, na.rm = TRUE),
+    standard_deviation_bill_length = sd(bill_length_mm, na.rm = TRUE)
+    ) %>%
+  pivot_longer(cols = everything()) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> name </th>
+   <th style="text-align:right;"> value </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> min_bill_length </td>
+   <td style="text-align:right;"> 36.200000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> first_quartile_bill_length </td>
+   <td style="text-align:right;"> 44.550000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> median_bill_length </td>
+   <td style="text-align:right;"> 46.450000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> mean_bill_length_mm </td>
+   <td style="text-align:right;"> 46.370455 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> third_quartile_bill_length </td>
+   <td style="text-align:right;"> 49.125000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> standard_deviation_bill_length </td>
+   <td style="text-align:right;"> 4.930379 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
+
+::: {.cell}
+
+```{.r .cell-code}
+chinstraps <- penguins %>%
+  select(species, island, sex, year) %>%
+  filter(species == "Chinstrap") %>%
+  select(-species) # minus operator removes from selected list
+  
+chinstraps %>%
+  head()
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+# A tibble: 2 × 3
+  island sex     year
+  <chr>  <chr>  <dbl>
+1 Dream  male    2009
+2 Dream  female  2007
+```
+:::
+:::
+
+::: {.cell}
+
+```{.r .cell-code}
+penguins %>% #summarizing and groups tutorial
+  group_by(species) %>%
+  summarise(
+    mean_bill_depth_mm = mean(bill_depth_mm, na.rm = TRUE),
+    sd_bill_depth_mm = sd(bill_depth_mm, na.rm = TRUE))
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+# A tibble: 3 × 3
+  species   mean_bill_depth_mm sd_bill_depth_mm
+  <chr>                  <dbl>            <dbl>
+1 Adelie                  17.8            0.935
+2 Chinstrap               18.8            1.41 
+3 Gentoo                  15.2            0.951
+```
+:::
+:::
+
+
+### Data Visualization with ggplot
+
+**Single-categorical variables**
+
+
+::: {.cell}
+
+```{.r .cell-code}
+penguins %>%
+ggplot() + 
+  geom_bar(mapping = aes(x = species)) +
+  labs(title = "Counts of Penguin Species",
+       x = "Species", y = "Count")
+```
+
+::: {.cell-output-display}
+![](PalmerPenguins_Initial_files/figure-html/unnamed-chunk-7-1.png){width=672}
+:::
+:::
+
+
+**Single-Numerical Variable using histograms**
+
+
+::: {.cell}
+
+```{.r .cell-code}
+penguins %>%
+  ggplot() +
+  geom_histogram(mapping = aes(x = bill_length_mm),
+                 color = "white",
+                 fill = "blue") +
+  labs(title ="Distribution of Bill Lengths",
+       x = "Bill Length (mm)", y = "Count")
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+```
+:::
+
+::: {.cell-output-display}
+![](PalmerPenguins_Initial_files/figure-html/unnamed-chunk-8-1.png){width=672}
+:::
+:::
+
+
+**Two-Variable Numerical Analysis**
+
+
+::: {.cell}
+
+```{.r .cell-code}
+penguins %>%
+  ggplot() +
+  geom_point(mapping = aes(x = bill_depth_mm, y = bill_length_mm)) +
+  labs(title = "Bill Depth and Length",
+       x = "Bill Depth (mm)",
+       y = "Bill Length (mm)")
+```
+
+::: {.cell-output-display}
+![](PalmerPenguins_Initial_files/figure-html/unnamed-chunk-9-1.png){width=672}
+:::
+:::
+
+
+-   Bill size seems to average around the 45-50mm length and 14-16mm depth.
+
+-   Some outlying data in this set were around 40mm length and 17-18mm length

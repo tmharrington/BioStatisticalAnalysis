@@ -3,7 +3,8 @@ title: "Palmer Penguins Initial Analysis"
 author: "Trevor Harrington"
 format: html
 editor: visual
-keep-md: TRUE
+execute: 
+  keep-md: TRUE
 ---
 
 ## Palmer Penguins
@@ -45,24 +46,89 @@ This section covers techniques for filtering rows, subsetting columns, grouping 
 
 -   How does flipper size relate to the preferred habitat of a penguin species (is it larger in species that inhabit colder environments)?
 
+    ```{r}
+    library(kableExtra)
+    ```
+
 ```{r}
 penguins %>% 
   count(species,island) %>% 
-  pivot_wider(names_from = species, values_from = n ,values_fill = 0)
-  kable(tbl_df) %>%
+  pivot_wider(names_from = species, values_from = n ,values_fill = 0) %>%
+  kable() %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
 ```{r}
 penguins %>%
-  summarise(
-    mean_bill_length_mm = mean(bill_length_mm, na.rm = TRUE),
+  summarize(
+    min_bill_length = min(bill_length_mm, na.rm = TRUE),
     first_quartile_bill_length = quantile(bill_length_mm, 0.25, na.rm = TRUE),
     median_bill_length = median(bill_length_mm, na.rm = TRUE),
-    mean_bill_length = mean(bill_length_mm, na.rm = TRUE),
+    mean_bill_length_mm = mean(bill_length_mm, na.rm = TRUE),
     third_quartile_bill_length = quantile(bill_length_mm, 0.75, na.rm = TRUE),
-    standard_deviation_bill_length = sd(bill_length_mm, na.rm = TRUE)) %>%
-  pivot_longer(cols = everything())
+    standard_deviation_bill_length = sd(bill_length_mm, na.rm = TRUE)
+    ) %>%
+  pivot_longer(cols = everything()) %>%
   kable() %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
+
+```{r}
+chinstraps <- penguins %>%
+  select(species, island, sex, year) %>%
+  filter(species == "Chinstrap") %>%
+  select(-species) # minus operator removes from selected list
+  
+chinstraps %>%
+  head()
+
+```
+
+```{r}
+penguins %>% #summarizing and groups tutorial
+  group_by(species) %>%
+  summarise(
+    mean_bill_depth_mm = mean(bill_depth_mm, na.rm = TRUE),
+    sd_bill_depth_mm = sd(bill_depth_mm, na.rm = TRUE))
+
+```
+
+### Data Visualization with ggplot
+
+**Single-categorical variables**
+
+```{r}
+penguins %>%
+ggplot() + 
+  geom_bar(mapping = aes(x = species)) +
+  labs(title = "Counts of Penguin Species",
+       x = "Species", y = "Count")
+```
+
+**Single-Numerical Variable using histograms**
+
+```{r}
+penguins %>%
+  ggplot() +
+  geom_histogram(mapping = aes(x = bill_length_mm),
+                 color = "white",
+                 fill = "blue") +
+  labs(title ="Distribution of Bill Lengths",
+       x = "Bill Length (mm)", y = "Count")
+```
+
+**Two-Variable Numerical Analysis**
+
+```{r}
+penguins %>%
+  ggplot() +
+  geom_point(mapping = aes(x = bill_depth_mm, y = bill_length_mm)) +
+  labs(title = "Bill Depth and Length",
+       x = "Bill Depth (mm)",
+       y = "Bill Length (mm)")
+
+```
+
+-   Bill size seems to average around the 45-50mm length and 14-16mm depth.
+
+-   Some outlying data in this set were around 40mm length and 17-18mm length
