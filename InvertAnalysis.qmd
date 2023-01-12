@@ -1,0 +1,40 @@
+---
+title: "InvertebratesAnalysis"
+author: "Trevor Harrington"
+format: html
+editor: visual
+execute: 
+  keep-md = TRUE
+---
+
+# Invertebrates
+
+```{r}
+library(readxl)
+  
+library(readxl)
+invertebrates <- read_excel("~/Documents/untitled folder 2/inverts_class_data.xlsx")
+
+invertebrates %>% head()
+```
+
+**Potential Hypotheses;**
+
+-   
+
+```{r}
+invertebrates %>%
+  summarize(
+    "mean flow rate" = mean(Flow_Velocity) %>%
+    "average pool width" = mean(Stream_Width))
+```
+
+```{r}
+#install.packages("tidymodels")
+library(tidymodels)
+
+invertebrates <- initial_split(data, prop = 0.5)
+
+exploratory_data <- training(invertebrates)
+test_data <- testing(invertebrates)IN
+```
