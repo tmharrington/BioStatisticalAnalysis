@@ -28,7 +28,7 @@ A data set containing general characteristics from a sample of the Gentoo pengui
 
 ## Data Manipulation
 
-This section covers techniques for filtering rows, subsetting columns, grouping data, and computing summary statistics in R. Filtering rows allows you to select only those rows that meet certain criteria, while subsetting columns allows you to select only a subset of the available columns. R allows for these functions, as well as dividing the data set into groups based on common characteristics that can create new ways of interpreting information. Using Computing to create summary statistics involves calculating statistical measures such as mean, median, and standard deviation for each group. Understanding how to use R to accomplish this analysis is crucial for grouping and summarizing large quantities of data, which can be combined to answer complex questions about the whole set.
+This section covers techniques for filtering rows, sub-setting columns, grouping data, and computing summary statistics in R. Filtering rows allows you to select only those rows that meet certain criteria, while sub-setting columns allows you to select only a subset of the available columns. R allows for these functions, as well as dividing the data set into groups based on common characteristics that can create new ways of interpreting information. Using Computing to create summary statistics involves calculating statistical measures such as mean, median, and standard deviation for each group. Understanding how to use R to accomplish this analysis is crucial for grouping and summarizing large quantities of data, which can be combined to answer complex questions about the whole set.
 
 **Questions to consider about Penguins**
 

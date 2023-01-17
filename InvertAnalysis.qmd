@@ -4,18 +4,24 @@ author: "Trevor Harrington"
 format: html
 editor: visual
 execute: 
-  keep-md = TRUE
+  keep-md: TRUE
 ---
 
 # Invertebrates
 
 ```{r}
 library(readxl)
+library(tidyverse)
+library(kableExtra)
   
 library(readxl)
-invertebrates <- read_excel("~/Documents/untitled folder 2/inverts_class_data.xlsx")
+invertebrates <- read_excel("Invertebrates in R/inverts_class_data.xlsx")
 
 invertebrates %>% head()
+```
+
+```{r}
+
 ```
 
 **Potential Hypotheses;**
