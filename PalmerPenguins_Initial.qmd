@@ -60,6 +60,7 @@ penguins %>%
 
 ```{r}
 penguins %>%
+  group_by(species) %>%
   summarize(
     "Minimum Bill Length (mm)" = min(bill_length_mm, na.rm = TRUE),
     "First Quartile Bill Length" = quantile(bill_length_mm, 0.25, na.rm = TRUE),
@@ -68,7 +69,6 @@ penguins %>%
     "Third Quartile Bill Length" = quantile(bill_length_mm, 0.75, na.rm = TRUE),
     "Standard Deviation of Bill Length" = sd(bill_length_mm, na.rm = TRUE)
     ) %>%
-  pivot_longer(cols = everything()) %>%
   kable() %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```

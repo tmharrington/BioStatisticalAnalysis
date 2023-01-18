@@ -13,34 +13,39 @@ execute:
 library(readxl)
 library(tidyverse)
 library(kableExtra)
-  
-library(readxl)
+library(ggplot2)
+library(tidymodels)
+
+#data is saved locally, not accessable off of this PC
 invertebrates <- read_excel("Invertebrates in R/inverts_class_data.xlsx")
-
-invertebrates %>% head()
+  
 ```
-
-```{r}
-
-```
-
-**Potential Hypotheses;**
-
--   
 
 ```{r}
 invertebrates %>%
-  summarize(
-    "mean flow rate" = mean(Flow_Velocity) %>%
-    "average pool width" = mean(Stream_Width))
+  
+  mutate(total_individuals_present = Gastropoda + Bivalvia + Diptera + Turbellaria + Oliggocheata + Hirundinea + Decapoda + Amphipod + Isopod + Trombidiforme + Plecoptera + Trichoptera + Ephemroptera + Megaloptera + Coleoptera + Hemiptera + Odonta + Lepidoptera) %>%
+
+mutate(Flow_Volume_m_sqrd = Stream_Width * Stream_Depth) %>%
+  
+  group_by(`Riffle/Pool`) %>%
+  
+summarise(
+  "average species present" = mean(total_individuals_present),
+  "average volume of flow (m2)" = mean(Flow_Volume_m_sqrd)
+) %>%
+
+kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+
+
+
 ```
+
+Clearly there is a difference in
 
 ```{r}
-#install.packages("tidymodels")
-library(tidymodels)
 
-invertebrates <- initial_split(data, prop = 0.5)
-
-exploratory_data <- training(invertebrates)
-test_data <- testing(invertebrates)IN
 ```
+
+**Potential Hypotheses**
