@@ -7,9 +7,10 @@ execute:
   keep-md: TRUE
 ---
 
-# Invertebrates
+# Invertebrate Biodiversity in Riffle-Pool Streams: The Influence of Water Flow Characteristics. 
 
 ```{r}
+#Load all valuable libraries to manipulate and display data
 library(readxl)
 library(tidyverse)
 library(kableExtra)
@@ -21,8 +22,26 @@ invertebrates <- read_excel("Invertebrates in R/inverts_class_data.xlsx")
   
 ```
 
+## Initial data processing/ finding a hypothesis
+
 ```{r}
-invertebrates %>%
+ invertebrates %>% 
+   # Initial data intake / hypothesis generating exploration before further data investigation.
+   
+   head() %>%
+ kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+
+```
+
+### Potential Questions for Investigation
+
+Investigation of raw data suggests some potential questions could be related to a preference of species towards one type of stream versus another, with potentially some variation of these four testing sites providing an environment that is suitably favorable for a range of species.
+
+This data has some significant limitations that prevent a in-depth investigation of the cause for success over one species versus another. Namely, this data lacks temporal, geographical, and methodology data that could provide insight for what other variables may contribute to the data collected. This data also lacks any measurement units for flow rate and width/depth, meaning they do not provide sufficient data to make any assumptions on the actual size, depth, or total flow of the stream to contribute in analysis. Overall, this data will be most valuable for
+
+```{r}
+invertebrates %>% #simple exploratory analysis 
   
   mutate(total_individuals_present = Gastropoda + Bivalvia + Diptera + Turbellaria + Oliggocheata + Hirundinea + Decapoda + Amphipod + Isopod + Trombidiforme + Plecoptera + Trichoptera + Ephemroptera + Megaloptera + Coleoptera + Hemiptera + Odonta + Lepidoptera) %>%
 
@@ -42,7 +61,7 @@ kable() %>%
 
 ```
 
-Clearly there is a difference in
+Doing a simple
 
 ```{r}
 
