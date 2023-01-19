@@ -7,7 +7,7 @@ execute:
   keep-md: TRUE
 ---
 
-# Invertebrate Biodiversity in Riffle-Pool Streams: The Influence of Water Flow Characteristics. 
+# Invertebrate Biodiversity in Riffle-Pool Streams: The Influence of Water Flow Characteristics.
 
 ```{r}
 #Load all valuable libraries to manipulate and display data
@@ -16,10 +16,12 @@ library(tidyverse)
 library(kableExtra)
 library(ggplot2)
 library(tidymodels)
+library(janitor)
 
 #data is saved locally, not accessable off of this PC
-invertebrates <- read_excel("Invertebrates in R/inverts_class_data.xlsx")
+invertebrates <- read_excel("Invertebrates in R/inverts_class_data.xlsx") %>%
   
+clean_names()
 ```
 
 ## Initial data processing/ finding a hypothesis
@@ -40,31 +42,33 @@ Investigation of raw data suggests some potential questions could be related to 
 
 This data has some significant limitations that prevent a in-depth investigation of the cause for success over one species versus another. Namely, this data lacks temporal, geographical, and methodology data that could provide insight for what other variables may contribute to the data collected. This data also lacks any measurement units for flow rate and width/depth, meaning they do not provide sufficient data to make any assumptions on the actual size, depth, or total flow of the stream to contribute in analysis. Overall, this data will be most valuable for
 
+-   How are the characteristics between Site 1 & 2 different? Which combination of features seems to be the most ideal for invertebrate success.
+
+    -   Is large species count the same as biodiversity? Does the site with largest amount of species also have the most unique species, or is favorable for only a few?
+
+-   
+
 ```{r}
 invertebrates %>% #simple exploratory analysis 
   
   mutate(total_individuals_present = Gastropoda + Bivalvia + Diptera + Turbellaria + Oliggocheata + Hirundinea + Decapoda + Amphipod + Isopod + Trombidiforme + Plecoptera + Trichoptera + Ephemroptera + Megaloptera + Coleoptera + Hemiptera + Odonta + Lepidoptera) %>%
 
-mutate(Flow_Volume_m_sqrd = Stream_Width * Stream_Depth) %>%
+mutate(Flow_Volume_m_sqrd = Stream_Width * Stream_Depth * Flow_Velocity) %>%
   
-  group_by(`Riffle/Pool`) %>%
+  group_by(Site, `Riffle/Pool`) %>%
   
 summarise(
   "average species present" = mean(total_individuals_present),
-  "average volume of flow (m2)" = mean(Flow_Volume_m_sqrd)
-) %>%
+  "'Unit' flow" = mean(Flow_Volume_m_sqrd),
+  "Riffle/Pool" = list(`Riffle/Pool`),
+  ) %>%
 
 kable() %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 
 
-
 ```
 
-Doing a simple
-
-```{r}
-
-```
+#### Viewing Distribution of Species Across Sites
 
 **Potential Hypotheses**
