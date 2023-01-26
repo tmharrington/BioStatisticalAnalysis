@@ -17,11 +17,14 @@ library(kableExtra)
 library(ggplot2)
 library(tidymodels)
 library(janitor)
+library(magrittr)
 
 #data is saved locally, not accessable off of this PC
 invertebrates <- read_excel("Invertebrates in R/inverts_class_data.xlsx") %>%
   
-clean_names()
+clean_names() 
+
+
 ```
 
 ## Initial Data Split/ finding a hypothesis
@@ -40,29 +43,19 @@ test_data <- testing(my_data_splits)
 ```
 
 ```{r}
-exploratory_data %>%
+invertebrates %>%
   
-  head() %>%
+  pivot_longer(cols = 6:23,
+               names_to = "order",
+               values_to = "count") %>%
+  
+  filter_if(vars('count' == 0)) # did not work, try below or mutate
+
+
+filter (count !> 0)
 
   kable() %>%
     kable_styling(bootstrap_options = c("hover", "striped"))
-```
-
-```{r}
-exploratory_data %>%
-   
-  mutate(total_individuals_present = diptera + turbellaria + oliggocheata + hirundinea + decapoda + amphipod + isopod + trombidiforme + plecoptera + trichoptera + ephemroptera + megaloptera + coleoptera + hemiptera + odonta + lepidoptera) %>%
-  
-  
-ggplot () +
-geom_pointrange(aes(x= dnorm(diptera + turbellaria + oliggocheata + hirundinea + decapoda + amphipod + isopod + trombidiforme + plecoptera + trichoptera + ephemroptera + megaloptera + coleoptera + hemiptera + odonta + lepidoptera),
-                    y = site),
-                xmin = 1 ,
-                ymin = 1 ,
-                xmax = 1 ,
-                ymax = 1 ,
-                )
-
 ```
 
 Considering Hypothesis on Initial Data Split
@@ -77,7 +70,19 @@ This data has some significant limitations that prevent a in-depth investigation
 
     -   Is large species count the same as biodiversity? Does the site with largest amount of species also have the most unique species, or is favorable for only a few?
 
--   
+    ```{r}
+    invertebrates %>%
+      
+       pivot_longer(invertebrates,
+                   cols = 6:23,
+                   names_to = "order",
+                   values_to = "count") %>%
+      
+      
+      
+
+      
+    ```
 
 ```{r}
 invertebrates %>% #simple exploratory analysis 
@@ -102,4 +107,6 @@ kable() %>%
 
 #### Viewing Distribution of Species Across Sites
 
-**Potential Hypotheses**
+**Hypotheses:**
+
+**NULL Hypothesis:** Characteristics
