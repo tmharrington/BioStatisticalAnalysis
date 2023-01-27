@@ -9,7 +9,7 @@ execute:
 
 
 
-# Invertebrate Biodiversity in Riffle-Pool Streams: The Influence of Water Flow Characteristics. 
+# Invertebrate Biodiversity in Riffle-Pool Streams: The Influence of Water Flow Characteristics.
 
 
 ::: {.cell}
@@ -70,194 +70,75 @@ library(tidymodels)
 ✖ dplyr::lag()             masks stats::lag()
 ✖ yardstick::spec()        masks readr::spec()
 ✖ recipes::step()          masks stats::step()
-• Search for functions across packages at https://www.tidymodels.org/find/
+• Dig deeper into tidy modeling with R at https://www.tmwr.org
 ```
 :::
 
 ```{.r .cell-code}
+library(janitor)
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+
+Attaching package: 'janitor'
+
+The following objects are masked from 'package:stats':
+
+    chisq.test, fisher.test
+```
+:::
+
+```{.r .cell-code}
+library(magrittr)
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+
+Attaching package: 'magrittr'
+
+The following object is masked from 'package:purrr':
+
+    set_names
+
+The following object is masked from 'package:tidyr':
+
+    extract
+```
+:::
+
+```{.r .cell-code}
+ library(dplyr)
+
 #data is saved locally, not accessable off of this PC
-invertebrates <- read_excel("Invertebrates in R/inverts_class_data.xlsx")
+invertebrates <- read_excel("Invertebrates in R/inverts_class_data.xlsx") %>%
+  
+clean_names() 
 ```
 :::
 
 
-## Initial data processing/ finding a hypothesis
+## Initial Data Split
 
 
 ::: {.cell}
 
 ```{.r .cell-code}
- invertebrates %>% 
    # Initial data intake / hypothesis generating exploration before further data investigation.
    
-   head() %>%
- kable() %>%
-  kable_styling(bootstrap_options = c("hover", "striped"))
-```
+   my_data_splits <- initial_split(invertebrates, prop = 0.5,
+                                   pool = 1) 
 
-::: {.cell-output-display}
+exploratory_data <- training(my_data_splits)
+test_data <- testing(my_data_splits)
 
-`````{=html}
-<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> Site </th>
-   <th style="text-align:left;"> Riffle/Pool </th>
-   <th style="text-align:right;"> Flow_Velocity </th>
-   <th style="text-align:right;"> Stream_Width </th>
-   <th style="text-align:right;"> Stream_Depth </th>
-   <th style="text-align:right;"> Gastropoda </th>
-   <th style="text-align:right;"> Bivalvia </th>
-   <th style="text-align:right;"> Diptera </th>
-   <th style="text-align:right;"> Turbellaria </th>
-   <th style="text-align:right;"> Oliggocheata </th>
-   <th style="text-align:right;"> Hirundinea </th>
-   <th style="text-align:right;"> Decapoda </th>
-   <th style="text-align:right;"> Amphipod </th>
-   <th style="text-align:right;"> Isopod </th>
-   <th style="text-align:right;"> Trombidiforme </th>
-   <th style="text-align:right;"> Plecoptera </th>
-   <th style="text-align:right;"> Trichoptera </th>
-   <th style="text-align:right;"> Ephemroptera </th>
-   <th style="text-align:right;"> Megaloptera </th>
-   <th style="text-align:right;"> Coleoptera </th>
-   <th style="text-align:right;"> Hemiptera </th>
-   <th style="text-align:right;"> Odonta </th>
-   <th style="text-align:right;"> Lepidoptera </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 1 (upstream) </td>
-   <td style="text-align:left;"> Riffle </td>
-   <td style="text-align:right;"> 3.00 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 1.5 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 14 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1(upstream) </td>
-   <td style="text-align:left;"> Pool </td>
-   <td style="text-align:right;"> 3.00 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 1.5 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 (upstream) </td>
-   <td style="text-align:left;"> Riffle </td>
-   <td style="text-align:right;"> 0.18 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 1.9 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 24 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 (upstream) </td>
-   <td style="text-align:left;"> Pool </td>
-   <td style="text-align:right;"> 0.18 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 1.9 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-</tbody>
-</table>
-
-`````
-
-:::
-:::
-
-
-### Potential Questions for Investigation
-
-Investigation of raw data suggests some potential questions could be related to a preference of species towards one type of stream versus another, with potentially some variation of these four testing sites providing an environment that is suitably favorable for a range of species.
-
-This data has some significant limitations that prevent a in-depth investigation of the cause for success over one species versus another. Namely, this data lacks temporal, geographical, and methodology data that could provide insight for what other variables may contribute to the data collected. This data also lacks any measurement units for flow rate and width/depth, meaning they do not provide sufficient data to make any assumptions on the actual size, depth, or total flow of the stream to contribute in analysis. Overall, this data will be most valuable for
-
-
-::: {.cell}
-
-```{.r .cell-code}
-invertebrates %>% #simple exploratory analysis 
+exploratory_data %>%
   
-  mutate(total_individuals_present = Gastropoda + Bivalvia + Diptera + Turbellaria + Oliggocheata + Hirundinea + Decapoda + Amphipod + Isopod + Trombidiforme + Plecoptera + Trichoptera + Ephemroptera + Megaloptera + Coleoptera + Hemiptera + Odonta + Lepidoptera) %>%
-
-mutate(Flow_Volume_m_sqrd = Stream_Width * Stream_Depth) %>%
-  
-  group_by(`Riffle/Pool`) %>%
-  
-summarise(
-  "average species present" = mean(total_individuals_present),
-  "average volume of flow (m2)" = mean(Flow_Volume_m_sqrd)
-) %>%
+   t %>% as.data.frame( row.names = NULL, optional = FALSE,
+              cut.names = FALSE, col.names = names('S1', 'S2'), fix.empty.names = TRUE,
+              check.names = !optional,
+              stringsAsFactors = FALSE) %>%
 
 kable() %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
@@ -269,21 +150,174 @@ kable() %>%
 <table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
-   <th style="text-align:left;"> Riffle/Pool </th>
-   <th style="text-align:right;"> average species present </th>
-   <th style="text-align:right;"> average volume of flow (m2) </th>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;"> V1 </th>
+   <th style="text-align:left;"> V2 </th>
   </tr>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Pool </td>
-   <td style="text-align:right;"> 13.0 </td>
-   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:left;"> site </td>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> 1 (upstream) </td>
   </tr>
   <tr>
+   <td style="text-align:left;"> riffle_pool </td>
+   <td style="text-align:left;"> Pool </td>
    <td style="text-align:left;"> Riffle </td>
-   <td style="text-align:right;"> 58.5 </td>
-   <td style="text-align:right;"> 17 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> flow_velocity </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> stream_width </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> stream_depth </td>
+   <td style="text-align:left;"> 1.5 </td>
+   <td style="text-align:left;"> 1.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> gastropoda </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> bivalvia </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> diptera </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> turbellaria </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> oliggocheata </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> hirundinea </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> decapoda </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> amphipod </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> isopod </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> trombidiforme </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> plecoptera </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> trichoptera </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ephemroptera </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 14 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> megaloptera </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> coleoptera </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> hemiptera </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> odonta </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> lepidoptera </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 1 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
+
+::: {.cell}
+
+```{.r .cell-code}
+exploratory_data %>%
+  
+  group_by(site) %>%
+
+  mutate('total_individuals_present' = bivalvia + gastropoda + diptera + turbellaria + oliggocheata + hirundinea + decapoda + amphipod + isopod + trombidiforme + plecoptera + trichoptera + ephemroptera + megaloptera + coleoptera + hemiptera + odonta + lepidoptera) %>%
+
+  mutate(flow_volume_m_sqrd = stream_width * stream_depth * flow_velocity) %>%
+  
+summarise(
+  "average species present" = mean(total_individuals_present),
+  "'Unit' flow" = mean(flow_volume_m_sqrd),
+  "Riffle/pool" = list(riffle_pool),
+  )%>%
+
+kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> site </th>
+   <th style="text-align:right;"> average species present </th>
+   <th style="text-align:right;"> 'Unit' flow </th>
+   <th style="text-align:left;"> Riffle/pool </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:right;"> 33 </td>
+   <td style="text-align:right;"> 45 </td>
+   <td style="text-align:left;"> Pool  , Riffle </td>
   </tr>
 </tbody>
 </table>
@@ -294,12 +328,520 @@ kable() %>%
 :::
 
 
-Doing a simple
+### What can be inferred? Data-split exploration
+
+-   Using exploratory data, the first things to notice are that there are multiple locations where data has been collected.
+
+-   data for this set are the species of invertebrates that were identified in two streams, across four locations. Each stream was measured at one 'riffle run' and one 'pool' section
+
+    -   **riffle stream** is a shallow section moving water characterized by rapid flow with a rocky or gravel bottom, where the water flows over small obstructions and creates a 'riffling' sound. Riffle sections of a stream are typically found in the most upstream part of a stream where the slope is steeper and the water flow is more energetic.
+
+    -   A **pool stream** is a deeper section of a stream characterized by a slower flow rate with a smooth bottom, where the water flows around larger obstructions and creates a pooling effect. Pools are typically found in the lower half of a stream where the gradient is less steep and the water flow reduced.
+
+Considering the characteristics of riffle and pool streams, it is possible some hypotheses could be generate on which would be more conducive of some species more then others.
+
+        -   ::: {.callout-note appearance="simple"}
+            -   The invertebrate species found in the pool sites of one stream should be more similar to those in the pool sites of the other stream compared to the riffle sites of the two streams.
+
+            -   The riffle environment seems to be more conducive to invertebrate life judging by the larger population found in riffle sites. Does this correspond to biodiversity or is one species largely successful?
+
+                -   **Trichoptera** (caddisfly), **Odonta (**dragonfly), **ephemroptera** (mayfly) make up 50.4% od the upstream
+
+            -    are there any species that can be identified as only found in riffle runs or pools?
+            :::
+
+# 
+
+## Data analysis using initial exploratory hypotheses
 
 
 ::: {.cell}
 
+```{.r .cell-code}
+invertebrates %>%
+  
+  # reorient the data where variables are listed under the site columns.
+  t %>% as.data.frame( row.names = NULL, optional = FALSE,
+              cut.names = FALSE, col.names = names('S1', 'S2'), fix.empty.names = TRUE,
+              check.names = !optional,
+              stringsAsFactors = FALSE) %>%
+
+ # filter out columns where every variable is 0
+  
+ filter_all(any_vars(.!=0)) %>%
+
+  kable() %>%
+    kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;"> V1 </th>
+   <th style="text-align:left;"> V2 </th>
+   <th style="text-align:left;"> V3 </th>
+   <th style="text-align:left;"> V4 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> site </td>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> 2 (upstream) </td>
+   <td style="text-align:left;"> 2 (upstream) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> riffle_pool </td>
+   <td style="text-align:left;"> Riffle </td>
+   <td style="text-align:left;"> Pool </td>
+   <td style="text-align:left;"> Riffle </td>
+   <td style="text-align:left;"> Pool </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> flow_velocity </td>
+   <td style="text-align:left;"> 3.00 </td>
+   <td style="text-align:left;"> 3.00 </td>
+   <td style="text-align:left;"> 0.18 </td>
+   <td style="text-align:left;"> 0.18 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> stream_width </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> stream_depth </td>
+   <td style="text-align:left;"> 1.5 </td>
+   <td style="text-align:left;"> 1.5 </td>
+   <td style="text-align:left;"> 1.9 </td>
+   <td style="text-align:left;"> 1.9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> diptera </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> plecoptera </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> trichoptera </td>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 20 </td>
+   <td style="text-align:left;"> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ephemroptera </td>
+   <td style="text-align:left;"> 14 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> megaloptera </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> coleoptera </td>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> hemiptera </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> odonta </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 24 </td>
+   <td style="text-align:left;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> lepidoptera </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
 :::
 
 
-**Potential Hypotheses**
+### Reconsidering Hypotheses with Full Dataset
+
+Investigation of raw data suggests some potential questions could be related to a preference of species towards one type of stream versus another, with potentially some variation of these four testing sites providing an environment that is suitably favorable for a range of species.
+
+This data has some significant limitations that prevent a in-depth investigation of the cause for success over one species versus another. Namely, this data lacks temporal, geographical, and methodology data that could provide insight for what other variables may contribute to the data collected. This data also lacks any measurement units for flow rate and width/depth, meaning they do not provide sufficient data to make any assumptions on the actual size, depth, or total flow of the stream to contribute in analysis. Overall, this data will be most valuable for
+
+-   How are the characteristics between Site 1 & 2 different? Which combination of features seems to be the most ideal for invertebrate success.
+
+    -   Is large species count the same as biodiversity? Does the site with largest amount of species also have the most unique species, or is favorable for only a few?
+
+-   Something we are becoming increasingly aware of is the impact of dams on aquatic habitats. If this stream is or is not dammed, there could be some inference or comparison made with other researchers findings and how the presents of man-made obstacles could impact invertebrate habitats.
+
+    -   likely, this kind of inference would require a larger dataset to work with, but it could potentially provide some useful insight on making comparisons with other analysis conducted on a similar topic.
+
+-   
+
+    -   
+
+
+    ::: {.cell}
+    
+    ```{.r .cell-code}
+    invertebrates %>%
+      
+       pivot_longer(invertebrates,
+                   cols = 6:23,
+                   names_to = "order",
+                   values_to = "count") %>%
+      
+      group_by(riffle_pool,site) %>%
+      
+      filter(count != 0) %>%
+    
+      kable() %>%
+        kable_styling(bootstrap_options = c("hover", "striped"))
+    ```
+    
+    ::: {.cell-output .cell-output-stderr}
+    ```
+    Warning in gsub(vec_paste0("^", names_prefix), "", cols): argument 'pattern' has
+    length > 1 and only the first element will be used
+    ```
+    :::
+    
+    ::: {.cell-output-display}
+
+    `````{=html}
+    <table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+     <thead>
+      <tr>
+       <th style="text-align:left;"> site </th>
+       <th style="text-align:left;"> riffle_pool </th>
+       <th style="text-align:right;"> flow_velocity </th>
+       <th style="text-align:right;"> stream_width </th>
+       <th style="text-align:right;"> stream_depth </th>
+       <th style="text-align:left;"> order </th>
+       <th style="text-align:right;"> count </th>
+      </tr>
+     </thead>
+    <tbody>
+      <tr>
+       <td style="text-align:left;"> 1 (upstream) </td>
+       <td style="text-align:left;"> Riffle </td>
+       <td style="text-align:right;"> 3.00 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.5 </td>
+       <td style="text-align:left;"> diptera </td>
+       <td style="text-align:right;"> 3 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 1 (upstream) </td>
+       <td style="text-align:left;"> Riffle </td>
+       <td style="text-align:right;"> 3.00 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.5 </td>
+       <td style="text-align:left;"> plecoptera </td>
+       <td style="text-align:right;"> 10 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 1 (upstream) </td>
+       <td style="text-align:left;"> Riffle </td>
+       <td style="text-align:right;"> 3.00 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.5 </td>
+       <td style="text-align:left;"> trichoptera </td>
+       <td style="text-align:right;"> 7 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 1 (upstream) </td>
+       <td style="text-align:left;"> Riffle </td>
+       <td style="text-align:right;"> 3.00 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.5 </td>
+       <td style="text-align:left;"> ephemroptera </td>
+       <td style="text-align:right;"> 14 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 1 (upstream) </td>
+       <td style="text-align:left;"> Riffle </td>
+       <td style="text-align:right;"> 3.00 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.5 </td>
+       <td style="text-align:left;"> megaloptera </td>
+       <td style="text-align:right;"> 4 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 1 (upstream) </td>
+       <td style="text-align:left;"> Riffle </td>
+       <td style="text-align:right;"> 3.00 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.5 </td>
+       <td style="text-align:left;"> coleoptera </td>
+       <td style="text-align:right;"> 5 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 1 (upstream) </td>
+       <td style="text-align:left;"> Riffle </td>
+       <td style="text-align:right;"> 3.00 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.5 </td>
+       <td style="text-align:left;"> hemiptera </td>
+       <td style="text-align:right;"> 1 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 1 (upstream) </td>
+       <td style="text-align:left;"> Riffle </td>
+       <td style="text-align:right;"> 3.00 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.5 </td>
+       <td style="text-align:left;"> odonta </td>
+       <td style="text-align:right;"> 10 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 1 (upstream) </td>
+       <td style="text-align:left;"> Riffle </td>
+       <td style="text-align:right;"> 3.00 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.5 </td>
+       <td style="text-align:left;"> lepidoptera </td>
+       <td style="text-align:right;"> 1 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 1 (upstream) </td>
+       <td style="text-align:left;"> Pool </td>
+       <td style="text-align:right;"> 3.00 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.5 </td>
+       <td style="text-align:left;"> trichoptera </td>
+       <td style="text-align:right;"> 2 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 1 (upstream) </td>
+       <td style="text-align:left;"> Pool </td>
+       <td style="text-align:right;"> 3.00 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.5 </td>
+       <td style="text-align:left;"> coleoptera </td>
+       <td style="text-align:right;"> 4 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 1 (upstream) </td>
+       <td style="text-align:left;"> Pool </td>
+       <td style="text-align:right;"> 3.00 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.5 </td>
+       <td style="text-align:left;"> hemiptera </td>
+       <td style="text-align:right;"> 1 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 1 (upstream) </td>
+       <td style="text-align:left;"> Pool </td>
+       <td style="text-align:right;"> 3.00 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.5 </td>
+       <td style="text-align:left;"> odonta </td>
+       <td style="text-align:right;"> 4 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 2 (upstream) </td>
+       <td style="text-align:left;"> Riffle </td>
+       <td style="text-align:right;"> 0.18 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.9 </td>
+       <td style="text-align:left;"> diptera </td>
+       <td style="text-align:right;"> 2 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 2 (upstream) </td>
+       <td style="text-align:left;"> Riffle </td>
+       <td style="text-align:right;"> 0.18 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.9 </td>
+       <td style="text-align:left;"> plecoptera </td>
+       <td style="text-align:right;"> 1 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 2 (upstream) </td>
+       <td style="text-align:left;"> Riffle </td>
+       <td style="text-align:right;"> 0.18 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.9 </td>
+       <td style="text-align:left;"> trichoptera </td>
+       <td style="text-align:right;"> 20 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 2 (upstream) </td>
+       <td style="text-align:left;"> Riffle </td>
+       <td style="text-align:right;"> 0.18 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.9 </td>
+       <td style="text-align:left;"> ephemroptera </td>
+       <td style="text-align:right;"> 6 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 2 (upstream) </td>
+       <td style="text-align:left;"> Riffle </td>
+       <td style="text-align:right;"> 0.18 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.9 </td>
+       <td style="text-align:left;"> coleoptera </td>
+       <td style="text-align:right;"> 9 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 2 (upstream) </td>
+       <td style="text-align:left;"> Riffle </td>
+       <td style="text-align:right;"> 0.18 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.9 </td>
+       <td style="text-align:left;"> odonta </td>
+       <td style="text-align:right;"> 24 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 2 (upstream) </td>
+       <td style="text-align:left;"> Pool </td>
+       <td style="text-align:right;"> 0.18 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.9 </td>
+       <td style="text-align:left;"> trichoptera </td>
+       <td style="text-align:right;"> 6 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 2 (upstream) </td>
+       <td style="text-align:left;"> Pool </td>
+       <td style="text-align:right;"> 0.18 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.9 </td>
+       <td style="text-align:left;"> ephemroptera </td>
+       <td style="text-align:right;"> 2 </td>
+      </tr>
+      <tr>
+       <td style="text-align:left;"> 2 (upstream) </td>
+       <td style="text-align:left;"> Pool </td>
+       <td style="text-align:right;"> 0.18 </td>
+       <td style="text-align:right;"> 10 </td>
+       <td style="text-align:right;"> 1.9 </td>
+       <td style="text-align:left;"> odonta </td>
+       <td style="text-align:right;"> 7 </td>
+      </tr>
+    </tbody>
+    </table>
+    
+    `````
+
+    :::
+    :::
+
+::: {.cell}
+
+```{.r .cell-code}
+invertebrates %>% #simple exploratory analysis 
+  
+  mutate(total_individuals_present = bivalvia + gastropoda + diptera + turbellaria + oliggocheata + hirundinea + decapoda + amphipod + isopod + trombidiforme + plecoptera + trichoptera + ephemroptera + megaloptera + coleoptera + hemiptera + odonta + lepidoptera) %>%
+
+mutate(flow_volume_m_sqrd = stream_width * stream_depth * flow_velocity) %>%
+  
+  group_by(site, riffle_pool) %>%
+  
+summarise(
+  "average species present" = mean(total_individuals_present),
+  "'Unit' flow" = mean(flow_volume_m_sqrd),
+  "Riffle/pool" = list(riffle_pool),
+  ) %>%
+
+kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+`summarise()` has grouped output by 'site'. You can override using the
+`.groups` argument.
+```
+:::
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> site </th>
+   <th style="text-align:left;"> riffle_pool </th>
+   <th style="text-align:right;"> average species present </th>
+   <th style="text-align:right;"> 'Unit' flow </th>
+   <th style="text-align:left;"> Riffle/pool </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> Pool </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 45.00 </td>
+   <td style="text-align:left;"> Pool </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> Riffle </td>
+   <td style="text-align:right;"> 55 </td>
+   <td style="text-align:right;"> 45.00 </td>
+   <td style="text-align:left;"> Riffle </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 (upstream) </td>
+   <td style="text-align:left;"> Pool </td>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:right;"> 3.42 </td>
+   <td style="text-align:left;"> Pool </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 (upstream) </td>
+   <td style="text-align:left;"> Riffle </td>
+   <td style="text-align:right;"> 62 </td>
+   <td style="text-align:right;"> 3.42 </td>
+   <td style="text-align:left;"> Riffle </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
+
+
+#### Viewing Distribution of Species Across Sites
+
+**Hypotheses:**
+
+**NULL Hypothesis:** Characteristics

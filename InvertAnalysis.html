@@ -176,48 +176,432 @@ The following object is masked from 'package:dplyr':
 ✖ dplyr::lag()             masks stats::lag()
 ✖ yardstick::spec()        masks readr::spec()
 ✖ recipes::step()          masks stats::step()
-• Search for functions across packages at https://www.tidymodels.org/find/</code></pre>
+• Dig deeper into tidy modeling with R at https://www.tmwr.org</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#data is saved locally, not accessable off of this PC</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>invertebrates <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"Invertebrates in R/inverts_class_data.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'janitor'
+
+The following objects are masked from 'package:stats':
+
+    chisq.test, fisher.test</code></pre>
 </div>
-<section id="initial-data-processing-finding-a-hypothesis" class="level2">
-<h2 class="anchored" data-anchor-id="initial-data-processing-finding-a-hypothesis">Initial data processing/ finding a hypothesis</h2>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'magrittr'
+
+The following object is masked from 'package:purrr':
+
+    set_names
+
+The following object is masked from 'package:tidyr':
+
+    extract</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(dplyr)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#data is saved locally, not accessable off of this PC</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>invertebrates <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"Invertebrates in R/inverts_class_data.xlsx"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">clean_names</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="initial-data-split" class="level2">
+<h2 class="anchored" data-anchor-id="initial-data-split">Initial Data Split</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a> invertebrates <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Initial data intake / hypothesis generating exploration before further data investigation.</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Initial data intake / hypothesis generating exploration before further data investigation.</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>   my_data_splits <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(invertebrates, <span class="at">prop =</span> <span class="fl">0.5</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">pool =</span> <span class="dv">1</span>) </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>exploratory_data <span class="ot">&lt;-</span> <span class="fu">training</span>(my_data_splits)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> <span class="fu">testing</span>(my_data_splits)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>exploratory_data <span class="sc">%&gt;%</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>   t <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>( <span class="at">row.names =</span> <span class="cn">NULL</span>, <span class="at">optional =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">cut.names =</span> <span class="cn">FALSE</span>, <span class="at">col.names =</span> <span class="fu">names</span>(<span class="st">'S1'</span>, <span class="st">'S2'</span>), <span class="at">fix.empty.names =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>              <span class="at">check.names =</span> <span class="sc">!</span>optional,</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>              <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
-   <th style="text-align:left;"> Site </th>
-   <th style="text-align:left;"> Riffle/Pool </th>
-   <th style="text-align:right;"> Flow_Velocity </th>
-   <th style="text-align:right;"> Stream_Width </th>
-   <th style="text-align:right;"> Stream_Depth </th>
-   <th style="text-align:right;"> Gastropoda </th>
-   <th style="text-align:right;"> Bivalvia </th>
-   <th style="text-align:right;"> Diptera </th>
-   <th style="text-align:right;"> Turbellaria </th>
-   <th style="text-align:right;"> Oliggocheata </th>
-   <th style="text-align:right;"> Hirundinea </th>
-   <th style="text-align:right;"> Decapoda </th>
-   <th style="text-align:right;"> Amphipod </th>
-   <th style="text-align:right;"> Isopod </th>
-   <th style="text-align:right;"> Trombidiforme </th>
-   <th style="text-align:right;"> Plecoptera </th>
-   <th style="text-align:right;"> Trichoptera </th>
-   <th style="text-align:right;"> Ephemroptera </th>
-   <th style="text-align:right;"> Megaloptera </th>
-   <th style="text-align:right;"> Coleoptera </th>
-   <th style="text-align:right;"> Hemiptera </th>
-   <th style="text-align:right;"> Odonta </th>
-   <th style="text-align:right;"> Lepidoptera </th>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;"> V1 </th>
+   <th style="text-align:left;"> V2 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> site </td>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> 1 (upstream) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> riffle_pool </td>
+   <td style="text-align:left;"> Pool </td>
+   <td style="text-align:left;"> Riffle </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> flow_velocity </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> stream_width </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> stream_depth </td>
+   <td style="text-align:left;"> 1.5 </td>
+   <td style="text-align:left;"> 1.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> gastropoda </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> bivalvia </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> diptera </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> turbellaria </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> oliggocheata </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> hirundinea </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> decapoda </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> amphipod </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> isopod </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> trombidiforme </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> plecoptera </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> trichoptera </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ephemroptera </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 14 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> megaloptera </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> coleoptera </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> hemiptera </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> odonta </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> lepidoptera </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 1 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>exploratory_data <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(site) <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">'total_individuals_present'</span> <span class="ot">=</span> bivalvia <span class="sc">+</span> gastropoda <span class="sc">+</span> diptera <span class="sc">+</span> turbellaria <span class="sc">+</span> oliggocheata <span class="sc">+</span> hirundinea <span class="sc">+</span> decapoda <span class="sc">+</span> amphipod <span class="sc">+</span> isopod <span class="sc">+</span> trombidiforme <span class="sc">+</span> plecoptera <span class="sc">+</span> trichoptera <span class="sc">+</span> ephemroptera <span class="sc">+</span> megaloptera <span class="sc">+</span> coleoptera <span class="sc">+</span> hemiptera <span class="sc">+</span> odonta <span class="sc">+</span> lepidoptera) <span class="sc">%&gt;%</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">flow_volume_m_sqrd =</span> stream_width <span class="sc">*</span> stream_depth <span class="sc">*</span> flow_velocity) <span class="sc">%&gt;%</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"average species present"</span> <span class="ot">=</span> <span class="fu">mean</span>(total_individuals_present),</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"'Unit' flow"</span> <span class="ot">=</span> <span class="fu">mean</span>(flow_volume_m_sqrd),</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Riffle/pool"</span> <span class="ot">=</span> <span class="fu">list</span>(riffle_pool),</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">%&gt;%</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> site </th>
+   <th style="text-align:right;"> average species present </th>
+   <th style="text-align:right;"> 'Unit' flow </th>
+   <th style="text-align:left;"> Riffle/pool </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:right;"> 33 </td>
+   <td style="text-align:right;"> 45 </td>
+   <td style="text-align:left;"> Pool  , Riffle </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<section id="what-can-be-inferred-data-split-exploration" class="level3">
+<h3 class="anchored" data-anchor-id="what-can-be-inferred-data-split-exploration">What can be inferred? Data-split exploration</h3>
+<ul>
+<li><p>Using exploratory data, the first things to notice are that there are multiple locations where data has been collected.</p></li>
+<li><p>data for this set are the species of invertebrates that were identified in two streams, across four locations. Each stream was measured at one ‘riffle run’ and one ‘pool’ section</p>
+<ul>
+<li><p><strong>riffle stream</strong> is a shallow section moving water characterized by rapid flow with a rocky or gravel bottom, where the water flows over small obstructions and creates a ‘riffling’ sound. Riffle sections of a stream are typically found in the most upstream part of a stream where the slope is steeper and the water flow is more energetic.</p></li>
+<li><p>A <strong>pool stream</strong> is a deeper section of a stream characterized by a slower flow rate with a smooth bottom, where the water flows around larger obstructions and creates a pooling effect. Pools are typically found in the lower half of a stream where the gradient is less steep and the water flow reduced.</p></li>
+</ul></li>
+</ul>
+<p>Considering the characteristics of riffle and pool streams, it is possible some hypotheses could be generate on which would be more conducive of some species more then others.</p>
+<pre><code>    -   ::: {.callout-note appearance="simple"}
+        -   The invertebrate species found in the pool sites of one stream should be more similar to those in the pool sites of the other stream compared to the riffle sites of the two streams.
+
+        -   The riffle environment seems to be more conducive to invertebrate life judging by the larger population found in riffle sites. Does this correspond to biodiversity or is one species largely successful?
+
+            -   **Trichoptera** (caddisfly), **Odonta (**dragonfly), **ephemroptera** (mayfly) make up 50.4% od the upstream
+
+        -    are there any species that can be identified as only found in riffle runs or pools?
+        :::</code></pre>
+</section>
+</section>
+</section>
+<section id="section" class="level1">
+<h1></h1>
+<section id="data-analysis-using-initial-exploratory-hypotheses" class="level2">
+<h2 class="anchored" data-anchor-id="data-analysis-using-initial-exploratory-hypotheses">Data analysis using initial exploratory hypotheses</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>invertebrates <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># reorient the data where variables are listed under the site columns.</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  t <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>( <span class="at">row.names =</span> <span class="cn">NULL</span>, <span class="at">optional =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">cut.names =</span> <span class="cn">FALSE</span>, <span class="at">col.names =</span> <span class="fu">names</span>(<span class="st">'S1'</span>, <span class="st">'S2'</span>), <span class="at">fix.empty.names =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">check.names =</span> <span class="sc">!</span>optional,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a> <span class="co"># filter out columns where every variable is 0</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a> <span class="fu">filter_all</span>(<span class="fu">any_vars</span>(.<span class="sc">!=</span><span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;"> V1 </th>
+   <th style="text-align:left;"> V2 </th>
+   <th style="text-align:left;"> V3 </th>
+   <th style="text-align:left;"> V4 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> site </td>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> 2 (upstream) </td>
+   <td style="text-align:left;"> 2 (upstream) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> riffle_pool </td>
+   <td style="text-align:left;"> Riffle </td>
+   <td style="text-align:left;"> Pool </td>
+   <td style="text-align:left;"> Riffle </td>
+   <td style="text-align:left;"> Pool </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> flow_velocity </td>
+   <td style="text-align:left;"> 3.00 </td>
+   <td style="text-align:left;"> 3.00 </td>
+   <td style="text-align:left;"> 0.18 </td>
+   <td style="text-align:left;"> 0.18 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> stream_width </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> stream_depth </td>
+   <td style="text-align:left;"> 1.5 </td>
+   <td style="text-align:left;"> 1.5 </td>
+   <td style="text-align:left;"> 1.9 </td>
+   <td style="text-align:left;"> 1.9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> diptera </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> plecoptera </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> trichoptera </td>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 20 </td>
+   <td style="text-align:left;"> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ephemroptera </td>
+   <td style="text-align:left;"> 14 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> megaloptera </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> coleoptera </td>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> hemiptera </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> odonta </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 24 </td>
+   <td style="text-align:left;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> lepidoptera </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<section id="reconsidering-hypotheses-with-full-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="reconsidering-hypotheses-with-full-dataset">Reconsidering Hypotheses with Full Dataset</h3>
+<p>Investigation of raw data suggests some potential questions could be related to a preference of species towards one type of stream versus another, with potentially some variation of these four testing sites providing an environment that is suitably favorable for a range of species.</p>
+<p>This data has some significant limitations that prevent a in-depth investigation of the cause for success over one species versus another. Namely, this data lacks temporal, geographical, and methodology data that could provide insight for what other variables may contribute to the data collected. This data also lacks any measurement units for flow rate and width/depth, meaning they do not provide sufficient data to make any assumptions on the actual size, depth, or total flow of the stream to contribute in analysis. Overall, this data will be most valuable for</p>
+<ul>
+<li><p>How are the characteristics between Site 1 &amp; 2 different? Which combination of features seems to be the most ideal for invertebrate success.</p>
+<ul>
+<li>Is large species count the same as biodiversity? Does the site with largest amount of species also have the most unique species, or is favorable for only a few?</li>
+</ul></li>
+<li><p>Something we are becoming increasingly aware of is the impact of dams on aquatic habitats. If this stream is or is not dammed, there could be some inference or comparison made with other researchers findings and how the presents of man-made obstacles could impact invertebrate habitats.</p>
+<ul>
+<li>likely, this kind of inference would require a larger dataset to work with, but it could potentially provide some useful insight on making comparisons with other analysis conducted on a similar topic.</li>
+</ul></li>
+<li><ul>
+<li></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>invertebrates <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">pivot_longer</span>(invertebrates,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">cols =</span> <span class="dv">6</span><span class="sc">:</span><span class="dv">23</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"order"</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(riffle_pool,site) <span class="sc">%&gt;%</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(count <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in gsub(vec_paste0("^", names_prefix), "", cols): argument 'pattern' has
+length &gt; 1 and only the first element will be used</code></pre>
+</div>
+<div class="cell-output-display">
+
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> site </th>
+   <th style="text-align:left;"> riffle_pool </th>
+   <th style="text-align:right;"> flow_velocity </th>
+   <th style="text-align:right;"> stream_width </th>
+   <th style="text-align:right;"> stream_depth </th>
+   <th style="text-align:left;"> order </th>
+   <th style="text-align:right;"> count </th>
   </tr>
  </thead>
 <tbody>
@@ -227,49 +611,116 @@ The following object is masked from 'package:dplyr':
    <td style="text-align:right;"> 3.00 </td>
    <td style="text-align:right;"> 10 </td>
    <td style="text-align:right;"> 1.5 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> diptera </td>
    <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> Riffle </td>
+   <td style="text-align:right;"> 3.00 </td>
    <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1.5 </td>
+   <td style="text-align:left;"> plecoptera </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> Riffle </td>
+   <td style="text-align:right;"> 3.00 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1.5 </td>
+   <td style="text-align:left;"> trichoptera </td>
    <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 14 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> Riffle </td>
+   <td style="text-align:right;"> 3.00 </td>
    <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1.5 </td>
+   <td style="text-align:left;"> ephemroptera </td>
+   <td style="text-align:right;"> 14 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> Riffle </td>
+   <td style="text-align:right;"> 3.00 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1.5 </td>
+   <td style="text-align:left;"> megaloptera </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> Riffle </td>
+   <td style="text-align:right;"> 3.00 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1.5 </td>
+   <td style="text-align:left;"> coleoptera </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> Riffle </td>
+   <td style="text-align:right;"> 3.00 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1.5 </td>
+   <td style="text-align:left;"> hemiptera </td>
    <td style="text-align:right;"> 1 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 1(upstream) </td>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> Riffle </td>
+   <td style="text-align:right;"> 3.00 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1.5 </td>
+   <td style="text-align:left;"> odonta </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> Riffle </td>
+   <td style="text-align:right;"> 3.00 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1.5 </td>
+   <td style="text-align:left;"> lepidoptera </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 (upstream) </td>
    <td style="text-align:left;"> Pool </td>
    <td style="text-align:right;"> 3.00 </td>
    <td style="text-align:right;"> 10 </td>
    <td style="text-align:right;"> 1.5 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> trichoptera </td>
    <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> Pool </td>
+   <td style="text-align:right;"> 3.00 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1.5 </td>
+   <td style="text-align:left;"> coleoptera </td>
    <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> Pool </td>
+   <td style="text-align:right;"> 3.00 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1.5 </td>
+   <td style="text-align:left;"> hemiptera </td>
    <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> Pool </td>
+   <td style="text-align:right;"> 3.00 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1.5 </td>
+   <td style="text-align:left;"> odonta </td>
    <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2 (upstream) </td>
@@ -277,24 +728,53 @@ The following object is masked from 'package:dplyr':
    <td style="text-align:right;"> 0.18 </td>
    <td style="text-align:right;"> 10 </td>
    <td style="text-align:right;"> 1.9 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> diptera </td>
    <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 (upstream) </td>
+   <td style="text-align:left;"> Riffle </td>
+   <td style="text-align:right;"> 0.18 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1.9 </td>
+   <td style="text-align:left;"> plecoptera </td>
    <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 (upstream) </td>
+   <td style="text-align:left;"> Riffle </td>
+   <td style="text-align:right;"> 0.18 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1.9 </td>
+   <td style="text-align:left;"> trichoptera </td>
    <td style="text-align:right;"> 20 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 (upstream) </td>
+   <td style="text-align:left;"> Riffle </td>
+   <td style="text-align:right;"> 0.18 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1.9 </td>
+   <td style="text-align:left;"> ephemroptera </td>
    <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 (upstream) </td>
+   <td style="text-align:left;"> Riffle </td>
+   <td style="text-align:right;"> 0.18 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1.9 </td>
+   <td style="text-align:left;"> coleoptera </td>
    <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 (upstream) </td>
+   <td style="text-align:left;"> Riffle </td>
+   <td style="text-align:right;"> 0.18 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1.9 </td>
+   <td style="text-align:left;"> odonta </td>
    <td style="text-align:right;"> 24 </td>
-   <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2 (upstream) </td>
@@ -302,81 +782,105 @@ The following object is masked from 'package:dplyr':
    <td style="text-align:right;"> 0.18 </td>
    <td style="text-align:right;"> 10 </td>
    <td style="text-align:right;"> 1.9 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> trichoptera </td>
    <td style="text-align:right;"> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 (upstream) </td>
+   <td style="text-align:left;"> Pool </td>
+   <td style="text-align:right;"> 0.18 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1.9 </td>
+   <td style="text-align:left;"> ephemroptera </td>
    <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 (upstream) </td>
+   <td style="text-align:left;"> Pool </td>
+   <td style="text-align:right;"> 0.18 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1.9 </td>
+   <td style="text-align:left;"> odonta </td>
    <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 0 </td>
   </tr>
 </tbody>
 </table>
 
 </div>
-</div>
-<section id="potential-questions-for-investigation" class="level3">
-<h3 class="anchored" data-anchor-id="potential-questions-for-investigation">Potential Questions for Investigation</h3>
-<p>Investigation of raw data suggests some potential questions could be related to a preference of species towards one type of stream versus another, with potentially some variation of these four testing sites providing an environment that is suitably favorable for a range of species.</p>
-<p>This data has some significant limitations that prevent a in-depth investigation of the cause for success over one species versus another. Namely, this data lacks temporal, geographical, and methodology data that could provide insight for what other variables may contribute to the data collected. This data also lacks any measurement units for flow rate and width/depth, meaning they do not provide sufficient data to make any assumptions on the actual size, depth, or total flow of the stream to contribute in analysis. Overall, this data will be most valuable for</p>
+</div></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>invertebrates <span class="sc">%&gt;%</span> <span class="co">#simple exploratory analysis </span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_individuals_present =</span> Gastropoda <span class="sc">+</span> Bivalvia <span class="sc">+</span> Diptera <span class="sc">+</span> Turbellaria <span class="sc">+</span> Oliggocheata <span class="sc">+</span> Hirundinea <span class="sc">+</span> Decapoda <span class="sc">+</span> Amphipod <span class="sc">+</span> Isopod <span class="sc">+</span> Trombidiforme <span class="sc">+</span> Plecoptera <span class="sc">+</span> Trichoptera <span class="sc">+</span> Ephemroptera <span class="sc">+</span> Megaloptera <span class="sc">+</span> Coleoptera <span class="sc">+</span> Hemiptera <span class="sc">+</span> Odonta <span class="sc">+</span> Lepidoptera) <span class="sc">%&gt;%</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">Flow_Volume_m_sqrd =</span> Stream_Width <span class="sc">*</span> Stream_Depth) <span class="sc">%&gt;%</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Riffle/Pool</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"average species present"</span> <span class="ot">=</span> <span class="fu">mean</span>(total_individuals_present),</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"average volume of flow (m2)"</span> <span class="ot">=</span> <span class="fu">mean</span>(Flow_Volume_m_sqrd)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>invertebrates <span class="sc">%&gt;%</span> <span class="co">#simple exploratory analysis </span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_individuals_present =</span> bivalvia <span class="sc">+</span> gastropoda <span class="sc">+</span> diptera <span class="sc">+</span> turbellaria <span class="sc">+</span> oliggocheata <span class="sc">+</span> hirundinea <span class="sc">+</span> decapoda <span class="sc">+</span> amphipod <span class="sc">+</span> isopod <span class="sc">+</span> trombidiforme <span class="sc">+</span> plecoptera <span class="sc">+</span> trichoptera <span class="sc">+</span> ephemroptera <span class="sc">+</span> megaloptera <span class="sc">+</span> coleoptera <span class="sc">+</span> hemiptera <span class="sc">+</span> odonta <span class="sc">+</span> lepidoptera) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">flow_volume_m_sqrd =</span> stream_width <span class="sc">*</span> stream_depth <span class="sc">*</span> flow_velocity) <span class="sc">%&gt;%</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(site, riffle_pool) <span class="sc">%&gt;%</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"average species present"</span> <span class="ot">=</span> <span class="fu">mean</span>(total_individuals_present),</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"'Unit' flow"</span> <span class="ot">=</span> <span class="fu">mean</span>(flow_volume_m_sqrd),</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Riffle/pool"</span> <span class="ot">=</span> <span class="fu">list</span>(riffle_pool),</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'site'. You can override using the
+`.groups` argument.</code></pre>
+</div>
 <div class="cell-output-display">
 
 <table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
-   <th style="text-align:left;"> Riffle/Pool </th>
+   <th style="text-align:left;"> site </th>
+   <th style="text-align:left;"> riffle_pool </th>
    <th style="text-align:right;"> average species present </th>
-   <th style="text-align:right;"> average volume of flow (m2) </th>
+   <th style="text-align:right;"> 'Unit' flow </th>
+   <th style="text-align:left;"> Riffle/pool </th>
   </tr>
  </thead>
 <tbody>
   <tr>
+   <td style="text-align:left;"> 1 (upstream) </td>
    <td style="text-align:left;"> Pool </td>
-   <td style="text-align:right;"> 13.0 </td>
-   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 45.00 </td>
+   <td style="text-align:left;"> Pool </td>
   </tr>
   <tr>
+   <td style="text-align:left;"> 1 (upstream) </td>
    <td style="text-align:left;"> Riffle </td>
-   <td style="text-align:right;"> 58.5 </td>
-   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 55 </td>
+   <td style="text-align:right;"> 45.00 </td>
+   <td style="text-align:left;"> Riffle </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 (upstream) </td>
+   <td style="text-align:left;"> Pool </td>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:right;"> 3.42 </td>
+   <td style="text-align:left;"> Pool </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 (upstream) </td>
+   <td style="text-align:left;"> Riffle </td>
+   <td style="text-align:right;"> 62 </td>
+   <td style="text-align:right;"> 3.42 </td>
+   <td style="text-align:left;"> Riffle </td>
   </tr>
 </tbody>
 </table>
 
 </div>
 </div>
-<p>Doing a simple</p>
-<div class="cell">
-
-</div>
-<p><strong>Potential Hypotheses</strong></p>
+<section id="viewing-distribution-of-species-across-sites" class="level4">
+<h4 class="anchored" data-anchor-id="viewing-distribution-of-species-across-sites">Viewing Distribution of Species Across Sites</h4>
+<p><strong>Hypotheses:</strong></p>
+<p><strong>NULL Hypothesis:</strong> Characteristics</p>
+</section>
 </section>
 </section>
 </section>

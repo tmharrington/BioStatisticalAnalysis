@@ -18,6 +18,7 @@ library(ggplot2)
 library(tidymodels)
 library(janitor)
 library(magrittr)
+ library(dplyr)
 
 #data is saved locally, not accessable off of this PC
 invertebrates <- read_excel("Invertebrates in R/inverts_class_data.xlsx") %>%
@@ -53,8 +54,10 @@ kable() %>%
 
 ```{r}
 exploratory_data %>%
+  
+  group_by(site) %>%
 
-  mutate('total_individual_present' = bivalvia + gastropoda + diptera + turbellaria + oliggocheata + hirundinea + decapoda + amphipod + isopod + trombidiforme + plecoptera + trichoptera + ephemroptera + megaloptera + coleoptera + hemiptera + odonta + lepidoptera) %>%
+  mutate('total_individuals_present' = bivalvia + gastropoda + diptera + turbellaria + oliggocheata + hirundinea + decapoda + amphipod + isopod + trombidiforme + plecoptera + trichoptera + ephemroptera + megaloptera + coleoptera + hemiptera + odonta + lepidoptera) %>%
 
   mutate(flow_volume_m_sqrd = stream_width * stream_depth * flow_velocity) %>%
   
@@ -69,45 +72,50 @@ kable() %>%
 
 ```
 
-### What can be inferred?
+### What can be inferred? Data-split exploration
 
 -   Using exploratory data, the first things to notice are that there are multiple locations where data has been collected.
 
 -   data for this set are the species of invertebrates that were identified in two streams, across four locations. Each stream was measured at one 'riffle run' and one 'pool' section
 
-    -    **riffle stream** is a shallow section moving water characterized by rapid flow with a rocky or gravel bottom, where the water flows over small obstructions and creates a 'riffling' sound. Riffle sections of a stream are typically found in the most upstream part of a stream where the slope is steeper and the water flow is more energetic.
+    -   **riffle stream** is a shallow section moving water characterized by rapid flow with a rocky or gravel bottom, where the water flows over small obstructions and creates a 'riffling' sound. Riffle sections of a stream are typically found in the most upstream part of a stream where the slope is steeper and the water flow is more energetic.
 
     -   A **pool stream** is a deeper section of a stream characterized by a slower flow rate with a smooth bottom, where the water flows around larger obstructions and creates a pooling effect. Pools are typically found in the lower half of a stream where the gradient is less steep and the water flow reduced.
 
-        ::: {.callout-note appearance="simple"}
-        Considering the characteristics of riffle and pool streams, it is possible some hypotheses could be generate on which would be more conducive of some species more then others.
+Considering the characteristics of riffle and pool streams, it is possible some hypotheses could be generate on which would be more conducive of some species more then others.
 
-        -   The invertebrate species found in the pool sites of one stream should be more similar to those in the pool sites of the other stream compared to the riffle sites of the two streams.
+        -   ::: {.callout-note appearance="simple"}
+            -   The invertebrate species found in the pool sites of one stream should be more similar to those in the pool sites of the other stream compared to the riffle sites of the two streams.
 
-        -   The pool environment is more conducive to aquatic life, which may include invertebrate species in which case a larger population should be found in the pool sites compared to the riffle sites in either stream.
+            -   The riffle environment seems to be more conducive to invertebrate life judging by the larger population found in riffle sites. Does this correspond to biodiversity or is one species largely successful?
 
-        -    are there any species that can be identified as only found in riffle runs or pools?
-        :::
+                -   **Trichoptera** (caddisfly), **Odonta (**dragonfly), **ephemroptera** (mayfly) make up 50.4% od the upstream
+
+            -    are there any species that can be identified as only found in riffle runs or pools?
+            :::
+
+# 
+
+## Data analysis using initial exploratory hypotheses
 
 ```{r}
 invertebrates %>%
   
-  pivot_longer(cols = 6:23,
-               names_to = "order",
-               values_to = "count") %>%
+  # reorient the data where variables are listed under the site columns.
+  t %>% as.data.frame( row.names = NULL, optional = FALSE,
+              cut.names = FALSE, col.names = names('S1', 'S2'), fix.empty.names = TRUE,
+              check.names = !optional,
+              stringsAsFactors = FALSE) %>%
+
+ # filter out columns where every variable is 0
   
-  filter_if(vars('count' == 0)) # did not work, try below or mutate
-
-
-filter (count !> 0)
+ filter_all(any_vars(.!=0)) %>%
 
   kable() %>%
     kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
-Considering Hypothesis on Initial Data Split
-
-### Potential Questions for Investigation
+### Reconsidering Hypotheses with Full Dataset
 
 Investigation of raw data suggests some potential questions could be related to a preference of species towards one type of stream versus another, with potentially some variation of these four testing sites providing an environment that is suitably favorable for a range of species.
 
@@ -131,16 +139,21 @@ This data has some significant limitations that prevent a in-depth investigation
        pivot_longer(invertebrates,
                    cols = 6:23,
                    names_to = "order",
-                   values_to = "count")
+                   values_to = "count") %>%
       
+      group_by(riffle_pool,site) %>%
+      
+      filter(count != 0) %>%
 
+      kable() %>%
+        kable_styling(bootstrap_options = c("hover", "striped"))
       
     ```
 
 ```{r}
 invertebrates %>% #simple exploratory analysis 
   
-  mutate(total_individuals_present = bivalvia + diptera + turbellaria + oliggocheata + hirundinea + decapoda + amphipod + isopod + trombidiforme + plecoptera + trichoptera + ephemroptera + megaloptera + coleoptera + hemiptera + odonta + lepidoptera) %>%
+  mutate(total_individuals_present = bivalvia + gastropoda + diptera + turbellaria + oliggocheata + hirundinea + decapoda + amphipod + isopod + trombidiforme + plecoptera + trichoptera + ephemroptera + megaloptera + coleoptera + hemiptera + odonta + lepidoptera) %>%
 
 mutate(flow_volume_m_sqrd = stream_width * stream_depth * flow_velocity) %>%
   
