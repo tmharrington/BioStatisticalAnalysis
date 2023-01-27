@@ -27,7 +27,7 @@ clean_names()
 
 ```
 
-## Initial Data Split/ finding a hypothesis
+## Initial Data Split
 
 ```{r}
    # Initial data intake / hypothesis generating exploration before further data investigation.
@@ -38,9 +38,56 @@ clean_names()
 exploratory_data <- training(my_data_splits)
 test_data <- testing(my_data_splits)
 
+exploratory_data %>%
+  
+   t %>% as.data.frame( row.names = NULL, optional = FALSE,
+              cut.names = FALSE, col.names = names('S1', 'S2'), fix.empty.names = TRUE,
+              check.names = !optional,
+              stringsAsFactors = FALSE) %>%
+
+kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
 
 
 ```
+
+```{r}
+exploratory_data %>%
+
+  mutate('total_individual_present' = bivalvia + gastropoda + diptera + turbellaria + oliggocheata + hirundinea + decapoda + amphipod + isopod + trombidiforme + plecoptera + trichoptera + ephemroptera + megaloptera + coleoptera + hemiptera + odonta + lepidoptera) %>%
+
+  mutate(flow_volume_m_sqrd = stream_width * stream_depth * flow_velocity) %>%
+  
+summarise(
+  "average species present" = mean(total_individuals_present),
+  "'Unit' flow" = mean(flow_volume_m_sqrd),
+  "Riffle/pool" = list(riffle_pool),
+  )%>%
+
+kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+
+```
+
+### What can be inferred?
+
+-   Using exploratory data, the first things to notice are that there are multiple locations where data has been collected.
+
+-   data for this set are the species of invertebrates that were identified in two streams, across four locations. Each stream was measured at one 'riffle run' and one 'pool' section
+
+    -    **riffle stream** is a shallow section moving water characterized by rapid flow with a rocky or gravel bottom, where the water flows over small obstructions and creates a 'riffling' sound. Riffle sections of a stream are typically found in the most upstream part of a stream where the slope is steeper and the water flow is more energetic.
+
+    -   A **pool stream** is a deeper section of a stream characterized by a slower flow rate with a smooth bottom, where the water flows around larger obstructions and creates a pooling effect. Pools are typically found in the lower half of a stream where the gradient is less steep and the water flow reduced.
+
+        ::: {.callout-note appearance="simple"}
+        Considering the characteristics of riffle and pool streams, it is possible some hypotheses could be generate on which would be more conducive of some species more then others.
+
+        -   The invertebrate species found in the pool sites of one stream should be more similar to those in the pool sites of the other stream compared to the riffle sites of the two streams.
+
+        -   The pool environment is more conducive to aquatic life, which may include invertebrate species in which case a larger population should be found in the pool sites compared to the riffle sites in either stream.
+
+        -    are there any species that can be identified as only found in riffle runs or pools?
+        :::
 
 ```{r}
 invertebrates %>%
@@ -70,15 +117,21 @@ This data has some significant limitations that prevent a in-depth investigation
 
     -   Is large species count the same as biodiversity? Does the site with largest amount of species also have the most unique species, or is favorable for only a few?
 
+-   Something we are becoming increasingly aware of is the impact of dams on aquatic habitats. If this stream is or is not dammed, there could be some inference or comparison made with other researchers findings and how the presents of man-made obstacles could impact invertebrate habitats.
+
+    -   likely, this kind of inference would require a larger dataset to work with, but it could potentially provide some useful insight on making comparisons with other analysis conducted on a similar topic.
+
+-   
+
+    -   
+
     ```{r}
     invertebrates %>%
       
        pivot_longer(invertebrates,
                    cols = 6:23,
                    names_to = "order",
-                   values_to = "count") %>%
-      
-      
+                   values_to = "count")
       
 
       
