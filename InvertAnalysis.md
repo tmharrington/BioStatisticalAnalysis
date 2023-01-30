@@ -70,7 +70,7 @@ library(tidymodels)
 ✖ dplyr::lag()             masks stats::lag()
 ✖ yardstick::spec()        masks readr::spec()
 ✖ recipes::step()          masks stats::step()
-• Dig deeper into tidy modeling with R at https://www.tmwr.org
+• Learn how to get started at https://www.tidymodels.org/start/
 ```
 :::
 
@@ -158,7 +158,7 @@ kable() %>%
 <tbody>
   <tr>
    <td style="text-align:left;"> site </td>
-   <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> 2 (upstream) </td>
    <td style="text-align:left;"> 1 (upstream) </td>
   </tr>
   <tr>
@@ -168,8 +168,8 @@ kable() %>%
   </tr>
   <tr>
    <td style="text-align:left;"> flow_velocity </td>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 0.18 </td>
+   <td style="text-align:left;"> 3.00 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> stream_width </td>
@@ -178,7 +178,7 @@ kable() %>%
   </tr>
   <tr>
    <td style="text-align:left;"> stream_depth </td>
-   <td style="text-align:left;"> 1.5 </td>
+   <td style="text-align:left;"> 1.9 </td>
    <td style="text-align:left;"> 1.5 </td>
   </tr>
   <tr>
@@ -238,12 +238,12 @@ kable() %>%
   </tr>
   <tr>
    <td style="text-align:left;"> trichoptera </td>
-   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 6 </td>
    <td style="text-align:left;"> 7 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> ephemroptera </td>
-   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 2 </td>
    <td style="text-align:left;"> 14 </td>
   </tr>
   <tr>
@@ -253,17 +253,17 @@ kable() %>%
   </tr>
   <tr>
    <td style="text-align:left;"> coleoptera </td>
-   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 0 </td>
    <td style="text-align:left;"> 5 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> hemiptera </td>
-   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 0 </td>
    <td style="text-align:left;"> 1 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> odonta </td>
-   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 7 </td>
    <td style="text-align:left;"> 10 </td>
   </tr>
   <tr>
@@ -291,7 +291,7 @@ exploratory_data %>%
   mutate(flow_volume_m_sqrd = stream_width * stream_depth * flow_velocity) %>%
   
 summarise(
-  "average species present" = mean(total_individuals_present),
+  "average invertebrates present" = mean(total_individuals_present),
   "'Unit' flow" = mean(flow_volume_m_sqrd),
   "Riffle/pool" = list(riffle_pool),
   )%>%
@@ -307,7 +307,7 @@ kable() %>%
  <thead>
   <tr>
    <th style="text-align:left;"> site </th>
-   <th style="text-align:right;"> average species present </th>
+   <th style="text-align:right;"> average invertebrates present </th>
    <th style="text-align:right;"> 'Unit' flow </th>
    <th style="text-align:left;"> Riffle/pool </th>
   </tr>
@@ -315,9 +315,15 @@ kable() %>%
 <tbody>
   <tr>
    <td style="text-align:left;"> 1 (upstream) </td>
-   <td style="text-align:right;"> 33 </td>
-   <td style="text-align:right;"> 45 </td>
-   <td style="text-align:left;"> Pool  , Riffle </td>
+   <td style="text-align:right;"> 55 </td>
+   <td style="text-align:right;"> 45.00 </td>
+   <td style="text-align:left;"> Riffle </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 (upstream) </td>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:right;"> 3.42 </td>
+   <td style="text-align:left;"> Pool </td>
   </tr>
 </tbody>
 </table>
@@ -334,18 +340,19 @@ kable() %>%
 
 -   data for this set are the species of invertebrates that were identified in two streams, across four locations. Each stream was measured at one 'riffle run' and one 'pool' section
 
-    -   **riffle stream** is a shallow section moving water characterized by rapid flow with a rocky or gravel bottom, where the water flows over small obstructions and creates a 'riffling' sound. Riffle sections of a stream are typically found in the most upstream part of a stream where the slope is steeper and the water flow is more energetic.
+    -   **A riffle stream** is a shallow section moving water characterized by rapid flow with a rocky or gravel bottom, where the water flows over small obstructions and creates a 'riffling' sound. Riffle sections of a stream are typically found in the most upstream part of a stream where the slope is steeper and the water flow is more energetic.
 
     -   A **pool stream** is a deeper section of a stream characterized by a slower flow rate with a smooth bottom, where the water flows around larger obstructions and creates a pooling effect. Pools are typically found in the lower half of a stream where the gradient is less steep and the water flow reduced.
 
 Considering the characteristics of riffle and pool streams, it is possible some hypotheses could be generate on which would be more conducive of some species more then others.
 
-        -   ::: {.callout-note appearance="simple"}
+      ::: {.callout-note appearance="simple"}
+      
             -   The invertebrate species found in the pool sites of one stream should be more similar to those in the pool sites of the other stream compared to the riffle sites of the two streams.
 
             -   The riffle environment seems to be more conducive to invertebrate life judging by the larger population found in riffle sites. Does this correspond to biodiversity or is one species largely successful?
 
-                -   **Trichoptera** (caddisfly), **Odonta (**dragonfly), **ephemroptera** (mayfly) make up 50.4% od the upstream
+                -   **Trichoptera** (caddisfly), **Odonta (**dragonfly), **ephemroptera** (mayfly) make up 50.4% of the upstream total species identified
 
             -    are there any species that can be identified as only found in riffle runs or pools?
             :::
@@ -361,10 +368,9 @@ Considering the characteristics of riffle and pool streams, it is possible some 
 invertebrates %>%
   
   # reorient the data where variables are listed under the site columns.
-  t %>% as.data.frame( row.names = NULL, optional = FALSE,
-              cut.names = FALSE, col.names = names('S1', 'S2'), fix.empty.names = TRUE,
-              check.names = !optional,
-              stringsAsFactors = FALSE) %>%
+  
+  t %>% as.data.frame(colnames('Stream',
+                               prefix = col)) %>%
 
  # filter out columns where every variable is 0
   
@@ -507,11 +513,9 @@ This data has some significant limitations that prevent a in-depth investigation
 
 -   Something we are becoming increasingly aware of is the impact of dams on aquatic habitats. If this stream is or is not dammed, there could be some inference or comparison made with other researchers findings and how the presents of man-made obstacles could impact invertebrate habitats.
 
-    -   likely, this kind of inference would require a larger dataset to work with, but it could potentially provide some useful insight on making comparisons with other analysis conducted on a similar topic.
+    -   likely, this kind of inference would require a larger data set to work with, but it could potentially provide some useful insight on making comparisons with other analysis conducted on a similar topic.
 
 -   
-
-    -   
 
 
     ::: {.cell}
@@ -839,6 +843,13 @@ kable() %>%
 :::
 :::
 
+
+## Data analysis -- Answering the Hypothesis
+
+How can we test the claims?
+
+```{}
+```
 
 #### Viewing Distribution of Species Across Sites
 
