@@ -200,12 +200,15 @@ kable() %>%
 
 ***Null Hypothesis:*** insufficient statistical evidence is available to suggest this data shows a difference between riffle and pool streams.
 
+```{r}
+ invertebrates %>% 
+   
+   ggplot() +
+  geom_histogram(aes(x = site))
+```
+
 ## Data analysis -- Answering the Hypothesis
 
 How can we test the claims?
 
 #### Viewing Distribution of Species Across Sites
-
-**Hypotheses:**
-
-**NULL Hypothesis:** Characteristics
