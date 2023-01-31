@@ -1,0 +1,49 @@
+---
+title: "Indoor Air Analysis"
+author: "Trevor Harrington"
+format: docx
+editor: visual
+keep-md: TRUE
+---
+
+# Analysis of Indoor Air Quality 
+
+```{r}
+library(tidyverse)
+library(kableExtra)
+library(ggplot2)
+library(tidymodels)
+library(janitor)
+library(magrittr)
+ library(dplyr)
+
+indoor_pollution <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-04-12/indoor_pollution.csv') %>%
+
+clean_names()
+```
+
+```{r}
+
+ iap_splits <- initial_split(indoor_pollution, prop = 0.15,
+                                   pool = 1) 
+
+exploratory_data <- training(iap_splits)
+test_data <- testing(iap_splits)
+  
+  summarise(exploratory_data) %>%
+  
+kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: callout-note
+**Observation:**
+
+This data lists countries across multiple years of observations and their % deaths caused by indoor air pollutants created from indoor combustion. Given the amount of data present in this dataset, their are likely a number of potential hypotheses that could be considered.
+
+-   Countries could be grouped by region and compared for a more geographically relevant comparison. Countries in similar regions may utilize more combustion for the purpose of cooling then cooking, as well as invest in more insulation, reducing the gas exchange and increasing indoor pollutant concentration.
+
+-   
+:::
+
+## Background: **Fuel combustion and Indoor Air Pollution** 
