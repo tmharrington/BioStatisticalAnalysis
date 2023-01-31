@@ -6,7 +6,7 @@ editor: visual
 keep-md: TRUE
 ---
 
-# Analysis of Indoor Air Quality 
+# Analysis of Indoor Air Quality
 
 ```{r}
 library(tidyverse)
@@ -46,4 +46,4 @@ This data lists countries across multiple years of observations and their % deat
 -   
 :::
 
-## Background: **Fuel combustion and Indoor Air Pollution** 
+## Background: **Fuel combustion and Indoor Air Pollution**
