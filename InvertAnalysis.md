@@ -70,7 +70,7 @@ library(tidymodels)
 ✖ dplyr::lag()             masks stats::lag()
 ✖ yardstick::spec()        masks readr::spec()
 ✖ recipes::step()          masks stats::step()
-• Learn how to get started at https://www.tidymodels.org/start/
+• Use tidymodels_prefer() to resolve common conflicts.
 ```
 :::
 
@@ -158,18 +158,18 @@ kable() %>%
 <tbody>
   <tr>
    <td style="text-align:left;"> site </td>
-   <td style="text-align:left;"> 2 (upstream) </td>
    <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> 2 (upstream) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> riffle_pool </td>
-   <td style="text-align:left;"> Pool </td>
+   <td style="text-align:left;"> Riffle </td>
    <td style="text-align:left;"> Riffle </td>
   </tr>
   <tr>
    <td style="text-align:left;"> flow_velocity </td>
-   <td style="text-align:left;"> 0.18 </td>
    <td style="text-align:left;"> 3.00 </td>
+   <td style="text-align:left;"> 0.18 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> stream_width </td>
@@ -178,8 +178,8 @@ kable() %>%
   </tr>
   <tr>
    <td style="text-align:left;"> stream_depth </td>
-   <td style="text-align:left;"> 1.9 </td>
    <td style="text-align:left;"> 1.5 </td>
+   <td style="text-align:left;"> 1.9 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> gastropoda </td>
@@ -193,8 +193,8 @@ kable() %>%
   </tr>
   <tr>
    <td style="text-align:left;"> diptera </td>
-   <td style="text-align:left;"> 0 </td>
    <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 2 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> turbellaria </td>
@@ -233,43 +233,43 @@ kable() %>%
   </tr>
   <tr>
    <td style="text-align:left;"> plecoptera </td>
-   <td style="text-align:left;"> 0 </td>
    <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 1 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> trichoptera </td>
-   <td style="text-align:left;"> 6 </td>
    <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;"> 20 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> ephemroptera </td>
-   <td style="text-align:left;"> 2 </td>
    <td style="text-align:left;"> 14 </td>
+   <td style="text-align:left;"> 6 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> megaloptera </td>
-   <td style="text-align:left;"> 0 </td>
    <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> coleoptera </td>
-   <td style="text-align:left;"> 0 </td>
    <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 9 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> hemiptera </td>
-   <td style="text-align:left;"> 0 </td>
    <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> odonta </td>
-   <td style="text-align:left;"> 7 </td>
    <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 24 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> lepidoptera </td>
-   <td style="text-align:left;"> 0 </td>
    <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 0 </td>
   </tr>
 </tbody>
 </table>
@@ -279,6 +279,22 @@ kable() %>%
 :::
 :::
 
+
+::: callout-note
+**Observations:**
+
+-   Several rows of data are 0 for both sample sites, and could be filtered out for lack of relevance to any potential analysis.
+
+    -   Flow velocity is the most significant difference that can be attributed to this data set for comparing water characteristics to the presence of species.
+
+-   All the species seem to favor one steam against the other
+
+    -   the closest to having a even comparison is **coleoptera** (9:4) having less preference for riffle run vs. pool
+
+    -   
+:::
+
+
 ::: {.cell}
 
 ```{.r .cell-code}
@@ -287,12 +303,10 @@ exploratory_data %>%
   group_by(site) %>%
 
   mutate('total_individuals_present' = bivalvia + gastropoda + diptera + turbellaria + oliggocheata + hirundinea + decapoda + amphipod + isopod + trombidiforme + plecoptera + trichoptera + ephemroptera + megaloptera + coleoptera + hemiptera + odonta + lepidoptera) %>%
-
-  mutate(flow_volume_m_sqrd = stream_width * stream_depth * flow_velocity) %>%
   
 summarise(
   "average invertebrates present" = mean(total_individuals_present),
-  "'Unit' flow" = mean(flow_volume_m_sqrd),
+  "'Unit' flow" = mean(flow_velocity),
   "Riffle/pool" = list(riffle_pool),
   )%>%
 
@@ -316,14 +330,14 @@ kable() %>%
   <tr>
    <td style="text-align:left;"> 1 (upstream) </td>
    <td style="text-align:right;"> 55 </td>
-   <td style="text-align:right;"> 45.00 </td>
+   <td style="text-align:right;"> 3.00 </td>
    <td style="text-align:left;"> Riffle </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2 (upstream) </td>
-   <td style="text-align:right;"> 15 </td>
-   <td style="text-align:right;"> 3.42 </td>
-   <td style="text-align:left;"> Pool </td>
+   <td style="text-align:right;"> 62 </td>
+   <td style="text-align:right;"> 0.18 </td>
+   <td style="text-align:left;"> Riffle </td>
   </tr>
 </tbody>
 </table>
@@ -333,6 +347,16 @@ kable() %>%
 :::
 :::
 
+
+::: callout-note
+**Observations:**
+
+This data shows a comparison between two sample sites. Using the data generated in this instance, the comparison is between a Pool in site 1 and a Riffle run in site 2.
+
+-   Site 1 contained 11 vertebrates and was measured at a flow rate of 3.00 'units of flow'
+
+-   Site 2 contained 62 (6x more invertebrates) then site 1, at a 0.18 'unit of flow' (16x slower flow rate)
+:::
 
 ### What can be inferred? Data-split exploration
 
@@ -346,16 +370,7 @@ kable() %>%
 
 Considering the characteristics of riffle and pool streams, it is possible some hypotheses could be generate on which would be more conducive of some species more then others.
 
-      ::: {.callout-note appearance="simple"}
-      
-            -   The invertebrate species found in the pool sites of one stream should be more similar to those in the pool sites of the other stream compared to the riffle sites of the two streams.
-
-            -   The riffle environment seems to be more conducive to invertebrate life judging by the larger population found in riffle sites. Does this correspond to biodiversity or is one species largely successful?
-
-                -   **Trichoptera** (caddisfly), **Odonta (**dragonfly), **ephemroptera** (mayfly) make up 50.4% of the upstream total species identified
-
-            -    are there any species that can be identified as only found in riffle runs or pools?
-            :::
+-   It is reasonable to believe that among the 18 invertebrate species measured in this data set, some would have less preference to the water characteristics then others. However, it is still not without reason that one type of stream can be suitable for a larger proportion over another.
 
 # 
 
@@ -501,11 +516,20 @@ invertebrates %>%
 :::
 
 
+::: callout-note
+**Observations:**
+
+-   The riffle environment seems to be more conducive to invertebrate life judging by the larger population found in riffle sites. Does this correspond to biodiversity or is one species largely successful?
+-   **Trichoptera** (caddisfly), **Odonta (**dragonfly), **ephemroptera** (mayfly) make up [50.4%]{.underline} of the upstream total species identified
+:::
+
 ### Reconsidering Hypotheses with Full Dataset
 
 Investigation of raw data suggests some potential questions could be related to a preference of species towards one type of stream versus another, with potentially some variation of these four testing sites providing an environment that is suitably favorable for a range of species.
 
 This data has some significant limitations that prevent a in-depth investigation of the cause for success over one species versus another. Namely, this data lacks temporal, geographical, and methodology data that could provide insight for what other variables may contribute to the data collected. This data also lacks any measurement units for flow rate and width/depth, meaning they do not provide sufficient data to make any assumptions on the actual size, depth, or total flow of the stream to contribute in analysis. Overall, this data will be most valuable for
+
+### **What can be inferred about from the addition data?**
 
 -   How are the characteristics between Site 1 & 2 different? Which combination of features seems to be the most ideal for invertebrate success.
 
@@ -514,8 +538,9 @@ This data has some significant limitations that prevent a in-depth investigation
 -   Something we are becoming increasingly aware of is the impact of dams on aquatic habitats. If this stream is or is not dammed, there could be some inference or comparison made with other researchers findings and how the presents of man-made obstacles could impact invertebrate habitats.
 
     -   likely, this kind of inference would require a larger data set to work with, but it could potentially provide some useful insight on making comparisons with other analysis conducted on a similar topic.
+    -   The invertebrate species found in the pool sites of one stream should be more similar to those in the pool sites of the other stream compared to the riffle sites of the two streams.
 
--   
+-   The invertebrate species found in the pool sites of one stream should be more similar to those in the pool sites of the other stream compared to the riffle sites of the two streams.
 
 
     ::: {.cell}
@@ -771,14 +796,12 @@ This data has some significant limitations that prevent a in-depth investigation
 invertebrates %>% #simple exploratory analysis 
   
   mutate(total_individuals_present = bivalvia + gastropoda + diptera + turbellaria + oliggocheata + hirundinea + decapoda + amphipod + isopod + trombidiforme + plecoptera + trichoptera + ephemroptera + megaloptera + coleoptera + hemiptera + odonta + lepidoptera) %>%
-
-mutate(flow_volume_m_sqrd = stream_width * stream_depth * flow_velocity) %>%
   
   group_by(site, riffle_pool) %>%
   
 summarise(
   "average species present" = mean(total_individuals_present),
-  "'Unit' flow" = mean(flow_volume_m_sqrd),
+  "'Unit' flow" = list(flow_velocity),
   "Riffle/pool" = list(riffle_pool),
   ) %>%
 
@@ -802,7 +825,7 @@ kable() %>%
    <th style="text-align:left;"> site </th>
    <th style="text-align:left;"> riffle_pool </th>
    <th style="text-align:right;"> average species present </th>
-   <th style="text-align:right;"> 'Unit' flow </th>
+   <th style="text-align:left;"> 'Unit' flow </th>
    <th style="text-align:left;"> Riffle/pool </th>
   </tr>
  </thead>
@@ -811,28 +834,28 @@ kable() %>%
    <td style="text-align:left;"> 1 (upstream) </td>
    <td style="text-align:left;"> Pool </td>
    <td style="text-align:right;"> 11 </td>
-   <td style="text-align:right;"> 45.00 </td>
+   <td style="text-align:left;"> 3 </td>
    <td style="text-align:left;"> Pool </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 1 (upstream) </td>
    <td style="text-align:left;"> Riffle </td>
    <td style="text-align:right;"> 55 </td>
-   <td style="text-align:right;"> 45.00 </td>
+   <td style="text-align:left;"> 3 </td>
    <td style="text-align:left;"> Riffle </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2 (upstream) </td>
    <td style="text-align:left;"> Pool </td>
    <td style="text-align:right;"> 15 </td>
-   <td style="text-align:right;"> 3.42 </td>
+   <td style="text-align:left;"> 0.18 </td>
    <td style="text-align:left;"> Pool </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2 (upstream) </td>
    <td style="text-align:left;"> Riffle </td>
    <td style="text-align:right;"> 62 </td>
-   <td style="text-align:right;"> 3.42 </td>
+   <td style="text-align:left;"> 0.18 </td>
    <td style="text-align:left;"> Riffle </td>
   </tr>
 </tbody>
@@ -844,12 +867,19 @@ kable() %>%
 :::
 
 
+::: callout-note
+**Observations:**
+:::
+
+#### ***Hypothesis:*** By analyzing these four locations, the data may be able to determine whether the faster-flowing riffle run stream is more conducive to a greater number of of unique invertebrate species, or just contains a large quantity of a few well adapted species.
+
+-   Something I am thinking about that lead to this hypothesis is how invasive species impact ecosystems -- while the total quantity of life may be greater, the impact can still be negative if the species present are reducing biodiversity in the environment.
+
+***Null Hypothesis:*** insufficient statistical evidence is available to suggest this data shows a difference between riffle and pool streams.
+
 ## Data analysis -- Answering the Hypothesis
 
 How can we test the claims?
-
-```{}
-```
 
 #### Viewing Distribution of Species Across Sites
 

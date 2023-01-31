@@ -176,7 +176,7 @@ The following object is masked from 'package:dplyr':
 ✖ dplyr::lag()             masks stats::lag()
 ✖ yardstick::spec()        masks readr::spec()
 ✖ recipes::step()          masks stats::step()
-• Learn how to get started at https://www.tidymodels.org/start/</code></pre>
+• Use tidymodels_prefer() to resolve common conflicts.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -240,18 +240,18 @@ The following object is masked from 'package:tidyr':
 <tbody>
   <tr>
    <td style="text-align:left;"> site </td>
-   <td style="text-align:left;"> 2 (upstream) </td>
    <td style="text-align:left;"> 1 (upstream) </td>
+   <td style="text-align:left;"> 2 (upstream) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> riffle_pool </td>
-   <td style="text-align:left;"> Pool </td>
+   <td style="text-align:left;"> Riffle </td>
    <td style="text-align:left;"> Riffle </td>
   </tr>
   <tr>
    <td style="text-align:left;"> flow_velocity </td>
-   <td style="text-align:left;"> 0.18 </td>
    <td style="text-align:left;"> 3.00 </td>
+   <td style="text-align:left;"> 0.18 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> stream_width </td>
@@ -260,8 +260,8 @@ The following object is masked from 'package:tidyr':
   </tr>
   <tr>
    <td style="text-align:left;"> stream_depth </td>
-   <td style="text-align:left;"> 1.9 </td>
    <td style="text-align:left;"> 1.5 </td>
+   <td style="text-align:left;"> 1.9 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> gastropoda </td>
@@ -275,8 +275,8 @@ The following object is masked from 'package:tidyr':
   </tr>
   <tr>
    <td style="text-align:left;"> diptera </td>
-   <td style="text-align:left;"> 0 </td>
    <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 2 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> turbellaria </td>
@@ -315,47 +315,71 @@ The following object is masked from 'package:tidyr':
   </tr>
   <tr>
    <td style="text-align:left;"> plecoptera </td>
-   <td style="text-align:left;"> 0 </td>
    <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 1 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> trichoptera </td>
-   <td style="text-align:left;"> 6 </td>
    <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;"> 20 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> ephemroptera </td>
-   <td style="text-align:left;"> 2 </td>
    <td style="text-align:left;"> 14 </td>
+   <td style="text-align:left;"> 6 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> megaloptera </td>
-   <td style="text-align:left;"> 0 </td>
    <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> coleoptera </td>
-   <td style="text-align:left;"> 0 </td>
    <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 9 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> hemiptera </td>
-   <td style="text-align:left;"> 0 </td>
    <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> odonta </td>
-   <td style="text-align:left;"> 7 </td>
    <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 24 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> lepidoptera </td>
-   <td style="text-align:left;"> 0 </td>
    <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 0 </td>
   </tr>
 </tbody>
 </table>
 
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Observations:</strong></p>
+<ul>
+<li><p>Several rows of data are 0 for both sample sites, and could be filtered out for lack of relevance to any potential analysis.</p>
+<ul>
+<li>Flow velocity is the most significant difference that can be attributed to this data set for comparing water characteristics to the presence of species.</li>
+</ul></li>
+<li><p>All the species seem to favor one steam against the other</p>
+<ul>
+<li><p>the closest to having a even comparison is <strong>coleoptera</strong> (9:4) having less preference for riffle run vs.&nbsp;pool</p></li>
+<li></li>
+</ul></li>
+</ul>
 </div>
 </div>
 <div class="cell">
@@ -364,17 +388,15 @@ The following object is masked from 'package:tidyr':
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(site) <span class="sc">%&gt;%</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">'total_individuals_present'</span> <span class="ot">=</span> bivalvia <span class="sc">+</span> gastropoda <span class="sc">+</span> diptera <span class="sc">+</span> turbellaria <span class="sc">+</span> oliggocheata <span class="sc">+</span> hirundinea <span class="sc">+</span> decapoda <span class="sc">+</span> amphipod <span class="sc">+</span> isopod <span class="sc">+</span> trombidiforme <span class="sc">+</span> plecoptera <span class="sc">+</span> trichoptera <span class="sc">+</span> ephemroptera <span class="sc">+</span> megaloptera <span class="sc">+</span> coleoptera <span class="sc">+</span> hemiptera <span class="sc">+</span> odonta <span class="sc">+</span> lepidoptera) <span class="sc">%&gt;%</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">flow_volume_m_sqrd =</span> stream_width <span class="sc">*</span> stream_depth <span class="sc">*</span> flow_velocity) <span class="sc">%&gt;%</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"average invertebrates present"</span> <span class="ot">=</span> <span class="fu">mean</span>(total_individuals_present),</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"'Unit' flow"</span> <span class="ot">=</span> <span class="fu">mean</span>(flow_volume_m_sqrd),</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Riffle/pool"</span> <span class="ot">=</span> <span class="fu">list</span>(riffle_pool),</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">%&gt;%</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"average invertebrates present"</span> <span class="ot">=</span> <span class="fu">mean</span>(total_individuals_present),</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"'Unit' flow"</span> <span class="ot">=</span> <span class="fu">mean</span>(flow_velocity),</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Riffle/pool"</span> <span class="ot">=</span> <span class="fu">list</span>(riffle_pool),</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">%&gt;%</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
@@ -390,18 +412,36 @@ The following object is masked from 'package:tidyr':
   <tr>
    <td style="text-align:left;"> 1 (upstream) </td>
    <td style="text-align:right;"> 55 </td>
-   <td style="text-align:right;"> 45.00 </td>
+   <td style="text-align:right;"> 3.00 </td>
    <td style="text-align:left;"> Riffle </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2 (upstream) </td>
-   <td style="text-align:right;"> 15 </td>
-   <td style="text-align:right;"> 3.42 </td>
-   <td style="text-align:left;"> Pool </td>
+   <td style="text-align:right;"> 62 </td>
+   <td style="text-align:right;"> 0.18 </td>
+   <td style="text-align:left;"> Riffle </td>
   </tr>
 </tbody>
 </table>
 
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Observations:</strong></p>
+<p>This data shows a comparison between two sample sites. Using the data generated in this instance, the comparison is between a Pool in site 1 and a Riffle run in site 2.</p>
+<ul>
+<li><p>Site 1 contained 11 vertebrates and was measured at a flow rate of 3.00 ‘units of flow’</p></li>
+<li><p>Site 2 contained 62 (6x more invertebrates) then site 1, at a 0.18 ‘unit of flow’ (16x slower flow rate)</p></li>
+</ul>
 </div>
 </div>
 <section id="what-can-be-inferred-data-split-exploration" class="level3">
@@ -415,16 +455,9 @@ The following object is masked from 'package:tidyr':
 </ul></li>
 </ul>
 <p>Considering the characteristics of riffle and pool streams, it is possible some hypotheses could be generate on which would be more conducive of some species more then others.</p>
-<pre><code>  ::: {.callout-note appearance="simple"}
-  
-        -   The invertebrate species found in the pool sites of one stream should be more similar to those in the pool sites of the other stream compared to the riffle sites of the two streams.
-
-        -   The riffle environment seems to be more conducive to invertebrate life judging by the larger population found in riffle sites. Does this correspond to biodiversity or is one species largely successful?
-
-            -   **Trichoptera** (caddisfly), **Odonta (**dragonfly), **ephemroptera** (mayfly) make up 50.4% of the upstream total species identified
-
-        -    are there any species that can be identified as only found in riffle runs or pools?
-        :::</code></pre>
+<ul>
+<li>It is reasonable to believe that among the 18 invertebrate species measured in this data set, some would have less preference to the water characteristics then others. However, it is still not without reason that one type of stream can be suitable for a larger proportion over another.</li>
+</ul>
 </section>
 </section>
 </section>
@@ -433,19 +466,19 @@ The following object is masked from 'package:tidyr':
 <section id="data-analysis-using-initial-exploratory-hypotheses" class="level2">
 <h2 class="anchored" data-anchor-id="data-analysis-using-initial-exploratory-hypotheses">Data analysis using initial exploratory hypotheses</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>invertebrates <span class="sc">%&gt;%</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># reorient the data where variables are listed under the site columns.</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  t <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>(<span class="fu">colnames</span>(<span class="st">'Stream'</span>,</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                               <span class="at">prefix =</span> col)) <span class="sc">%&gt;%</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a> <span class="co"># filter out columns where every variable is 0</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">filter_all</span>(<span class="fu">any_vars</span>(.<span class="sc">!=</span><span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>invertebrates <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># reorient the data where variables are listed under the site columns.</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  t <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>(<span class="fu">colnames</span>(<span class="st">'Stream'</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>                               <span class="at">prefix =</span> col)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a> <span class="co"># filter out columns where every variable is 0</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">filter_all</span>(<span class="fu">any_vars</span>(.<span class="sc">!=</span><span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
@@ -562,10 +595,30 @@ The following object is masked from 'package:tidyr':
 
 </div>
 </div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Observations:</strong></p>
+<ul>
+<li>The riffle environment seems to be more conducive to invertebrate life judging by the larger population found in riffle sites. Does this correspond to biodiversity or is one species largely successful?</li>
+<li><strong>Trichoptera</strong> (caddisfly), <strong>Odonta (</strong>dragonfly), <strong>ephemroptera</strong> (mayfly) make up <u>50.4%</u> of the upstream total species identified</li>
+</ul>
+</div>
+</div>
 <section id="reconsidering-hypotheses-with-full-dataset" class="level3">
 <h3 class="anchored" data-anchor-id="reconsidering-hypotheses-with-full-dataset">Reconsidering Hypotheses with Full Dataset</h3>
 <p>Investigation of raw data suggests some potential questions could be related to a preference of species towards one type of stream versus another, with potentially some variation of these four testing sites providing an environment that is suitably favorable for a range of species.</p>
 <p>This data has some significant limitations that prevent a in-depth investigation of the cause for success over one species versus another. Namely, this data lacks temporal, geographical, and methodology data that could provide insight for what other variables may contribute to the data collected. This data also lacks any measurement units for flow rate and width/depth, meaning they do not provide sufficient data to make any assumptions on the actual size, depth, or total flow of the stream to contribute in analysis. Overall, this data will be most valuable for</p>
+</section>
+<section id="what-can-be-inferred-about-from-the-addition-data" class="level3">
+<h3 class="anchored" data-anchor-id="what-can-be-inferred-about-from-the-addition-data"><strong>What can be inferred about from the addition data?</strong></h3>
 <ul>
 <li><p>How are the characteristics between Site 1 &amp; 2 different? Which combination of features seems to be the most ideal for invertebrate success.</p>
 <ul>
@@ -574,21 +627,23 @@ The following object is masked from 'package:tidyr':
 <li><p>Something we are becoming increasingly aware of is the impact of dams on aquatic habitats. If this stream is or is not dammed, there could be some inference or comparison made with other researchers findings and how the presents of man-made obstacles could impact invertebrate habitats.</p>
 <ul>
 <li>likely, this kind of inference would require a larger data set to work with, but it could potentially provide some useful insight on making comparisons with other analysis conducted on a similar topic.</li>
+<li>The invertebrate species found in the pool sites of one stream should be more similar to those in the pool sites of the other stream compared to the riffle sites of the two streams.</li>
 </ul></li>
-<li><div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>invertebrates <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">pivot_longer</span>(invertebrates,</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">cols =</span> <span class="dv">6</span><span class="sc">:</span><span class="dv">23</span>,</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"order"</span>,</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(riffle_pool,site) <span class="sc">%&gt;%</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(count <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<li><p>The invertebrate species found in the pool sites of one stream should be more similar to those in the pool sites of the other stream compared to the riffle sites of the two streams.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>invertebrates <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">pivot_longer</span>(invertebrates,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">cols =</span> <span class="dv">6</span><span class="sc">:</span><span class="dv">23</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"order"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(riffle_pool,site) <span class="sc">%&gt;%</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(count <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in gsub(vec_paste0("^", names_prefix), "", cols): argument 'pattern' has
 length &gt; 1 and only the first element will be used</code></pre>
@@ -813,22 +868,20 @@ length &gt; 1 and only the first element will be used</code></pre>
 </div></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>invertebrates <span class="sc">%&gt;%</span> <span class="co">#simple exploratory analysis </span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_individuals_present =</span> bivalvia <span class="sc">+</span> gastropoda <span class="sc">+</span> diptera <span class="sc">+</span> turbellaria <span class="sc">+</span> oliggocheata <span class="sc">+</span> hirundinea <span class="sc">+</span> decapoda <span class="sc">+</span> amphipod <span class="sc">+</span> isopod <span class="sc">+</span> trombidiforme <span class="sc">+</span> plecoptera <span class="sc">+</span> trichoptera <span class="sc">+</span> ephemroptera <span class="sc">+</span> megaloptera <span class="sc">+</span> coleoptera <span class="sc">+</span> hemiptera <span class="sc">+</span> odonta <span class="sc">+</span> lepidoptera) <span class="sc">%&gt;%</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">flow_volume_m_sqrd =</span> stream_width <span class="sc">*</span> stream_depth <span class="sc">*</span> flow_velocity) <span class="sc">%&gt;%</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(site, riffle_pool) <span class="sc">%&gt;%</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"average species present"</span> <span class="ot">=</span> <span class="fu">mean</span>(total_individuals_present),</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"'Unit' flow"</span> <span class="ot">=</span> <span class="fu">mean</span>(flow_volume_m_sqrd),</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Riffle/pool"</span> <span class="ot">=</span> <span class="fu">list</span>(riffle_pool),</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>invertebrates <span class="sc">%&gt;%</span> <span class="co">#simple exploratory analysis </span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_individuals_present =</span> bivalvia <span class="sc">+</span> gastropoda <span class="sc">+</span> diptera <span class="sc">+</span> turbellaria <span class="sc">+</span> oliggocheata <span class="sc">+</span> hirundinea <span class="sc">+</span> decapoda <span class="sc">+</span> amphipod <span class="sc">+</span> isopod <span class="sc">+</span> trombidiforme <span class="sc">+</span> plecoptera <span class="sc">+</span> trichoptera <span class="sc">+</span> ephemroptera <span class="sc">+</span> megaloptera <span class="sc">+</span> coleoptera <span class="sc">+</span> hemiptera <span class="sc">+</span> odonta <span class="sc">+</span> lepidoptera) <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(site, riffle_pool) <span class="sc">%&gt;%</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"average species present"</span> <span class="ot">=</span> <span class="fu">mean</span>(total_individuals_present),</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"'Unit' flow"</span> <span class="ot">=</span> <span class="fu">list</span>(flow_velocity),</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Riffle/pool"</span> <span class="ot">=</span> <span class="fu">list</span>(riffle_pool),</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'site'. You can override using the
 `.groups` argument.</code></pre>
@@ -841,7 +894,7 @@ length &gt; 1 and only the first element will be used</code></pre>
    <th style="text-align:left;"> site </th>
    <th style="text-align:left;"> riffle_pool </th>
    <th style="text-align:right;"> average species present </th>
-   <th style="text-align:right;"> 'Unit' flow </th>
+   <th style="text-align:left;"> 'Unit' flow </th>
    <th style="text-align:left;"> Riffle/pool </th>
   </tr>
  </thead>
@@ -850,28 +903,28 @@ length &gt; 1 and only the first element will be used</code></pre>
    <td style="text-align:left;"> 1 (upstream) </td>
    <td style="text-align:left;"> Pool </td>
    <td style="text-align:right;"> 11 </td>
-   <td style="text-align:right;"> 45.00 </td>
+   <td style="text-align:left;"> 3 </td>
    <td style="text-align:left;"> Pool </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 1 (upstream) </td>
    <td style="text-align:left;"> Riffle </td>
    <td style="text-align:right;"> 55 </td>
-   <td style="text-align:right;"> 45.00 </td>
+   <td style="text-align:left;"> 3 </td>
    <td style="text-align:left;"> Riffle </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2 (upstream) </td>
    <td style="text-align:left;"> Pool </td>
    <td style="text-align:right;"> 15 </td>
-   <td style="text-align:right;"> 3.42 </td>
+   <td style="text-align:left;"> 0.18 </td>
    <td style="text-align:left;"> Pool </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2 (upstream) </td>
    <td style="text-align:left;"> Riffle </td>
    <td style="text-align:right;"> 62 </td>
-   <td style="text-align:right;"> 3.42 </td>
+   <td style="text-align:left;"> 0.18 </td>
    <td style="text-align:left;"> Riffle </td>
   </tr>
 </tbody>
@@ -879,12 +932,31 @@ length &gt; 1 and only the first element will be used</code></pre>
 
 </div>
 </div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Observations:</strong></p>
+</div>
+</div>
+<section id="hypothesis-by-analyzing-these-four-locations-the-data-may-be-able-to-determine-whether-the-faster-flowing-riffle-run-stream-is-more-conducive-to-a-greater-number-of-of-unique-invertebrate-species-or-just-contains-a-large-quantity-of-a-few-well-adapted-species." class="level4">
+<h4 class="anchored" data-anchor-id="hypothesis-by-analyzing-these-four-locations-the-data-may-be-able-to-determine-whether-the-faster-flowing-riffle-run-stream-is-more-conducive-to-a-greater-number-of-of-unique-invertebrate-species-or-just-contains-a-large-quantity-of-a-few-well-adapted-species."><strong><em>Hypothesis:</em></strong> By analyzing these four locations, the data may be able to determine whether the faster-flowing riffle run stream is more conducive to a greater number of of unique invertebrate species, or just contains a large quantity of a few well adapted species.</h4>
+<ul>
+<li>Something I am thinking about that lead to this hypothesis is how invasive species impact ecosystems – while the total quantity of life may be greater, the impact can still be negative if the species present are reducing biodiversity in the environment.</li>
+</ul>
+<p><strong><em>Null Hypothesis:</em></strong> insufficient statistical evidence is available to suggest this data shows a difference between riffle and pool streams.</p>
+</section>
 </section>
 </section>
 <section id="data-analysis-answering-the-hypothesis" class="level2">
 <h2 class="anchored" data-anchor-id="data-analysis-answering-the-hypothesis">Data analysis – Answering the Hypothesis</h2>
 <p>How can we test the claims?</p>
-<pre><code></code></pre>
 <section id="viewing-distribution-of-species-across-sites" class="level4">
 <h4 class="anchored" data-anchor-id="viewing-distribution-of-species-across-sites">Viewing Distribution of Species Across Sites</h4>
 <p><strong>Hypotheses:</strong></p>
