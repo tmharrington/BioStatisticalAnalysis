@@ -4,6 +4,7 @@ author: "Trevor Harrington"
 format: docx
 editor: visual
 keep-md: TRUE
+prefer-html: true
 ---
 
 # Analysis of Indoor Air Quality
@@ -29,21 +30,77 @@ clean_names()
 
 exploratory_data <- training(iap_splits)
 test_data <- testing(iap_splits)
+
+head(exploratory_data) %>%
   
-  summarise(exploratory_data) %>%
+  rename(percent_deaths_by_household_pollution = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>% #shorten the long name 
   
 kable() %>%
-  kable_styling(bootstrap_options = c("hover", "striped"))
+    kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
 ::: callout-note
 **Observation:**
 
-This data lists countries across multiple years of observations and their % deaths caused by indoor air pollutants created from indoor combustion. Given the amount of data present in this dataset, their are likely a number of potential hypotheses that could be considered.
+This data set contains variables gathered across multiple years, listing the percent of deaths caused by indoor air pollutants created from indoor combustion. Given the amount of data present in this dataset, several potential hypotheses could likely be considered.
 
--   Countries could be grouped by region and compared for a more geographically relevant comparison. Countries in similar regions may utilize more combustion for the purpose of cooling then cooking, as well as invest in more insulation, reducing the gas exchange and increasing indoor pollutant concentration.
+The data, listed by country and region, are mixed in the dataset and will likely require some cleaning to separate. categorical data and contains variables that were collected over many years.
 
--   
+-   Depending on the scope of research, it may be more useful to focus on the dataset containing regional data rather than country-specific to highlight what role climate plays in the effect of indoor air pollution.
+
+    -   In temperate climates, it is more likely to use biofuels for heating as well as cooking. Alongside the availability of insulation material for homes that reduced the ability for indoor and outdoor atmosphere gas exchange, this may be an essential factor that could be compared with this data.
+
+    -   Using the temporal variable that is available in this data, some conclusions could be made about the
+
+-   focusing on the countries rather than regions in this data could be used to show how countries that have invested in new technologies or better homes could correlate with either improved or worsened indoor air quality. Suppose homes are made more insulated but old gas stoves and wood fires are built into them. In that case, it is possible that the data could show up to a point a worsened impact on indoor air quality is associated with a country's growth in economic opportunity.
 :::
+
+```{r}
+exploratory_data %>%
+  
+  rename(percent_deaths_by_household_pollution = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>% #shorten the long name 
+  
+  kable() %>%
+    kable_styling(bootstrap_options = c("hover", "striped"))
+
+```
+
+```{r}
+exploratory_data %>% 
+  
+  summarize(
+  "Lowest percentage of deaths" = min(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent),
+  
+  "Highest percentage of deaths"= max(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent),
+  "average percentage of deaths" =mean(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent),
+  "Standard deviation" = sd(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent)
+) %>%
+  pivot_longer(cols = 1:4) %>%
+  
+  kable() %>%
+    kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: callout-note
+**Observations:**
+
+-   0.0016 % deaths is extremely low, especially compared to the maximum at 23%, and even the average of 5.57 shows a significant spread across datapoints this broad range suggests
+
+    -   This data does not provide particularly useful information since the data is not group by year. Potentially plotting the mean percentage across time could provide a useful visual to see how this data changes.
+
+-   the maximum deaths at 23.04% is extremely high, and I am very curious at which country/region was measured this high-- potentially an outlier?
+
+-   5.77 standard deviation seems very large for the size of the data set being considered. This will be interesting to reference when seperating by country, region or year.
+:::
+
+```{r}
+library(lubridate)
+
+exploratory_data %>%
+  
+ggplot() +
+  geom_boxplot(mapping = aes(x = entity,
+                          y = mean(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent)))
+```
 
 ## Background: **Fuel combustion and Indoor Air Pollution**
