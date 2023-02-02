@@ -1,7 +1,7 @@
 ---
 title: "Indoor Air Analysis"
 author: "Trevor Harrington"
-format: docx
+format: html
 editor: visual
 keep-md: TRUE
 prefer-html: true
@@ -94,13 +94,47 @@ exploratory_data %>%
 :::
 
 ```{r}
-library(lubridate)
+library(countrycode)
+
+exploratory_data %>% 
+  
+   rename(percent_deaths_by_household_pollution = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>% #shorten the long name 
+
+  
+   mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  mutate(continent = countrycode (entity, origin = "country.name", destination = "continent")) %>%
+
+   filter(continent!= 0) %>%
+  
+  kable() %>%
+    kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+```{r}
+library(countrycode)
 
 exploratory_data %>%
   
-ggplot() +
-  geom_boxplot(mapping = aes(x = entity,
-                          y = mean(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent)))
+  rename(percent_deaths_by_household_pollution = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+
+  
+   mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  mutate(continent = countrycode (entity, origin = "country.name", destination = "continent")) %>%
+
+   filter(continent!= 0) %>%
+  
+  ggplot() + 
+  geom_histogram(mapping = aes(fill = country_region, 
+                               x= percent_deaths_by_household_pollution)) +
+  facet_wrap(~country_region) 
 ```
+
+::: callout-note
+## Observations
+
+-   
+:::
 
 ## Background: **Fuel combustion and Indoor Air Pollution**
