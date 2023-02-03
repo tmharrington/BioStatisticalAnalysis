@@ -127,14 +127,68 @@ exploratory_data %>%
   
   ggplot() + 
   geom_histogram(mapping = aes(fill = country_region, 
-                               x= percent_deaths_by_household_pollution)) +
-  facet_wrap(~country_region) 
+                               x= percent_deaths_by_household_pollution,
+                               na.rm = TRUE)) +
+  facet_wrap(~country_region)
 ```
 
 ::: callout-note
 ## Observations
 
--   
+-   these graphs show variables taken across a range of 30 years where the number of deaths in the country attributed to indoor air pollution caused by the combustion of bio fuels. each graph represents a distribution of these variables grouped by region.
+
+    -   **East Asia & Pacific** contains a large distribution of countries with different rates of death. there is a larger amount of countries in east asia with a very low percentage of deaths for this cause.
+
+    -   **Europe and Central Asia** has the largest amount of variables measured at 0 percent deaths caused by IAP (over 125) compared to any other region. Nearly all variables in this region are below 10 percent deaths by IAP, but a fairly large amount of variables fall between 1% and 5%.
+
+    -   **Latin America & Caribbean** data is relatively spread out across 0% through 5% with over 100 countries in this group. there are a a smaller number of countries spread between 6% and 15% with no species over 15 percent.
+
+    -   **Middle East and North Africa** does not contain a large number of countries in the histogram (less then 100). The largest portion are between 0% and 5%, relatively low levels compared to other countries like East Asia and Sub-Saharan Africa.
+
+    -   **North America** is represented by the fewest countries of any region in this comparison. Considering that two of these countries are the U.S and Canada it is not suprising that there are a very low percentage of deaths per year caused by indoor air pollution.
+
+    -   **South Asia** is not represented by any countries that are 0 or even nearly 0% deaths caused by IAP from bio fuels. Although this region has \~50 variables, the % death ranges from a minimum of 4% to as high as 19%.
+
+    -   **Sub-Saharan Africa** is represented by a larger number of variables that are in the 5%-15% range. this region will likely provide an interesting year-to-year comparison that could show improvement over time.
+
+-   because these variables are taken across such a wide temporal scale, it does not serve as a distinctly insightful comparison. Still, some things can be inferred.
+
+    -   
 :::
+
+```{r}
+exploratory_data %>%
+  
+   rename(percent_deaths_iap = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+
+  
+   mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  mutate(continent = countrycode (entity, origin = "country.name", destination = "continent")) %>%
+
+   filter(continent!= 0) %>%
+
+   ggplot() + 
+  geom_histogram(mapping = aes(fill = continent, 
+                               x= percent_deaths_iap)) +
+  facet_wrap(~continent)
+```
+
+view the change in average iap
+
+```{r}
+exploratory_data %>%
+  
+   rename(n = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+    mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+   mutate(continent = countrycode (entity, origin = "country.name", destination = "continent")) 
+  
+                           
+  
+```
+
+==
 
 ## Background: **Fuel combustion and Indoor Air Pollution**
