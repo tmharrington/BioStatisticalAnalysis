@@ -56,7 +56,7 @@ The data, listed by country and region, are mixed in the dataset and will likely
 :::
 
 ```{r}
-exploratory_data %>%
+exploratory_data%>%
   
   rename(percent_deaths_by_household_pollution = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>% #shorten the long name 
   
@@ -99,12 +99,11 @@ library(countrycode)
 exploratory_data %>% 
   
    rename(percent_deaths_by_household_pollution = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>% #shorten the long name 
-
   
    mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
   
-  mutate(continent = countrycode (entity, origin = "country.name", destination = "continent")) %>%
-
+  mutate(continent = countrycode (entity, origin = "country.name", destination = "continent"))%>%
+  
    filter(continent!= 0) %>%
   
   kable() %>%
@@ -152,43 +151,104 @@ exploratory_data %>%
     -   **Sub-Saharan Africa** is represented by a larger number of variables that are in the 5%-15% range. this region will likely provide an interesting year-to-year comparison that could show improvement over time.
 
 -   because these variables are taken across such a wide temporal scale, it does not serve as a distinctly insightful comparison. Still, some things can be inferred.
+:::
 
-    -   
+What am I trying to do?
+
+graph the average percent deaths by region to determine if there is a correlation b
+
+```{r}
+
+exploratory_data %>%
+  
+  filter(year>2014) %>%
+  
+  rename(n = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+   mutate("Regions" = countrycode(entity, 
+                                       origin = "country.name", 
+                                       destination= "region"
+                                       )) %>%
+  filter(!is.na(Regions)) %>%
+  group_by(Regions) %>%
+
+  summarize(
+    'Average percent death by region' = mean(n),
+    'Standard Deviation of % deaths by region' = sd(n),
+    'Number of Variables being measured' = length(unique(entity))) %>%
+  
+ kable() %>%
+    kable_styling(bootstrap_options = c("hover", "striped"))
+
+
+```
+
+::: callout-note
+## Observations
+
+This data summarizes the variables from only 2014-2019 to see a comparison of all the countries in recent years. Something that can be inferred from this data is that some countries have a significantly more significant standard deviation then others.
+
+-    While South Asia and Sub-Saharan Africa have the highest average, the deviation is much smaller, suggesting most of the variables (countries) measured in this timespan are relatively close to the 10.00 % mean percent deaths by IAP
+
+    -   East Asia & Pacific are significantly lower in percent deaths by IAP at nearly half of the previously mentioned, however, the standard deviation is over 1% greater then either South Asia or Sub-Saharan Africa, suggesting that some countries could be significantly worse off then most.
+
+    -   although Middle East & North Africa does not have a particularly large standard deviation, it is the largest in comparison to its average. This Region along with Latin America & Caribbean do not fit this theory as nicely, and show the need for economic factors that play a role in deaths caused by pollution.
+
+        -   This will be important for my hypothesis, since the geographic position of East Asia & pacific would likely make climate an interesting factor for comparison.
+
+```{=html}
+<!-- -->
+```
+-   Regions with the lowest deviation from the mean were Europe & Central Asia as well as North America (despite lacking a standard deviation, it is only made up of 3 countries and likely deviated minimally
 :::
 
 ```{r}
 exploratory_data %>%
   
-   rename(percent_deaths_iap = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-
-  
-   mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
-  
-  mutate(continent = countrycode (entity, origin = "country.name", destination = "continent")) %>%
-
-   filter(continent!= 0) %>%
-
-   ggplot() + 
-  geom_histogram(mapping = aes(fill = continent, 
-                               x= percent_deaths_iap)) +
-  facet_wrap(~continent)
-```
-
-view the change in average iap
-
-```{r}
-exploratory_data %>%
-  
-   rename(n = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-  
-    mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
-  
-   mutate(continent = countrycode (entity, origin = "country.name", destination = "continent")) 
+count(year) %>%
+ 
+  kable() %>%
+    kable_styling(bootstrap_options = c("hover", "striped"))
   
                            
   
 ```
 
-==
+::: callout-note
+## Observations
+
+This data shows the distribution of variables across several years.
+
+-   This spread suggests there is a lot of value in interpreting this data by year.
+
+    -   How do different regions compare to each other? What can be said about the rate of progress towards reducing the amount of deaths over the 30 years of data records?
+
+    -   Can environmental factors be considered? N. America has a lot of rich natural resources and mild climates that, among other factors, has enabled its success in terms of providing humanitarian needs to a large population.
+
+        -   areas where temperatures are very cold probably have more insulated homes burning bio fuels on top of cooking with combustion. Can a correlation be made suggesting that, despite economic wealth per capita, IAP caused by combustion is a bigger issue in Nothern countries? This would likely only apply to countries that have not reached "western civilization" levels of wealth
+
+-   It seems that the quantity of variables spread across this time span eliminates any hypothesis that would not involve a temporal comparison. If focusing on a single-year comparison becomes useful, it may be valuable to pick a year that contains the most variables, since they are not all the same.
+:::
+
+region_groups \<-
+
+```{r}
+exploratory_data %>%
+  
+  rename(n = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+   mutate("Regions" = countrycode(entity, 
+                                       origin = "country.name", 
+                                       destination= "region"
+                                       )) %>%
+  filter(!is.na(Regions)) %>%
+  
+  group_by(Regions) %>%
+  
+  ggplot(aes(x= year,y= n, group = 1)) +
+  geom_line() +
+  facet_wrap(~Regions)+
+  geom_smooth()
+```
 
 ## Background: **Fuel combustion and Indoor Air Pollution**
