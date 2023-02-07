@@ -86,7 +86,8 @@ exploratory_data %>%
 ```{r}
 library(countrycode)
 
-exploratory_data %>% 
+exploratory_data
+%>% 
   
    rename(percent_deaths_by_household_pollution = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>% #shorten the long name 
   
