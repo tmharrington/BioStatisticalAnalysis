@@ -7,7 +7,11 @@ keep-md: TRUE
 prefer-html: true
 ---
 
-# Analysis of Indoor Air Quality
+# Air Pollution and Global GDP/Climate trends
+
+## Introduction
+
+## determining hypothesis with testing data 
 
 ```{r}
 library(tidyverse)
@@ -67,7 +71,7 @@ exploratory_data %>%
 ) %>%
   pivot_longer(cols = 1:4) %>%
   
-  kable() %>%
+  kable(digits = c(1,3)) %>%
     kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
@@ -169,7 +173,7 @@ exploratory_data %>%
     
     'Number of Variables Measured' = length(unique(entity))) %>%
   
- kable() %>%
+ kable(digits = c(0,4,4,0)) %>%
     kable_styling(bootstrap_options = c("hover", "striped"))
 
 
@@ -218,12 +222,10 @@ This data shows the distribution of variables across several years.
 
     -   Can environmental factors be considered? N. America has a lot of rich natural resources and mild climates that, among other factors, has enabled its success in terms of providing humanitarian needs to a large population.
 
-        -   areas where temperatures are very cold probably have more insulated homes burning bio fuels on top of cooking with combustion. Can a correlation be made suggesting that, despite economic wealth per capita, IAP caused by combustion is a bigger issue in Nothern countries? This would likely only apply to countries that have not reached "western civilization" levels of wealth
+        -   areas where temperatures are very cold probably have more insulated homes burning bio fuels on top of cooking with combustion. Can a correlation be made suggesting that, despite economic wealth per capita, IAP caused by combustion is a bigger issue in Northern countries? This would likely only apply to countries that have not reached "western civilization" levels of wealth
 
 -   It seems that the quantity of variables spread across this time span eliminates any hypothesis that would not involve a temporal comparison. If focusing on a single-year comparison becomes useful, it may be valuable to pick a year that contains the most variables, since they are not all the same.
 :::
-
-**Potential Hypothesis:**
 
 ```{r}
 exploratory_data %>%
@@ -258,14 +260,56 @@ These graphs seem to give some very valuable comparative evidence for both the v
 
 **Potential Hypothesis: Average % deaths decreased globally from 1990 - 2020**
 
-```{}
+**Potential Hypothesis: Temperate vs. Tropical regions will impact the IAP of developing countries**
+
+```{r}
+exploratory_data %>%
+  
+  rename(n = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+
+model_region_temp <- linear_reg() %>%
+  set_engine("lm")
+
+model_region_reg <- recipe(year~n,
+                           data = entity) %>%
+  
+  model_Region <-workflow() %>%
+  add_model(model_region_temp)
 ```
 
-**Potential Hypothesis: Temperate vs. Tropical regions will impact the IAP of developing countries**
+```{r}
+model_data<- exploratory_data %>%
+  
+  rename(n = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent)
+  
+model_region_temp <- linear_reg() %>% 
+  set_engine("lm")  #construct model instance
+
+model_region_reg<-
+  recipe(year~n,
+         data = model_data)
+  #generate a recipe -- what variables do we have in y = mx+b
+
+model_region<-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_reg) #combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+model_region_fit %>%
+  glance() %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+  
+  
+  
+  # looking to build a regression analysis to determine if a correltion can be seen in the data. prediction is decreasing n over time grouped by region 
+```
 
 ## Hypothesis: **Fuel combustion and Indoor Air Pollution**
 
-Considering the data that is present, their are two layers of analysis that could generate useful hypothesis for understanding the global impact of indoor air pollution. Considering the country-specific data, it may be valuable to try and find an additional data set for each layer to use for an additional comparison. These second datasets will be considered in thy hypothesis for each layer.
+Considering the data that is present, their are two layers of analysis that could generate useful hypothesis for understanding the global impact of indoor air pollution. Considering the country-specific data, it may be valuable to try and find an additional data set for each layer to use for an additional comparison. These second data sets will be considered in thy hypothesis for each layer.
 
 ## Layer One: Regions and Climates
 
@@ -282,3 +326,7 @@ Considering the data that is present, their are two layers of analysis that coul
     -   despite the likely correlation between a nations GDP and its percent deaths caused by IAP, it also seems the data will show an overall decrease in the 30yrs in every part of the world, but most noticeable in regions with high average percents.
 
 -   Central America, South America, North Africa, South Asia, and the Pacific Islands are the regions that may not be correlated to climate, but contain significant number of countries with low GDP that contribute to IAP deaths.
+
+::: callout-note
+## Future Questions
+:::
