@@ -68,7 +68,7 @@ library(tidymodels)
 ✖ dplyr::lag()             masks stats::lag()
 ✖ yardstick::spec()        masks readr::spec()
 ✖ recipes::step()          masks stats::step()
-• Use suppressPackageStartupMessages() to eliminate package startup messages
+• Dig deeper into tidy modeling with R at https://www.tmwr.org
 ```
 :::
 
@@ -159,40 +159,40 @@ kable() %>%
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Bahrain </td>
-   <td style="text-align:left;"> BHR </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.4057527 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 8.8693952 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Libya </td>
-   <td style="text-align:left;"> LBY </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.0378761 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Yemen </td>
-   <td style="text-align:left;"> YEM </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 11.5590243 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burkina Faso </td>
-   <td style="text-align:left;"> BFA </td>
+   <td style="text-align:left;"> Uruguay </td>
+   <td style="text-align:left;"> URY </td>
    <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 13.0706554 </td>
+   <td style="text-align:right;"> 0.1874101 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Central sub-Saharan Africa </td>
+   <td style="text-align:left;"> Brunei </td>
+   <td style="text-align:left;"> BRN </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 0.6344918 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Low-middle SDI </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 12.6918277 </td>
+   <td style="text-align:right;"> 14.6491448 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Guyana </td>
+   <td style="text-align:left;"> GUY </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 2.0087772 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Southeast Asia, East Asia, and Oceania </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 11.4652539 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Eastern sub-Saharan Africa </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 12.6657359 </td>
   </tr>
 </tbody>
 </table>
@@ -219,7244 +219,6 @@ The data, listed by country and region, are mixed in the dataset and will likely
 -   focusing on the countries rather than regions in this data could be used to show how countries that have invested in new technologies or better homes could correlate with either improved or worsened indoor air quality. Suppose homes are made more insulated but old gas stoves and wood fires are built into them. In that case, it is possible that the data could show up to a point a worsened impact on indoor air quality is associated with a country's growth in economic opportunity.
 :::
 
-
-::: {.cell}
-
-```{.r .cell-code}
-exploratory_data%>%
-  
-  rename(percent_deaths_by_household_pollution = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>% #shorten the long name 
-  
-  kable() %>%
-    kable_styling(bootstrap_options = c("hover", "striped"))
-```
-
-::: {.cell-output-display}
-
-`````{=html}
-<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> entity </th>
-   <th style="text-align:left;"> code </th>
-   <th style="text-align:right;"> year </th>
-   <th style="text-align:right;"> percent_deaths_by_household_pollution </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Bahrain </td>
-   <td style="text-align:left;"> BHR </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.4057527 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 8.8693952 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Libya </td>
-   <td style="text-align:left;"> LBY </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.0378761 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Yemen </td>
-   <td style="text-align:left;"> YEM </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 11.5590243 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burkina Faso </td>
-   <td style="text-align:left;"> BFA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 13.0706554 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central sub-Saharan Africa </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 12.6918277 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Slovenia </td>
-   <td style="text-align:left;"> SVN </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.4538219 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> OECD Countries </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.2496462 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Canada </td>
-   <td style="text-align:left;"> CAN </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.0030871 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank Low Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 14.0555512 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Andorra </td>
-   <td style="text-align:left;"> AND </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.0049303 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Pakistan </td>
-   <td style="text-align:left;"> PAK </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 14.0504010 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Latin America &amp; Caribbean - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 3.7208356 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank Low Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 12.9334219 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 7.3628956 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 3.1554309 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Colombia </td>
-   <td style="text-align:left;"> COL </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 1.4997920 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belgium </td>
-   <td style="text-align:left;"> BEL </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.0241643 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burundi </td>
-   <td style="text-align:left;"> BDI </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 14.4646992 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Myanmar </td>
-   <td style="text-align:left;"> MMR </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 16.8526981 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cuba </td>
-   <td style="text-align:left;"> CUB </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 1.0611136 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tanzania </td>
-   <td style="text-align:left;"> TZA </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 10.9464084 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Western Europe </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.0171882 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> European Union </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 0.4334740 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Trinidad and Tobago </td>
-   <td style="text-align:left;"> TTO </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.1352721 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guyana </td>
-   <td style="text-align:left;"> GUY </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 2.9759524 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Marshall Islands </td>
-   <td style="text-align:left;"> MHL </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 6.0218648 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Monaco </td>
-   <td style="text-align:left;"> MCO </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0027212 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central Europe </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 1.8876271 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kuwait </td>
-   <td style="text-align:left;"> KWT </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.0080734 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oceania </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 15.9970678 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Colombia </td>
-   <td style="text-align:left;"> COL </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 2.9281280 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Commonwealth Low Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 11.5220505 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Turkey </td>
-   <td style="text-align:left;"> TUR </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 1.1591007 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Syria </td>
-   <td style="text-align:left;"> SYR </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.0668088 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ethiopia </td>
-   <td style="text-align:left;"> ETH </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 14.1384638 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Norway </td>
-   <td style="text-align:left;"> NOR </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 0.0115676 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Yemen </td>
-   <td style="text-align:left;"> YEM </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 10.4712208 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central Europe, Eastern Europe, and Central Asia </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 1.8879446 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central Latin America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 4.4153823 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 8.6057457 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cape Verde </td>
-   <td style="text-align:left;"> CPV </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 9.8333258 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Jordan </td>
-   <td style="text-align:left;"> JOR </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.0091541 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Argentina </td>
-   <td style="text-align:left;"> ARG </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 1.0653694 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> East Asia &amp; Pacific - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 3.5666952 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 1.7837998 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eswatini </td>
-   <td style="text-align:left;"> SWZ </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 5.4960827 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United States Virgin Islands </td>
-   <td style="text-align:left;"> VIR </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.2990454 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> China </td>
-   <td style="text-align:left;"> CHN </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 7.9277682 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> European Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.7341434 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Puerto Rico </td>
-   <td style="text-align:left;"> PRI </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.0068205 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tuvalu </td>
-   <td style="text-align:left;"> TUV </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 1.5159753 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Pakistan </td>
-   <td style="text-align:left;"> PAK </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 14.4080827 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United States Virgin Islands </td>
-   <td style="text-align:left;"> VIR </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.3569602 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tanzania </td>
-   <td style="text-align:left;"> TZA </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 11.9568481 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> New Zealand </td>
-   <td style="text-align:left;"> NZL </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.0089021 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Congo </td>
-   <td style="text-align:left;"> COG </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 7.9884957 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Japan </td>
-   <td style="text-align:left;"> JPN </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.0434370 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> France </td>
-   <td style="text-align:left;"> FRA </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.0098937 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bosnia and Herzegovina </td>
-   <td style="text-align:left;"> BIH </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 8.8127849 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Northern Mariana Islands </td>
-   <td style="text-align:left;"> MNP </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 1.6666338 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Southeast Asia, East Asia, and Oceania </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 13.5433597 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eastern sub-Saharan Africa </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 12.7673728 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mexico </td>
-   <td style="text-align:left;"> MEX </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 2.5069589 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High-income Asia Pacific </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.0123073 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Andorra </td>
-   <td style="text-align:left;"> AND </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.0056606 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Latvia </td>
-   <td style="text-align:left;"> LVA </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.3526081 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bulgaria </td>
-   <td style="text-align:left;"> BGR </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 1.6146910 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 6.8040477 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Liberia </td>
-   <td style="text-align:left;"> LBR </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 11.8857808 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Thailand </td>
-   <td style="text-align:left;"> THA </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 1.9160959 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Papua New Guinea </td>
-   <td style="text-align:left;"> PNG </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 19.6054069 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Benin </td>
-   <td style="text-align:left;"> BEN </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 12.9631452 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belgium </td>
-   <td style="text-align:left;"> BEL </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 0.0321984 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Caribbean </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 5.1914578 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bermuda </td>
-   <td style="text-align:left;"> BMU </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.4743142 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Croatia </td>
-   <td style="text-align:left;"> HRV </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.3974937 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bhutan </td>
-   <td style="text-align:left;"> BTN </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 11.1391999 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kenya </td>
-   <td style="text-align:left;"> KEN </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 8.9649303 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Botswana </td>
-   <td style="text-align:left;"> BWA </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 11.3452625 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Estonia </td>
-   <td style="text-align:left;"> EST </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 1.3314174 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malawi </td>
-   <td style="text-align:left;"> MWI </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 9.0877181 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uganda </td>
-   <td style="text-align:left;"> UGA </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 11.2007832 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Northern Mariana Islands </td>
-   <td style="text-align:left;"> MNP </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 2.0950392 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Scotland </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.0047424 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Brazil </td>
-   <td style="text-align:left;"> BRA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 2.1047274 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Vincent and the Grenadines </td>
-   <td style="text-align:left;"> VCT </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 2.2713615 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kazakhstan </td>
-   <td style="text-align:left;"> KAZ </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 1.7001212 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> India </td>
-   <td style="text-align:left;"> IND </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 10.2224369 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Germany </td>
-   <td style="text-align:left;"> DEU </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.0050167 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mali </td>
-   <td style="text-align:left;"> MLI </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 12.2514990 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Benin </td>
-   <td style="text-align:left;"> BEN </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 15.1697999 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bolivia </td>
-   <td style="text-align:left;"> BOL </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 8.0195381 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lesotho </td>
-   <td style="text-align:left;"> LSO </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 11.7222435 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Northern Mariana Islands </td>
-   <td style="text-align:left;"> MNP </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 1.5336353 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Egypt </td>
-   <td style="text-align:left;"> EGY </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.6752659 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cape Verde </td>
-   <td style="text-align:left;"> CPV </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 3.8275157 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Romania </td>
-   <td style="text-align:left;"> ROU </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 1.3471102 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Chile </td>
-   <td style="text-align:left;"> CHL </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 2.4568508 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Grenada </td>
-   <td style="text-align:left;"> GRD </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 2.5815078 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Colombia </td>
-   <td style="text-align:left;"> COL </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 2.4365127 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ethiopia </td>
-   <td style="text-align:left;"> ETH </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 13.5529810 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greece </td>
-   <td style="text-align:left;"> GRC </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0321369 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sierra Leone </td>
-   <td style="text-align:left;"> SLE </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 12.7502605 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Slovakia </td>
-   <td style="text-align:left;"> SVK </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.1956476 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Slovakia </td>
-   <td style="text-align:left;"> SVK </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.1226614 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Turkmenistan </td>
-   <td style="text-align:left;"> TKM </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.0483905 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank Upper Middle Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 3.1771671 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Israel </td>
-   <td style="text-align:left;"> ISR </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.0103194 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nicaragua </td>
-   <td style="text-align:left;"> NIC </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 12.2285878 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Scotland </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.0028000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burundi </td>
-   <td style="text-align:left;"> BDI </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 13.9319962 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mexico </td>
-   <td style="text-align:left;"> MEX </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 2.4525960 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bosnia and Herzegovina </td>
-   <td style="text-align:left;"> BIH </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 2.9442459 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central sub-Saharan Africa </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 12.4702691 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Democratic Republic of Congo </td>
-   <td style="text-align:left;"> COD </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 13.3306889 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Niger </td>
-   <td style="text-align:left;"> NER </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 14.9544542 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Thailand </td>
-   <td style="text-align:left;"> THA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 3.2861627 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Costa Rica </td>
-   <td style="text-align:left;"> CRI </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.8145899 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wales </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.0107687 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Liberia </td>
-   <td style="text-align:left;"> LBR </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 11.9766403 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oceania </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 16.9348073 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zimbabwe </td>
-   <td style="text-align:left;"> ZWE </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 7.7332375 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Algeria </td>
-   <td style="text-align:left;"> DZA </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.9594964 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mexico </td>
-   <td style="text-align:left;"> MEX </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 1.9475041 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> England </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.0042511 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank High Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.3130803 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Asia </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 10.0404538 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Latin America &amp; Caribbean - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 1.8955111 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Algeria </td>
-   <td style="text-align:left;"> DZA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.0491542 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Slovenia </td>
-   <td style="text-align:left;"> SVN </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.4018370 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Western Pacific Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 5.2726165 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Trinidad and Tobago </td>
-   <td style="text-align:left;"> TTO </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 0.1137077 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Sudan </td>
-   <td style="text-align:left;"> SSD </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 11.7878075 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 6.6687915 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United States </td>
-   <td style="text-align:left;"> USA </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.0052448 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> OECD Countries </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.6268673 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Latin America &amp; Caribbean - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 4.9213140 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mauritania </td>
-   <td style="text-align:left;"> MRT </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 12.0011284 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Pakistan </td>
-   <td style="text-align:left;"> PAK </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 8.0570477 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oceania </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 16.9283866 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Commonwealth </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 9.4862045 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kazakhstan </td>
-   <td style="text-align:left;"> KAZ </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 4.5278589 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mauritius </td>
-   <td style="text-align:left;"> MUS </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 1.1819396 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Asia - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 7.2109830 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High-income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.1584665 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greenland </td>
-   <td style="text-align:left;"> GRL </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.5498793 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Micronesia (country) </td>
-   <td style="text-align:left;"> FSM </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 10.2249036 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Benin </td>
-   <td style="text-align:left;"> BEN </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 13.1458702 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Madagascar </td>
-   <td style="text-align:left;"> MDG </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 15.1012115 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zambia </td>
-   <td style="text-align:left;"> ZMB </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 9.0153351 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 0.2085735 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burkina Faso </td>
-   <td style="text-align:left;"> BFA </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 12.2371718 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Netherlands </td>
-   <td style="text-align:left;"> NLD </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0035662 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Vincent and the Grenadines </td>
-   <td style="text-align:left;"> VCT </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.5554104 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dominica </td>
-   <td style="text-align:left;"> DMA </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 2.8894356 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central Europe </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 1.1585612 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guatemala </td>
-   <td style="text-align:left;"> GTM </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 7.5356191 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Northern Mariana Islands </td>
-   <td style="text-align:left;"> MNP </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 1.8979233 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Vietnam </td>
-   <td style="text-align:left;"> VNM </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 7.1433393 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Trinidad and Tobago </td>
-   <td style="text-align:left;"> TTO </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.0842781 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Botswana </td>
-   <td style="text-align:left;"> BWA </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 4.4951558 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cook Islands </td>
-   <td style="text-align:left;"> COK </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.5530641 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dominican Republic </td>
-   <td style="text-align:left;"> DOM </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 6.9172718 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Comoros </td>
-   <td style="text-align:left;"> COM </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 14.4539622 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cote d'Ivoire </td>
-   <td style="text-align:left;"> CIV </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 11.5817910 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Turkmenistan </td>
-   <td style="text-align:left;"> TKM </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.1220276 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greece </td>
-   <td style="text-align:left;"> GRC </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.0382810 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cyprus </td>
-   <td style="text-align:left;"> CYP </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.0129300 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Southeast Asia </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 6.8172388 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Panama </td>
-   <td style="text-align:left;"> PAN </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 1.4311926 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Somalia </td>
-   <td style="text-align:left;"> SOM </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 16.4756057 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North Korea </td>
-   <td style="text-align:left;"> PRK </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 13.9080780 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Pakistan </td>
-   <td style="text-align:left;"> PAK </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 11.0844123 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank Low Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 14.2070626 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eswatini </td>
-   <td style="text-align:left;"> SWZ </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 5.7469180 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Northern Ireland </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.0033103 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bulgaria </td>
-   <td style="text-align:left;"> BGR </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 2.4046639 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahamas </td>
-   <td style="text-align:left;"> BHS </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.4663663 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zimbabwe </td>
-   <td style="text-align:left;"> ZWE </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 5.6555068 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Honduras </td>
-   <td style="text-align:left;"> HND </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 10.7768316 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Myanmar </td>
-   <td style="text-align:left;"> MMR </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 11.7014490 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malta </td>
-   <td style="text-align:left;"> MLT </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.0764122 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Pakistan </td>
-   <td style="text-align:left;"> PAK </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 12.7979025 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Antigua and Barbuda </td>
-   <td style="text-align:left;"> ATG </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0804177 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Luxembourg </td>
-   <td style="text-align:left;"> LUX </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.0162933 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malta </td>
-   <td style="text-align:left;"> MLT </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.0221702 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Lucia </td>
-   <td style="text-align:left;"> LCA </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.4647087 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Papua New Guinea </td>
-   <td style="text-align:left;"> PNG </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 18.6973951 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Niue </td>
-   <td style="text-align:left;"> NIU </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 4.2325652 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belgium </td>
-   <td style="text-align:left;"> BEL </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.0057823 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North Africa and Middle East </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 3.5167471 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eastern sub-Saharan Africa </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 11.2360892 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.9028259 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Iraq </td>
-   <td style="text-align:left;"> IRQ </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.8945525 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Vanuatu </td>
-   <td style="text-align:left;"> VUT </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 18.0607672 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Africa </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 9.5383726 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> African Union </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 8.6842197 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Brazil </td>
-   <td style="text-align:left;"> BRA </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 1.9708121 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> El Salvador </td>
-   <td style="text-align:left;"> SLV </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 5.0665782 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Djibouti </td>
-   <td style="text-align:left;"> DJI </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 6.2929158 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nigeria </td>
-   <td style="text-align:left;"> NGA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 9.8977260 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Vanuatu </td>
-   <td style="text-align:left;"> VUT </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 16.1228217 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belgium </td>
-   <td style="text-align:left;"> BEL </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 0.0212671 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Middle SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 6.5485761 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Vincent and the Grenadines </td>
-   <td style="text-align:left;"> VCT </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 1.3912171 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Yemen </td>
-   <td style="text-align:left;"> YEM </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 16.9539867 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank Lower Middle Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 6.2758348 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eastern Mediterranean Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 9.9112965 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United States </td>
-   <td style="text-align:left;"> USA </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.0155592 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greenland </td>
-   <td style="text-align:left;"> GRL </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.3851072 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ukraine </td>
-   <td style="text-align:left;"> UKR </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.7458095 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Lucia </td>
-   <td style="text-align:left;"> LCA </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 3.6652815 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Djibouti </td>
-   <td style="text-align:left;"> DJI </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 4.0682977 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Micronesia (country) </td>
-   <td style="text-align:left;"> FSM </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 10.8838984 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Israel </td>
-   <td style="text-align:left;"> ISR </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.0473004 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> France </td>
-   <td style="text-align:left;"> FRA </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.0341629 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guatemala </td>
-   <td style="text-align:left;"> GTM </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 10.4729437 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Palau </td>
-   <td style="text-align:left;"> PLW </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.0172425 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nicaragua </td>
-   <td style="text-align:left;"> NIC </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 10.2916910 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guatemala </td>
-   <td style="text-align:left;"> GTM </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 12.1524875 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Madagascar </td>
-   <td style="text-align:left;"> MDG </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 15.8091958 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Europe &amp; Central Asia - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.4596588 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cape Verde </td>
-   <td style="text-align:left;"> CPV </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 6.2016812 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> American Samoa </td>
-   <td style="text-align:left;"> ASM </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 1.8903796 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Algeria </td>
-   <td style="text-align:left;"> DZA </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 0.5419269 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guyana </td>
-   <td style="text-align:left;"> GUY </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 3.3080429 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Australasia </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.0983152 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Lucia </td>
-   <td style="text-align:left;"> LCA </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 1.3861959 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Papua New Guinea </td>
-   <td style="text-align:left;"> PNG </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 19.5743202 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> China </td>
-   <td style="text-align:left;"> CHN </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 6.7358083 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eswatini </td>
-   <td style="text-align:left;"> SWZ </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 12.2826307 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Morocco </td>
-   <td style="text-align:left;"> MAR </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 2.2428296 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Colombia </td>
-   <td style="text-align:left;"> COL </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 2.8008799 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eastern Europe </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.8127353 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> European Union </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.1929937 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sub-Saharan Africa - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 11.1922760 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.0132120 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Japan </td>
-   <td style="text-align:left;"> JPN </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 0.0387259 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Romania </td>
-   <td style="text-align:left;"> ROU </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 4.5339027 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High-income North America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 0.0139403 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Low-middle SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 11.4583567 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bhutan </td>
-   <td style="text-align:left;"> BTN </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 16.4425484 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Venezuela </td>
-   <td style="text-align:left;"> VEN </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 0.2163430 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wales </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.0205650 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Palau </td>
-   <td style="text-align:left;"> PLW </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 0.0093035 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Australia </td>
-   <td style="text-align:left;"> AUS </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 0.0672701 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Vietnam </td>
-   <td style="text-align:left;"> VNM </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 11.1823985 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cuba </td>
-   <td style="text-align:left;"> CUB </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.6644410 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Haiti </td>
-   <td style="text-align:left;"> HTI </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 15.2964069 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Comoros </td>
-   <td style="text-align:left;"> COM </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 12.1082135 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank Upper Middle Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 5.8888887 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central Europe, Eastern Europe, and Central Asia </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 1.0618104 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zambia </td>
-   <td style="text-align:left;"> ZMB </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 8.0669923 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> G20 </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 3.1264056 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Italy </td>
-   <td style="text-align:left;"> ITA </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.0243932 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Armenia </td>
-   <td style="text-align:left;"> ARM </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 2.9911659 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Jamaica </td>
-   <td style="text-align:left;"> JAM </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 1.7382957 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Brunei </td>
-   <td style="text-align:left;"> BRN </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0394396 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Western Pacific Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 3.7474632 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 7.2938072 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sub-Saharan Africa - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 10.3525989 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Commonwealth Low Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 12.2322633 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Georgia </td>
-   <td style="text-align:left;"> GEO </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 7.5630030 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Colombia </td>
-   <td style="text-align:left;"> COL </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 1.6224319 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Haiti </td>
-   <td style="text-align:left;"> HTI </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 14.0648886 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Denmark </td>
-   <td style="text-align:left;"> DNK </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 0.0186330 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Brunei </td>
-   <td style="text-align:left;"> BRN </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 1.1089297 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ethiopia </td>
-   <td style="text-align:left;"> ETH </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 13.2384288 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Azerbaijan </td>
-   <td style="text-align:left;"> AZE </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 1.0134733 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cameroon </td>
-   <td style="text-align:left;"> CMR </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 8.8617136 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Commonwealth Middle Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 6.5534588 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Angola </td>
-   <td style="text-align:left;"> AGO </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 10.9940622 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 9.0100198 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Laos </td>
-   <td style="text-align:left;"> LAO </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 15.9713775 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High-income Asia Pacific </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.0111823 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Honduras </td>
-   <td style="text-align:left;"> HND </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 9.2534302 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Papua New Guinea </td>
-   <td style="text-align:left;"> PNG </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 18.2086404 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nicaragua </td>
-   <td style="text-align:left;"> NIC </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 6.7068221 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Western Europe </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.0211374 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United Kingdom </td>
-   <td style="text-align:left;"> GBR </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.0059594 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bosnia and Herzegovina </td>
-   <td style="text-align:left;"> BIH </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 3.0710116 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Barbados </td>
-   <td style="text-align:left;"> BRB </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.0153112 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Monaco </td>
-   <td style="text-align:left;"> MCO </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.0034548 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uzbekistan </td>
-   <td style="text-align:left;"> UZB </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 4.5967983 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Commonwealth </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 9.1945020 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Germany </td>
-   <td style="text-align:left;"> DEU </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.0060995 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eastern Mediterranean Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 9.9833582 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eastern Mediterranean Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 6.6203075 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kuwait </td>
-   <td style="text-align:left;"> KWT </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.0322184 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Commonwealth Low Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 12.4502635 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Europe &amp; Central Asia - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.5509287 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Somalia </td>
-   <td style="text-align:left;"> SOM </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 16.2068380 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malta </td>
-   <td style="text-align:left;"> MLT </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.0273253 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Micronesia (country) </td>
-   <td style="text-align:left;"> FSM </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 11.7393775 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Equatorial Guinea </td>
-   <td style="text-align:left;"> GNQ </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 13.5882288 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Trinidad and Tobago </td>
-   <td style="text-align:left;"> TTO </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.0147606 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Kitts and Nevis </td>
-   <td style="text-align:left;"> KNA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.2097574 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Libya </td>
-   <td style="text-align:left;"> LBY </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 1.2773506 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Namibia </td>
-   <td style="text-align:left;"> NAM </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 5.7212322 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nordic Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.0042563 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Canada </td>
-   <td style="text-align:left;"> CAN </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.0060451 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Jordan </td>
-   <td style="text-align:left;"> JOR </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.0236265 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Vietnam </td>
-   <td style="text-align:left;"> VNM </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 8.1869971 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zimbabwe </td>
-   <td style="text-align:left;"> ZWE </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 6.6611121 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zambia </td>
-   <td style="text-align:left;"> ZMB </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 9.2179973 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Commonwealth </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 11.1562919 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Andorra </td>
-   <td style="text-align:left;"> AND </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.0072572 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> San Marino </td>
-   <td style="text-align:left;"> SMR </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.0088176 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Switzerland </td>
-   <td style="text-align:left;"> CHE </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.0033128 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gabon </td>
-   <td style="text-align:left;"> GAB </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 8.0033895 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Trinidad and Tobago </td>
-   <td style="text-align:left;"> TTO </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0118828 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kenya </td>
-   <td style="text-align:left;"> KEN </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 8.6536784 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Poland </td>
-   <td style="text-align:left;"> POL </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 1.1367042 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Seychelles </td>
-   <td style="text-align:left;"> SYC </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.5738356 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Western Pacific Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 4.3842848 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tuvalu </td>
-   <td style="text-align:left;"> TUV </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 9.4021355 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ireland </td>
-   <td style="text-align:left;"> IRL </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.0258116 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bangladesh </td>
-   <td style="text-align:left;"> BGD </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 16.2293767 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sudan </td>
-   <td style="text-align:left;"> SDN </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 6.8852244 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Vanuatu </td>
-   <td style="text-align:left;"> VUT </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 16.9196783 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Germany </td>
-   <td style="text-align:left;"> DEU </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.0036544 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Switzerland </td>
-   <td style="text-align:left;"> CHE </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.0025411 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Commonwealth Middle Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 12.9604635 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Slovakia </td>
-   <td style="text-align:left;"> SVK </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.0735551 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> San Marino </td>
-   <td style="text-align:left;"> SMR </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.0110815 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Costa Rica </td>
-   <td style="text-align:left;"> CRI </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 3.9987363 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belgium </td>
-   <td style="text-align:left;"> BEL </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 0.0079514 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central Latin America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 2.8002202 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Netherlands </td>
-   <td style="text-align:left;"> NLD </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 0.0196343 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cambodia </td>
-   <td style="text-align:left;"> KHM </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 16.9592512 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United Kingdom </td>
-   <td style="text-align:left;"> GBR </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.0068631 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> China </td>
-   <td style="text-align:left;"> CHN </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 4.1892687 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Azerbaijan </td>
-   <td style="text-align:left;"> AZE </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 1.2455126 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 8.6332432 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greenland </td>
-   <td style="text-align:left;"> GRL </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.0782769 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oman </td>
-   <td style="text-align:left;"> OMN </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.2756892 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eastern Mediterranean Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 9.6453177 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nauru </td>
-   <td style="text-align:left;"> NRU </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 3.4539612 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bangladesh </td>
-   <td style="text-align:left;"> BGD </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 13.2256805 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United States Virgin Islands </td>
-   <td style="text-align:left;"> VIR </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.1658192 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> European Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 1.2637585 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kuwait </td>
-   <td style="text-align:left;"> KWT </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.2000318 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Monaco </td>
-   <td style="text-align:left;"> MCO </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.0051934 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belize </td>
-   <td style="text-align:left;"> BLZ </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 4.7953511 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uzbekistan </td>
-   <td style="text-align:left;"> UZB </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 5.9958917 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> East Asia </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 9.1883590 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guatemala </td>
-   <td style="text-align:left;"> GTM </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 10.1803154 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Albania </td>
-   <td style="text-align:left;"> ALB </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 11.7288648 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guatemala </td>
-   <td style="text-align:left;"> GTM </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 12.3197442 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bhutan </td>
-   <td style="text-align:left;"> BTN </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 16.0166185 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bhutan </td>
-   <td style="text-align:left;"> BTN </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 16.8582869 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Russia </td>
-   <td style="text-align:left;"> RUS </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 0.6008857 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 2.5344362 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belgium </td>
-   <td style="text-align:left;"> BEL </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.0055406 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cote d'Ivoire </td>
-   <td style="text-align:left;"> CIV </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 12.3713289 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Region of the Americas </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 1.3692890 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Region of the Americas </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.9501793 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Indonesia </td>
-   <td style="text-align:left;"> IDN </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 4.9492931 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guam </td>
-   <td style="text-align:left;"> GUM </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.7278198 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Comoros </td>
-   <td style="text-align:left;"> COM </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 11.5266531 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bulgaria </td>
-   <td style="text-align:left;"> BGR </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 2.1216908 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malaysia </td>
-   <td style="text-align:left;"> MYS </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0621769 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sub-Saharan Africa - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 10.0560847 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> European Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.5542395 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kyrgyzstan </td>
-   <td style="text-align:left;"> KGZ </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 5.3185225 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sri Lanka </td>
-   <td style="text-align:left;"> LKA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 7.2033650 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kiribati </td>
-   <td style="text-align:left;"> KIR </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 12.9361854 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Andean Latin America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 5.3022713 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uganda </td>
-   <td style="text-align:left;"> UGA </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 10.7603984 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uganda </td>
-   <td style="text-align:left;"> UGA </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 11.0921403 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Paraguay </td>
-   <td style="text-align:left;"> PRY </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 10.4460577 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> England </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.0067631 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> African Union </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 9.9244462 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ethiopia </td>
-   <td style="text-align:left;"> ETH </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 13.7730160 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bulgaria </td>
-   <td style="text-align:left;"> BGR </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 1.9522489 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bhutan </td>
-   <td style="text-align:left;"> BTN </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 14.1871892 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burundi </td>
-   <td style="text-align:left;"> BDI </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 11.6002963 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lesotho </td>
-   <td style="text-align:left;"> LSO </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 7.8888260 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahrain </td>
-   <td style="text-align:left;"> BHR </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.1646319 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank Lower Middle Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 11.1052667 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mozambique </td>
-   <td style="text-align:left;"> MOZ </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 11.2644510 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Andorra </td>
-   <td style="text-align:left;"> AND </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.0224718 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> India </td>
-   <td style="text-align:left;"> IND </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 13.2429023 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cameroon </td>
-   <td style="text-align:left;"> CMR </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 10.8428439 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Taiwan </td>
-   <td style="text-align:left;"> TWN </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.3338341 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central sub-Saharan Africa </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 13.1024006 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Portugal </td>
-   <td style="text-align:left;"> PRT </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.0832746 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Palau </td>
-   <td style="text-align:left;"> PLW </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0054239 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sub-Saharan Africa - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 10.0787669 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lebanon </td>
-   <td style="text-align:left;"> LBN </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 0.3505340 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Taiwan </td>
-   <td style="text-align:left;"> TWN </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.2584735 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Solomon Islands </td>
-   <td style="text-align:left;"> SLB </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 21.6829164 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Denmark </td>
-   <td style="text-align:left;"> DNK </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.0199561 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Iraq </td>
-   <td style="text-align:left;"> IRQ </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.0498369 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oman </td>
-   <td style="text-align:left;"> OMN </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.0733006 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Niger </td>
-   <td style="text-align:left;"> NER </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 15.5552787 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belarus </td>
-   <td style="text-align:left;"> BLR </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.5201996 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zambia </td>
-   <td style="text-align:left;"> ZMB </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 8.7373614 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Luxembourg </td>
-   <td style="text-align:left;"> LUX </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.0076711 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bhutan </td>
-   <td style="text-align:left;"> BTN </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 9.6499440 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cameroon </td>
-   <td style="text-align:left;"> CMR </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 7.2319903 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Region of the Americas </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 1.5029386 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saudi Arabia </td>
-   <td style="text-align:left;"> SAU </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 0.5765383 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kazakhstan </td>
-   <td style="text-align:left;"> KAZ </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 4.8927055 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North Macedonia </td>
-   <td style="text-align:left;"> MKD </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 2.2500858 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cuba </td>
-   <td style="text-align:left;"> CUB </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.9415282 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.9404450 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Grenada </td>
-   <td style="text-align:left;"> GRD </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.3135422 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Commonwealth Middle Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 12.5545742 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.0695242 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Democratic Republic of Congo </td>
-   <td style="text-align:left;"> COD </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 13.9609107 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Colombia </td>
-   <td style="text-align:left;"> COL </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 1.9095838 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahamas </td>
-   <td style="text-align:left;"> BHS </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.2231704 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Azerbaijan </td>
-   <td style="text-align:left;"> AZE </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 6.8820465 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bulgaria </td>
-   <td style="text-align:left;"> BGR </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 2.6610390 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greenland </td>
-   <td style="text-align:left;"> GRL </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 0.4178627 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oman </td>
-   <td style="text-align:left;"> OMN </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 1.2787333 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Iceland </td>
-   <td style="text-align:left;"> ISL </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 0.0144635 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Latin America &amp; Caribbean - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 2.9039448 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 9.1493245 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Switzerland </td>
-   <td style="text-align:left;"> CHE </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.0037919 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Commonwealth </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 6.7675466 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank Upper Middle Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 6.7317939 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cook Islands </td>
-   <td style="text-align:left;"> COK </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.9931056 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> China </td>
-   <td style="text-align:left;"> CHN </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 5.8357908 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> China </td>
-   <td style="text-align:left;"> CHN </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 3.6458340 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bhutan </td>
-   <td style="text-align:left;"> BTN </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 10.3210941 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Norway </td>
-   <td style="text-align:left;"> NOR </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.0054778 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Suriname </td>
-   <td style="text-align:left;"> SUR </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 2.6686830 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 5.0004248 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Moldova </td>
-   <td style="text-align:left;"> MDA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.7682268 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Seychelles </td>
-   <td style="text-align:left;"> SYC </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 0.4406791 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World </td>
-   <td style="text-align:left;"> OWID_WRL </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 8.0016246 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank Upper Middle Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 4.1592222 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bolivia </td>
-   <td style="text-align:left;"> BOL </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 4.4992946 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Madagascar </td>
-   <td style="text-align:left;"> MDG </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 15.7018447 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Norway </td>
-   <td style="text-align:left;"> NOR </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.0061874 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> El Salvador </td>
-   <td style="text-align:left;"> SLV </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 8.1897872 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tropical Latin America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 1.1283149 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bolivia </td>
-   <td style="text-align:left;"> BOL </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 3.0969712 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> G20 </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 5.8241543 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Armenia </td>
-   <td style="text-align:left;"> ARM </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.5170710 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Northern Mariana Islands </td>
-   <td style="text-align:left;"> MNP </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 1.4350683 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Vietnam </td>
-   <td style="text-align:left;"> VNM </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 12.2880557 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> European Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.4627848 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mali </td>
-   <td style="text-align:left;"> MLI </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 12.0292209 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guatemala </td>
-   <td style="text-align:left;"> GTM </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 9.5292344 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Jamaica </td>
-   <td style="text-align:left;"> JAM </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 1.5660270 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank Lower Middle Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 8.8201100 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> New Zealand </td>
-   <td style="text-align:left;"> NZL </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 0.0258375 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Rwanda </td>
-   <td style="text-align:left;"> RWA </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 12.4402843 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Germany </td>
-   <td style="text-align:left;"> DEU </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.0057289 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> France </td>
-   <td style="text-align:left;"> FRA </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0061163 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Taiwan </td>
-   <td style="text-align:left;"> TWN </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.2887360 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mauritania </td>
-   <td style="text-align:left;"> MRT </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 9.5510992 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Chad </td>
-   <td style="text-align:left;"> TCD </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 14.2215819 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Syria </td>
-   <td style="text-align:left;"> SYR </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0191769 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 2.1358313 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Congo </td>
-   <td style="text-align:left;"> COG </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 6.1773078 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> European Union </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.2340701 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nauru </td>
-   <td style="text-align:left;"> NRU </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 1.1973862 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Sudan </td>
-   <td style="text-align:left;"> SSD </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 12.9538817 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guinea-Bissau </td>
-   <td style="text-align:left;"> GNB </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 13.6074143 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kuwait </td>
-   <td style="text-align:left;"> KWT </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.0547346 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kyrgyzstan </td>
-   <td style="text-align:left;"> KGZ </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 9.2638990 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eswatini </td>
-   <td style="text-align:left;"> SWZ </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 12.5965593 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> France </td>
-   <td style="text-align:left;"> FRA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.0113505 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Fiji </td>
-   <td style="text-align:left;"> FJI </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 10.9546380 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Madagascar </td>
-   <td style="text-align:left;"> MDG </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 15.0060057 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zambia </td>
-   <td style="text-align:left;"> ZMB </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 7.5972692 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 7.0713615 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Austria </td>
-   <td style="text-align:left;"> AUT </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.0337791 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Commonwealth Middle Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 9.5896392 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ukraine </td>
-   <td style="text-align:left;"> UKR </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.5973472 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Thailand </td>
-   <td style="text-align:left;"> THA </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 4.2775202 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ireland </td>
-   <td style="text-align:left;"> IRL </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.0552709 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cook Islands </td>
-   <td style="text-align:left;"> COK </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 1.7473516 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Commonwealth </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 10.1504786 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Serbia </td>
-   <td style="text-align:left;"> SRB </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 5.5759715 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Armenia </td>
-   <td style="text-align:left;"> ARM </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 1.0514637 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Albania </td>
-   <td style="text-align:left;"> ALB </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 8.6579762 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Singapore </td>
-   <td style="text-align:left;"> SGP </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.0506696 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wales </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 0.0126236 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United Arab Emirates </td>
-   <td style="text-align:left;"> ARE </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.0803153 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Czechia </td>
-   <td style="text-align:left;"> CZE </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.3117833 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Region of the Americas </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 1.7255631 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Brunei </td>
-   <td style="text-align:left;"> BRN </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.1254024 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belize </td>
-   <td style="text-align:left;"> BLZ </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 2.2085104 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Jamaica </td>
-   <td style="text-align:left;"> JAM </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 4.5080322 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 9.1272339 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Russia </td>
-   <td style="text-align:left;"> RUS </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.1901960 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tuvalu </td>
-   <td style="text-align:left;"> TUV </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 9.8398013 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Congo </td>
-   <td style="text-align:left;"> COG </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 7.4229149 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Argentina </td>
-   <td style="text-align:left;"> ARG </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 1.1455105 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uganda </td>
-   <td style="text-align:left;"> UGA </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 9.6942785 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Austria </td>
-   <td style="text-align:left;"> AUT </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.0471325 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Yemen </td>
-   <td style="text-align:left;"> YEM </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 8.1044221 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Andean Latin America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 2.4362972 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank High Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.0820107 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mozambique </td>
-   <td style="text-align:left;"> MOZ </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 11.6596677 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eastern Mediterranean Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 8.2003493 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North Macedonia </td>
-   <td style="text-align:left;"> MKD </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 4.7697229 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Poland </td>
-   <td style="text-align:left;"> POL </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 1.1914561 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Albania </td>
-   <td style="text-align:left;"> ALB </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 11.0776800 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Romania </td>
-   <td style="text-align:left;"> ROU </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 1.0338452 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Low SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 13.4804093 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tropical Latin America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 3.3783700 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gabon </td>
-   <td style="text-align:left;"> GAB </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 6.5020456 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Andean Latin America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 3.3395796 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.0411691 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Suriname </td>
-   <td style="text-align:left;"> SUR </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 1.0526031 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nepal </td>
-   <td style="text-align:left;"> NPL </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 19.1749025 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ethiopia </td>
-   <td style="text-align:left;"> ETH </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 13.1900885 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cook Islands </td>
-   <td style="text-align:left;"> COK </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.5291710 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lesotho </td>
-   <td style="text-align:left;"> LSO </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 6.7974925 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Georgia </td>
-   <td style="text-align:left;"> GEO </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 4.5711953 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Russia </td>
-   <td style="text-align:left;"> RUS </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.8229886 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Antigua and Barbuda </td>
-   <td style="text-align:left;"> ATG </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.5393477 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Romania </td>
-   <td style="text-align:left;"> ROU </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 1.2031370 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Switzerland </td>
-   <td style="text-align:left;"> CHE </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.0022276 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Comoros </td>
-   <td style="text-align:left;"> COM </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 13.8885141 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saudi Arabia </td>
-   <td style="text-align:left;"> SAU </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.1698285 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Croatia </td>
-   <td style="text-align:left;"> HRV </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.4185579 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Jamaica </td>
-   <td style="text-align:left;"> JAM </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 1.6521907 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> El Salvador </td>
-   <td style="text-align:left;"> SLV </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 8.5087565 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 0.0139653 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sudan </td>
-   <td style="text-align:left;"> SDN </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 16.4773493 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ecuador </td>
-   <td style="text-align:left;"> ECU </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 1.0408222 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Egypt </td>
-   <td style="text-align:left;"> EGY </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.0204645 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> New Zealand </td>
-   <td style="text-align:left;"> NZL </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.0083834 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central Latin America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 1.9283576 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Commonwealth Low Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 11.7699174 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mauritania </td>
-   <td style="text-align:left;"> MRT </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 11.7424561 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United States </td>
-   <td style="text-align:left;"> USA </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 0.0125522 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Caribbean </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 4.5534112 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tropical Latin America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 4.1924062 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belarus </td>
-   <td style="text-align:left;"> BLR </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.5467896 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cuba </td>
-   <td style="text-align:left;"> CUB </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.3333128 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Western Pacific Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 11.6198507 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belarus </td>
-   <td style="text-align:left;"> BLR </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.1318992 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Asia - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 12.4937801 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> India </td>
-   <td style="text-align:left;"> IND </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 7.5165893 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Honduras </td>
-   <td style="text-align:left;"> HND </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 10.3026372 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Angola </td>
-   <td style="text-align:left;"> AGO </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 9.2332871 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Costa Rica </td>
-   <td style="text-align:left;"> CRI </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.8711315 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Andean Latin America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 3.2194181 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank Low Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 12.8359651 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tajikistan </td>
-   <td style="text-align:left;"> TJK </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 14.2734759 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Palau </td>
-   <td style="text-align:left;"> PLW </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.0076840 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burundi </td>
-   <td style="text-align:left;"> BDI </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 13.4564221 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Singapore </td>
-   <td style="text-align:left;"> SGP </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.0222953 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sri Lanka </td>
-   <td style="text-align:left;"> LKA </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 9.0339934 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greenland </td>
-   <td style="text-align:left;"> GRL </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.1075665 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Northern Mariana Islands </td>
-   <td style="text-align:left;"> MNP </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 1.3109977 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Austria </td>
-   <td style="text-align:left;"> AUT </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.0600036 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Djibouti </td>
-   <td style="text-align:left;"> DJI </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 3.9946442 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Azerbaijan </td>
-   <td style="text-align:left;"> AZE </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 5.7170194 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gambia </td>
-   <td style="text-align:left;"> GMB </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 13.4310566 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Turkey </td>
-   <td style="text-align:left;"> TUR </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 0.4050764 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Kitts and Nevis </td>
-   <td style="text-align:left;"> KNA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.4878139 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North Macedonia </td>
-   <td style="text-align:left;"> MKD </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 2.6368676 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burundi </td>
-   <td style="text-align:left;"> BDI </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 11.9234281 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guinea-Bissau </td>
-   <td style="text-align:left;"> GNB </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 13.1030618 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Iraq </td>
-   <td style="text-align:left;"> IRQ </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 1.1378094 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> G20 </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 4.4263382 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saudi Arabia </td>
-   <td style="text-align:left;"> SAU </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 1.3151415 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Sudan </td>
-   <td style="text-align:left;"> SSD </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 11.3875708 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zimbabwe </td>
-   <td style="text-align:left;"> ZWE </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 5.4997178 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Serbia </td>
-   <td style="text-align:left;"> SRB </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 2.6718435 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oman </td>
-   <td style="text-align:left;"> OMN </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 1.6053418 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Colombia </td>
-   <td style="text-align:left;"> COL </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 1.3778889 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High-income Asia Pacific </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.0077756 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Russia </td>
-   <td style="text-align:left;"> RUS </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.5732084 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Solomon Islands </td>
-   <td style="text-align:left;"> SLB </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 22.7121603 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High-income Asia Pacific </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.0394707 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Togo </td>
-   <td style="text-align:left;"> TGO </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 13.4332770 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Australia </td>
-   <td style="text-align:left;"> AUS </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 0.0297665 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 7.6684620 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Timor </td>
-   <td style="text-align:left;"> TLS </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 14.0847614 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Azerbaijan </td>
-   <td style="text-align:left;"> AZE </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 6.9118831 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kyrgyzstan </td>
-   <td style="text-align:left;"> KGZ </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 8.3646495 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Kitts and Nevis </td>
-   <td style="text-align:left;"> KNA </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.1834207 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> African Union </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 8.7746878 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North Korea </td>
-   <td style="text-align:left;"> PRK </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 14.2576120 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 8.1503363 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uruguay </td>
-   <td style="text-align:left;"> URY </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 0.2684852 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Antigua and Barbuda </td>
-   <td style="text-align:left;"> ATG </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.0951739 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Myanmar </td>
-   <td style="text-align:left;"> MMR </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 13.1928786 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Chad </td>
-   <td style="text-align:left;"> TCD </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 15.0199634 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lesotho </td>
-   <td style="text-align:left;"> LSO </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 6.2920446 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kiribati </td>
-   <td style="text-align:left;"> KIR </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 13.0341736 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 2.0510728 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Chile </td>
-   <td style="text-align:left;"> CHL </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.2871091 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sweden </td>
-   <td style="text-align:left;"> SWE </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.0067117 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guatemala </td>
-   <td style="text-align:left;"> GTM </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 7.8534187 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Vietnam </td>
-   <td style="text-align:left;"> VNM </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 12.9604696 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World </td>
-   <td style="text-align:left;"> OWID_WRL </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 5.2887832 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Western Pacific Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 12.5393049 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North Macedonia </td>
-   <td style="text-align:left;"> MKD </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 3.1225053 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dominica </td>
-   <td style="text-align:left;"> DMA </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 3.8841532 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Middle SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 9.6485303 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank Low Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 12.8144218 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bermuda </td>
-   <td style="text-align:left;"> BMU </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 1.1686602 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belize </td>
-   <td style="text-align:left;"> BLZ </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 2.1048609 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kyrgyzstan </td>
-   <td style="text-align:left;"> KGZ </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 8.8691815 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Portugal </td>
-   <td style="text-align:left;"> PRT </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.0943631 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 1.0449172 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Spain </td>
-   <td style="text-align:left;"> ESP </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.0961369 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Serbia </td>
-   <td style="text-align:left;"> SRB </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 4.5949909 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Spain </td>
-   <td style="text-align:left;"> ESP </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.0751082 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Chad </td>
-   <td style="text-align:left;"> TCD </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 14.0484834 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Northern Mariana Islands </td>
-   <td style="text-align:left;"> MNP </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 1.4886395 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Iran </td>
-   <td style="text-align:left;"> IRN </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 0.6631788 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Maldives </td>
-   <td style="text-align:left;"> MDV </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 8.5496596 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North Korea </td>
-   <td style="text-align:left;"> PRK </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 14.5882417 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Caribbean </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 4.3068434 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Yemen </td>
-   <td style="text-align:left;"> YEM </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 16.3752740 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Panama </td>
-   <td style="text-align:left;"> PAN </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 4.2928954 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Low-middle SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 8.4019887 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Rwanda </td>
-   <td style="text-align:left;"> RWA </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 11.4026733 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tajikistan </td>
-   <td style="text-align:left;"> TJK </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 10.7598057 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malawi </td>
-   <td style="text-align:left;"> MWI </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 11.7670883 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Marshall Islands </td>
-   <td style="text-align:left;"> MHL </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 8.4012709 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Marshall Islands </td>
-   <td style="text-align:left;"> MHL </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 7.2468545 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nordic Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0034689 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Australia </td>
-   <td style="text-align:left;"> AUS </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.0152345 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Hungary </td>
-   <td style="text-align:left;"> HUN </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 3.1379206 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Low SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 13.2508565 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Chad </td>
-   <td style="text-align:left;"> TCD </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 14.4128892 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cuba </td>
-   <td style="text-align:left;"> CUB </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.2005403 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Australia </td>
-   <td style="text-align:left;"> AUS </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 0.0129695 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uruguay </td>
-   <td style="text-align:left;"> URY </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.6097369 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Chad </td>
-   <td style="text-align:left;"> TCD </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 14.5448740 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tropical Latin America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 4.4643357 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank Upper Middle Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 4.8138519 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Democratic Republic of Congo </td>
-   <td style="text-align:left;"> COD </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 13.8866046 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guyana </td>
-   <td style="text-align:left;"> GUY </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 1.8384354 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United States Virgin Islands </td>
-   <td style="text-align:left;"> VIR </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.0714985 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lesotho </td>
-   <td style="text-align:left;"> LSO </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 9.2115069 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Democratic Republic of Congo </td>
-   <td style="text-align:left;"> COD </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 13.6680958 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guinea-Bissau </td>
-   <td style="text-align:left;"> GNB </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 13.6599469 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Southern sub-Saharan Africa </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 2.9127462 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eritrea </td>
-   <td style="text-align:left;"> ERI </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 11.0868256 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guinea-Bissau </td>
-   <td style="text-align:left;"> GNB </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 13.5338109 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Democratic Republic of Congo </td>
-   <td style="text-align:left;"> COD </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 12.9270090 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Democratic Republic of Congo </td>
-   <td style="text-align:left;"> COD </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 13.0527479 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Honduras </td>
-   <td style="text-align:left;"> HND </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 11.4888664 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mali </td>
-   <td style="text-align:left;"> MLI </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 11.9223974 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central Europe, Eastern Europe, and Central Asia </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 1.3529459 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sri Lanka </td>
-   <td style="text-align:left;"> LKA </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 9.7970156 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> China </td>
-   <td style="text-align:left;"> CHN </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 14.2701518 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greenland </td>
-   <td style="text-align:left;"> GRL </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.5601366 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Jordan </td>
-   <td style="text-align:left;"> JOR </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.0064954 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Southeast Asia, East Asia, and Oceania </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 4.9107205 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Serbia </td>
-   <td style="text-align:left;"> SRB </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 6.0909041 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cook Islands </td>
-   <td style="text-align:left;"> COK </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 1.0564229 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ukraine </td>
-   <td style="text-align:left;"> UKR </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 1.0661723 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Djibouti </td>
-   <td style="text-align:left;"> DJI </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 3.9054039 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Vanuatu </td>
-   <td style="text-align:left;"> VUT </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 16.4150521 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central Latin America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 3.4195112 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Southeast Asia, East Asia, and Oceania </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 4.0227090 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tanzania </td>
-   <td style="text-align:left;"> TZA </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 10.0815513 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sub-Saharan Africa - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 10.4543098 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High-income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.0610627 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Commonwealth High Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.0275567 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Morocco </td>
-   <td style="text-align:left;"> MAR </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 4.4449132 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lithuania </td>
-   <td style="text-align:left;"> LTU </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.6909350 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High-income North America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.0114950 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Australia </td>
-   <td style="text-align:left;"> AUS </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.0818778 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Norway </td>
-   <td style="text-align:left;"> NOR </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 0.0044716 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central African Republic </td>
-   <td style="text-align:left;"> CAF </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 11.6057974 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Western sub-Saharan Africa </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 10.8404438 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Switzerland </td>
-   <td style="text-align:left;"> CHE </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 0.0060547 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nauru </td>
-   <td style="text-align:left;"> NRU </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 3.7616087 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Andorra </td>
-   <td style="text-align:left;"> AND </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.0091054 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> New Zealand </td>
-   <td style="text-align:left;"> NZL </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.0347436 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Peru </td>
-   <td style="text-align:left;"> PER </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 4.6000382 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Asia - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 7.9488895 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North Africa and Middle East </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 1.6359190 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Europe </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 0.6525236 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Haiti </td>
-   <td style="text-align:left;"> HTI </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 14.1148572 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central Asia </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 4.0409036 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Italy </td>
-   <td style="text-align:left;"> ITA </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0196384 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> East Asia &amp; Pacific - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 10.9241690 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Korea </td>
-   <td style="text-align:left;"> KOR </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.0173286 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Angola </td>
-   <td style="text-align:left;"> AGO </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 6.3938366 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> China </td>
-   <td style="text-align:left;"> CHN </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 10.1952124 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United Kingdom </td>
-   <td style="text-align:left;"> GBR </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.0023732 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Canada </td>
-   <td style="text-align:left;"> CAN </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.0462655 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gambia </td>
-   <td style="text-align:left;"> GMB </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 12.8469956 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Palau </td>
-   <td style="text-align:left;"> PLW </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.0072145 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Benin </td>
-   <td style="text-align:left;"> BEN </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 14.0399735 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dominica </td>
-   <td style="text-align:left;"> DMA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.9993708 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Taiwan </td>
-   <td style="text-align:left;"> TWN </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.5020841 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Grenada </td>
-   <td style="text-align:left;"> GRD </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 1.1477200 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belarus </td>
-   <td style="text-align:left;"> BLR </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.7671521 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kuwait </td>
-   <td style="text-align:left;"> KWT </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.0192658 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Sudan </td>
-   <td style="text-align:left;"> SSD </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 13.2033478 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malta </td>
-   <td style="text-align:left;"> MLT </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.0151035 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank High Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 0.2876696 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Canada </td>
-   <td style="text-align:left;"> CAN </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.0324045 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mozambique </td>
-   <td style="text-align:left;"> MOZ </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 11.0756016 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oman </td>
-   <td style="text-align:left;"> OMN </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.1482649 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Serbia </td>
-   <td style="text-align:left;"> SRB </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 2.5015739 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bolivia </td>
-   <td style="text-align:left;"> BOL </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 5.8876651 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Latvia </td>
-   <td style="text-align:left;"> LVA </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 1.0434472 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tropical Latin America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 2.0692777 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central Europe </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 1.9937585 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zimbabwe </td>
-   <td style="text-align:left;"> ZWE </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 5.1299406 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tropical Latin America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 3.7659751 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Palau </td>
-   <td style="text-align:left;"> PLW </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.0074873 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Finland </td>
-   <td style="text-align:left;"> FIN </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.0244447 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bulgaria </td>
-   <td style="text-align:left;"> BGR </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 1.7619021 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Middle SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 8.1569650 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Asia - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 9.2130045 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nicaragua </td>
-   <td style="text-align:left;"> NIC </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 9.5541664 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Micronesia (country) </td>
-   <td style="text-align:left;"> FSM </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 10.0364639 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ethiopia </td>
-   <td style="text-align:left;"> ETH </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 13.4866128 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Comoros </td>
-   <td style="text-align:left;"> COM </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 11.9762299 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nordic Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.0095790 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahamas </td>
-   <td style="text-align:left;"> BHS </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.1255229 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Palestine </td>
-   <td style="text-align:left;"> PSE </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.2297153 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Algeria </td>
-   <td style="text-align:left;"> DZA </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 1.4358729 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> African Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 11.3655608 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oceania </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 16.8262553 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Palau </td>
-   <td style="text-align:left;"> PLW </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.0078171 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nicaragua </td>
-   <td style="text-align:left;"> NIC </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 11.0709031 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank Low Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 12.9836768 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Spain </td>
-   <td style="text-align:left;"> ESP </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 0.1891824 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Haiti </td>
-   <td style="text-align:left;"> HTI </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 14.2018764 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malta </td>
-   <td style="text-align:left;"> MLT </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.0304598 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Commonwealth High Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.0050937 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Democratic Republic of Congo </td>
-   <td style="text-align:left;"> COD </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 13.9696439 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Albania </td>
-   <td style="text-align:left;"> ALB </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 10.1474871 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Moldova </td>
-   <td style="text-align:left;"> MDA </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.9012332 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ireland </td>
-   <td style="text-align:left;"> IRL </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.0389680 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nicaragua </td>
-   <td style="text-align:left;"> NIC </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 12.8844131 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Grenada </td>
-   <td style="text-align:left;"> GRD </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 5.3977060 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Botswana </td>
-   <td style="text-align:left;"> BWA </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 7.3992531 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Timor </td>
-   <td style="text-align:left;"> TLS </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 16.7600818 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Finland </td>
-   <td style="text-align:left;"> FIN </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.0449629 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sao Tome and Principe </td>
-   <td style="text-align:left;"> STP </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 11.8579416 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High-middle SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 4.3748065 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Antigua and Barbuda </td>
-   <td style="text-align:left;"> ATG </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 0.3038435 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malta </td>
-   <td style="text-align:left;"> MLT </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.1463832 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ghana </td>
-   <td style="text-align:left;"> GHA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 6.7881944 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gambia </td>
-   <td style="text-align:left;"> GMB </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 12.2692492 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Equatorial Guinea </td>
-   <td style="text-align:left;"> GNQ </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 9.7996837 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Brunei </td>
-   <td style="text-align:left;"> BRN </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.0473346 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.0053219 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oman </td>
-   <td style="text-align:left;"> OMN </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 0.6891378 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mali </td>
-   <td style="text-align:left;"> MLI </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 12.2627504 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Commonwealth </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 11.4226106 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Western Europe </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.0844285 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Australasia </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.0137151 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Libya </td>
-   <td style="text-align:left;"> LBY </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 1.9803572 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mauritania </td>
-   <td style="text-align:left;"> MRT </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 8.2537875 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Switzerland </td>
-   <td style="text-align:left;"> CHE </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.0043229 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dominica </td>
-   <td style="text-align:left;"> DMA </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 2.2841734 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Argentina </td>
-   <td style="text-align:left;"> ARG </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 1.5501160 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lebanon </td>
-   <td style="text-align:left;"> LBN </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0311279 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Seychelles </td>
-   <td style="text-align:left;"> SYC </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.3811987 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cyprus </td>
-   <td style="text-align:left;"> CYP </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.0100260 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Caribbean </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 4.0195325 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sri Lanka </td>
-   <td style="text-align:left;"> LKA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 6.7478651 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> China </td>
-   <td style="text-align:left;"> CHN </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 4.7240482 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sri Lanka </td>
-   <td style="text-align:left;"> LKA </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 7.7771074 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bosnia and Herzegovina </td>
-   <td style="text-align:left;"> BIH </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 6.8825575 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central African Republic </td>
-   <td style="text-align:left;"> CAF </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 11.7509982 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Japan </td>
-   <td style="text-align:left;"> JPN </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.0685294 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahamas </td>
-   <td style="text-align:left;"> BHS </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0836090 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Antigua and Barbuda </td>
-   <td style="text-align:left;"> ATG </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 0.1470257 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nepal </td>
-   <td style="text-align:left;"> NPL </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 11.7972579 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Syria </td>
-   <td style="text-align:left;"> SYR </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.0573102 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tuvalu </td>
-   <td style="text-align:left;"> TUV </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 10.7149943 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mozambique </td>
-   <td style="text-align:left;"> MOZ </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 12.4566492 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lebanon </td>
-   <td style="text-align:left;"> LBN </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.2583759 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cameroon </td>
-   <td style="text-align:left;"> CMR </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 8.4411343 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Grenada </td>
-   <td style="text-align:left;"> GRD </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.6121057 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sri Lanka </td>
-   <td style="text-align:left;"> LKA </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 6.1075044 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Fiji </td>
-   <td style="text-align:left;"> FJI </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 9.0859204 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Commonwealth </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 9.3535386 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nepal </td>
-   <td style="text-align:left;"> NPL </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 19.2775016 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahrain </td>
-   <td style="text-align:left;"> BHR </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.5512204 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eritrea </td>
-   <td style="text-align:left;"> ERI </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 11.7615545 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahamas </td>
-   <td style="text-align:left;"> BHS </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0772799 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Jordan </td>
-   <td style="text-align:left;"> JOR </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.0118614 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Panama </td>
-   <td style="text-align:left;"> PAN </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 2.7851487 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Hungary </td>
-   <td style="text-align:left;"> HUN </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 1.3981036 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahrain </td>
-   <td style="text-align:left;"> BHR </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 0.2577698 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gambia </td>
-   <td style="text-align:left;"> GMB </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 12.3082649 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Romania </td>
-   <td style="text-align:left;"> ROU </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 3.4931676 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belize </td>
-   <td style="text-align:left;"> BLZ </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 2.9204376 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> OECD Countries </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.5894371 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Switzerland </td>
-   <td style="text-align:left;"> CHE </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.0086789 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nauru </td>
-   <td style="text-align:left;"> NRU </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 1.9335063 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank Lower Middle Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 9.5464337 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Lucia </td>
-   <td style="text-align:left;"> LCA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 1.1153519 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Iran </td>
-   <td style="text-align:left;"> IRN </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.0569716 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central sub-Saharan Africa </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 12.1438785 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Asia - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 10.5623414 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mauritania </td>
-   <td style="text-align:left;"> MRT </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 10.5084133 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bulgaria </td>
-   <td style="text-align:left;"> BGR </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 2.0352975 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dominican Republic </td>
-   <td style="text-align:left;"> DOM </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 2.4065143 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Australia </td>
-   <td style="text-align:left;"> AUS </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.0205728 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guatemala </td>
-   <td style="text-align:left;"> GTM </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 11.6386342 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Kitts and Nevis </td>
-   <td style="text-align:left;"> KNA </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.8567867 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lesotho </td>
-   <td style="text-align:left;"> LSO </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 8.4922225 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belize </td>
-   <td style="text-align:left;"> BLZ </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 1.9918647 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Puerto Rico </td>
-   <td style="text-align:left;"> PRI </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 0.0061467 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nicaragua </td>
-   <td style="text-align:left;"> NIC </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 8.8739632 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mauritius </td>
-   <td style="text-align:left;"> MUS </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.2614547 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Middle SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 4.8957934 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Iceland </td>
-   <td style="text-align:left;"> ISL </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.0064226 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Portugal </td>
-   <td style="text-align:left;"> PRT </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.0657934 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bulgaria </td>
-   <td style="text-align:left;"> BGR </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 1.5279286 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eastern Europe </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.4659834 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank Lower Middle Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 9.7245532 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> East Asia </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 11.5426306 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Estonia </td>
-   <td style="text-align:left;"> EST </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 1.1707756 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Democratic Republic of Congo </td>
-   <td style="text-align:left;"> COD </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 13.7257003 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Yemen </td>
-   <td style="text-align:left;"> YEM </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 9.4088512 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central sub-Saharan Africa </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 12.4378853 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Southern sub-Saharan Africa </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 3.2625961 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ukraine </td>
-   <td style="text-align:left;"> UKR </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.4064623 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Angola </td>
-   <td style="text-align:left;"> AGO </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 10.7048161 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Maldives </td>
-   <td style="text-align:left;"> MDV </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 3.4215694 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.0253547 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Monaco </td>
-   <td style="text-align:left;"> MCO </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.0055420 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Panama </td>
-   <td style="text-align:left;"> PAN </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 3.3868979 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> China </td>
-   <td style="text-align:left;"> CHN </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 5.0577285 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> New Zealand </td>
-   <td style="text-align:left;"> NZL </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.0427216 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Turkmenistan </td>
-   <td style="text-align:left;"> TKM </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.1977537 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Andorra </td>
-   <td style="text-align:left;"> AND </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.0205019 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North Macedonia </td>
-   <td style="text-align:left;"> MKD </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 2.8849773 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.1903519 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Barbados </td>
-   <td style="text-align:left;"> BRB </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 0.0240997 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United States Virgin Islands </td>
-   <td style="text-align:left;"> VIR </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.1127859 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sierra Leone </td>
-   <td style="text-align:left;"> SLE </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 13.6265159 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cambodia </td>
-   <td style="text-align:left;"> KHM </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 13.9595188 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Turkmenistan </td>
-   <td style="text-align:left;"> TKM </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.0549753 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Suriname </td>
-   <td style="text-align:left;"> SUR </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 5.2357850 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Palestine </td>
-   <td style="text-align:left;"> PSE </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 4.4090738 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Latin America &amp; Caribbean - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 1.7151023 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sao Tome and Principe </td>
-   <td style="text-align:left;"> STP </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 11.4643056 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Monaco </td>
-   <td style="text-align:left;"> MCO </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.0113475 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sao Tome and Principe </td>
-   <td style="text-align:left;"> STP </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 15.8957191 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tanzania </td>
-   <td style="text-align:left;"> TZA </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 11.6116832 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Norway </td>
-   <td style="text-align:left;"> NOR </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.0167524 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 9.6018980 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Niue </td>
-   <td style="text-align:left;"> NIU </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.7381483 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> OECD Countries </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.3589399 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bolivia </td>
-   <td style="text-align:left;"> BOL </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 4.0903796 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eastern Mediterranean Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 4.9015451 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 7.4968948 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Armenia </td>
-   <td style="text-align:left;"> ARM </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 4.0882094 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> England </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.0054902 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Estonia </td>
-   <td style="text-align:left;"> EST </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 2.1108380 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dominica </td>
-   <td style="text-align:left;"> DMA </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 3.1863588 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Australasia </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.0104732 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Turkey </td>
-   <td style="text-align:left;"> TUR </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 2.5690001 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central Europe, Eastern Europe, and Central Asia </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 1.8027397 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 2.4760796 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lesotho </td>
-   <td style="text-align:left;"> LSO </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 12.1841394 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Pakistan </td>
-   <td style="text-align:left;"> PAK </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 14.6818811 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eastern Mediterranean Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 8.8065230 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North Africa and Middle East </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 5.4348259 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Niger </td>
-   <td style="text-align:left;"> NER </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 14.9432977 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Suriname </td>
-   <td style="text-align:left;"> SUR </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 1.6919531 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Madagascar </td>
-   <td style="text-align:left;"> MDG </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 15.9669389 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Puerto Rico </td>
-   <td style="text-align:left;"> PRI </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 0.0048893 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Asia </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 6.0927902 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nepal </td>
-   <td style="text-align:left;"> NPL </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 17.7859915 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Palestine </td>
-   <td style="text-align:left;"> PSE </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.1792879 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dominica </td>
-   <td style="text-align:left;"> DMA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 1.1229164 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Pakistan </td>
-   <td style="text-align:left;"> PAK </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 14.8442356 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Estonia </td>
-   <td style="text-align:left;"> EST </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.2434099 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nordic Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 0.0063458 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Chile </td>
-   <td style="text-align:left;"> CHL </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.4754833 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Korea </td>
-   <td style="text-align:left;"> KOR </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.1673087 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Peru </td>
-   <td style="text-align:left;"> PER </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 3.0872609 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Hungary </td>
-   <td style="text-align:left;"> HUN </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 1.5233016 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Iceland </td>
-   <td style="text-align:left;"> ISL </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 0.0271083 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Indonesia </td>
-   <td style="text-align:left;"> IDN </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 8.7302517 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tuvalu </td>
-   <td style="text-align:left;"> TUV </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 1.9665773 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lesotho </td>
-   <td style="text-align:left;"> LSO </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 6.0782067 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tanzania </td>
-   <td style="text-align:left;"> TZA </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 10.0495791 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Egypt </td>
-   <td style="text-align:left;"> EGY </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 1.7940815 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North Africa and Middle East </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 2.9253453 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uruguay </td>
-   <td style="text-align:left;"> URY </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.3249201 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kyrgyzstan </td>
-   <td style="text-align:left;"> KGZ </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 9.5406908 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Monaco </td>
-   <td style="text-align:left;"> MCO </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.0035755 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belize </td>
-   <td style="text-align:left;"> BLZ </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 5.3871223 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greenland </td>
-   <td style="text-align:left;"> GRL </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.2272300 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> New Zealand </td>
-   <td style="text-align:left;"> NZL </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.0491932 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kyrgyzstan </td>
-   <td style="text-align:left;"> KGZ </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 4.5455530 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World </td>
-   <td style="text-align:left;"> OWID_WRL </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 4.3120033 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sao Tome and Principe </td>
-   <td style="text-align:left;"> STP </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 15.9772938 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Commonwealth Low Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 12.8177369 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uzbekistan </td>
-   <td style="text-align:left;"> UZB </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 3.9728704 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Taiwan </td>
-   <td style="text-align:left;"> TWN </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 3.0126214 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> El Salvador </td>
-   <td style="text-align:left;"> SLV </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 3.8066775 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mexico </td>
-   <td style="text-align:left;"> MEX </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 1.8827323 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank Lower Middle Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 6.8464591 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Andean Latin America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 1.8939562 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bhutan </td>
-   <td style="text-align:left;"> BTN </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 9.9622425 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bhutan </td>
-   <td style="text-align:left;"> BTN </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 8.8375793 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kazakhstan </td>
-   <td style="text-align:left;"> KAZ </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 1.8313944 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Congo </td>
-   <td style="text-align:left;"> COG </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 10.7580464 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bolivia </td>
-   <td style="text-align:left;"> BOL </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 5.0700935 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malaysia </td>
-   <td style="text-align:left;"> MYS </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.1103692 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sri Lanka </td>
-   <td style="text-align:left;"> LKA </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 8.8453062 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tajikistan </td>
-   <td style="text-align:left;"> TJK </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 8.3618321 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North Macedonia </td>
-   <td style="text-align:left;"> MKD </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 2.5353913 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Western Europe </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.0546687 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Kitts and Nevis </td>
-   <td style="text-align:left;"> KNA </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.5874217 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Italy </td>
-   <td style="text-align:left;"> ITA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.0218189 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 5.7762011 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Asia </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 12.9871908 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mauritius </td>
-   <td style="text-align:left;"> MUS </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.8940656 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Fiji </td>
-   <td style="text-align:left;"> FJI </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 6.0118348 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central Asia </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 3.5675743 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oman </td>
-   <td style="text-align:left;"> OMN </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.8499383 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.7492422 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lesotho </td>
-   <td style="text-align:left;"> LSO </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 7.1076933 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guam </td>
-   <td style="text-align:left;"> GUM </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.4464930 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0049759 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> New Zealand </td>
-   <td style="text-align:left;"> NZL </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.0565388 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Europe </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 0.3675598 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Denmark </td>
-   <td style="text-align:left;"> DNK </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.0171292 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Taiwan </td>
-   <td style="text-align:left;"> TWN </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.3139359 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tuvalu </td>
-   <td style="text-align:left;"> TUV </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 2.3139860 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Iraq </td>
-   <td style="text-align:left;"> IRQ </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.0959510 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Croatia </td>
-   <td style="text-align:left;"> HRV </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.3439251 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High-income North America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.0171498 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Taiwan </td>
-   <td style="text-align:left;"> TWN </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.7133242 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank High Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.4100918 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Finland </td>
-   <td style="text-align:left;"> FIN </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 0.0187513 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cook Islands </td>
-   <td style="text-align:left;"> COK </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 0.9131933 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Australia </td>
-   <td style="text-align:left;"> AUS </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 0.0742023 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mauritius </td>
-   <td style="text-align:left;"> MUS </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.1875371 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ecuador </td>
-   <td style="text-align:left;"> ECU </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.8026813 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greenland </td>
-   <td style="text-align:left;"> GRL </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.1536472 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saudi Arabia </td>
-   <td style="text-align:left;"> SAU </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.3171967 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Monaco </td>
-   <td style="text-align:left;"> MCO </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.0042901 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 6.0100089 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High-income Asia Pacific </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.0275276 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Haiti </td>
-   <td style="text-align:left;"> HTI </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 14.3145106 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burundi </td>
-   <td style="text-align:left;"> BDI </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 11.1591901 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Niue </td>
-   <td style="text-align:left;"> NIU </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 0.8079687 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Singapore </td>
-   <td style="text-align:left;"> SGP </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 0.3094763 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Libya </td>
-   <td style="text-align:left;"> LBY </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 1.5779557 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Madagascar </td>
-   <td style="text-align:left;"> MDG </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 16.5287524 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahrain </td>
-   <td style="text-align:left;"> BHR </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.1886161 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oceania </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 17.0322426 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Equatorial Guinea </td>
-   <td style="text-align:left;"> GNQ </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 4.8877087 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Indonesia </td>
-   <td style="text-align:left;"> IDN </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 7.0407006 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> El Salvador </td>
-   <td style="text-align:left;"> SLV </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 2.3433598 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guatemala </td>
-   <td style="text-align:left;"> GTM </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 8.1476820 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Portugal </td>
-   <td style="text-align:left;"> PRT </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.0338699 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uganda </td>
-   <td style="text-align:left;"> UGA </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 9.8315678 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Suriname </td>
-   <td style="text-align:left;"> SUR </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 5.3991153 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Jamaica </td>
-   <td style="text-align:left;"> JAM </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 1.6109776 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Australia </td>
-   <td style="text-align:left;"> AUS </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.0340468 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Armenia </td>
-   <td style="text-align:left;"> ARM </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 3.7138637 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Madagascar </td>
-   <td style="text-align:left;"> MDG </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 15.2293539 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Turkmenistan </td>
-   <td style="text-align:left;"> TKM </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0169501 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High-income North America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.0194730 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central Europe </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 1.5590816 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.5202984 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Timor </td>
-   <td style="text-align:left;"> TLS </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 14.3904842 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Serbia </td>
-   <td style="text-align:left;"> SRB </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 1.8118834 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Armenia </td>
-   <td style="text-align:left;"> ARM </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 4.0661884 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Monaco </td>
-   <td style="text-align:left;"> MCO </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.0103633 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Israel </td>
-   <td style="text-align:left;"> ISR </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0079605 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.0232463 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Africa </td>
-   <td style="text-align:left;"> ZAF </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 1.7998612 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Region of the Americas </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 2.6933925 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Caribbean </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 5.4952707 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Namibia </td>
-   <td style="text-align:left;"> NAM </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 6.1990923 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central sub-Saharan Africa </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 12.6175255 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> African Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 10.4303371 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank Low Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 13.1992605 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uruguay </td>
-   <td style="text-align:left;"> URY </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.3653479 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Western Pacific Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 3.9391313 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guam </td>
-   <td style="text-align:left;"> GUM </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 0.5570615 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Norway </td>
-   <td style="text-align:left;"> NOR </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.0032395 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zimbabwe </td>
-   <td style="text-align:left;"> ZWE </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 8.2714381 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bosnia and Herzegovina </td>
-   <td style="text-align:left;"> BIH </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 6.0389087 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Timor </td>
-   <td style="text-align:left;"> TLS </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 17.2819321 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Trinidad and Tobago </td>
-   <td style="text-align:left;"> TTO </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.0265480 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Madagascar </td>
-   <td style="text-align:left;"> MDG </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 16.5900533 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 7.9039286 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Western Pacific Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 8.5996505 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Scotland </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.0025828 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gabon </td>
-   <td style="text-align:left;"> GAB </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 3.6509812 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sub-Saharan Africa - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 10.9499078 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Norway </td>
-   <td style="text-align:left;"> NOR </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.0215507 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Turkey </td>
-   <td style="text-align:left;"> TUR </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.3056999 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Latin America &amp; Caribbean - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 2.1792623 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kazakhstan </td>
-   <td style="text-align:left;"> KAZ </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 3.7619058 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eastern sub-Saharan Africa </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 11.8472956 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Portugal </td>
-   <td style="text-align:left;"> PRT </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 0.4130288 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> European Union </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.4601322 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahamas </td>
-   <td style="text-align:left;"> BHS </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 0.4394926 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahrain </td>
-   <td style="text-align:left;"> BHR </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 0.8127544 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zambia </td>
-   <td style="text-align:left;"> ZMB </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 7.9461389 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Taiwan </td>
-   <td style="text-align:left;"> TWN </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 1.7429286 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank Lower Middle Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 9.7896303 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Italy </td>
-   <td style="text-align:left;"> ITA </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.1484981 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Low-middle SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 8.0850621 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Comoros </td>
-   <td style="text-align:left;"> COM </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 14.4199438 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Barbados </td>
-   <td style="text-align:left;"> BRB </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 0.0254471 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Latin America &amp; Caribbean - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 3.2373785 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burundi </td>
-   <td style="text-align:left;"> BDI </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 14.4220801 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Europe </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.2798643 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cambodia </td>
-   <td style="text-align:left;"> KHM </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 16.0265455 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Germany </td>
-   <td style="text-align:left;"> DEU </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.0044754 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zimbabwe </td>
-   <td style="text-align:left;"> ZWE </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 8.6588180 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eritrea </td>
-   <td style="text-align:left;"> ERI </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 11.2328369 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wales </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 0.0042764 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Papua New Guinea </td>
-   <td style="text-align:left;"> PNG </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 19.6579131 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Singapore </td>
-   <td style="text-align:left;"> SGP </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0092563 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guyana </td>
-   <td style="text-align:left;"> GUY </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 3.0904560 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central Europe </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 3.5080964 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tunisia </td>
-   <td style="text-align:left;"> TUN </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.2544714 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Serbia </td>
-   <td style="text-align:left;"> SRB </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 1.8981464 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kiribati </td>
-   <td style="text-align:left;"> KIR </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 13.1019384 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Monaco </td>
-   <td style="text-align:left;"> MCO </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.0075531 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central Asia </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 6.3791790 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sudan </td>
-   <td style="text-align:left;"> SDN </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 12.6278016 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High-middle SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 5.2457238 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High-income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.1108133 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nigeria </td>
-   <td style="text-align:left;"> NGA </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 11.9047286 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Slovakia </td>
-   <td style="text-align:left;"> SVK </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.3380206 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Italy </td>
-   <td style="text-align:left;"> ITA </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 0.0588638 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Peru </td>
-   <td style="text-align:left;"> PER </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 4.1324464 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Southeast Asia, East Asia, and Oceania </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 6.4473802 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High-income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.0340070 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guatemala </td>
-   <td style="text-align:left;"> GTM </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 8.4837610 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Slovenia </td>
-   <td style="text-align:left;"> SVN </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.3347933 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burkina Faso </td>
-   <td style="text-align:left;"> BFA </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 13.3897464 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Suriname </td>
-   <td style="text-align:left;"> SUR </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 3.0785722 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Myanmar </td>
-   <td style="text-align:left;"> MMR </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 14.0682215 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saudi Arabia </td>
-   <td style="text-align:left;"> SAU </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.2098420 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahrain </td>
-   <td style="text-align:left;"> BHR </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0394449 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Egypt </td>
-   <td style="text-align:left;"> EGY </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0124433 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central Europe </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 3.3951408 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Serbia </td>
-   <td style="text-align:left;"> SRB </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 2.8495061 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Northern Mariana Islands </td>
-   <td style="text-align:left;"> MNP </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 1.4482527 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Brunei </td>
-   <td style="text-align:left;"> BRN </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0379083 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United States Virgin Islands </td>
-   <td style="text-align:left;"> VIR </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0604517 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kazakhstan </td>
-   <td style="text-align:left;"> KAZ </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 5.5164908 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mozambique </td>
-   <td style="text-align:left;"> MOZ </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 11.8076598 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Singapore </td>
-   <td style="text-align:left;"> SGP </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.3650727 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 1.2513883 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World Bank Low Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 12.8059645 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Paraguay </td>
-   <td style="text-align:left;"> PRY </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 7.5178725 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Brunei </td>
-   <td style="text-align:left;"> BRN </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.9742741 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 8.4379430 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Lucia </td>
-   <td style="text-align:left;"> LCA </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 2.6960222 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Qatar </td>
-   <td style="text-align:left;"> QAT </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0009699 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cook Islands </td>
-   <td style="text-align:left;"> COK </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.4144030 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United States Virgin Islands </td>
-   <td style="text-align:left;"> VIR </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0622449 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kazakhstan </td>
-   <td style="text-align:left;"> KAZ </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 3.3491985 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Niue </td>
-   <td style="text-align:left;"> NIU </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 3.0131686 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Georgia </td>
-   <td style="text-align:left;"> GEO </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 5.7557152 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Montenegro </td>
-   <td style="text-align:left;"> MNE </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 4.4535541 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dominican Republic </td>
-   <td style="text-align:left;"> DOM </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 4.5384980 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bulgaria </td>
-   <td style="text-align:left;"> BGR </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 1.3926602 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Western Pacific Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 5.9756664 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Brazil </td>
-   <td style="text-align:left;"> BRA </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 1.7393342 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Chile </td>
-   <td style="text-align:left;"> CHL </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 2.7866860 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guyana </td>
-   <td style="text-align:left;"> GUY </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 2.8897128 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Canada </td>
-   <td style="text-align:left;"> CAN </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.0072974 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Region of the Americas </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 1.3394503 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> New Zealand </td>
-   <td style="text-align:left;"> NZL </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.0324117 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cameroon </td>
-   <td style="text-align:left;"> CMR </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 10.4336772 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Togo </td>
-   <td style="text-align:left;"> TGO </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 11.4668298 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Portugal </td>
-   <td style="text-align:left;"> PRT </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.0489390 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Marshall Islands </td>
-   <td style="text-align:left;"> MHL </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 7.8753813 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mozambique </td>
-   <td style="text-align:left;"> MOZ </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 13.1712110 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Europe &amp; Central Asia - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.7309796 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bosnia and Herzegovina </td>
-   <td style="text-align:left;"> BIH </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 4.3370607 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Serbia </td>
-   <td style="text-align:left;"> SRB </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 5.7504492 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Suriname </td>
-   <td style="text-align:left;"> SUR </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 2.4757711 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> China </td>
-   <td style="text-align:left;"> CHN </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 16.8848148 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Brunei </td>
-   <td style="text-align:left;"> BRN </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 0.7343526 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Iceland </td>
-   <td style="text-align:left;"> ISL </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 0.0118440 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Libya </td>
-   <td style="text-align:left;"> LBY </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0285320 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cambodia </td>
-   <td style="text-align:left;"> KHM </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 13.1810901 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Madagascar </td>
-   <td style="text-align:left;"> MDG </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 15.9242344 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Argentina </td>
-   <td style="text-align:left;"> ARG </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.6447004 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Southeast Asia </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 7.9833290 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gabon </td>
-   <td style="text-align:left;"> GAB </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 3.9330900 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burkina Faso </td>
-   <td style="text-align:left;"> BFA </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 12.4894469 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Commonwealth Low Income </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 12.4482133 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Turkey </td>
-   <td style="text-align:left;"> TUR </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 0.7117030 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Europe </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 1.1920815 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> India </td>
-   <td style="text-align:left;"> IND </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 11.0724215 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Senegal </td>
-   <td style="text-align:left;"> SEN </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 11.2294396 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Niger </td>
-   <td style="text-align:left;"> NER </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 15.2807980 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ireland </td>
-   <td style="text-align:left;"> IRL </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.0765467 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Togo </td>
-   <td style="text-align:left;"> TGO </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 11.2973583 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Low SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 13.2338357 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lithuania </td>
-   <td style="text-align:left;"> LTU </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.3431521 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Europe </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.6965142 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Middle SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 3.7435437 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Maldives </td>
-   <td style="text-align:left;"> MDV </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 2.1198738 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Samoa </td>
-   <td style="text-align:left;"> WSM </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 12.9503494 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Canada </td>
-   <td style="text-align:left;"> CAN </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.0390340 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Samoa </td>
-   <td style="text-align:left;"> WSM </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 12.7718099 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Europe </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.3914385 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Papua New Guinea </td>
-   <td style="text-align:left;"> PNG </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 18.0870849 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Trinidad and Tobago </td>
-   <td style="text-align:left;"> TTO </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0112223 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Papua New Guinea </td>
-   <td style="text-align:left;"> PNG </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 20.4576727 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Democratic Republic of Congo </td>
-   <td style="text-align:left;"> COD </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 13.1200952 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Trinidad and Tobago </td>
-   <td style="text-align:left;"> TTO </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.0379728 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> East Asia &amp; Pacific - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 8.6860520 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High-income North America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.0053098 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Niger </td>
-   <td style="text-align:left;"> NER </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 15.0513520 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Monaco </td>
-   <td style="text-align:left;"> MCO </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.0045777 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mexico </td>
-   <td style="text-align:left;"> MEX </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 1.5487657 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uganda </td>
-   <td style="text-align:left;"> UGA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 10.4650646 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greece </td>
-   <td style="text-align:left;"> GRC </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0338629 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gabon </td>
-   <td style="text-align:left;"> GAB </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.8412269 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Pakistan </td>
-   <td style="text-align:left;"> PAK </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 13.7415948 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Solomon Islands </td>
-   <td style="text-align:left;"> SLB </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 22.4676620 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uzbekistan </td>
-   <td style="text-align:left;"> UZB </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 7.1733753 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> France </td>
-   <td style="text-align:left;"> FRA </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 0.0217976 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Czechia </td>
-   <td style="text-align:left;"> CZE </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.1230394 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burkina Faso </td>
-   <td style="text-align:left;"> BFA </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 12.5760943 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Niue </td>
-   <td style="text-align:left;"> NIU </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 1.1193768 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Northern Mariana Islands </td>
-   <td style="text-align:left;"> MNP </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 1.6824670 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Poland </td>
-   <td style="text-align:left;"> POL </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 1.3145120 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central Latin America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 3.5432416 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World </td>
-   <td style="text-align:left;"> OWID_WRL </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 8.2395933 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Vincent and the Grenadines </td>
-   <td style="text-align:left;"> VCT </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.4460764 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Paraguay </td>
-   <td style="text-align:left;"> PRY </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 7.9217311 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sub-Saharan Africa - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 12.2562284 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Chad </td>
-   <td style="text-align:left;"> TCD </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 14.7100376 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Luxembourg </td>
-   <td style="text-align:left;"> LUX </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.0222305 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Israel </td>
-   <td style="text-align:left;"> ISR </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 0.0322603 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Low-middle SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 14.7423912 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Middle SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 5.1826203 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kiribati </td>
-   <td style="text-align:left;"> KIR </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 13.6793235 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Low SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 14.1895916 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Niger </td>
-   <td style="text-align:left;"> NER </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 15.2360185 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High-middle SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 1.7379653 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malta </td>
-   <td style="text-align:left;"> MLT </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.0161693 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uganda </td>
-   <td style="text-align:left;"> UGA </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 9.7972500 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bangladesh </td>
-   <td style="text-align:left;"> BGD </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 16.4799806 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Europe &amp; Central Asia - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.3900354 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Timor </td>
-   <td style="text-align:left;"> TLS </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 16.0571777 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nauru </td>
-   <td style="text-align:left;"> NRU </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 2.0486356 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sudan </td>
-   <td style="text-align:left;"> SDN </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 13.4001563 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central sub-Saharan Africa </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 12.6277460 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greenland </td>
-   <td style="text-align:left;"> GRL </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 0.1003583 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Botswana </td>
-   <td style="text-align:left;"> BWA </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 3.7404509 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cambodia </td>
-   <td style="text-align:left;"> KHM </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 17.6327191 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gambia </td>
-   <td style="text-align:left;"> GMB </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 12.0493126 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Namibia </td>
-   <td style="text-align:left;"> NAM </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 6.0396492 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sierra Leone </td>
-   <td style="text-align:left;"> SLE </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 13.5518537 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Jordan </td>
-   <td style="text-align:left;"> JOR </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.3528376 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Hungary </td>
-   <td style="text-align:left;"> HUN </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 1.8903005 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Paraguay </td>
-   <td style="text-align:left;"> PRY </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 6.2344802 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Europe </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.5733973 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 7.9963125 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Haiti </td>
-   <td style="text-align:left;"> HTI </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 14.0613882 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Kitts and Nevis </td>
-   <td style="text-align:left;"> KNA </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.7102436 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uruguay </td>
-   <td style="text-align:left;"> URY </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 1.3099788 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.0456026 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central Asia </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 6.7447254 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> European Region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.4936316 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oceania </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 18.2172282 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> High SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.0836771 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cote d'Ivoire </td>
-   <td style="text-align:left;"> CIV </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 10.8569786 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lebanon </td>
-   <td style="text-align:left;"> LBN </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.1865496 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Brazil </td>
-   <td style="text-align:left;"> BRA </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 1.6214570 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Turkmenistan </td>
-   <td style="text-align:left;"> TKM </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.0365777 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> San Marino </td>
-   <td style="text-align:left;"> SMR </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.0066797 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Czechia </td>
-   <td style="text-align:left;"> CZE </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0682705 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Equatorial Guinea </td>
-   <td style="text-align:left;"> GNQ </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 13.3115748 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Congo </td>
-   <td style="text-align:left;"> COG </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 11.1998879 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Iraq </td>
-   <td style="text-align:left;"> IRQ </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.6244037 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Vietnam </td>
-   <td style="text-align:left;"> VNM </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 5.5723214 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Puerto Rico </td>
-   <td style="text-align:left;"> PRI </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.0036953 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Congo </td>
-   <td style="text-align:left;"> COG </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 8.2025782 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nigeria </td>
-   <td style="text-align:left;"> NGA </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 11.2497211 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malaysia </td>
-   <td style="text-align:left;"> MYS </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.0882370 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> World </td>
-   <td style="text-align:left;"> OWID_WRL </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 4.1004453 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Palau </td>
-   <td style="text-align:left;"> PLW </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 0.0114576 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Vincent and the Grenadines </td>
-   <td style="text-align:left;"> VCT </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.4717296 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Democratic Republic of Congo </td>
-   <td style="text-align:left;"> COD </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 13.2330455 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nepal </td>
-   <td style="text-align:left;"> NPL </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 18.1164538 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gambia </td>
-   <td style="text-align:left;"> GMB </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 11.9713955 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nigeria </td>
-   <td style="text-align:left;"> NGA </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 7.8136066 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oceania </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 17.1231719 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Latin America &amp; Caribbean - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 2.5351766 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eswatini </td>
-   <td style="text-align:left;"> SWZ </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 6.0456604 </td>
-  </tr>
-</tbody>
-</table>
-
-`````
-
-:::
-:::
 
 ::: {.cell}
 
@@ -7489,19 +251,19 @@ exploratory_data %>%
 <tbody>
   <tr>
    <td style="text-align:left;"> Lowest percentage of deaths </td>
-   <td style="text-align:right;"> 0.0009699 </td>
+   <td style="text-align:right;"> 0.0008376 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Highest percentage of deaths </td>
-   <td style="text-align:right;"> 22.7121603 </td>
+   <td style="text-align:right;"> 23.3369531 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> average percentage of deaths </td>
-   <td style="text-align:right;"> 5.3165906 </td>
+   <td style="text-align:right;"> 5.3095275 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Standard deviation </td>
-   <td style="text-align:right;"> 5.4820048 </td>
+   <td style="text-align:right;"> 5.5925460 </td>
   </tr>
 </tbody>
 </table>
@@ -7550,7 +312,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `country_region = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -7560,7 +322,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `continent = countrycode(entity, origin = "country.name",
   destination = "continent")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -7580,2411 +342,179 @@ Caused by warning in `countrycode_convert()`:
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Bahrain </td>
-   <td style="text-align:left;"> BHR </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.4057527 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 8.8693952 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Libya </td>
-   <td style="text-align:left;"> LBY </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.0378761 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Yemen </td>
-   <td style="text-align:left;"> YEM </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 11.5590243 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burkina Faso </td>
-   <td style="text-align:left;"> BFA </td>
+   <td style="text-align:left;"> Uruguay </td>
+   <td style="text-align:left;"> URY </td>
    <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 13.0706554 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Slovenia </td>
-   <td style="text-align:left;"> SVN </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.4538219 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Canada </td>
-   <td style="text-align:left;"> CAN </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.0030871 </td>
-   <td style="text-align:left;"> North America </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Andorra </td>
-   <td style="text-align:left;"> AND </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.0049303 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Pakistan </td>
-   <td style="text-align:left;"> PAK </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 14.0504010 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 7.3628956 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Colombia </td>
-   <td style="text-align:left;"> COL </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 1.4997920 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belgium </td>
-   <td style="text-align:left;"> BEL </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.0241643 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burundi </td>
-   <td style="text-align:left;"> BDI </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 14.4646992 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Myanmar </td>
-   <td style="text-align:left;"> MMR </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 16.8526981 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cuba </td>
-   <td style="text-align:left;"> CUB </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 1.0611136 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tanzania </td>
-   <td style="text-align:left;"> TZA </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 10.9464084 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Trinidad and Tobago </td>
-   <td style="text-align:left;"> TTO </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.1352721 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guyana </td>
-   <td style="text-align:left;"> GUY </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 2.9759524 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Marshall Islands </td>
-   <td style="text-align:left;"> MHL </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 6.0218648 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Monaco </td>
-   <td style="text-align:left;"> MCO </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0027212 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kuwait </td>
-   <td style="text-align:left;"> KWT </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.0080734 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Colombia </td>
-   <td style="text-align:left;"> COL </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 2.9281280 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Turkey </td>
-   <td style="text-align:left;"> TUR </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 1.1591007 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Syria </td>
-   <td style="text-align:left;"> SYR </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.0668088 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ethiopia </td>
-   <td style="text-align:left;"> ETH </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 14.1384638 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Norway </td>
-   <td style="text-align:left;"> NOR </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 0.0115676 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Yemen </td>
-   <td style="text-align:left;"> YEM </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 10.4712208 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 8.6057457 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cape Verde </td>
-   <td style="text-align:left;"> CPV </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 9.8333258 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Jordan </td>
-   <td style="text-align:left;"> JOR </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.0091541 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Argentina </td>
-   <td style="text-align:left;"> ARG </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 1.0653694 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eswatini </td>
-   <td style="text-align:left;"> SWZ </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 5.4960827 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United States Virgin Islands </td>
-   <td style="text-align:left;"> VIR </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.2990454 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> China </td>
-   <td style="text-align:left;"> CHN </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 7.9277682 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Puerto Rico </td>
-   <td style="text-align:left;"> PRI </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.0068205 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tuvalu </td>
-   <td style="text-align:left;"> TUV </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 1.5159753 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Pakistan </td>
-   <td style="text-align:left;"> PAK </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 14.4080827 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United States Virgin Islands </td>
-   <td style="text-align:left;"> VIR </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.3569602 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tanzania </td>
-   <td style="text-align:left;"> TZA </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 11.9568481 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> New Zealand </td>
-   <td style="text-align:left;"> NZL </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.0089021 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Congo </td>
-   <td style="text-align:left;"> COG </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 7.9884957 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Japan </td>
-   <td style="text-align:left;"> JPN </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.0434370 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> France </td>
-   <td style="text-align:left;"> FRA </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.0098937 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bosnia and Herzegovina </td>
-   <td style="text-align:left;"> BIH </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 8.8127849 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Northern Mariana Islands </td>
-   <td style="text-align:left;"> MNP </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 1.6666338 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mexico </td>
-   <td style="text-align:left;"> MEX </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 2.5069589 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Andorra </td>
-   <td style="text-align:left;"> AND </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.0056606 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Latvia </td>
-   <td style="text-align:left;"> LVA </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.3526081 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bulgaria </td>
-   <td style="text-align:left;"> BGR </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 1.6146910 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 6.8040477 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Liberia </td>
-   <td style="text-align:left;"> LBR </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 11.8857808 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Thailand </td>
-   <td style="text-align:left;"> THA </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 1.9160959 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Papua New Guinea </td>
-   <td style="text-align:left;"> PNG </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 19.6054069 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Benin </td>
-   <td style="text-align:left;"> BEN </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 12.9631452 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belgium </td>
-   <td style="text-align:left;"> BEL </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 0.0321984 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bermuda </td>
-   <td style="text-align:left;"> BMU </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.4743142 </td>
-   <td style="text-align:left;"> North America </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Croatia </td>
-   <td style="text-align:left;"> HRV </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.3974937 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bhutan </td>
-   <td style="text-align:left;"> BTN </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 11.1391999 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kenya </td>
-   <td style="text-align:left;"> KEN </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 8.9649303 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Botswana </td>
-   <td style="text-align:left;"> BWA </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 11.3452625 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Estonia </td>
-   <td style="text-align:left;"> EST </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 1.3314174 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malawi </td>
-   <td style="text-align:left;"> MWI </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 9.0877181 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uganda </td>
-   <td style="text-align:left;"> UGA </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 11.2007832 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Northern Mariana Islands </td>
-   <td style="text-align:left;"> MNP </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 2.0950392 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Brazil </td>
-   <td style="text-align:left;"> BRA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 2.1047274 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Vincent and the Grenadines </td>
-   <td style="text-align:left;"> VCT </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 2.2713615 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kazakhstan </td>
-   <td style="text-align:left;"> KAZ </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 1.7001212 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> India </td>
-   <td style="text-align:left;"> IND </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 10.2224369 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Germany </td>
-   <td style="text-align:left;"> DEU </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.0050167 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mali </td>
-   <td style="text-align:left;"> MLI </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 12.2514990 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Benin </td>
-   <td style="text-align:left;"> BEN </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 15.1697999 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bolivia </td>
-   <td style="text-align:left;"> BOL </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 8.0195381 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lesotho </td>
-   <td style="text-align:left;"> LSO </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 11.7222435 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Northern Mariana Islands </td>
-   <td style="text-align:left;"> MNP </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 1.5336353 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Egypt </td>
-   <td style="text-align:left;"> EGY </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.6752659 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cape Verde </td>
-   <td style="text-align:left;"> CPV </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 3.8275157 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Romania </td>
-   <td style="text-align:left;"> ROU </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 1.3471102 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Chile </td>
-   <td style="text-align:left;"> CHL </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 2.4568508 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Grenada </td>
-   <td style="text-align:left;"> GRD </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 2.5815078 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Colombia </td>
-   <td style="text-align:left;"> COL </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 2.4365127 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ethiopia </td>
-   <td style="text-align:left;"> ETH </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 13.5529810 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greece </td>
-   <td style="text-align:left;"> GRC </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0321369 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sierra Leone </td>
-   <td style="text-align:left;"> SLE </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 12.7502605 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Slovakia </td>
-   <td style="text-align:left;"> SVK </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.1956476 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Slovakia </td>
-   <td style="text-align:left;"> SVK </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.1226614 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Turkmenistan </td>
-   <td style="text-align:left;"> TKM </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.0483905 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Israel </td>
-   <td style="text-align:left;"> ISR </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.0103194 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nicaragua </td>
-   <td style="text-align:left;"> NIC </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 12.2285878 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burundi </td>
-   <td style="text-align:left;"> BDI </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 13.9319962 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mexico </td>
-   <td style="text-align:left;"> MEX </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 2.4525960 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bosnia and Herzegovina </td>
-   <td style="text-align:left;"> BIH </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 2.9442459 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Democratic Republic of Congo </td>
-   <td style="text-align:left;"> COD </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 13.3306889 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Niger </td>
-   <td style="text-align:left;"> NER </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 14.9544542 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Thailand </td>
-   <td style="text-align:left;"> THA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 3.2861627 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Costa Rica </td>
-   <td style="text-align:left;"> CRI </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.8145899 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Liberia </td>
-   <td style="text-align:left;"> LBR </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 11.9766403 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zimbabwe </td>
-   <td style="text-align:left;"> ZWE </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 7.7332375 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Algeria </td>
-   <td style="text-align:left;"> DZA </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.9594964 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mexico </td>
-   <td style="text-align:left;"> MEX </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 1.9475041 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Algeria </td>
-   <td style="text-align:left;"> DZA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.0491542 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Slovenia </td>
-   <td style="text-align:left;"> SVN </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.4018370 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Trinidad and Tobago </td>
-   <td style="text-align:left;"> TTO </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 0.1137077 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Sudan </td>
-   <td style="text-align:left;"> SSD </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 11.7878075 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 6.6687915 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United States </td>
-   <td style="text-align:left;"> USA </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.0052448 </td>
-   <td style="text-align:left;"> North America </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mauritania </td>
-   <td style="text-align:left;"> MRT </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 12.0011284 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Pakistan </td>
-   <td style="text-align:left;"> PAK </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 8.0570477 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kazakhstan </td>
-   <td style="text-align:left;"> KAZ </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 4.5278589 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mauritius </td>
-   <td style="text-align:left;"> MUS </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 1.1819396 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greenland </td>
-   <td style="text-align:left;"> GRL </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.5498793 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Benin </td>
-   <td style="text-align:left;"> BEN </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 13.1458702 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Madagascar </td>
-   <td style="text-align:left;"> MDG </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 15.1012115 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zambia </td>
-   <td style="text-align:left;"> ZMB </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 9.0153351 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burkina Faso </td>
-   <td style="text-align:left;"> BFA </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 12.2371718 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Netherlands </td>
-   <td style="text-align:left;"> NLD </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0035662 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Vincent and the Grenadines </td>
-   <td style="text-align:left;"> VCT </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.5554104 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dominica </td>
-   <td style="text-align:left;"> DMA </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 2.8894356 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guatemala </td>
-   <td style="text-align:left;"> GTM </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 7.5356191 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Northern Mariana Islands </td>
-   <td style="text-align:left;"> MNP </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 1.8979233 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Vietnam </td>
-   <td style="text-align:left;"> VNM </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 7.1433393 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Trinidad and Tobago </td>
-   <td style="text-align:left;"> TTO </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.0842781 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Botswana </td>
-   <td style="text-align:left;"> BWA </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 4.4951558 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cook Islands </td>
-   <td style="text-align:left;"> COK </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.5530641 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dominican Republic </td>
-   <td style="text-align:left;"> DOM </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 6.9172718 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Comoros </td>
-   <td style="text-align:left;"> COM </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 14.4539622 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cote d'Ivoire </td>
-   <td style="text-align:left;"> CIV </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 11.5817910 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Turkmenistan </td>
-   <td style="text-align:left;"> TKM </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.1220276 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greece </td>
-   <td style="text-align:left;"> GRC </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.0382810 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cyprus </td>
-   <td style="text-align:left;"> CYP </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.0129300 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Panama </td>
-   <td style="text-align:left;"> PAN </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 1.4311926 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Somalia </td>
-   <td style="text-align:left;"> SOM </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 16.4756057 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North Korea </td>
-   <td style="text-align:left;"> PRK </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 13.9080780 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Pakistan </td>
-   <td style="text-align:left;"> PAK </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 11.0844123 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eswatini </td>
-   <td style="text-align:left;"> SWZ </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 5.7469180 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bulgaria </td>
-   <td style="text-align:left;"> BGR </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 2.4046639 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahamas </td>
-   <td style="text-align:left;"> BHS </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.4663663 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zimbabwe </td>
-   <td style="text-align:left;"> ZWE </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 5.6555068 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Honduras </td>
-   <td style="text-align:left;"> HND </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 10.7768316 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Myanmar </td>
-   <td style="text-align:left;"> MMR </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 11.7014490 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malta </td>
-   <td style="text-align:left;"> MLT </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.0764122 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Pakistan </td>
-   <td style="text-align:left;"> PAK </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 12.7979025 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Antigua and Barbuda </td>
-   <td style="text-align:left;"> ATG </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0804177 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Luxembourg </td>
-   <td style="text-align:left;"> LUX </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.0162933 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malta </td>
-   <td style="text-align:left;"> MLT </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.0221702 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Lucia </td>
-   <td style="text-align:left;"> LCA </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.4647087 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Papua New Guinea </td>
-   <td style="text-align:left;"> PNG </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 18.6973951 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Niue </td>
-   <td style="text-align:left;"> NIU </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 4.2325652 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belgium </td>
-   <td style="text-align:left;"> BEL </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.0057823 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Iraq </td>
-   <td style="text-align:left;"> IRQ </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.8945525 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Vanuatu </td>
-   <td style="text-align:left;"> VUT </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 18.0607672 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Brazil </td>
-   <td style="text-align:left;"> BRA </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 1.9708121 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> El Salvador </td>
-   <td style="text-align:left;"> SLV </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 5.0665782 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Djibouti </td>
-   <td style="text-align:left;"> DJI </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 6.2929158 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nigeria </td>
-   <td style="text-align:left;"> NGA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 9.8977260 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Vanuatu </td>
-   <td style="text-align:left;"> VUT </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 16.1228217 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belgium </td>
-   <td style="text-align:left;"> BEL </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 0.0212671 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Vincent and the Grenadines </td>
-   <td style="text-align:left;"> VCT </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 1.3912171 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Yemen </td>
-   <td style="text-align:left;"> YEM </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 16.9539867 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United States </td>
-   <td style="text-align:left;"> USA </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.0155592 </td>
-   <td style="text-align:left;"> North America </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greenland </td>
-   <td style="text-align:left;"> GRL </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.3851072 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ukraine </td>
-   <td style="text-align:left;"> UKR </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.7458095 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Lucia </td>
-   <td style="text-align:left;"> LCA </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 3.6652815 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Djibouti </td>
-   <td style="text-align:left;"> DJI </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 4.0682977 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Israel </td>
-   <td style="text-align:left;"> ISR </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.0473004 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> France </td>
-   <td style="text-align:left;"> FRA </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.0341629 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guatemala </td>
-   <td style="text-align:left;"> GTM </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 10.4729437 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Palau </td>
-   <td style="text-align:left;"> PLW </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.0172425 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nicaragua </td>
-   <td style="text-align:left;"> NIC </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 10.2916910 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guatemala </td>
-   <td style="text-align:left;"> GTM </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 12.1524875 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Madagascar </td>
-   <td style="text-align:left;"> MDG </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 15.8091958 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cape Verde </td>
-   <td style="text-align:left;"> CPV </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 6.2016812 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> American Samoa </td>
-   <td style="text-align:left;"> ASM </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 1.8903796 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Algeria </td>
-   <td style="text-align:left;"> DZA </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 0.5419269 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guyana </td>
-   <td style="text-align:left;"> GUY </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 3.3080429 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Lucia </td>
-   <td style="text-align:left;"> LCA </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 1.3861959 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Papua New Guinea </td>
-   <td style="text-align:left;"> PNG </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 19.5743202 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> China </td>
-   <td style="text-align:left;"> CHN </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 6.7358083 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eswatini </td>
-   <td style="text-align:left;"> SWZ </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 12.2826307 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Morocco </td>
-   <td style="text-align:left;"> MAR </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 2.2428296 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Colombia </td>
-   <td style="text-align:left;"> COL </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 2.8008799 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Japan </td>
-   <td style="text-align:left;"> JPN </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 0.0387259 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Romania </td>
-   <td style="text-align:left;"> ROU </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 4.5339027 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bhutan </td>
-   <td style="text-align:left;"> BTN </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 16.4425484 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Venezuela </td>
-   <td style="text-align:left;"> VEN </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 0.2163430 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Palau </td>
-   <td style="text-align:left;"> PLW </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 0.0093035 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Australia </td>
-   <td style="text-align:left;"> AUS </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 0.0672701 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Vietnam </td>
-   <td style="text-align:left;"> VNM </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 11.1823985 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cuba </td>
-   <td style="text-align:left;"> CUB </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.6644410 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Haiti </td>
-   <td style="text-align:left;"> HTI </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 15.2964069 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Comoros </td>
-   <td style="text-align:left;"> COM </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 12.1082135 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zambia </td>
-   <td style="text-align:left;"> ZMB </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 8.0669923 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Italy </td>
-   <td style="text-align:left;"> ITA </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.0243932 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Armenia </td>
-   <td style="text-align:left;"> ARM </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 2.9911659 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Jamaica </td>
-   <td style="text-align:left;"> JAM </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 1.7382957 </td>
+   <td style="text-align:right;"> 0.1874101 </td>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
    <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Brunei </td>
    <td style="text-align:left;"> BRN </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0394396 </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 0.6344918 </td>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 7.2938072 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
+   <td style="text-align:left;"> Guyana </td>
+   <td style="text-align:left;"> GUY </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 2.0087772 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Georgia </td>
-   <td style="text-align:left;"> GEO </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 7.5630030 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Colombia </td>
-   <td style="text-align:left;"> COL </td>
+   <td style="text-align:left;"> South Africa </td>
+   <td style="text-align:left;"> ZAF </td>
    <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 1.6224319 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
+   <td style="text-align:right;"> 1.5466907 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Haiti </td>
-   <td style="text-align:left;"> HTI </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 14.0648886 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Denmark </td>
-   <td style="text-align:left;"> DNK </td>
+   <td style="text-align:left;"> Finland </td>
+   <td style="text-align:left;"> FIN </td>
    <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 0.0186330 </td>
+   <td style="text-align:right;"> 0.0377372 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Brunei </td>
-   <td style="text-align:left;"> BRN </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 1.1089297 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ethiopia </td>
-   <td style="text-align:left;"> ETH </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 13.2384288 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Azerbaijan </td>
-   <td style="text-align:left;"> AZE </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 1.0134733 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cameroon </td>
-   <td style="text-align:left;"> CMR </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 8.8617136 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Angola </td>
-   <td style="text-align:left;"> AGO </td>
+   <td style="text-align:left;"> Moldova </td>
+   <td style="text-align:left;"> MDA </td>
    <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 10.9940622 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 9.0100198 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Laos </td>
-   <td style="text-align:left;"> LAO </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 15.9713775 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Honduras </td>
-   <td style="text-align:left;"> HND </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 9.2534302 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Papua New Guinea </td>
-   <td style="text-align:left;"> PNG </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 18.2086404 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nicaragua </td>
-   <td style="text-align:left;"> NIC </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 6.7068221 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United Kingdom </td>
-   <td style="text-align:left;"> GBR </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.0059594 </td>
+   <td style="text-align:right;"> 4.4540176 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Bosnia and Herzegovina </td>
-   <td style="text-align:left;"> BIH </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 3.0710116 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Barbados </td>
-   <td style="text-align:left;"> BRB </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.0153112 </td>
+   <td style="text-align:left;"> Saint Lucia </td>
+   <td style="text-align:left;"> LCA </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 1.8253406 </td>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
    <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Monaco </td>
-   <td style="text-align:left;"> MCO </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.0034548 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uzbekistan </td>
-   <td style="text-align:left;"> UZB </td>
+   <td style="text-align:left;"> South Africa </td>
+   <td style="text-align:left;"> ZAF </td>
    <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 4.5967983 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Germany </td>
-   <td style="text-align:left;"> DEU </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.0060995 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kuwait </td>
-   <td style="text-align:left;"> KWT </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.0322184 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Somalia </td>
-   <td style="text-align:left;"> SOM </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 16.2068380 </td>
+   <td style="text-align:right;"> 2.8743014 </td>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Malta </td>
-   <td style="text-align:left;"> MLT </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.0273253 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Belarus </td>
+   <td style="text-align:left;"> BLR </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0.1001278 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Equatorial Guinea </td>
-   <td style="text-align:left;"> GNQ </td>
+   <td style="text-align:left;"> Tokelau </td>
+   <td style="text-align:left;"> TKL </td>
    <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 13.5882288 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Trinidad and Tobago </td>
-   <td style="text-align:left;"> TTO </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.0147606 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Kitts and Nevis </td>
-   <td style="text-align:left;"> KNA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.2097574 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Libya </td>
-   <td style="text-align:left;"> LBY </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 1.2773506 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Namibia </td>
-   <td style="text-align:left;"> NAM </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 5.7212322 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Canada </td>
-   <td style="text-align:left;"> CAN </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.0060451 </td>
-   <td style="text-align:left;"> North America </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Jordan </td>
-   <td style="text-align:left;"> JOR </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.0236265 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Vietnam </td>
-   <td style="text-align:left;"> VNM </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 8.1869971 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zimbabwe </td>
-   <td style="text-align:left;"> ZWE </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 6.6611121 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zambia </td>
-   <td style="text-align:left;"> ZMB </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 9.2179973 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Andorra </td>
-   <td style="text-align:left;"> AND </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.0072572 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> San Marino </td>
-   <td style="text-align:left;"> SMR </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.0088176 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Switzerland </td>
-   <td style="text-align:left;"> CHE </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.0033128 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gabon </td>
-   <td style="text-align:left;"> GAB </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 8.0033895 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Trinidad and Tobago </td>
-   <td style="text-align:left;"> TTO </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0118828 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kenya </td>
-   <td style="text-align:left;"> KEN </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 8.6536784 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Poland </td>
-   <td style="text-align:left;"> POL </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 1.1367042 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Seychelles </td>
-   <td style="text-align:left;"> SYC </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.5738356 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tuvalu </td>
-   <td style="text-align:left;"> TUV </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 9.4021355 </td>
+   <td style="text-align:right;"> 0.0807632 </td>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
    <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ireland </td>
-   <td style="text-align:left;"> IRL </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.0258116 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bangladesh </td>
-   <td style="text-align:left;"> BGD </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 16.2293767 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sudan </td>
-   <td style="text-align:left;"> SDN </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 6.8852244 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Vanuatu </td>
-   <td style="text-align:left;"> VUT </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 16.9196783 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Germany </td>
-   <td style="text-align:left;"> DEU </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.0036544 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Switzerland </td>
-   <td style="text-align:left;"> CHE </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.0025411 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Slovakia </td>
-   <td style="text-align:left;"> SVK </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.0735551 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> San Marino </td>
-   <td style="text-align:left;"> SMR </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.0110815 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Costa Rica </td>
-   <td style="text-align:left;"> CRI </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 3.9987363 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belgium </td>
-   <td style="text-align:left;"> BEL </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 0.0079514 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Netherlands </td>
-   <td style="text-align:left;"> NLD </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 0.0196343 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Cambodia </td>
    <td style="text-align:left;"> KHM </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 16.9592512 </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 17.5798372 </td>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United Kingdom </td>
-   <td style="text-align:left;"> GBR </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.0068631 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> China </td>
-   <td style="text-align:left;"> CHN </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 4.1892687 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Azerbaijan </td>
-   <td style="text-align:left;"> AZE </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 1.2455126 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 8.6332432 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greenland </td>
-   <td style="text-align:left;"> GRL </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.0782769 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oman </td>
-   <td style="text-align:left;"> OMN </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.2756892 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nauru </td>
-   <td style="text-align:left;"> NRU </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 3.4539612 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bangladesh </td>
-   <td style="text-align:left;"> BGD </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 13.2256805 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United States Virgin Islands </td>
-   <td style="text-align:left;"> VIR </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.1658192 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kuwait </td>
-   <td style="text-align:left;"> KWT </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.2000318 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Monaco </td>
    <td style="text-align:left;"> MCO </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.0051934 </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0.0032023 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Belize </td>
-   <td style="text-align:left;"> BLZ </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 4.7953511 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
+   <td style="text-align:left;"> Togo </td>
+   <td style="text-align:left;"> TGO </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 13.9290333 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Uzbekistan </td>
-   <td style="text-align:left;"> UZB </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 5.9958917 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guatemala </td>
-   <td style="text-align:left;"> GTM </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 10.1803154 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Albania </td>
-   <td style="text-align:left;"> ALB </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 11.7288648 </td>
+   <td style="text-align:left;"> France </td>
+   <td style="text-align:left;"> FRA </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 0.0105861 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Guatemala </td>
-   <td style="text-align:left;"> GTM </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 12.3197442 </td>
+   <td style="text-align:left;"> Guyana </td>
+   <td style="text-align:left;"> GUY </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 1.3780406 </td>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
    <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Bhutan </td>
-   <td style="text-align:left;"> BTN </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 16.0166185 </td>
+   <td style="text-align:left;"> Pakistan </td>
+   <td style="text-align:left;"> PAK </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 10.0094442 </td>
    <td style="text-align:left;"> South Asia </td>
    <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bhutan </td>
-   <td style="text-align:left;"> BTN </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 16.8582869 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Russia </td>
-   <td style="text-align:left;"> RUS </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 0.6008857 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belgium </td>
-   <td style="text-align:left;"> BEL </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.0055406 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Cote d'Ivoire </td>
    <td style="text-align:left;"> CIV </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 12.3713289 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Indonesia </td>
-   <td style="text-align:left;"> IDN </td>
    <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 4.9492931 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guam </td>
-   <td style="text-align:left;"> GUM </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.7278198 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Comoros </td>
-   <td style="text-align:left;"> COM </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 11.5266531 </td>
+   <td style="text-align:right;"> 9.9960043 </td>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bulgaria </td>
-   <td style="text-align:left;"> BGR </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 2.1216908 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malaysia </td>
-   <td style="text-align:left;"> MYS </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0621769 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kyrgyzstan </td>
-   <td style="text-align:left;"> KGZ </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 5.3185225 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sri Lanka </td>
-   <td style="text-align:left;"> LKA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 7.2033650 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Kiribati </td>
    <td style="text-align:left;"> KIR </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 12.9361854 </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 13.1474441 </td>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
    <td style="text-align:left;"> Oceania </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Uganda </td>
-   <td style="text-align:left;"> UGA </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 10.7603984 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
+   <td style="text-align:left;"> Slovenia </td>
+   <td style="text-align:left;"> SVN </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 0.5951827 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Uganda </td>
-   <td style="text-align:left;"> UGA </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 11.0921403 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Paraguay </td>
-   <td style="text-align:left;"> PRY </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 10.4460577 </td>
+   <td style="text-align:left;"> Venezuela </td>
+   <td style="text-align:left;"> VEN </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 0.4370129 </td>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
    <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Ethiopia </td>
-   <td style="text-align:left;"> ETH </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 13.7730160 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
+   <td style="text-align:left;"> Peru </td>
+   <td style="text-align:left;"> PER </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 5.3813163 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Bulgaria </td>
-   <td style="text-align:left;"> BGR </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 1.9522489 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bhutan </td>
-   <td style="text-align:left;"> BTN </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 14.1871892 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burundi </td>
-   <td style="text-align:left;"> BDI </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 11.6002963 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lesotho </td>
-   <td style="text-align:left;"> LSO </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 7.8888260 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahrain </td>
-   <td style="text-align:left;"> BHR </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.1646319 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mozambique </td>
-   <td style="text-align:left;"> MOZ </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 11.2644510 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Andorra </td>
-   <td style="text-align:left;"> AND </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.0224718 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> India </td>
-   <td style="text-align:left;"> IND </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 13.2429023 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cameroon </td>
-   <td style="text-align:left;"> CMR </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 10.8428439 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Taiwan </td>
-   <td style="text-align:left;"> TWN </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.3338341 </td>
+   <td style="text-align:left;"> North Korea </td>
+   <td style="text-align:left;"> PRK </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 20.1267041 </td>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Portugal </td>
-   <td style="text-align:left;"> PRT </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.0832746 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Palau </td>
-   <td style="text-align:left;"> PLW </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0054239 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lebanon </td>
-   <td style="text-align:left;"> LBN </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 0.3505340 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Taiwan </td>
-   <td style="text-align:left;"> TWN </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.2584735 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Solomon Islands </td>
-   <td style="text-align:left;"> SLB </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 21.6829164 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Denmark </td>
-   <td style="text-align:left;"> DNK </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.0199561 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Iraq </td>
-   <td style="text-align:left;"> IRQ </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.0498369 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oman </td>
-   <td style="text-align:left;"> OMN </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.0733006 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
@@ -9996,204 +526,260 @@ Caused by warning in `countrycode_convert()`:
    <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Belarus </td>
-   <td style="text-align:left;"> BLR </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.5201996 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zambia </td>
-   <td style="text-align:left;"> ZMB </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 8.7373614 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Luxembourg </td>
-   <td style="text-align:left;"> LUX </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.0076711 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bhutan </td>
-   <td style="text-align:left;"> BTN </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 9.6499440 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cameroon </td>
-   <td style="text-align:left;"> CMR </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 7.2319903 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saudi Arabia </td>
-   <td style="text-align:left;"> SAU </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 0.5765383 </td>
+   <td style="text-align:left;"> Yemen </td>
+   <td style="text-align:left;"> YEM </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 17.1926092 </td>
    <td style="text-align:left;"> Middle East &amp; North Africa </td>
    <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bolivia </td>
+   <td style="text-align:left;"> BOL </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 3.4625731 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Kazakhstan </td>
    <td style="text-align:left;"> KAZ </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 4.8927055 </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 4.7108138 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> North Macedonia </td>
-   <td style="text-align:left;"> MKD </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 2.2500858 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cuba </td>
-   <td style="text-align:left;"> CUB </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.9415282 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
+   <td style="text-align:left;"> Libya </td>
+   <td style="text-align:left;"> LBY </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 0.7039047 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Grenada </td>
    <td style="text-align:left;"> GRD </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.3135422 </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 2.5815078 </td>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
    <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Democratic Republic of Congo </td>
-   <td style="text-align:left;"> COD </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 13.9609107 </td>
+   <td style="text-align:left;"> South Sudan </td>
+   <td style="text-align:left;"> SSD </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 11.6753459 </td>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Colombia </td>
-   <td style="text-align:left;"> COL </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 1.9095838 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
+   <td style="text-align:left;"> Democratic Republic of Congo </td>
+   <td style="text-align:left;"> COD </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 13.3026446 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Bahamas </td>
-   <td style="text-align:left;"> BHS </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.2231704 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Azerbaijan </td>
-   <td style="text-align:left;"> AZE </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 6.8820465 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bulgaria </td>
-   <td style="text-align:left;"> BGR </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 2.6610390 </td>
+   <td style="text-align:left;"> Lithuania </td>
+   <td style="text-align:left;"> LTU </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 0.7278800 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Greenland </td>
-   <td style="text-align:left;"> GRL </td>
+   <td style="text-align:left;"> Mozambique </td>
+   <td style="text-align:left;"> MOZ </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 11.6465602 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Dominica </td>
+   <td style="text-align:left;"> DMA </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 0.6283808 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Zambia </td>
+   <td style="text-align:left;"> ZMB </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 9.0378618 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Chad </td>
+   <td style="text-align:left;"> TCD </td>
    <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 0.4178627 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Americas </td>
+   <td style="text-align:right;"> 14.2308599 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Oman </td>
-   <td style="text-align:left;"> OMN </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 1.2787333 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Iceland </td>
-   <td style="text-align:left;"> ISL </td>
+   <td style="text-align:left;"> Laos </td>
+   <td style="text-align:left;"> LAO </td>
    <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 0.0144635 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 9.1493245 </td>
+   <td style="text-align:right;"> 17.6510981 </td>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Switzerland </td>
-   <td style="text-align:left;"> CHE </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.0037919 </td>
+   <td style="text-align:left;"> Uzbekistan </td>
+   <td style="text-align:left;"> UZB </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 3.5587525 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ireland </td>
+   <td style="text-align:left;"> IRL </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 0.0099438 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Cook Islands </td>
-   <td style="text-align:left;"> COK </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.9931056 </td>
+   <td style="text-align:left;"> Malta </td>
+   <td style="text-align:left;"> MLT </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 0.0419429 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Samoa </td>
+   <td style="text-align:left;"> WSM </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 12.5066049 </td>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
    <td style="text-align:left;"> Oceania </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> China </td>
-   <td style="text-align:left;"> CHN </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 5.8357908 </td>
+   <td style="text-align:left;"> Niger </td>
+   <td style="text-align:left;"> NER </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 15.0844004 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Antigua and Barbuda </td>
+   <td style="text-align:left;"> ATG </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 0.4163425 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Japan </td>
+   <td style="text-align:left;"> JPN </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 0.0172335 </td>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> China </td>
-   <td style="text-align:left;"> CHN </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 3.6458340 </td>
+   <td style="text-align:left;"> Taiwan </td>
+   <td style="text-align:left;"> TWN </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 2.7139282 </td>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Bhutan </td>
-   <td style="text-align:left;"> BTN </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 10.3210941 </td>
-   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Kuwait </td>
+   <td style="text-align:left;"> KWT </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 0.2000318 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Norway </td>
-   <td style="text-align:left;"> NOR </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.0054778 </td>
+   <td style="text-align:left;"> Guatemala </td>
+   <td style="text-align:left;"> GTM </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 10.8159063 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Syria </td>
+   <td style="text-align:left;"> SYR </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 0.0211907 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Andorra </td>
+   <td style="text-align:left;"> AND </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 0.0084011 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Slovakia </td>
+   <td style="text-align:left;"> SVK </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 0.1085565 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Rwanda </td>
+   <td style="text-align:left;"> RWA </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 2.4585404 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Uganda </td>
+   <td style="text-align:left;"> UGA </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 11.1763657 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Philippines </td>
+   <td style="text-align:left;"> PHL </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 8.2767052 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Lesotho </td>
+   <td style="text-align:left;"> LSO </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 6.3595093 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Russia </td>
+   <td style="text-align:left;"> RUS </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 0.7715719 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mexico </td>
+   <td style="text-align:left;"> MEX </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 1.3642024 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Suriname </td>
@@ -10204,748 +790,116 @@ Caused by warning in `countrycode_convert()`:
    <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 5.0004248 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Moldova </td>
-   <td style="text-align:left;"> MDA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.7682268 </td>
+   <td style="text-align:left;"> Ukraine </td>
+   <td style="text-align:left;"> UKR </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0.5619895 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Seychelles </td>
-   <td style="text-align:left;"> SYC </td>
+   <td style="text-align:left;"> Namibia </td>
+   <td style="text-align:left;"> NAM </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 5.9346397 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:left;"> AUT </td>
    <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 0.4406791 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
+   <td style="text-align:right;"> 0.0426625 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Bolivia </td>
-   <td style="text-align:left;"> BOL </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 4.4992946 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Madagascar </td>
-   <td style="text-align:left;"> MDG </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 15.7018447 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Norway </td>
-   <td style="text-align:left;"> NOR </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.0061874 </td>
+   <td style="text-align:left;"> France </td>
+   <td style="text-align:left;"> FRA </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0.0098937 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
    <td style="text-align:left;"> El Salvador </td>
    <td style="text-align:left;"> SLV </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 4.0312574 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Slovakia </td>
+   <td style="text-align:left;"> SVK </td>
    <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 8.1897872 </td>
+   <td style="text-align:right;"> 0.2267970 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nicaragua </td>
+   <td style="text-align:left;"> NIC </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 8.5510065 </td>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
    <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bolivia </td>
-   <td style="text-align:left;"> BOL </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 3.0969712 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Armenia </td>
-   <td style="text-align:left;"> ARM </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.5170710 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Northern Mariana Islands </td>
-   <td style="text-align:left;"> MNP </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 1.4350683 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Vietnam </td>
-   <td style="text-align:left;"> VNM </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 12.2880557 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mali </td>
-   <td style="text-align:left;"> MLI </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 12.0292209 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guatemala </td>
-   <td style="text-align:left;"> GTM </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 9.5292344 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Jamaica </td>
-   <td style="text-align:left;"> JAM </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 1.5660270 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> New Zealand </td>
-   <td style="text-align:left;"> NZL </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 0.0258375 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Rwanda </td>
-   <td style="text-align:left;"> RWA </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 12.4402843 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Germany </td>
-   <td style="text-align:left;"> DEU </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.0057289 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> France </td>
-   <td style="text-align:left;"> FRA </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0061163 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Taiwan </td>
-   <td style="text-align:left;"> TWN </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.2887360 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mauritania </td>
-   <td style="text-align:left;"> MRT </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 9.5510992 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Chad </td>
-   <td style="text-align:left;"> TCD </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 14.2215819 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Syria </td>
-   <td style="text-align:left;"> SYR </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0191769 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Congo </td>
-   <td style="text-align:left;"> COG </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 6.1773078 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nauru </td>
-   <td style="text-align:left;"> NRU </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 1.1973862 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Sudan </td>
-   <td style="text-align:left;"> SSD </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 12.9538817 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guinea-Bissau </td>
-   <td style="text-align:left;"> GNB </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 13.6074143 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kuwait </td>
-   <td style="text-align:left;"> KWT </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.0547346 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kyrgyzstan </td>
-   <td style="text-align:left;"> KGZ </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 9.2638990 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eswatini </td>
-   <td style="text-align:left;"> SWZ </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 12.5965593 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> France </td>
-   <td style="text-align:left;"> FRA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.0113505 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Fiji </td>
-   <td style="text-align:left;"> FJI </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 10.9546380 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Madagascar </td>
-   <td style="text-align:left;"> MDG </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 15.0060057 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zambia </td>
-   <td style="text-align:left;"> ZMB </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 7.5972692 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 7.0713615 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Austria </td>
-   <td style="text-align:left;"> AUT </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.0337791 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ukraine </td>
-   <td style="text-align:left;"> UKR </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.5973472 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Thailand </td>
-   <td style="text-align:left;"> THA </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 4.2775202 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ireland </td>
-   <td style="text-align:left;"> IRL </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.0552709 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cook Islands </td>
-   <td style="text-align:left;"> COK </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 1.7473516 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Serbia </td>
-   <td style="text-align:left;"> SRB </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 5.5759715 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Armenia </td>
-   <td style="text-align:left;"> ARM </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 1.0514637 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Albania </td>
-   <td style="text-align:left;"> ALB </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 8.6579762 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Singapore </td>
-   <td style="text-align:left;"> SGP </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.0506696 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United Arab Emirates </td>
-   <td style="text-align:left;"> ARE </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.0803153 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Czechia </td>
-   <td style="text-align:left;"> CZE </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.3117833 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Brunei </td>
-   <td style="text-align:left;"> BRN </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.1254024 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belize </td>
-   <td style="text-align:left;"> BLZ </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 2.2085104 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Jamaica </td>
-   <td style="text-align:left;"> JAM </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 4.5080322 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 9.1272339 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Russia </td>
-   <td style="text-align:left;"> RUS </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.1901960 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tuvalu </td>
-   <td style="text-align:left;"> TUV </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 9.8398013 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Congo </td>
-   <td style="text-align:left;"> COG </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 7.4229149 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Argentina </td>
-   <td style="text-align:left;"> ARG </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 1.1455105 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uganda </td>
-   <td style="text-align:left;"> UGA </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 9.6942785 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Austria </td>
-   <td style="text-align:left;"> AUT </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.0471325 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Yemen </td>
-   <td style="text-align:left;"> YEM </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 8.1044221 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mozambique </td>
-   <td style="text-align:left;"> MOZ </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 11.6596677 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North Macedonia </td>
-   <td style="text-align:left;"> MKD </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 4.7697229 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Poland </td>
-   <td style="text-align:left;"> POL </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 1.1914561 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Albania </td>
-   <td style="text-align:left;"> ALB </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 11.0776800 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Romania </td>
-   <td style="text-align:left;"> ROU </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 1.0338452 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gabon </td>
-   <td style="text-align:left;"> GAB </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 6.5020456 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Suriname </td>
-   <td style="text-align:left;"> SUR </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 1.0526031 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nepal </td>
-   <td style="text-align:left;"> NPL </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 19.1749025 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ethiopia </td>
-   <td style="text-align:left;"> ETH </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 13.1900885 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cook Islands </td>
-   <td style="text-align:left;"> COK </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.5291710 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lesotho </td>
-   <td style="text-align:left;"> LSO </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 6.7974925 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Georgia </td>
    <td style="text-align:left;"> GEO </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 4.5711953 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Russia </td>
-   <td style="text-align:left;"> RUS </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.8229886 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Antigua and Barbuda </td>
-   <td style="text-align:left;"> ATG </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.5393477 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Romania </td>
-   <td style="text-align:left;"> ROU </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 1.2031370 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Switzerland </td>
-   <td style="text-align:left;"> CHE </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.0022276 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Comoros </td>
-   <td style="text-align:left;"> COM </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 13.8885141 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saudi Arabia </td>
-   <td style="text-align:left;"> SAU </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.1698285 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Croatia </td>
-   <td style="text-align:left;"> HRV </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.4185579 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Jamaica </td>
-   <td style="text-align:left;"> JAM </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 1.6521907 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> El Salvador </td>
-   <td style="text-align:left;"> SLV </td>
    <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 8.5087565 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sudan </td>
-   <td style="text-align:left;"> SDN </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 16.4773493 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ecuador </td>
-   <td style="text-align:left;"> ECU </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 1.0408222 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Egypt </td>
-   <td style="text-align:left;"> EGY </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.0204645 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> New Zealand </td>
-   <td style="text-align:left;"> NZL </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.0083834 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mauritania </td>
-   <td style="text-align:left;"> MRT </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 11.7424561 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United States </td>
-   <td style="text-align:left;"> USA </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 0.0125522 </td>
-   <td style="text-align:left;"> North America </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belarus </td>
-   <td style="text-align:left;"> BLR </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.5467896 </td>
+   <td style="text-align:right;"> 7.6385228 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cuba </td>
-   <td style="text-align:left;"> CUB </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.3333128 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belarus </td>
-   <td style="text-align:left;"> BLR </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.1318992 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> India </td>
-   <td style="text-align:left;"> IND </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 7.5165893 </td>
-   <td style="text-align:left;"> South Asia </td>
    <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Honduras </td>
-   <td style="text-align:left;"> HND </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 10.3026372 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Angola </td>
    <td style="text-align:left;"> AGO </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 9.2332871 </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 12.4778119 </td>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Costa Rica </td>
-   <td style="text-align:left;"> CRI </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.8711315 </td>
+   <td style="text-align:left;"> Chile </td>
+   <td style="text-align:left;"> CHL </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 2.6116421 </td>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
    <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Tajikistan </td>
-   <td style="text-align:left;"> TJK </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 14.2734759 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Cameroon </td>
+   <td style="text-align:left;"> CMR </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 6.7310895 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saint Lucia </td>
+   <td style="text-align:left;"> LCA </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 0.7296562 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> India </td>
+   <td style="text-align:left;"> IND </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 12.1590567 </td>
+   <td style="text-align:left;"> South Asia </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Palau </td>
-   <td style="text-align:left;"> PLW </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.0076840 </td>
+   <td style="text-align:left;"> Vietnam </td>
+   <td style="text-align:left;"> VNM </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 8.5942047 </td>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burundi </td>
-   <td style="text-align:left;"> BDI </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 13.4564221 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
+   <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Singapore </td>
@@ -10956,315 +910,195 @@ Caused by warning in `countrycode_convert()`:
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Sri Lanka </td>
-   <td style="text-align:left;"> LKA </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 9.0339934 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greenland </td>
-   <td style="text-align:left;"> GRL </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.1075665 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Northern Mariana Islands </td>
-   <td style="text-align:left;"> MNP </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 1.3109977 </td>
+   <td style="text-align:left;"> Laos </td>
+   <td style="text-align:left;"> LAO </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 17.5392019 </td>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Austria </td>
-   <td style="text-align:left;"> AUT </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.0600036 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Djibouti </td>
-   <td style="text-align:left;"> DJI </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 3.9946442 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Azerbaijan </td>
-   <td style="text-align:left;"> AZE </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 5.7170194 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gambia </td>
-   <td style="text-align:left;"> GMB </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 13.4310566 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Turkey </td>
-   <td style="text-align:left;"> TUR </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 0.4050764 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Kitts and Nevis </td>
-   <td style="text-align:left;"> KNA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.4878139 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North Macedonia </td>
-   <td style="text-align:left;"> MKD </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 2.6368676 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burundi </td>
-   <td style="text-align:left;"> BDI </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 11.9234281 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guinea-Bissau </td>
-   <td style="text-align:left;"> GNB </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 13.1030618 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Iraq </td>
-   <td style="text-align:left;"> IRQ </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 1.1378094 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saudi Arabia </td>
-   <td style="text-align:left;"> SAU </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 1.3151415 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Sudan </td>
-   <td style="text-align:left;"> SSD </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 11.3875708 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zimbabwe </td>
-   <td style="text-align:left;"> ZWE </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 5.4997178 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Serbia </td>
-   <td style="text-align:left;"> SRB </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 2.6718435 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oman </td>
-   <td style="text-align:left;"> OMN </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 1.6053418 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Colombia </td>
-   <td style="text-align:left;"> COL </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 1.3778889 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Russia </td>
-   <td style="text-align:left;"> RUS </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.5732084 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Solomon Islands </td>
-   <td style="text-align:left;"> SLB </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 22.7121603 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Togo </td>
    <td style="text-align:left;"> TGO </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 13.4332770 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Australia </td>
-   <td style="text-align:left;"> AUS </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 0.0297665 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 7.6684620 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Azerbaijan </td>
-   <td style="text-align:left;"> AZE </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 6.9118831 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kyrgyzstan </td>
-   <td style="text-align:left;"> KGZ </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 8.3646495 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Kitts and Nevis </td>
-   <td style="text-align:left;"> KNA </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.1834207 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North Korea </td>
-   <td style="text-align:left;"> PRK </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 14.2576120 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 8.1503363 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uruguay </td>
-   <td style="text-align:left;"> URY </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 0.2684852 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Antigua and Barbuda </td>
-   <td style="text-align:left;"> ATG </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.0951739 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Myanmar </td>
-   <td style="text-align:left;"> MMR </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 13.1928786 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Chad </td>
-   <td style="text-align:left;"> TCD </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 15.0199634 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lesotho </td>
-   <td style="text-align:left;"> LSO </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 6.2920446 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kiribati </td>
-   <td style="text-align:left;"> KIR </td>
    <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 13.0341736 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
+   <td style="text-align:right;"> 11.6769081 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Chile </td>
-   <td style="text-align:left;"> CHL </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.2871091 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sweden </td>
-   <td style="text-align:left;"> SWE </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.0067117 </td>
+   <td style="text-align:left;"> Belarus </td>
+   <td style="text-align:left;"> BLR </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 0.2548650 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Guatemala </td>
-   <td style="text-align:left;"> GTM </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 7.8534187 </td>
+   <td style="text-align:left;"> Gabon </td>
+   <td style="text-align:left;"> GAB </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 1.7681053 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> United States </td>
+   <td style="text-align:left;"> USA </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 0.0150604 </td>
+   <td style="text-align:left;"> North America </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Moldova </td>
+   <td style="text-align:left;"> MDA </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 1.2163504 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> United Kingdom </td>
+   <td style="text-align:left;"> GBR </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 0.0073519 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Iran </td>
+   <td style="text-align:left;"> IRN </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 1.8526842 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Palau </td>
+   <td style="text-align:left;"> PLW </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 0.0151167 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Monaco </td>
+   <td style="text-align:left;"> MCO </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 0.0081788 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 0.0273848 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tunisia </td>
+   <td style="text-align:left;"> TUN </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 1.1401337 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Germany </td>
+   <td style="text-align:left;"> DEU </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 0.0064865 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bolivia </td>
+   <td style="text-align:left;"> BOL </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 5.5213086 </td>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
    <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Vietnam </td>
-   <td style="text-align:left;"> VNM </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 12.9604696 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Barbados </td>
+   <td style="text-align:left;"> BRB </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 0.0073003 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Iceland </td>
+   <td style="text-align:left;"> ISL </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 0.0211944 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Jordan </td>
+   <td style="text-align:left;"> JOR </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0.0273923 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Equatorial Guinea </td>
+   <td style="text-align:left;"> GNQ </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 4.3319100 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Luxembourg </td>
+   <td style="text-align:left;"> LUX </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 0.0113734 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> El Salvador </td>
+   <td style="text-align:left;"> SLV </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 4.2028322 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Dominican Republic </td>
+   <td style="text-align:left;"> DOM </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 1.6818169 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Italy </td>
+   <td style="text-align:left;"> ITA </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 0.0464116 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> El Salvador </td>
+   <td style="text-align:left;"> SLV </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 7.6670209 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Iraq </td>
+   <td style="text-align:left;"> IRQ </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 2.1843656 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
@@ -11276,1692 +1110,292 @@ Caused by warning in `countrycode_convert()`:
    <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Dominica </td>
-   <td style="text-align:left;"> DMA </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 3.8841532 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bermuda </td>
-   <td style="text-align:left;"> BMU </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 1.1686602 </td>
-   <td style="text-align:left;"> North America </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belize </td>
-   <td style="text-align:left;"> BLZ </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 2.1048609 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kyrgyzstan </td>
-   <td style="text-align:left;"> KGZ </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 8.8691815 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Pakistan </td>
+   <td style="text-align:left;"> PAK </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 11.4512901 </td>
+   <td style="text-align:left;"> South Asia </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Portugal </td>
    <td style="text-align:left;"> PRT </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.0943631 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Spain </td>
-   <td style="text-align:left;"> ESP </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.0961369 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Serbia </td>
-   <td style="text-align:left;"> SRB </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 4.5949909 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Spain </td>
-   <td style="text-align:left;"> ESP </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.0751082 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Chad </td>
-   <td style="text-align:left;"> TCD </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 14.0484834 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Northern Mariana Islands </td>
-   <td style="text-align:left;"> MNP </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 1.4886395 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Iran </td>
-   <td style="text-align:left;"> IRN </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 0.6631788 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Maldives </td>
-   <td style="text-align:left;"> MDV </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 8.5496596 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North Korea </td>
-   <td style="text-align:left;"> PRK </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 14.5882417 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Yemen </td>
-   <td style="text-align:left;"> YEM </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 16.3752740 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Panama </td>
-   <td style="text-align:left;"> PAN </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 4.2928954 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Rwanda </td>
-   <td style="text-align:left;"> RWA </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 11.4026733 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tajikistan </td>
-   <td style="text-align:left;"> TJK </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 10.7598057 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malawi </td>
-   <td style="text-align:left;"> MWI </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 11.7670883 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Marshall Islands </td>
-   <td style="text-align:left;"> MHL </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 8.4012709 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Marshall Islands </td>
-   <td style="text-align:left;"> MHL </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 7.2468545 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Australia </td>
-   <td style="text-align:left;"> AUS </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.0152345 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Hungary </td>
-   <td style="text-align:left;"> HUN </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 3.1379206 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Chad </td>
-   <td style="text-align:left;"> TCD </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 14.4128892 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cuba </td>
-   <td style="text-align:left;"> CUB </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.2005403 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Australia </td>
-   <td style="text-align:left;"> AUS </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 0.0129695 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uruguay </td>
-   <td style="text-align:left;"> URY </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.6097369 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Chad </td>
-   <td style="text-align:left;"> TCD </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 14.5448740 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Democratic Republic of Congo </td>
-   <td style="text-align:left;"> COD </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 13.8866046 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guyana </td>
-   <td style="text-align:left;"> GUY </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 1.8384354 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United States Virgin Islands </td>
-   <td style="text-align:left;"> VIR </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.0714985 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lesotho </td>
-   <td style="text-align:left;"> LSO </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 9.2115069 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Democratic Republic of Congo </td>
-   <td style="text-align:left;"> COD </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 13.6680958 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guinea-Bissau </td>
-   <td style="text-align:left;"> GNB </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 13.6599469 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eritrea </td>
-   <td style="text-align:left;"> ERI </td>
    <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 11.0868256 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guinea-Bissau </td>
-   <td style="text-align:left;"> GNB </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 13.5338109 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Democratic Republic of Congo </td>
-   <td style="text-align:left;"> COD </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 12.9270090 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Democratic Republic of Congo </td>
-   <td style="text-align:left;"> COD </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 13.0527479 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Honduras </td>
-   <td style="text-align:left;"> HND </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 11.4888664 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mali </td>
-   <td style="text-align:left;"> MLI </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 11.9223974 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sri Lanka </td>
-   <td style="text-align:left;"> LKA </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 9.7970156 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> China </td>
-   <td style="text-align:left;"> CHN </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 14.2701518 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greenland </td>
-   <td style="text-align:left;"> GRL </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.5601366 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Jordan </td>
-   <td style="text-align:left;"> JOR </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.0064954 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Serbia </td>
-   <td style="text-align:left;"> SRB </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 6.0909041 </td>
+   <td style="text-align:right;"> 0.1071355 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Cook Islands </td>
-   <td style="text-align:left;"> COK </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 1.0564229 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ukraine </td>
-   <td style="text-align:left;"> UKR </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 1.0661723 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
+   <td style="text-align:left;"> Niger </td>
+   <td style="text-align:left;"> NER </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 14.9109364 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Djibouti </td>
    <td style="text-align:left;"> DJI </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 3.9054039 </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 2.9379829 </td>
    <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Vanuatu </td>
-   <td style="text-align:left;"> VUT </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 16.4150521 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tanzania </td>
-   <td style="text-align:left;"> TZA </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 10.0815513 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Morocco </td>
-   <td style="text-align:left;"> MAR </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 4.4449132 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lithuania </td>
-   <td style="text-align:left;"> LTU </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.6909350 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Australia </td>
-   <td style="text-align:left;"> AUS </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.0818778 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Norway </td>
-   <td style="text-align:left;"> NOR </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 0.0044716 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central African Republic </td>
-   <td style="text-align:left;"> CAF </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 11.6057974 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Switzerland </td>
-   <td style="text-align:left;"> CHE </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 0.0060547 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nauru </td>
-   <td style="text-align:left;"> NRU </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 3.7616087 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Andorra </td>
-   <td style="text-align:left;"> AND </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.0091054 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> New Zealand </td>
-   <td style="text-align:left;"> NZL </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.0347436 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Peru </td>
-   <td style="text-align:left;"> PER </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 4.6000382 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Haiti </td>
-   <td style="text-align:left;"> HTI </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 14.1148572 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Italy </td>
-   <td style="text-align:left;"> ITA </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0196384 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Korea </td>
-   <td style="text-align:left;"> KOR </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.0173286 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Angola </td>
-   <td style="text-align:left;"> AGO </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 6.3938366 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> China </td>
-   <td style="text-align:left;"> CHN </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 10.1952124 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United Kingdom </td>
-   <td style="text-align:left;"> GBR </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.0023732 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Canada </td>
-   <td style="text-align:left;"> CAN </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.0462655 </td>
-   <td style="text-align:left;"> North America </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gambia </td>
-   <td style="text-align:left;"> GMB </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 12.8469956 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Palau </td>
-   <td style="text-align:left;"> PLW </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.0072145 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Benin </td>
-   <td style="text-align:left;"> BEN </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 14.0399735 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dominica </td>
-   <td style="text-align:left;"> DMA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.9993708 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Taiwan </td>
-   <td style="text-align:left;"> TWN </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.5020841 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Grenada </td>
-   <td style="text-align:left;"> GRD </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 1.1477200 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belarus </td>
-   <td style="text-align:left;"> BLR </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.7671521 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kuwait </td>
-   <td style="text-align:left;"> KWT </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.0192658 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Sudan </td>
-   <td style="text-align:left;"> SSD </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 13.2033478 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malta </td>
-   <td style="text-align:left;"> MLT </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.0151035 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Canada </td>
-   <td style="text-align:left;"> CAN </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.0324045 </td>
-   <td style="text-align:left;"> North America </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mozambique </td>
-   <td style="text-align:left;"> MOZ </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 11.0756016 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oman </td>
-   <td style="text-align:left;"> OMN </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.1482649 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Serbia </td>
-   <td style="text-align:left;"> SRB </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 2.5015739 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bolivia </td>
-   <td style="text-align:left;"> BOL </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 5.8876651 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Latvia </td>
-   <td style="text-align:left;"> LVA </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 1.0434472 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zimbabwe </td>
-   <td style="text-align:left;"> ZWE </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 5.1299406 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Palau </td>
-   <td style="text-align:left;"> PLW </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.0074873 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Finland </td>
-   <td style="text-align:left;"> FIN </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.0244447 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bulgaria </td>
-   <td style="text-align:left;"> BGR </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 1.7619021 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nicaragua </td>
-   <td style="text-align:left;"> NIC </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 9.5541664 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ethiopia </td>
-   <td style="text-align:left;"> ETH </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 13.4866128 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Comoros </td>
-   <td style="text-align:left;"> COM </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 11.9762299 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahamas </td>
-   <td style="text-align:left;"> BHS </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.1255229 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Palestine </td>
-   <td style="text-align:left;"> PSE </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.2297153 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Algeria </td>
-   <td style="text-align:left;"> DZA </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 1.4358729 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Palau </td>
-   <td style="text-align:left;"> PLW </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.0078171 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nicaragua </td>
-   <td style="text-align:left;"> NIC </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 11.0709031 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Spain </td>
-   <td style="text-align:left;"> ESP </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 0.1891824 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Haiti </td>
-   <td style="text-align:left;"> HTI </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 14.2018764 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malta </td>
-   <td style="text-align:left;"> MLT </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.0304598 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Democratic Republic of Congo </td>
-   <td style="text-align:left;"> COD </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 13.9696439 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Albania </td>
-   <td style="text-align:left;"> ALB </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 10.1474871 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Moldova </td>
-   <td style="text-align:left;"> MDA </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.9012332 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ireland </td>
-   <td style="text-align:left;"> IRL </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.0389680 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nicaragua </td>
-   <td style="text-align:left;"> NIC </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 12.8844131 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Grenada </td>
-   <td style="text-align:left;"> GRD </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 5.3977060 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Botswana </td>
-   <td style="text-align:left;"> BWA </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 7.3992531 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Finland </td>
-   <td style="text-align:left;"> FIN </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.0449629 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sao Tome and Principe </td>
-   <td style="text-align:left;"> STP </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 11.8579416 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Antigua and Barbuda </td>
-   <td style="text-align:left;"> ATG </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 0.3038435 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malta </td>
-   <td style="text-align:left;"> MLT </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.1463832 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ghana </td>
-   <td style="text-align:left;"> GHA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 6.7881944 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gambia </td>
-   <td style="text-align:left;"> GMB </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 12.2692492 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Equatorial Guinea </td>
    <td style="text-align:left;"> GNQ </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 9.7996837 </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 9.1047556 </td>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Brunei </td>
-   <td style="text-align:left;"> BRN </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.0473346 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oman </td>
-   <td style="text-align:left;"> OMN </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 0.6891378 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mali </td>
-   <td style="text-align:left;"> MLI </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 12.2627504 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Libya </td>
-   <td style="text-align:left;"> LBY </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 1.9803572 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mauritania </td>
-   <td style="text-align:left;"> MRT </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 8.2537875 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Switzerland </td>
-   <td style="text-align:left;"> CHE </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.0043229 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dominica </td>
-   <td style="text-align:left;"> DMA </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 2.2841734 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Argentina </td>
-   <td style="text-align:left;"> ARG </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 1.5501160 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lebanon </td>
-   <td style="text-align:left;"> LBN </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0311279 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Seychelles </td>
-   <td style="text-align:left;"> SYC </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.3811987 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cyprus </td>
-   <td style="text-align:left;"> CYP </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.0100260 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sri Lanka </td>
-   <td style="text-align:left;"> LKA </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 6.7478651 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> China </td>
-   <td style="text-align:left;"> CHN </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 4.7240482 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sri Lanka </td>
-   <td style="text-align:left;"> LKA </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 7.7771074 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bosnia and Herzegovina </td>
-   <td style="text-align:left;"> BIH </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 6.8825575 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Central African Republic </td>
-   <td style="text-align:left;"> CAF </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 11.7509982 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Japan </td>
-   <td style="text-align:left;"> JPN </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.0685294 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahamas </td>
-   <td style="text-align:left;"> BHS </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0836090 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Antigua and Barbuda </td>
-   <td style="text-align:left;"> ATG </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 0.1470257 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nepal </td>
-   <td style="text-align:left;"> NPL </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 11.7972579 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Syria </td>
-   <td style="text-align:left;"> SYR </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.0573102 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tuvalu </td>
-   <td style="text-align:left;"> TUV </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 10.7149943 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mozambique </td>
-   <td style="text-align:left;"> MOZ </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 12.4566492 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lebanon </td>
-   <td style="text-align:left;"> LBN </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.2583759 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cameroon </td>
-   <td style="text-align:left;"> CMR </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 8.4411343 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Grenada </td>
-   <td style="text-align:left;"> GRD </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.6121057 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sri Lanka </td>
-   <td style="text-align:left;"> LKA </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 6.1075044 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Fiji </td>
-   <td style="text-align:left;"> FJI </td>
+   <td style="text-align:left;"> South Sudan </td>
+   <td style="text-align:left;"> SSD </td>
    <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 9.0859204 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nepal </td>
-   <td style="text-align:left;"> NPL </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 19.2775016 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahrain </td>
-   <td style="text-align:left;"> BHR </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.5512204 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eritrea </td>
-   <td style="text-align:left;"> ERI </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 11.7615545 </td>
+   <td style="text-align:right;"> 12.8032278 </td>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Bahamas </td>
-   <td style="text-align:left;"> BHS </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0772799 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Jordan </td>
-   <td style="text-align:left;"> JOR </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.0118614 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Panama </td>
-   <td style="text-align:left;"> PAN </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 2.7851487 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Hungary </td>
-   <td style="text-align:left;"> HUN </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 1.3981036 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahrain </td>
-   <td style="text-align:left;"> BHR </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 0.2577698 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gambia </td>
-   <td style="text-align:left;"> GMB </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 12.3082649 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Romania </td>
-   <td style="text-align:left;"> ROU </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 3.4931676 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belize </td>
-   <td style="text-align:left;"> BLZ </td>
+   <td style="text-align:left;"> Sweden </td>
+   <td style="text-align:left;"> SWE </td>
    <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 2.9204376 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Switzerland </td>
-   <td style="text-align:left;"> CHE </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.0086789 </td>
+   <td style="text-align:right;"> 0.0081032 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Nauru </td>
-   <td style="text-align:left;"> NRU </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 1.9335063 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Lucia </td>
-   <td style="text-align:left;"> LCA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 1.1153519 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Iran </td>
-   <td style="text-align:left;"> IRN </td>
+   <td style="text-align:left;"> Greece </td>
+   <td style="text-align:left;"> GRC </td>
    <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.0569716 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mauritania </td>
-   <td style="text-align:left;"> MRT </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 10.5084133 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bulgaria </td>
-   <td style="text-align:left;"> BGR </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 2.0352975 </td>
+   <td style="text-align:right;"> 0.0431520 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dominican Republic </td>
-   <td style="text-align:left;"> DOM </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 2.4065143 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Australia </td>
-   <td style="text-align:left;"> AUS </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.0205728 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guatemala </td>
-   <td style="text-align:left;"> GTM </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 11.6386342 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Kitts and Nevis </td>
-   <td style="text-align:left;"> KNA </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.8567867 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lesotho </td>
-   <td style="text-align:left;"> LSO </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 8.4922225 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belize </td>
-   <td style="text-align:left;"> BLZ </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 1.9918647 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Puerto Rico </td>
-   <td style="text-align:left;"> PRI </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 0.0061467 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nicaragua </td>
-   <td style="text-align:left;"> NIC </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 8.8739632 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Mauritius </td>
    <td style="text-align:left;"> MUS </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.2614547 </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 0.3845047 </td>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Iceland </td>
-   <td style="text-align:left;"> ISL </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.0064226 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
+   <td style="text-align:left;"> Zimbabwe </td>
+   <td style="text-align:left;"> ZWE </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 5.3420462 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Portugal </td>
-   <td style="text-align:left;"> PRT </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.0657934 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
+   <td style="text-align:left;"> Bermuda </td>
+   <td style="text-align:left;"> BMU </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 0.7363057 </td>
+   <td style="text-align:left;"> North America </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Niue </td>
+   <td style="text-align:left;"> NIU </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 1.2649687 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Bulgaria </td>
    <td style="text-align:left;"> BGR </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 1.5279286 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Estonia </td>
-   <td style="text-align:left;"> EST </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 1.1707756 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Democratic Republic of Congo </td>
-   <td style="text-align:left;"> COD </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 13.7257003 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Yemen </td>
-   <td style="text-align:left;"> YEM </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 9.4088512 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ukraine </td>
-   <td style="text-align:left;"> UKR </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.4064623 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Angola </td>
-   <td style="text-align:left;"> AGO </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 10.7048161 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Maldives </td>
-   <td style="text-align:left;"> MDV </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 3.4215694 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Monaco </td>
-   <td style="text-align:left;"> MCO </td>
    <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.0055420 </td>
+   <td style="text-align:right;"> 2.2614750 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Panama </td>
-   <td style="text-align:left;"> PAN </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 3.3868979 </td>
+   <td style="text-align:left;"> Chad </td>
+   <td style="text-align:left;"> TCD </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 14.9047169 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bosnia and Herzegovina </td>
+   <td style="text-align:left;"> BIH </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 9.4455416 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Azerbaijan </td>
+   <td style="text-align:left;"> AZE </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 6.7318379 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Romania </td>
+   <td style="text-align:left;"> ROU </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 0.9851874 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Rwanda </td>
+   <td style="text-align:left;"> RWA </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 11.6179500 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saint Lucia </td>
+   <td style="text-align:left;"> LCA </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 5.5899891 </td>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
    <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> China </td>
-   <td style="text-align:left;"> CHN </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 5.0577285 </td>
+   <td style="text-align:left;"> Philippines </td>
+   <td style="text-align:left;"> PHL </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 8.7930198 </td>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
    <td style="text-align:left;"> New Zealand </td>
    <td style="text-align:left;"> NZL </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.0427216 </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 0.0078025 </td>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
    <td style="text-align:left;"> Oceania </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Turkmenistan </td>
-   <td style="text-align:left;"> TKM </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.1977537 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Andorra </td>
-   <td style="text-align:left;"> AND </td>
+   <td style="text-align:left;"> Antigua and Barbuda </td>
+   <td style="text-align:left;"> ATG </td>
    <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.0205019 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North Macedonia </td>
-   <td style="text-align:left;"> MKD </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 2.8849773 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Barbados </td>
-   <td style="text-align:left;"> BRB </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 0.0240997 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United States Virgin Islands </td>
-   <td style="text-align:left;"> VIR </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.1127859 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sierra Leone </td>
-   <td style="text-align:left;"> SLE </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 13.6265159 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cambodia </td>
-   <td style="text-align:left;"> KHM </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 13.9595188 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Turkmenistan </td>
-   <td style="text-align:left;"> TKM </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.0549753 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Suriname </td>
-   <td style="text-align:left;"> SUR </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 5.2357850 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Palestine </td>
-   <td style="text-align:left;"> PSE </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 4.4090738 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sao Tome and Principe </td>
-   <td style="text-align:left;"> STP </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 11.4643056 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Monaco </td>
-   <td style="text-align:left;"> MCO </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.0113475 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sao Tome and Principe </td>
-   <td style="text-align:left;"> STP </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 15.8957191 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tanzania </td>
-   <td style="text-align:left;"> TZA </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 11.6116832 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Norway </td>
-   <td style="text-align:left;"> NOR </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.0167524 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 9.6018980 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Niue </td>
-   <td style="text-align:left;"> NIU </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.7381483 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bolivia </td>
-   <td style="text-align:left;"> BOL </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 4.0903796 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 7.4968948 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Armenia </td>
-   <td style="text-align:left;"> ARM </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 4.0882094 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Estonia </td>
-   <td style="text-align:left;"> EST </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 2.1108380 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dominica </td>
-   <td style="text-align:left;"> DMA </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 3.1863588 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Turkey </td>
-   <td style="text-align:left;"> TUR </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 2.5690001 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lesotho </td>
-   <td style="text-align:left;"> LSO </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 12.1841394 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Pakistan </td>
-   <td style="text-align:left;"> PAK </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 14.6818811 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Niger </td>
-   <td style="text-align:left;"> NER </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 14.9432977 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Suriname </td>
-   <td style="text-align:left;"> SUR </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 1.6919531 </td>
+   <td style="text-align:right;"> 0.5393477 </td>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
    <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Madagascar </td>
    <td style="text-align:left;"> MDG </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 15.9669389 </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 15.9763576 </td>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Puerto Rico </td>
-   <td style="text-align:left;"> PRI </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 0.0048893 </td>
+   <td style="text-align:left;"> Romania </td>
+   <td style="text-align:left;"> ROU </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 1.2031370 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mozambique </td>
+   <td style="text-align:left;"> MOZ </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 11.8076598 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Slovenia </td>
+   <td style="text-align:left;"> SVN </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 0.3347933 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Rwanda </td>
+   <td style="text-align:left;"> RWA </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 11.4825911 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Russia </td>
+   <td style="text-align:left;"> RUS </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 0.4780448 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kyrgyzstan </td>
+   <td style="text-align:left;"> KGZ </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 9.8013987 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Jamaica </td>
+   <td style="text-align:left;"> JAM </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 1.6109776 </td>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
    <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Nepal </td>
-   <td style="text-align:left;"> NPL </td>
+   <td style="text-align:left;"> Bulgaria </td>
+   <td style="text-align:left;"> BGR </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 1.8176558 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Taiwan </td>
+   <td style="text-align:left;"> TWN </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 1.2086446 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Germany </td>
+   <td style="text-align:left;"> DEU </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 0.0073218 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Montenegro </td>
+   <td style="text-align:left;"> MNE </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 2.4587196 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bosnia and Herzegovina </td>
+   <td style="text-align:left;"> BIH </td>
    <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 17.7859915 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
+   <td style="text-align:right;"> 5.3704883 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Palestine </td>
-   <td style="text-align:left;"> PSE </td>
+   <td style="text-align:left;"> Nauru </td>
+   <td style="text-align:left;"> NRU </td>
    <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.1792879 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dominica </td>
-   <td style="text-align:left;"> DMA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 1.1229164 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Pakistan </td>
-   <td style="text-align:left;"> PAK </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 14.8442356 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
+   <td style="text-align:right;"> 0.5921484 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Estonia </td>
@@ -12972,310 +1406,6 @@ Caused by warning in `countrycode_convert()`:
    <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Chile </td>
-   <td style="text-align:left;"> CHL </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.4754833 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Korea </td>
-   <td style="text-align:left;"> KOR </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.1673087 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Peru </td>
-   <td style="text-align:left;"> PER </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 3.0872609 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Hungary </td>
-   <td style="text-align:left;"> HUN </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 1.5233016 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Iceland </td>
-   <td style="text-align:left;"> ISL </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 0.0271083 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Indonesia </td>
-   <td style="text-align:left;"> IDN </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 8.7302517 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tuvalu </td>
-   <td style="text-align:left;"> TUV </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 1.9665773 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lesotho </td>
-   <td style="text-align:left;"> LSO </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 6.0782067 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tanzania </td>
-   <td style="text-align:left;"> TZA </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 10.0495791 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Egypt </td>
-   <td style="text-align:left;"> EGY </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 1.7940815 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uruguay </td>
-   <td style="text-align:left;"> URY </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.3249201 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kyrgyzstan </td>
-   <td style="text-align:left;"> KGZ </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 9.5406908 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Monaco </td>
-   <td style="text-align:left;"> MCO </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.0035755 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Belize </td>
-   <td style="text-align:left;"> BLZ </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 5.3871223 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greenland </td>
-   <td style="text-align:left;"> GRL </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.2272300 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> New Zealand </td>
-   <td style="text-align:left;"> NZL </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 0.0491932 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kyrgyzstan </td>
-   <td style="text-align:left;"> KGZ </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 4.5455530 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sao Tome and Principe </td>
-   <td style="text-align:left;"> STP </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 15.9772938 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uzbekistan </td>
-   <td style="text-align:left;"> UZB </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 3.9728704 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Taiwan </td>
-   <td style="text-align:left;"> TWN </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 3.0126214 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> El Salvador </td>
-   <td style="text-align:left;"> SLV </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 3.8066775 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mexico </td>
-   <td style="text-align:left;"> MEX </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 1.8827323 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bhutan </td>
-   <td style="text-align:left;"> BTN </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 9.9622425 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bhutan </td>
-   <td style="text-align:left;"> BTN </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 8.8375793 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kazakhstan </td>
-   <td style="text-align:left;"> KAZ </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 1.8313944 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Congo </td>
-   <td style="text-align:left;"> COG </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 10.7580464 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bolivia </td>
-   <td style="text-align:left;"> BOL </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 5.0700935 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malaysia </td>
-   <td style="text-align:left;"> MYS </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.1103692 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sri Lanka </td>
-   <td style="text-align:left;"> LKA </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 8.8453062 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tajikistan </td>
-   <td style="text-align:left;"> TJK </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 8.3618321 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North Macedonia </td>
-   <td style="text-align:left;"> MKD </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 2.5353913 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Kitts and Nevis </td>
-   <td style="text-align:left;"> KNA </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.5874217 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Italy </td>
-   <td style="text-align:left;"> ITA </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.0218189 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 5.7762011 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mauritius </td>
-   <td style="text-align:left;"> MUS </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 0.8940656 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Fiji </td>
-   <td style="text-align:left;"> FJI </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 6.0118348 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oman </td>
-   <td style="text-align:left;"> OMN </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.8499383 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lesotho </td>
-   <td style="text-align:left;"> LSO </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 7.1076933 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> Guam </td>
    <td style="text-align:left;"> GUM </td>
    <td style="text-align:right;"> 2000 </td>
@@ -13284,146 +1414,130 @@ Caused by warning in `countrycode_convert()`:
    <td style="text-align:left;"> Oceania </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> New Zealand </td>
-   <td style="text-align:left;"> NZL </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.0565388 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
+   <td style="text-align:left;"> Dominican Republic </td>
+   <td style="text-align:left;"> DOM </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 5.5065043 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Denmark </td>
-   <td style="text-align:left;"> DNK </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 0.0171292 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
+   <td style="text-align:left;"> Dominican Republic </td>
+   <td style="text-align:left;"> DOM </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 1.4393115 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Taiwan </td>
-   <td style="text-align:left;"> TWN </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.3139359 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
+   <td style="text-align:left;"> Saint Kitts and Nevis </td>
+   <td style="text-align:left;"> KNA </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0.5341922 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Tuvalu </td>
-   <td style="text-align:left;"> TUV </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 2.3139860 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Iraq </td>
-   <td style="text-align:left;"> IRQ </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.0959510 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Croatia </td>
-   <td style="text-align:left;"> HRV </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.3439251 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Taiwan </td>
-   <td style="text-align:left;"> TWN </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.7133242 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Finland </td>
-   <td style="text-align:left;"> FIN </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 0.0187513 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cook Islands </td>
-   <td style="text-align:left;"> COK </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 0.9131933 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Australia </td>
-   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> Azerbaijan </td>
+   <td style="text-align:left;"> AZE </td>
    <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 0.0742023 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
+   <td style="text-align:right;"> 6.7436315 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Mauritius </td>
-   <td style="text-align:left;"> MUS </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.1875371 </td>
+   <td style="text-align:left;"> Lesotho </td>
+   <td style="text-align:left;"> LSO </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 6.3243268 </td>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Ecuador </td>
-   <td style="text-align:left;"> ECU </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.8026813 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greenland </td>
-   <td style="text-align:left;"> GRL </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.1536472 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saudi Arabia </td>
-   <td style="text-align:left;"> SAU </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.3171967 </td>
+   <td style="text-align:left;"> Syria </td>
+   <td style="text-align:left;"> SYR </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 0.3003931 </td>
    <td style="text-align:left;"> Middle East &amp; North Africa </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Monaco </td>
-   <td style="text-align:left;"> MCO </td>
+   <td style="text-align:left;"> Oman </td>
+   <td style="text-align:left;"> OMN </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 4.5665262 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Maldives </td>
+   <td style="text-align:left;"> MDV </td>
    <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.0042901 </td>
+   <td style="text-align:right;"> 4.1813488 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Czechia </td>
+   <td style="text-align:left;"> CZE </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 0.3434426 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 6.0100089 </td>
+   <td style="text-align:left;"> Cambodia </td>
+   <td style="text-align:left;"> KHM </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 17.9062329 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> India </td>
+   <td style="text-align:left;"> IND </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 11.2061246 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kenya </td>
+   <td style="text-align:left;"> KEN </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 8.2210608 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Singapore </td>
+   <td style="text-align:left;"> SGP </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 0.0308578 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Israel </td>
+   <td style="text-align:left;"> ISR </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 0.0089538 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Solomon Islands </td>
+   <td style="text-align:left;"> SLB </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 22.1679400 </td>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
    <td style="text-align:left;"> Oceania </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Haiti </td>
-   <td style="text-align:left;"> HTI </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 14.3145106 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burundi </td>
-   <td style="text-align:left;"> BDI </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 11.1591901 </td>
+   <td style="text-align:left;"> Equatorial Guinea </td>
+   <td style="text-align:left;"> GNQ </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 6.0304468 </td>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:left;"> Africa </td>
   </tr>
@@ -13436,588 +1550,252 @@ Caused by warning in `countrycode_convert()`:
    <td style="text-align:left;"> Oceania </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Singapore </td>
-   <td style="text-align:left;"> SGP </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 0.3094763 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Libya </td>
-   <td style="text-align:left;"> LBY </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 1.5779557 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Madagascar </td>
-   <td style="text-align:left;"> MDG </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 16.5287524 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahrain </td>
-   <td style="text-align:left;"> BHR </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.1886161 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Equatorial Guinea </td>
-   <td style="text-align:left;"> GNQ </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 4.8877087 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Indonesia </td>
-   <td style="text-align:left;"> IDN </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 7.0407006 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> El Salvador </td>
-   <td style="text-align:left;"> SLV </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 2.3433598 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guatemala </td>
-   <td style="text-align:left;"> GTM </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 8.1476820 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Portugal </td>
-   <td style="text-align:left;"> PRT </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.0338699 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uganda </td>
-   <td style="text-align:left;"> UGA </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 9.8315678 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Suriname </td>
-   <td style="text-align:left;"> SUR </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 5.3991153 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Jamaica </td>
-   <td style="text-align:left;"> JAM </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 1.6109776 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Australia </td>
-   <td style="text-align:left;"> AUS </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.0340468 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> Armenia </td>
    <td style="text-align:left;"> ARM </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 3.7138637 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Madagascar </td>
-   <td style="text-align:left;"> MDG </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 15.2293539 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Turkmenistan </td>
-   <td style="text-align:left;"> TKM </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0169501 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Serbia </td>
-   <td style="text-align:left;"> SRB </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 1.8118834 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Armenia </td>
-   <td style="text-align:left;"> ARM </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 4.0661884 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Monaco </td>
-   <td style="text-align:left;"> MCO </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.0103633 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Israel </td>
-   <td style="text-align:left;"> ISR </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0079605 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Africa </td>
-   <td style="text-align:left;"> ZAF </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 1.7998612 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Namibia </td>
-   <td style="text-align:left;"> NAM </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 6.1990923 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uruguay </td>
-   <td style="text-align:left;"> URY </td>
    <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.3653479 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guam </td>
-   <td style="text-align:left;"> GUM </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 0.5570615 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Norway </td>
-   <td style="text-align:left;"> NOR </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.0032395 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zimbabwe </td>
-   <td style="text-align:left;"> ZWE </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 8.2714381 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bosnia and Herzegovina </td>
-   <td style="text-align:left;"> BIH </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 6.0389087 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Trinidad and Tobago </td>
-   <td style="text-align:left;"> TTO </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.0265480 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Madagascar </td>
-   <td style="text-align:left;"> MDG </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 16.5900533 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 7.9039286 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gabon </td>
-   <td style="text-align:left;"> GAB </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 3.6509812 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Norway </td>
-   <td style="text-align:left;"> NOR </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.0215507 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Turkey </td>
-   <td style="text-align:left;"> TUR </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.3056999 </td>
+   <td style="text-align:right;"> 1.6005792 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Kazakhstan </td>
-   <td style="text-align:left;"> KAZ </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 3.7619058 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Portugal </td>
-   <td style="text-align:left;"> PRT </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 0.4130288 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahamas </td>
-   <td style="text-align:left;"> BHS </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 0.4394926 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bahrain </td>
-   <td style="text-align:left;"> BHR </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 0.8127544 </td>
+   <td style="text-align:left;"> Qatar </td>
+   <td style="text-align:left;"> QAT </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 0.0016354 </td>
    <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zambia </td>
-   <td style="text-align:left;"> ZMB </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 7.9461389 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Taiwan </td>
-   <td style="text-align:left;"> TWN </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 1.7429286 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Italy </td>
-   <td style="text-align:left;"> ITA </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.1484981 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Comoros </td>
-   <td style="text-align:left;"> COM </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 14.4199438 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Barbados </td>
-   <td style="text-align:left;"> BRB </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 0.0254471 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burundi </td>
-   <td style="text-align:left;"> BDI </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 14.4220801 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cambodia </td>
-   <td style="text-align:left;"> KHM </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 16.0265455 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Germany </td>
-   <td style="text-align:left;"> DEU </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 0.0044754 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zimbabwe </td>
-   <td style="text-align:left;"> ZWE </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 8.6588180 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Eritrea </td>
-   <td style="text-align:left;"> ERI </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 11.2328369 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Papua New Guinea </td>
-   <td style="text-align:left;"> PNG </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 19.6579131 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Singapore </td>
-   <td style="text-align:left;"> SGP </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0092563 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Guyana </td>
    <td style="text-align:left;"> GUY </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 3.0904560 </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 1.6754385 </td>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
    <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Tunisia </td>
-   <td style="text-align:left;"> TUN </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.2544714 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Serbia </td>
-   <td style="text-align:left;"> SRB </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 1.8981464 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kiribati </td>
-   <td style="text-align:left;"> KIR </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 13.1019384 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Monaco </td>
-   <td style="text-align:left;"> MCO </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.0075531 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sudan </td>
-   <td style="text-align:left;"> SDN </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 12.6278016 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nigeria </td>
-   <td style="text-align:left;"> NGA </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 11.9047286 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Slovakia </td>
-   <td style="text-align:left;"> SVK </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.3380206 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Italy </td>
-   <td style="text-align:left;"> ITA </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 0.0588638 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Peru </td>
-   <td style="text-align:left;"> PER </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 4.1324464 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guatemala </td>
-   <td style="text-align:left;"> GTM </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 8.4837610 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Slovenia </td>
-   <td style="text-align:left;"> SVN </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.3347933 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Burkina Faso </td>
    <td style="text-align:left;"> BFA </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 13.3897464 </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 12.3239976 </td>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Suriname </td>
-   <td style="text-align:left;"> SUR </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 3.0785722 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Myanmar </td>
-   <td style="text-align:left;"> MMR </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 14.0682215 </td>
+   <td style="text-align:left;"> Vietnam </td>
+   <td style="text-align:left;"> VNM </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 7.8160350 </td>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Saudi Arabia </td>
-   <td style="text-align:left;"> SAU </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.2098420 </td>
+   <td style="text-align:left;"> Jordan </td>
+   <td style="text-align:left;"> JOR </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 0.0055866 </td>
    <td style="text-align:left;"> Middle East &amp; North Africa </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Bahrain </td>
-   <td style="text-align:left;"> BHR </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0394449 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Egypt </td>
-   <td style="text-align:left;"> EGY </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0124433 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Serbia </td>
-   <td style="text-align:left;"> SRB </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 2.8495061 </td>
+   <td style="text-align:left;"> Monaco </td>
+   <td style="text-align:left;"> MCO </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 0.0030159 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Northern Mariana Islands </td>
-   <td style="text-align:left;"> MNP </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 1.4482527 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Brunei </td>
-   <td style="text-align:left;"> BRN </td>
+   <td style="text-align:left;"> Barbados </td>
+   <td style="text-align:left;"> BRB </td>
    <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0379083 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United States Virgin Islands </td>
-   <td style="text-align:left;"> VIR </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0604517 </td>
+   <td style="text-align:right;"> 0.0064758 </td>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
    <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Kazakhstan </td>
-   <td style="text-align:left;"> KAZ </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 5.5164908 </td>
+   <td style="text-align:left;"> Papua New Guinea </td>
+   <td style="text-align:left;"> PNG </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 19.0492515 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Guam </td>
+   <td style="text-align:left;"> GUM </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 0.3783822 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tajikistan </td>
+   <td style="text-align:left;"> TJK </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 8.7442293 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Mozambique </td>
-   <td style="text-align:left;"> MOZ </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 11.8076598 </td>
+   <td style="text-align:left;"> Fiji </td>
+   <td style="text-align:left;"> FJI </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 9.0859204 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> United States </td>
+   <td style="text-align:left;"> USA </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 0.0070332 </td>
+   <td style="text-align:left;"> North America </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Solomon Islands </td>
+   <td style="text-align:left;"> SLB </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 23.3369531 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tuvalu </td>
+   <td style="text-align:left;"> TUV </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 3.4219698 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Iran </td>
+   <td style="text-align:left;"> IRN </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 1.1796704 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Iceland </td>
+   <td style="text-align:left;"> ISL </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 0.0075401 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Lithuania </td>
+   <td style="text-align:left;"> LTU </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 0.2359895 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bahrain </td>
+   <td style="text-align:left;"> BHR </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 0.3031292 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Yemen </td>
+   <td style="text-align:left;"> YEM </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 9.8119761 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> India </td>
+   <td style="text-align:left;"> IND </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 7.2710429 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kiribati </td>
+   <td style="text-align:left;"> KIR </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 13.9076912 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Russia </td>
+   <td style="text-align:left;"> RUS </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 0.4016809 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Latvia </td>
+   <td style="text-align:left;"> LVA </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 1.2105553 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Namibia </td>
+   <td style="text-align:left;"> NAM </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 6.0292090 </td>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Congo </td>
+   <td style="text-align:left;"> COG </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 9.4392508 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Madagascar </td>
+   <td style="text-align:left;"> MDG </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 15.7018447 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Armenia </td>
+   <td style="text-align:left;"> ARM </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 4.1107227 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mongolia </td>
+   <td style="text-align:left;"> MNG </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 9.1159213 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Thailand </td>
+   <td style="text-align:left;"> THA </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 2.0389738 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Jordan </td>
+   <td style="text-align:left;"> JOR </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0.0118614 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Singapore </td>
@@ -14028,724 +1806,52 @@ Caused by warning in `countrycode_convert()`:
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Paraguay </td>
-   <td style="text-align:left;"> PRY </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 7.5178725 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Brunei </td>
-   <td style="text-align:left;"> BRN </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 0.9742741 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 8.4379430 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Lucia </td>
-   <td style="text-align:left;"> LCA </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 2.6960222 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Qatar </td>
-   <td style="text-align:left;"> QAT </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0009699 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cook Islands </td>
-   <td style="text-align:left;"> COK </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.4144030 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United States Virgin Islands </td>
-   <td style="text-align:left;"> VIR </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0622449 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kazakhstan </td>
-   <td style="text-align:left;"> KAZ </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 3.3491985 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Niue </td>
-   <td style="text-align:left;"> NIU </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 3.0131686 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Georgia </td>
-   <td style="text-align:left;"> GEO </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 5.7557152 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Montenegro </td>
-   <td style="text-align:left;"> MNE </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 4.4535541 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Dominican Republic </td>
-   <td style="text-align:left;"> DOM </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 4.5384980 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bulgaria </td>
-   <td style="text-align:left;"> BGR </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 1.3926602 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Brazil </td>
-   <td style="text-align:left;"> BRA </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 1.7393342 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Chile </td>
-   <td style="text-align:left;"> CHL </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 2.7866860 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Guyana </td>
-   <td style="text-align:left;"> GUY </td>
+   <td style="text-align:left;"> Puerto Rico </td>
+   <td style="text-align:left;"> PRI </td>
    <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 2.8897128 </td>
+   <td style="text-align:right;"> 0.0048893 </td>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
    <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Samoa </td>
+   <td style="text-align:left;"> WSM </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 11.6459726 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Vanuatu </td>
+   <td style="text-align:left;"> VUT </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 16.8947949 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Canada </td>
    <td style="text-align:left;"> CAN </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 0.0072974 </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 0.0046283 </td>
    <td style="text-align:left;"> North America </td>
    <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> New Zealand </td>
-   <td style="text-align:left;"> NZL </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.0324117 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cameroon </td>
-   <td style="text-align:left;"> CMR </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 10.4336772 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Togo </td>
-   <td style="text-align:left;"> TGO </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 11.4668298 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Portugal </td>
-   <td style="text-align:left;"> PRT </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.0489390 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Marshall Islands </td>
-   <td style="text-align:left;"> MHL </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 7.8753813 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mozambique </td>
-   <td style="text-align:left;"> MOZ </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 13.1712110 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bosnia and Herzegovina </td>
-   <td style="text-align:left;"> BIH </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 4.3370607 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Serbia </td>
-   <td style="text-align:left;"> SRB </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 5.7504492 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Suriname </td>
-   <td style="text-align:left;"> SUR </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 2.4757711 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> China </td>
-   <td style="text-align:left;"> CHN </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 16.8848148 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Brunei </td>
-   <td style="text-align:left;"> BRN </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 0.7343526 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Iceland </td>
-   <td style="text-align:left;"> ISL </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 0.0118440 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Libya </td>
-   <td style="text-align:left;"> LBY </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0285320 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cambodia </td>
-   <td style="text-align:left;"> KHM </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 13.1810901 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Madagascar </td>
-   <td style="text-align:left;"> MDG </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 15.9242344 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Argentina </td>
-   <td style="text-align:left;"> ARG </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.6447004 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gabon </td>
-   <td style="text-align:left;"> GAB </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 3.9330900 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burkina Faso </td>
-   <td style="text-align:left;"> BFA </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 12.4894469 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Turkey </td>
-   <td style="text-align:left;"> TUR </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 0.7117030 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> India </td>
-   <td style="text-align:left;"> IND </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 11.0724215 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Senegal </td>
-   <td style="text-align:left;"> SEN </td>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 11.2294396 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Niger </td>
-   <td style="text-align:left;"> NER </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 15.2807980 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Ireland </td>
    <td style="text-align:left;"> IRL </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.0765467 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Togo </td>
-   <td style="text-align:left;"> TGO </td>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 11.2973583 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lithuania </td>
-   <td style="text-align:left;"> LTU </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.3431521 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Maldives </td>
-   <td style="text-align:left;"> MDV </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 2.1198738 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Samoa </td>
-   <td style="text-align:left;"> WSM </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 12.9503494 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Canada </td>
-   <td style="text-align:left;"> CAN </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 0.0390340 </td>
-   <td style="text-align:left;"> North America </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Samoa </td>
-   <td style="text-align:left;"> WSM </td>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 12.7718099 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Papua New Guinea </td>
-   <td style="text-align:left;"> PNG </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 18.0870849 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Trinidad and Tobago </td>
-   <td style="text-align:left;"> TTO </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0112223 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Papua New Guinea </td>
-   <td style="text-align:left;"> PNG </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 20.4576727 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Democratic Republic of Congo </td>
-   <td style="text-align:left;"> COD </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 13.1200952 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Trinidad and Tobago </td>
-   <td style="text-align:left;"> TTO </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.0379728 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Niger </td>
-   <td style="text-align:left;"> NER </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 15.0513520 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Monaco </td>
-   <td style="text-align:left;"> MCO </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.0045777 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mexico </td>
-   <td style="text-align:left;"> MEX </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 1.5487657 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uganda </td>
-   <td style="text-align:left;"> UGA </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 10.4650646 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greece </td>
-   <td style="text-align:left;"> GRC </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.0338629 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gabon </td>
-   <td style="text-align:left;"> GAB </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.8412269 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Pakistan </td>
-   <td style="text-align:left;"> PAK </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 13.7415948 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Solomon Islands </td>
-   <td style="text-align:left;"> SLB </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 22.4676620 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uzbekistan </td>
-   <td style="text-align:left;"> UZB </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 7.1733753 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> France </td>
-   <td style="text-align:left;"> FRA </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 0.0217976 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Czechia </td>
-   <td style="text-align:left;"> CZE </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 0.1230394 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Burkina Faso </td>
-   <td style="text-align:left;"> BFA </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 12.5760943 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Niue </td>
-   <td style="text-align:left;"> NIU </td>
    <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 1.1193768 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Northern Mariana Islands </td>
-   <td style="text-align:left;"> MNP </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 1.6824670 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Poland </td>
-   <td style="text-align:left;"> POL </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 1.3145120 </td>
+   <td style="text-align:right;"> 0.0137819 </td>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Saint Vincent and the Grenadines </td>
-   <td style="text-align:left;"> VCT </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 0.4460764 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Paraguay </td>
-   <td style="text-align:left;"> PRY </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 7.9217311 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Chad </td>
-   <td style="text-align:left;"> TCD </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 14.7100376 </td>
+   <td style="text-align:left;"> Malawi </td>
+   <td style="text-align:left;"> MWI </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 11.4285056 </td>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Luxembourg </td>
-   <td style="text-align:left;"> LUX </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.0222305 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Israel </td>
-   <td style="text-align:left;"> ISR </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 0.0322603 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Kiribati </td>
-   <td style="text-align:left;"> KIR </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 13.6793235 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Niger </td>
-   <td style="text-align:left;"> NER </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 15.2360185 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Malta </td>
-   <td style="text-align:left;"> MLT </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.0161693 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Uganda </td>
-   <td style="text-align:left;"> UGA </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 9.7972500 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bangladesh </td>
-   <td style="text-align:left;"> BGD </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 16.4799806 </td>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nauru </td>
-   <td style="text-align:left;"> NRU </td>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 2.0486356 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Oceania </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sudan </td>
-   <td style="text-align:left;"> SDN </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 13.4001563 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Greenland </td>
-   <td style="text-align:left;"> GRL </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 0.1003583 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Botswana </td>
-   <td style="text-align:left;"> BWA </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 3.7404509 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cambodia </td>
-   <td style="text-align:left;"> KHM </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 17.6327191 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Gambia </td>
-   <td style="text-align:left;"> GMB </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 12.0493126 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Namibia </td>
-   <td style="text-align:left;"> NAM </td>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 6.0396492 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sierra Leone </td>
-   <td style="text-align:left;"> SLE </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 13.5518537 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Jordan </td>
-   <td style="text-align:left;"> JOR </td>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 0.3528376 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Hungary </td>
-   <td style="text-align:left;"> HUN </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 1.8903005 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Paraguay </td>
-   <td style="text-align:left;"> PRY </td>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 6.2344802 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Philippines </td>
-   <td style="text-align:left;"> PHL </td>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 7.9963125 </td>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Haiti </td>
-   <td style="text-align:left;"> HTI </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 14.0613882 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Saint Kitts and Nevis </td>
-   <td style="text-align:left;"> KNA </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 0.7102436 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Uruguay </td>
@@ -14756,90 +1862,570 @@ Caused by warning in `countrycode_convert()`:
    <td style="text-align:left;"> Americas </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Cote d'Ivoire </td>
-   <td style="text-align:left;"> CIV </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 10.8569786 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lebanon </td>
-   <td style="text-align:left;"> LBN </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.1865496 </td>
+   <td style="text-align:left;"> United Arab Emirates </td>
+   <td style="text-align:left;"> ARE </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 0.0008376 </td>
    <td style="text-align:left;"> Middle East &amp; North Africa </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Brazil </td>
-   <td style="text-align:left;"> BRA </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 1.6214570 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0.0099497 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Turkmenistan </td>
-   <td style="text-align:left;"> TKM </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.0365777 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Asia </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> San Marino </td>
-   <td style="text-align:left;"> SMR </td>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 0.0066797 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Czechia </td>
-   <td style="text-align:left;"> CZE </td>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 0.0682705 </td>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:left;"> Europe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Equatorial Guinea </td>
-   <td style="text-align:left;"> GNQ </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 13.3115748 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Congo </td>
-   <td style="text-align:left;"> COG </td>
+   <td style="text-align:left;"> Tanzania </td>
+   <td style="text-align:left;"> TZA </td>
    <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 11.1998879 </td>
+   <td style="text-align:right;"> 12.8436686 </td>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Iraq </td>
-   <td style="text-align:left;"> IRQ </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.6244037 </td>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:left;"> Asia </td>
+   <td style="text-align:left;"> Serbia </td>
+   <td style="text-align:left;"> SRB </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 1.5765989 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Vietnam </td>
-   <td style="text-align:left;"> VNM </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 5.5723214 </td>
+   <td style="text-align:left;"> Mali </td>
+   <td style="text-align:left;"> MLI </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 12.1428574 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Philippines </td>
+   <td style="text-align:left;"> PHL </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 8.4379430 </td>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Puerto Rico </td>
-   <td style="text-align:left;"> PRI </td>
+   <td style="text-align:left;"> Azerbaijan </td>
+   <td style="text-align:left;"> AZE </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 6.8820465 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Denmark </td>
+   <td style="text-align:left;"> DNK </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0.0044517 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Canada </td>
+   <td style="text-align:left;"> CAN </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0.0033341 </td>
+   <td style="text-align:left;"> North America </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tanzania </td>
+   <td style="text-align:left;"> TZA </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 11.0878758 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cambodia </td>
+   <td style="text-align:left;"> KHM </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 16.8016371 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bahrain </td>
+   <td style="text-align:left;"> BHR </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 1.0370835 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Trinidad and Tobago </td>
+   <td style="text-align:left;"> TTO </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 0.0379728 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Guinea </td>
+   <td style="text-align:left;"> GIN </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 14.6491243 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Egypt </td>
+   <td style="text-align:left;"> EGY </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 0.6752659 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nigeria </td>
+   <td style="text-align:left;"> NGA </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 12.4422217 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Trinidad and Tobago </td>
+   <td style="text-align:left;"> TTO </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 0.0125572 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Russia </td>
+   <td style="text-align:left;"> RUS </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 0.2051149 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> North Macedonia </td>
+   <td style="text-align:left;"> MKD </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 3.0002872 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nepal </td>
+   <td style="text-align:left;"> NPL </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 13.7081035 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Northern Mariana Islands </td>
+   <td style="text-align:left;"> MNP </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 1.6666338 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Brazil </td>
+   <td style="text-align:left;"> BRA </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 4.0757206 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Romania </td>
+   <td style="text-align:left;"> ROU </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 4.5339027 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Romania </td>
+   <td style="text-align:left;"> ROU </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 3.6587190 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> South Sudan </td>
+   <td style="text-align:left;"> SSD </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 11.7453873 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Singapore </td>
+   <td style="text-align:left;"> SGP </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 0.0986003 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> North Macedonia </td>
+   <td style="text-align:left;"> MKD </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 6.1240094 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Panama </td>
+   <td style="text-align:left;"> PAN </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 0.8512415 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Slovakia </td>
+   <td style="text-align:left;"> SVK </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 0.0907437 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Belize </td>
+   <td style="text-align:left;"> BLZ </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 2.9204376 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Japan </td>
+   <td style="text-align:left;"> JPN </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 0.0486968 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Chad </td>
+   <td style="text-align:left;"> TCD </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 14.3444996 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Zambia </td>
+   <td style="text-align:left;"> ZMB </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 8.8637690 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Belarus </td>
+   <td style="text-align:left;"> BLR </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0.3273516 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mongolia </td>
+   <td style="text-align:left;"> MNG </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 8.0170333 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> North Macedonia </td>
+   <td style="text-align:left;"> MKD </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 4.7697229 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cyprus </td>
+   <td style="text-align:left;"> CYP </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 0.0663289 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Grenada </td>
+   <td style="text-align:left;"> GRD </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0.5172826 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Uruguay </td>
+   <td style="text-align:left;"> URY </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 0.3249201 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Northern Mariana Islands </td>
+   <td style="text-align:left;"> MNP </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 1.3877803 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kuwait </td>
+   <td style="text-align:left;"> KWT </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 0.0100488 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Canada </td>
+   <td style="text-align:left;"> CAN </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 0.0032029 </td>
+   <td style="text-align:left;"> North America </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 0.0275256 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Belarus </td>
+   <td style="text-align:left;"> BLR </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 0.0930432 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sweden </td>
+   <td style="text-align:left;"> SWE </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 0.0076538 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mozambique </td>
+   <td style="text-align:left;"> MOZ </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 10.9786152 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bulgaria </td>
+   <td style="text-align:left;"> BGR </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 1.3926602 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Angola </td>
+   <td style="text-align:left;"> AGO </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 6.0186394 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Turkey </td>
+   <td style="text-align:left;"> TUR </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 0.4706266 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Taiwan </td>
+   <td style="text-align:left;"> TWN </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0.6473961 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 15.8105333 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sudan </td>
+   <td style="text-align:left;"> SDN </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 12.6278016 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Malta </td>
+   <td style="text-align:left;"> MLT </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 0.0764122 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Canada </td>
+   <td style="text-align:left;"> CAN </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 0.0029674 </td>
+   <td style="text-align:left;"> North America </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Jordan </td>
+   <td style="text-align:left;"> JOR </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 0.1326154 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Solomon Islands </td>
+   <td style="text-align:left;"> SLB </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 21.3418847 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bulgaria </td>
+   <td style="text-align:left;"> BGR </td>
    <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 0.0036953 </td>
+   <td style="text-align:right;"> 2.1216908 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Iraq </td>
+   <td style="text-align:left;"> IRQ </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0.3130770 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Oman </td>
+   <td style="text-align:left;"> OMN </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 0.5596392 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Niger </td>
+   <td style="text-align:left;"> NER </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 15.4268778 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bolivia </td>
+   <td style="text-align:left;"> BOL </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 8.4001375 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Venezuela </td>
+   <td style="text-align:left;"> VEN </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 0.0549612 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mali </td>
+   <td style="text-align:left;"> MLI </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 12.0523720 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Libya </td>
+   <td style="text-align:left;"> LBY </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 0.0881764 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sweden </td>
+   <td style="text-align:left;"> SWE </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 0.0032938 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Costa Rica </td>
+   <td style="text-align:left;"> CRI </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 1.2308958 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Brazil </td>
+   <td style="text-align:left;"> BRA </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 6.1032983 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Colombia </td>
+   <td style="text-align:left;"> COL </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 4.3880516 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Greenland </td>
+   <td style="text-align:left;"> GRL </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 0.4494264 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Comoros </td>
+   <td style="text-align:left;"> COM </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 11.5266531 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Barbados </td>
+   <td style="text-align:left;"> BRB </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 0.0317064 </td>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
    <td style="text-align:left;"> Americas </td>
   </tr>
@@ -14852,74 +2438,5210 @@ Caused by warning in `countrycode_convert()`:
    <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Nigeria </td>
-   <td style="text-align:left;"> NGA </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 11.2497211 </td>
+   <td style="text-align:left;"> Mali </td>
+   <td style="text-align:left;"> MLI </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 12.4187318 </td>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Malaysia </td>
-   <td style="text-align:left;"> MYS </td>
+   <td style="text-align:left;"> Hungary </td>
+   <td style="text-align:left;"> HUN </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 1.3981036 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saudi Arabia </td>
+   <td style="text-align:left;"> SAU </td>
    <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 0.0882370 </td>
+   <td style="text-align:right;"> 0.0559492 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cambodia </td>
+   <td style="text-align:left;"> KHM </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 17.8300134 </td>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Switzerland </td>
+   <td style="text-align:left;"> CHE </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 0.0054563 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Czechia </td>
+   <td style="text-align:left;"> CZE </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 0.0925132 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Morocco </td>
+   <td style="text-align:left;"> MAR </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 4.4449132 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nicaragua </td>
+   <td style="text-align:left;"> NIC </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 12.0238176 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Uzbekistan </td>
+   <td style="text-align:left;"> UZB </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 2.7147055 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Palau </td>
    <td style="text-align:left;"> PLW </td>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 0.0114576 </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 0.0076840 </td>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
    <td style="text-align:left;"> Oceania </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Saint Vincent and the Grenadines </td>
-   <td style="text-align:left;"> VCT </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.4717296 </td>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:left;"> Americas </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Democratic Republic of Congo </td>
-   <td style="text-align:left;"> COD </td>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 13.2330455 </td>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:left;"> Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nepal </td>
-   <td style="text-align:left;"> NPL </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 18.1164538 </td>
+   <td style="text-align:left;"> Pakistan </td>
+   <td style="text-align:left;"> PAK </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 8.4835111 </td>
    <td style="text-align:left;"> South Asia </td>
    <td style="text-align:left;"> Asia </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Gambia </td>
-   <td style="text-align:left;"> GMB </td>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 11.9713955 </td>
+   <td style="text-align:left;"> Tajikistan </td>
+   <td style="text-align:left;"> TJK </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 12.9216571 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> San Marino </td>
+   <td style="text-align:left;"> SMR </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 0.0080771 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Armenia </td>
+   <td style="text-align:left;"> ARM </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 3.3245928 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sierra Leone </td>
+   <td style="text-align:left;"> SLE </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 13.4382500 </td>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Nigeria </td>
-   <td style="text-align:left;"> NGA </td>
+   <td style="text-align:left;"> Singapore </td>
+   <td style="text-align:left;"> SGP </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 0.3094763 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kyrgyzstan </td>
+   <td style="text-align:left;"> KGZ </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 10.8306899 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 0.0383683 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Senegal </td>
+   <td style="text-align:left;"> SEN </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 11.4730675 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Greenland </td>
+   <td style="text-align:left;"> GRL </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 0.4178627 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> North Macedonia </td>
+   <td style="text-align:left;"> MKD </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 5.8955084 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 10.1474871 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Botswana </td>
+   <td style="text-align:left;"> BWA </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 4.4951558 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Indonesia </td>
+   <td style="text-align:left;"> IDN </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 9.2113799 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Uruguay </td>
+   <td style="text-align:left;"> URY </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 0.7447248 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nicaragua </td>
+   <td style="text-align:left;"> NIC </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 11.6948668 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Barbados </td>
+   <td style="text-align:left;"> BRB </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 0.0292277 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Argentina </td>
+   <td style="text-align:left;"> ARG </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 0.3075327 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Estonia </td>
+   <td style="text-align:left;"> EST </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0.5045086 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mozambique </td>
+   <td style="text-align:left;"> MOZ </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 11.6596677 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Djibouti </td>
+   <td style="text-align:left;"> DJI </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 3.4582777 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Guinea </td>
+   <td style="text-align:left;"> GIN </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 13.5242799 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Belarus </td>
+   <td style="text-align:left;"> BLR </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 0.6036668 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Morocco </td>
+   <td style="text-align:left;"> MAR </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 3.9552153 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bahamas </td>
+   <td style="text-align:left;"> BHS </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0.1255229 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saint Lucia </td>
+   <td style="text-align:left;"> LCA </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 0.5132948 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Brunei </td>
+   <td style="text-align:left;"> BRN </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 0.1087136 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cambodia </td>
+   <td style="text-align:left;"> KHM </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 16.3553215 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Brazil </td>
+   <td style="text-align:left;"> BRA </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 3.6569369 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Botswana </td>
+   <td style="text-align:left;"> BWA </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 4.0675290 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Oman </td>
+   <td style="text-align:left;"> OMN </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0.2010436 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sao Tome and Principe </td>
+   <td style="text-align:left;"> STP </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 16.0809855 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Qatar </td>
+   <td style="text-align:left;"> QAT </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 0.0010865 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tokelau </td>
+   <td style="text-align:left;"> TKL </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0.0077971 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saudi Arabia </td>
+   <td style="text-align:left;"> SAU </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 5.2105199 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Israel </td>
+   <td style="text-align:left;"> ISR </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 0.0473004 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> United Arab Emirates </td>
+   <td style="text-align:left;"> ARE </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 0.0070218 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Burundi </td>
+   <td style="text-align:left;"> BDI </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 13.9319962 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 0.0052752 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Malaysia </td>
+   <td style="text-align:left;"> MYS </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 0.1026064 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Angola </td>
+   <td style="text-align:left;"> AGO </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 6.8341990 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Slovenia </td>
+   <td style="text-align:left;"> SVN </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 0.7123592 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Serbia </td>
+   <td style="text-align:left;"> SRB </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 2.5015739 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 3.0463064 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Estonia </td>
+   <td style="text-align:left;"> EST </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 0.3265481 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tuvalu </td>
+   <td style="text-align:left;"> TUV </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 4.6452515 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Solomon Islands </td>
+   <td style="text-align:left;"> SLB </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 21.9630674 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cape Verde </td>
+   <td style="text-align:left;"> CPV </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 7.8359397 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Serbia </td>
+   <td style="text-align:left;"> SRB </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 4.5010029 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Malawi </td>
+   <td style="text-align:left;"> MWI </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 11.1352863 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Myanmar </td>
+   <td style="text-align:left;"> MMR </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 14.0682215 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saudi Arabia </td>
+   <td style="text-align:left;"> SAU </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 3.0067568 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Dominica </td>
+   <td style="text-align:left;"> DMA </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 0.9435069 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Lebanon </td>
+   <td style="text-align:left;"> LBN </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 0.2156280 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Lithuania </td>
+   <td style="text-align:left;"> LTU </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0.1921743 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Oman </td>
+   <td style="text-align:left;"> OMN </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0.4672549 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bermuda </td>
+   <td style="text-align:left;"> BMU </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 0.8681930 </td>
+   <td style="text-align:left;"> North America </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:left;"> AUT </td>
    <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 7.8136066 </td>
+   <td style="text-align:right;"> 0.0115418 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Denmark </td>
+   <td style="text-align:left;"> DNK </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 0.0040826 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Puerto Rico </td>
+   <td style="text-align:left;"> PRI </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 0.0073727 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Colombia </td>
+   <td style="text-align:left;"> COL </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 4.7934913 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tunisia </td>
+   <td style="text-align:left;"> TUN </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 0.0302474 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Belize </td>
+   <td style="text-align:left;"> BLZ </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 4.4190986 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bangladesh </td>
+   <td style="text-align:left;"> BGD </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 16.8014936 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Russia </td>
+   <td style="text-align:left;"> RUS </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 0.5077678 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Panama </td>
+   <td style="text-align:left;"> PAN </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 4.4780690 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Uruguay </td>
+   <td style="text-align:left;"> URY </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 0.5556986 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Eritrea </td>
+   <td style="text-align:left;"> ERI </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 11.0750372 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mali </td>
+   <td style="text-align:left;"> MLI </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 12.1924097 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Brunei </td>
+   <td style="text-align:left;"> BRN </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 0.0473346 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Iran </td>
+   <td style="text-align:left;"> IRN </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0.0435173 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Togo </td>
+   <td style="text-align:left;"> TGO </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 11.3269916 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Zimbabwe </td>
+   <td style="text-align:left;"> ZWE </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 7.5206205 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Namibia </td>
+   <td style="text-align:left;"> NAM </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 6.0396492 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Gabon </td>
+   <td style="text-align:left;"> GAB </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 3.4103603 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saint Vincent and the Grenadines </td>
+   <td style="text-align:left;"> VCT </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0.5232985 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Guyana </td>
+   <td style="text-align:left;"> GUY </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 4.4690086 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Malaysia </td>
+   <td style="text-align:left;"> MYS </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 0.2608086 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> United Arab Emirates </td>
+   <td style="text-align:left;"> ARE </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0.0031221 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 4.1183613 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Italy </td>
+   <td style="text-align:left;"> ITA </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 0.0399439 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bermuda </td>
+   <td style="text-align:left;"> BMU </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 0.1465764 </td>
+   <td style="text-align:left;"> North America </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Philippines </td>
+   <td style="text-align:left;"> PHL </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 9.1272339 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Serbia </td>
+   <td style="text-align:left;"> SRB </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 3.9410108 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sudan </td>
+   <td style="text-align:left;"> SDN </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 12.1821287 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Chad </td>
+   <td style="text-align:left;"> TCD </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 14.7100376 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Azerbaijan </td>
+   <td style="text-align:left;"> AZE </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 3.3649091 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saint Kitts and Nevis </td>
+   <td style="text-align:left;"> KNA </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 0.2097574 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saint Vincent and the Grenadines </td>
+   <td style="text-align:left;"> VCT </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 0.4202021 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kenya </td>
+   <td style="text-align:left;"> KEN </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 8.6619046 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Djibouti </td>
+   <td style="text-align:left;"> DJI </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 9.5395769 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Panama </td>
+   <td style="text-align:left;"> PAN </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 1.0208518 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Greenland </td>
+   <td style="text-align:left;"> GRL </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 0.5564985 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Laos </td>
+   <td style="text-align:left;"> LAO </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 14.9863711 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Northern Mariana Islands </td>
+   <td style="text-align:left;"> MNP </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 2.9322304 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saudi Arabia </td>
+   <td style="text-align:left;"> SAU </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 0.0353510 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cote d'Ivoire </td>
+   <td style="text-align:left;"> CIV </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 9.9177577 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Liberia </td>
+   <td style="text-align:left;"> LBR </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 11.5107476 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Vietnam </td>
+   <td style="text-align:left;"> VNM </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 13.2506171 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Myanmar </td>
+   <td style="text-align:left;"> MMR </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 17.5459198 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Uzbekistan </td>
+   <td style="text-align:left;"> UZB </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 5.4015177 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Syria </td>
+   <td style="text-align:left;"> SYR </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 0.0668088 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bhutan </td>
+   <td style="text-align:left;"> BTN </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 14.7760379 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saint Vincent and the Grenadines </td>
+   <td style="text-align:left;"> VCT </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 0.7631425 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Eswatini </td>
+   <td style="text-align:left;"> SWZ </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 8.5160722 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Czechia </td>
+   <td style="text-align:left;"> CZE </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0.0990454 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Oman </td>
+   <td style="text-align:left;"> OMN </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 2.6148362 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Laos </td>
+   <td style="text-align:left;"> LAO </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 16.1311491 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> South Korea </td>
+   <td style="text-align:left;"> KOR </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 0.0102636 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Slovenia </td>
+   <td style="text-align:left;"> SVN </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 0.4956056 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Congo </td>
+   <td style="text-align:left;"> COG </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 7.9257128 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tonga </td>
+   <td style="text-align:left;"> TON </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 6.9587117 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Paraguay </td>
+   <td style="text-align:left;"> PRY </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 4.0729324 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bosnia and Herzegovina </td>
+   <td style="text-align:left;"> BIH </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 3.3538343 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> New Zealand </td>
+   <td style="text-align:left;"> NZL </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 0.0131330 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Yemen </td>
+   <td style="text-align:left;"> YEM </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 11.9609212 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Thailand </td>
+   <td style="text-align:left;"> THA </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 3.4814463 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Brunei </td>
+   <td style="text-align:left;"> BRN </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 0.5496835 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Maldives </td>
+   <td style="text-align:left;"> MDV </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 5.1622309 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Malawi </td>
+   <td style="text-align:left;"> MWI </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 9.4260724 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> North Korea </td>
+   <td style="text-align:left;"> PRK </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 17.7001957 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sudan </td>
+   <td style="text-align:left;"> SDN </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 11.1772441 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tunisia </td>
+   <td style="text-align:left;"> TUN </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 1.6807828 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Turkey </td>
+   <td style="text-align:left;"> TUR </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 0.3501356 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Latvia </td>
+   <td style="text-align:left;"> LVA </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 1.0810986 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cuba </td>
+   <td style="text-align:left;"> CUB </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 0.2170814 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 19.6776071 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mauritius </td>
+   <td style="text-align:left;"> MUS </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0.3198540 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Seychelles </td>
+   <td style="text-align:left;"> SYC </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 0.1033891 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cuba </td>
+   <td style="text-align:left;"> CUB </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 0.7815995 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bangladesh </td>
+   <td style="text-align:left;"> BGD </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 15.1435969 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ireland </td>
+   <td style="text-align:left;"> IRL </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 0.0092801 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Lithuania </td>
+   <td style="text-align:left;"> LTU </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 1.0936610 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Colombia </td>
+   <td style="text-align:left;"> COL </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 5.3008888 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Poland </td>
+   <td style="text-align:left;"> POL </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 2.5203339 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Croatia </td>
+   <td style="text-align:left;"> HRV </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 0.5318899 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Greenland </td>
+   <td style="text-align:left;"> GRL </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0.1988710 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ukraine </td>
+   <td style="text-align:left;"> UKR </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 0.5303188 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 0.0486500 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Czechia </td>
+   <td style="text-align:left;"> CZE </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 0.0750907 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Madagascar </td>
+   <td style="text-align:left;"> MDG </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 15.6028482 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kuwait </td>
+   <td style="text-align:left;"> KWT </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 0.0885149 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cuba </td>
+   <td style="text-align:left;"> CUB </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 0.5503800 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Barbados </td>
+   <td style="text-align:left;"> BRB </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0.0080867 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Antigua and Barbuda </td>
+   <td style="text-align:left;"> ATG </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 0.1211412 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kiribati </td>
+   <td style="text-align:left;"> KIR </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 13.1294423 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tokelau </td>
+   <td style="text-align:left;"> TKL </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0.0191271 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Yemen </td>
+   <td style="text-align:left;"> YEM </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 8.1044221 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Malta </td>
+   <td style="text-align:left;"> MLT </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 0.1463832 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Benin </td>
+   <td style="text-align:left;"> BEN </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 13.3087053 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tokelau </td>
+   <td style="text-align:left;"> TKL </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 0.0175172 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tajikistan </td>
+   <td style="text-align:left;"> TJK </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 12.6728700 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Trinidad and Tobago </td>
+   <td style="text-align:left;"> TTO </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 0.1137077 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Liberia </td>
+   <td style="text-align:left;"> LBR </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 12.1968391 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Singapore </td>
+   <td style="text-align:left;"> SGP </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 0.2605330 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Turkmenistan </td>
+   <td style="text-align:left;"> TKM </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 0.1088288 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Netherlands </td>
+   <td style="text-align:left;"> NLD </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 0.0035662 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Greenland </td>
+   <td style="text-align:left;"> GRL </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 0.0747349 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Finland </td>
+   <td style="text-align:left;"> FIN </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0.0047693 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nauru </td>
+   <td style="text-align:left;"> NRU </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 2.2650905 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> France </td>
+   <td style="text-align:left;"> FRA </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 0.0084239 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Papua New Guinea </td>
+   <td style="text-align:left;"> PNG </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 19.1313678 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Indonesia </td>
+   <td style="text-align:left;"> IDN </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 7.7689270 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Croatia </td>
+   <td style="text-align:left;"> HRV </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 1.1066330 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Laos </td>
+   <td style="text-align:left;"> LAO </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 15.2346065 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sierra Leone </td>
+   <td style="text-align:left;"> SLE </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 13.7279485 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Gambia </td>
+   <td style="text-align:left;"> GMB </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 12.1438565 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Congo </td>
+   <td style="text-align:left;"> COG </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 8.5950352 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Zambia </td>
+   <td style="text-align:left;"> ZMB </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 8.8262945 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Pakistan </td>
+   <td style="text-align:left;"> PAK </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 8.8160133 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Italy </td>
+   <td style="text-align:left;"> ITA </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 0.0588638 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bermuda </td>
+   <td style="text-align:left;"> BMU </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 1.1686602 </td>
+   <td style="text-align:left;"> North America </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Haiti </td>
+   <td style="text-align:left;"> HTI </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 14.2444670 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Philippines </td>
+   <td style="text-align:left;"> PHL </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 7.9963125 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Norway </td>
+   <td style="text-align:left;"> NOR </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 0.0061874 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Libya </td>
+   <td style="text-align:left;"> LBY </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 0.2443475 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 19.8186738 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 9.6431634 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Papua New Guinea </td>
+   <td style="text-align:left;"> PNG </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 19.6579131 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Latvia </td>
+   <td style="text-align:left;"> LVA </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 0.9063388 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 0.1189367 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Georgia </td>
+   <td style="text-align:left;"> GEO </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 6.5788029 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Malawi </td>
+   <td style="text-align:left;"> MWI </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 9.0662063 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Indonesia </td>
+   <td style="text-align:left;"> IDN </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 7.0030931 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Dominican Republic </td>
+   <td style="text-align:left;"> DOM </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 6.9172718 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Azerbaijan </td>
+   <td style="text-align:left;"> AZE </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 2.1972342 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Pakistan </td>
+   <td style="text-align:left;"> PAK </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 14.9182562 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Estonia </td>
+   <td style="text-align:left;"> EST </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 1.1707756 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Vietnam </td>
+   <td style="text-align:left;"> VNM </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 5.8836123 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Democratic Republic of Congo </td>
+   <td style="text-align:left;"> COD </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 13.9609107 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Brunei </td>
+   <td style="text-align:left;"> BRN </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 0.9742741 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sri Lanka </td>
+   <td style="text-align:left;"> LKA </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 4.7735064 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Burundi </td>
+   <td style="text-align:left;"> BDI </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 12.4696072 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Andorra </td>
+   <td style="text-align:left;"> AND </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 0.0224718 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ethiopia </td>
+   <td style="text-align:left;"> ETH </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 13.2384288 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nauru </td>
+   <td style="text-align:left;"> NRU </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 2.3715572 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bosnia and Herzegovina </td>
+   <td style="text-align:left;"> BIH </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 7.2992129 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Laos </td>
+   <td style="text-align:left;"> LAO </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 17.1601993 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Niue </td>
+   <td style="text-align:left;"> NIU </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 0.5024120 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bolivia </td>
+   <td style="text-align:left;"> BOL </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 4.5945211 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sri Lanka </td>
+   <td style="text-align:left;"> LKA </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 9.7970156 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Singapore </td>
+   <td style="text-align:left;"> SGP </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 0.0132201 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> United Arab Emirates </td>
+   <td style="text-align:left;"> ARE </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 0.0010027 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Malta </td>
+   <td style="text-align:left;"> MLT </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 0.0161693 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mauritius </td>
+   <td style="text-align:left;"> MUS </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 0.1697149 </td>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:left;"> Africa </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Eswatini </td>
    <td style="text-align:left;"> SWZ </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 5.3827972 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Brunei </td>
+   <td style="text-align:left;"> BRN </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 0.0604161 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Guatemala </td>
+   <td style="text-align:left;"> GTM </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 9.9655638 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bermuda </td>
+   <td style="text-align:left;"> BMU </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0.3709298 </td>
+   <td style="text-align:left;"> North America </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 0.0091758 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bolivia </td>
+   <td style="text-align:left;"> BOL </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 4.4212486 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Palestine </td>
+   <td style="text-align:left;"> PSE </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 3.4250360 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saint Kitts and Nevis </td>
+   <td style="text-align:left;"> KNA </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 0.4431143 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Russia </td>
+   <td style="text-align:left;"> RUS </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 0.6416960 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> El Salvador </td>
+   <td style="text-align:left;"> SLV </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 5.0665782 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Monaco </td>
+   <td style="text-align:left;"> MCO </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 0.0042901 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Burundi </td>
+   <td style="text-align:left;"> BDI </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 13.4564221 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ireland </td>
+   <td style="text-align:left;"> IRL </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 0.0106735 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> American Samoa </td>
+   <td style="text-align:left;"> ASM </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 2.9145449 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Italy </td>
+   <td style="text-align:left;"> ITA </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 0.0318466 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Eswatini </td>
+   <td style="text-align:left;"> SWZ </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 5.4787924 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ethiopia </td>
+   <td style="text-align:left;"> ETH </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 13.0592962 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ecuador </td>
+   <td style="text-align:left;"> ECU </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 1.1094215 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Burundi </td>
+   <td style="text-align:left;"> BDI </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 13.5929389 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Brunei </td>
+   <td style="text-align:left;"> BRN </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 0.0582512 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saint Lucia </td>
+   <td style="text-align:left;"> LCA </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0.6329876 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ghana </td>
+   <td style="text-align:left;"> GHA </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 9.6059109 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Vanuatu </td>
+   <td style="text-align:left;"> VUT </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 16.4150521 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sudan </td>
+   <td style="text-align:left;"> SDN </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 15.7036110 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> United Arab Emirates </td>
+   <td style="text-align:left;"> ARE </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 0.0086346 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Laos </td>
+   <td style="text-align:left;"> LAO </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 17.5080752 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Portugal </td>
+   <td style="text-align:left;"> PRT </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 0.1360968 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> United States Virgin Islands </td>
+   <td style="text-align:left;"> VIR </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0.0683821 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 0.0382713 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Palau </td>
+   <td style="text-align:left;"> PLW </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 0.0074873 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Gabon </td>
+   <td style="text-align:left;"> GAB </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 6.5020456 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> United States </td>
+   <td style="text-align:left;"> USA </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 0.0074457 </td>
+   <td style="text-align:left;"> North America </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kazakhstan </td>
+   <td style="text-align:left;"> KAZ </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 5.0699747 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ukraine </td>
+   <td style="text-align:left;"> UKR </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 0.6414594 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> China </td>
+   <td style="text-align:left;"> CHN </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 15.4395940 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saint Kitts and Nevis </td>
+   <td style="text-align:left;"> KNA </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 0.3053381 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nepal </td>
+   <td style="text-align:left;"> NPL </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 19.2414951 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nigeria </td>
+   <td style="text-align:left;"> NGA </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 11.5486039 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mexico </td>
+   <td style="text-align:left;"> MEX </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 3.3566106 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Brazil </td>
+   <td style="text-align:left;"> BRA </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 3.8556060 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Finland </td>
+   <td style="text-align:left;"> FIN </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0.0087496 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cyprus </td>
+   <td style="text-align:left;"> CYP </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 0.0163221 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Burundi </td>
+   <td style="text-align:left;"> BDI </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 10.5267621 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mongolia </td>
+   <td style="text-align:left;"> MNG </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 7.0816528 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Guam </td>
+   <td style="text-align:left;"> GUM </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 0.4431576 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Monaco </td>
+   <td style="text-align:left;"> MCO </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 0.0040454 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bermuda </td>
+   <td style="text-align:left;"> BMU </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 0.1405873 </td>
+   <td style="text-align:left;"> North America </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Montenegro </td>
+   <td style="text-align:left;"> MNE </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 2.9028185 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Gambia </td>
+   <td style="text-align:left;"> GMB </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 13.7935851 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cape Verde </td>
+   <td style="text-align:left;"> CPV </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 9.3297722 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Malawi </td>
+   <td style="text-align:left;"> MWI </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 9.6606601 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Brazil </td>
+   <td style="text-align:left;"> BRA </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 2.3798633 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Canada </td>
+   <td style="text-align:left;"> CAN </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0.0129862 </td>
+   <td style="text-align:left;"> North America </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Luxembourg </td>
+   <td style="text-align:left;"> LUX </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 0.0296342 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Greenland </td>
+   <td style="text-align:left;"> GRL </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0.1075665 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ghana </td>
+   <td style="text-align:left;"> GHA </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 7.0340240 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Iceland </td>
+   <td style="text-align:left;"> ISL </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 0.0157977 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Fiji </td>
+   <td style="text-align:left;"> FJI </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 9.6773613 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nicaragua </td>
+   <td style="text-align:left;"> NIC </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 12.4339172 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Guam </td>
+   <td style="text-align:left;"> GUM </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0.3940051 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Malaysia </td>
+   <td style="text-align:left;"> MYS </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 0.2143972 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Hungary </td>
+   <td style="text-align:left;"> HUN </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 2.6407676 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cyprus </td>
+   <td style="text-align:left;"> CYP </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 0.1400386 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Marshall Islands </td>
+   <td style="text-align:left;"> MHL </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 7.2681305 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Jordan </td>
+   <td style="text-align:left;"> JOR </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 0.0050760 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Slovakia </td>
+   <td style="text-align:left;"> SVK </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 0.1161647 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Azerbaijan </td>
+   <td style="text-align:left;"> AZE </td>
    <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 6.0456604 </td>
+   <td style="text-align:right;"> 4.5726917 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Morocco </td>
+   <td style="text-align:left;"> MAR </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 2.7287742 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Seychelles </td>
+   <td style="text-align:left;"> SYC </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 0.0806702 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Dominica </td>
+   <td style="text-align:left;"> DMA </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 0.6961462 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> China </td>
+   <td style="text-align:left;"> CHN </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 11.1495405 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Guatemala </td>
+   <td style="text-align:left;"> GTM </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 8.3411812 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Argentina </td>
+   <td style="text-align:left;"> ARG </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 1.2413031 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Qatar </td>
+   <td style="text-align:left;"> QAT </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 0.0009699 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Guyana </td>
+   <td style="text-align:left;"> GUY </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 2.6140985 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bahrain </td>
+   <td style="text-align:left;"> BHR </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 0.4844744 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Switzerland </td>
+   <td style="text-align:left;"> CHE </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0.0043229 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tuvalu </td>
+   <td style="text-align:left;"> TUV </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 4.0096915 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Guatemala </td>
+   <td style="text-align:left;"> GTM </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 11.7633156 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Serbia </td>
+   <td style="text-align:left;"> SRB </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 6.4658184 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Singapore </td>
+   <td style="text-align:left;"> SGP </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0.0121706 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Yemen </td>
+   <td style="text-align:left;"> YEM </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 10.4712208 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Qatar </td>
+   <td style="text-align:left;"> QAT </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 0.0074812 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Northern Mariana Islands </td>
+   <td style="text-align:left;"> MNP </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 1.3910565 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Peru </td>
+   <td style="text-align:left;"> PER </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 6.3450720 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Thailand </td>
+   <td style="text-align:left;"> THA </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 2.4531593 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Eritrea </td>
+   <td style="text-align:left;"> ERI </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 11.6605626 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Guinea-Bissau </td>
+   <td style="text-align:left;"> GNB </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 14.4419249 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Poland </td>
+   <td style="text-align:left;"> POL </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0.8269782 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mexico </td>
+   <td style="text-align:left;"> MEX </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 3.4756696 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Slovakia </td>
+   <td style="text-align:left;"> SVK </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 0.1025045 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Yemen </td>
+   <td style="text-align:left;"> YEM </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 15.9547880 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saudi Arabia </td>
+   <td style="text-align:left;"> SAU </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 0.5765383 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Northern Mariana Islands </td>
+   <td style="text-align:left;"> MNP </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 1.5229319 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Samoa </td>
+   <td style="text-align:left;"> WSM </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 12.9418849 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Lesotho </td>
+   <td style="text-align:left;"> LSO </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 8.4922225 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Moldova </td>
+   <td style="text-align:left;"> MDA </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 1.8583228 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> American Samoa </td>
+   <td style="text-align:left;"> ASM </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 2.0165932 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mozambique </td>
+   <td style="text-align:left;"> MOZ </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 11.6172331 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Niue </td>
+   <td style="text-align:left;"> NIU </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 4.7985502 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tanzania </td>
+   <td style="text-align:left;"> TZA </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 10.1338731 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Peru </td>
+   <td style="text-align:left;"> PER </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 2.1373238 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Panama </td>
+   <td style="text-align:left;"> PAN </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 2.7851487 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cameroon </td>
+   <td style="text-align:left;"> CMR </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 7.4018086 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> India </td>
+   <td style="text-align:left;"> IND </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 8.5536003 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Angola </td>
+   <td style="text-align:left;"> AGO </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 12.2425309 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sri Lanka </td>
+   <td style="text-align:left;"> LKA </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 6.6818933 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kiribati </td>
+   <td style="text-align:left;"> KIR </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 13.6793235 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> North Korea </td>
+   <td style="text-align:left;"> PRK </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 13.7928696 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tajikistan </td>
+   <td style="text-align:left;"> TJK </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 12.6267213 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sri Lanka </td>
+   <td style="text-align:left;"> LKA </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 9.6137978 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Guinea-Bissau </td>
+   <td style="text-align:left;"> GNB </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 14.2344720 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sierra Leone </td>
+   <td style="text-align:left;"> SLE </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 13.5943415 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ukraine </td>
+   <td style="text-align:left;"> UKR </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 0.8810336 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Uruguay </td>
+   <td style="text-align:left;"> URY </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 0.5106119 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Peru </td>
+   <td style="text-align:left;"> PER </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 3.9410163 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Haiti </td>
+   <td style="text-align:left;"> HTI </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 13.9965702 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Comoros </td>
+   <td style="text-align:left;"> COM </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 13.4674397 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> India </td>
+   <td style="text-align:left;"> IND </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 13.5225391 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Rwanda </td>
+   <td style="text-align:left;"> RWA </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 13.0897593 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Andorra </td>
+   <td style="text-align:left;"> AND </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 0.0106414 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Portugal </td>
+   <td style="text-align:left;"> PRT </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 0.3061380 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Guam </td>
+   <td style="text-align:left;"> GUM </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 0.6472999 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tuvalu </td>
+   <td style="text-align:left;"> TUV </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 5.3650781 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Vietnam </td>
+   <td style="text-align:left;"> VNM </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 12.2880557 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Botswana </td>
+   <td style="text-align:left;"> BWA </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 3.9886017 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Djibouti </td>
+   <td style="text-align:left;"> DJI </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 7.3431821 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> El Salvador </td>
+   <td style="text-align:left;"> SLV </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 2.3433598 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Venezuela </td>
+   <td style="text-align:left;"> VEN </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 0.1060430 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Thailand </td>
+   <td style="text-align:left;"> THA </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 7.4160796 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cambodia </td>
+   <td style="text-align:left;"> KHM </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 14.7934822 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Angola </td>
+   <td style="text-align:left;"> AGO </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 10.3075334 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Uganda </td>
+   <td style="text-align:left;"> UGA </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 10.5000034 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mozambique </td>
+   <td style="text-align:left;"> MOZ </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 11.5026051 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tanzania </td>
+   <td style="text-align:left;"> TZA </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 11.8664150 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tunisia </td>
+   <td style="text-align:left;"> TUN </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0.2544714 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Turkey </td>
+   <td style="text-align:left;"> TUR </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0.0871198 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Northern Mariana Islands </td>
+   <td style="text-align:left;"> MNP </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 2.0950392 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kyrgyzstan </td>
+   <td style="text-align:left;"> KGZ </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 4.5455530 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bhutan </td>
+   <td style="text-align:left;"> BTN </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 16.3791532 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Dominican Republic </td>
+   <td style="text-align:left;"> DOM </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 2.7804257 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saint Vincent and the Grenadines </td>
+   <td style="text-align:left;"> VCT </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 0.6151468 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Togo </td>
+   <td style="text-align:left;"> TGO </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 11.4073844 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Argentina </td>
+   <td style="text-align:left;"> ARG </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 0.6914511 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Germany </td>
+   <td style="text-align:left;"> DEU </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0.0060995 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mexico </td>
+   <td style="text-align:left;"> MEX </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 2.5069589 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Antigua and Barbuda </td>
+   <td style="text-align:left;"> ATG </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0.1563244 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mali </td>
+   <td style="text-align:left;"> MLI </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 12.2309241 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mali </td>
+   <td style="text-align:left;"> MLI </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 11.9292149 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> South Africa </td>
+   <td style="text-align:left;"> ZAF </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 4.7073957 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Egypt </td>
+   <td style="text-align:left;"> EGY </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 0.2568546 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Togo </td>
+   <td style="text-align:left;"> TGO </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 11.2570594 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Belarus </td>
+   <td style="text-align:left;"> BLR </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 0.2179966 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> South Korea </td>
+   <td style="text-align:left;"> KOR </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 0.0150923 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Azerbaijan </td>
+   <td style="text-align:left;"> AZE </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 6.9118831 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nigeria </td>
+   <td style="text-align:left;"> NGA </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 9.9740614 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Monaco </td>
+   <td style="text-align:left;"> MCO </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 0.0048875 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Colombia </td>
+   <td style="text-align:left;"> COL </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 2.2387384 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Belize </td>
+   <td style="text-align:left;"> BLZ </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 2.1048609 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Haiti </td>
+   <td style="text-align:left;"> HTI </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 14.1259905 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mozambique </td>
+   <td style="text-align:left;"> MOZ </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 11.0756016 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Algeria </td>
+   <td style="text-align:left;"> DZA </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 0.3453163 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Brazil </td>
+   <td style="text-align:left;"> BRA </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 2.2424996 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Malta </td>
+   <td style="text-align:left;"> MLT </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 0.1342061 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Finland </td>
+   <td style="text-align:left;"> FIN </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 0.0062007 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Turkmenistan </td>
+   <td style="text-align:left;"> TKM </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 0.1669222 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Chad </td>
+   <td style="text-align:left;"> TCD </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 14.1679253 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> China </td>
+   <td style="text-align:left;"> CHN </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 4.4296377 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Angola </td>
+   <td style="text-align:left;"> AGO </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 11.2111734 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Indonesia </td>
+   <td style="text-align:left;"> IDN </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 7.1677427 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Malawi </td>
+   <td style="text-align:left;"> MWI </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 9.1691905 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> El Salvador </td>
+   <td style="text-align:left;"> SLV </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 4.6541503 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> American Samoa </td>
+   <td style="text-align:left;"> ASM </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 1.7100601 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Chad </td>
+   <td style="text-align:left;"> TCD </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 15.0199634 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Guinea-Bissau </td>
+   <td style="text-align:left;"> GNB </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 13.5442665 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bahrain </td>
+   <td style="text-align:left;"> BHR </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 0.0459195 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Malta </td>
+   <td style="text-align:left;"> MLT </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 0.0924073 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Niue </td>
+   <td style="text-align:left;"> NIU </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 3.2346882 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tonga </td>
+   <td style="text-align:left;"> TON </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 5.5238530 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Turkmenistan </td>
+   <td style="text-align:left;"> TKM </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 0.1864338 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> North Macedonia </td>
+   <td style="text-align:left;"> MKD </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 5.0065987 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kuwait </td>
+   <td style="text-align:left;"> KWT </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 0.0067576 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tunisia </td>
+   <td style="text-align:left;"> TUN </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 0.0733820 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tuvalu </td>
+   <td style="text-align:left;"> TUV </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 9.8398013 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Comoros </td>
+   <td style="text-align:left;"> COM </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 11.8880480 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Chile </td>
+   <td style="text-align:left;"> CHL </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 0.5975054 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Syria </td>
+   <td style="text-align:left;"> SYR </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0.1458000 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Niger </td>
+   <td style="text-align:left;"> NER </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 15.2492386 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> United States </td>
+   <td style="text-align:left;"> USA </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 0.0136096 </td>
+   <td style="text-align:left;"> North America </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mongolia </td>
+   <td style="text-align:left;"> MNG </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 9.5671184 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Botswana </td>
+   <td style="text-align:left;"> BWA </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 6.1373951 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Antigua and Barbuda </td>
+   <td style="text-align:left;"> ATG </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 0.4967074 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Djibouti </td>
+   <td style="text-align:left;"> DJI </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 3.6484563 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nepal </td>
+   <td style="text-align:left;"> NPL </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 19.3239966 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nauru </td>
+   <td style="text-align:left;"> NRU </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 1.6895440 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Uganda </td>
+   <td style="text-align:left;"> UGA </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 9.8315678 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Denmark </td>
+   <td style="text-align:left;"> DNK </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 0.0228328 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Togo </td>
+   <td style="text-align:left;"> TGO </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 11.2566248 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> El Salvador </td>
+   <td style="text-align:left;"> SLV </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 1.5562496 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Fiji </td>
+   <td style="text-align:left;"> FJI </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 6.5842287 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Namibia </td>
+   <td style="text-align:left;"> NAM </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 6.0314979 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Panama </td>
+   <td style="text-align:left;"> PAN </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 4.0677751 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Benin </td>
+   <td style="text-align:left;"> BEN </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 13.3493004 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Gambia </td>
+   <td style="text-align:left;"> GMB </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 14.5561118 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saint Lucia </td>
+   <td style="text-align:left;"> LCA </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 2.6960222 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tuvalu </td>
+   <td style="text-align:left;"> TUV </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 1.5159753 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Czechia </td>
+   <td style="text-align:left;"> CZE </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 0.0957588 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bulgaria </td>
+   <td style="text-align:left;"> BGR </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 1.9522489 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Democratic Republic of Congo </td>
+   <td style="text-align:left;"> COD </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 13.8866046 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Comoros </td>
+   <td style="text-align:left;"> COM </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 12.1082135 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> China </td>
+   <td style="text-align:left;"> CHN </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 8.5611853 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Grenada </td>
+   <td style="text-align:left;"> GRD </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 1.0016062 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Vanuatu </td>
+   <td style="text-align:left;"> VUT </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 16.9492812 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Eswatini </td>
+   <td style="text-align:left;"> SWZ </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 7.2040012 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Greece </td>
+   <td style="text-align:left;"> GRC </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 0.0354547 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ecuador </td>
+   <td style="text-align:left;"> ECU </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 1.6175839 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ukraine </td>
+   <td style="text-align:left;"> UKR </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 1.0063473 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Brunei </td>
+   <td style="text-align:left;"> BRN </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0.0526530 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Iceland </td>
+   <td style="text-align:left;"> ISL </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 0.0037281 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Taiwan </td>
+   <td style="text-align:left;"> TWN </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 2.4328216 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Guinea </td>
+   <td style="text-align:left;"> GIN </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 13.7167296 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Congo </td>
+   <td style="text-align:left;"> COG </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 9.6343054 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Algeria </td>
+   <td style="text-align:left;"> DZA </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 0.1763812 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Guinea </td>
+   <td style="text-align:left;"> GIN </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 13.7803404 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Seychelles </td>
+   <td style="text-align:left;"> SYC </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 0.3342432 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Burundi </td>
+   <td style="text-align:left;"> BDI </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 14.2220858 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Moldova </td>
+   <td style="text-align:left;"> MDA </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 5.2427758 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> South Korea </td>
+   <td style="text-align:left;"> KOR </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 0.0237672 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Algeria </td>
+   <td style="text-align:left;"> DZA </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 0.0491542 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Indonesia </td>
+   <td style="text-align:left;"> IDN </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 7.6785741 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tokelau </td>
+   <td style="text-align:left;"> TKL </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 0.0057128 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Lithuania </td>
+   <td style="text-align:left;"> LTU </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 0.2912664 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saint Vincent and the Grenadines </td>
+   <td style="text-align:left;"> VCT </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 2.2713615 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Colombia </td>
+   <td style="text-align:left;"> COL </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 1.2658706 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mexico </td>
+   <td style="text-align:left;"> MEX </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 3.9763899 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nicaragua </td>
+   <td style="text-align:left;"> NIC </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 12.2285878 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mongolia </td>
+   <td style="text-align:left;"> MNG </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 5.2379927 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Eritrea </td>
+   <td style="text-align:left;"> ERI </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 11.2032213 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Norway </td>
+   <td style="text-align:left;"> NOR </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 0.0058233 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sweden </td>
+   <td style="text-align:left;"> SWE </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 0.0293310 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Azerbaijan </td>
+   <td style="text-align:left;"> AZE </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 1.6287129 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Belarus </td>
+   <td style="text-align:left;"> BLR </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 0.1197601 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Central African Republic </td>
+   <td style="text-align:left;"> CAF </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 11.6455407 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Northern Mariana Islands </td>
+   <td style="text-align:left;"> MNP </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 2.3399964 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Croatia </td>
+   <td style="text-align:left;"> HRV </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 0.3974937 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Palau </td>
+   <td style="text-align:left;"> PLW </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 0.0072145 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> South Sudan </td>
+   <td style="text-align:left;"> SSD </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 11.5738848 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Haiti </td>
+   <td style="text-align:left;"> HTI </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 15.2964069 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Norway </td>
+   <td style="text-align:left;"> NOR </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 0.0027308 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sri Lanka </td>
+   <td style="text-align:left;"> LKA </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 6.2871000 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tajikistan </td>
+   <td style="text-align:left;"> TJK </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 8.3618321 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ukraine </td>
+   <td style="text-align:left;"> UKR </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 1.0488946 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tajikistan </td>
+   <td style="text-align:left;"> TJK </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 11.4220973 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mongolia </td>
+   <td style="text-align:left;"> MNG </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 11.0864008 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Seychelles </td>
+   <td style="text-align:left;"> SYC </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 0.1407163 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Denmark </td>
+   <td style="text-align:left;"> DNK </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 0.0069469 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Hungary </td>
+   <td style="text-align:left;"> HUN </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 1.9864583 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Papua New Guinea </td>
+   <td style="text-align:left;"> PNG </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 19.6549022 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Egypt </td>
+   <td style="text-align:left;"> EGY </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 0.0147225 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Grenada </td>
+   <td style="text-align:left;"> GRD </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 0.3135422 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Senegal </td>
+   <td style="text-align:left;"> SEN </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 10.8155892 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Gabon </td>
+   <td style="text-align:left;"> GAB </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 1.3678415 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Fiji </td>
+   <td style="text-align:left;"> FJI </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 10.2917629 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Brunei </td>
+   <td style="text-align:left;"> BRN </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 0.3602534 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nicaragua </td>
+   <td style="text-align:left;"> NIC </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 7.1273793 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cuba </td>
+   <td style="text-align:left;"> CUB </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 0.7518400 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Belarus </td>
+   <td style="text-align:left;"> BLR </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 0.3590733 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Solomon Islands </td>
+   <td style="text-align:left;"> SLB </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 22.8794882 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> New Zealand </td>
+   <td style="text-align:left;"> NZL </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0.0173005 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Uruguay </td>
+   <td style="text-align:left;"> URY </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 0.2684852 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Monaco </td>
+   <td style="text-align:left;"> MCO </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 0.0103633 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Estonia </td>
+   <td style="text-align:left;"> EST </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 0.3657843 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Italy </td>
+   <td style="text-align:left;"> ITA </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 0.0851093 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Estonia </td>
+   <td style="text-align:left;"> EST </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 0.9831060 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Myanmar </td>
+   <td style="text-align:left;"> MMR </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 12.3683854 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Paraguay </td>
+   <td style="text-align:left;"> PRY </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 6.2344802 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> South Korea </td>
+   <td style="text-align:left;"> KOR </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 0.0535961 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Papua New Guinea </td>
+   <td style="text-align:left;"> PNG </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 18.6227771 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Myanmar </td>
+   <td style="text-align:left;"> MMR </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 18.3445010 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Malaysia </td>
+   <td style="text-align:left;"> MYS </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 0.3844039 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Yemen </td>
+   <td style="text-align:left;"> YEM </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 9.4088512 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Malta </td>
+   <td style="text-align:left;"> MLT </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 0.0151035 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Chad </td>
+   <td style="text-align:left;"> TCD </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 14.2215819 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 16.3419810 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kenya </td>
+   <td style="text-align:left;"> KEN </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 8.5528262 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Malawi </td>
+   <td style="text-align:left;"> MWI </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 9.8257231 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ukraine </td>
+   <td style="text-align:left;"> UKR </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 0.7458095 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Vietnam </td>
+   <td style="text-align:left;"> VNM </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 13.6378818 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Belize </td>
+   <td style="text-align:left;"> BLZ </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 3.3807558 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> South Korea </td>
+   <td style="text-align:left;"> KOR </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0.0061674 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Haiti </td>
+   <td style="text-align:left;"> HTI </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 14.1148572 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Turkey </td>
+   <td style="text-align:left;"> TUR </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0.1639389 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Italy </td>
+   <td style="text-align:left;"> ITA </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0.0297198 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 0.0110323 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Netherlands </td>
+   <td style="text-align:left;"> NLD </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 0.0170386 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Estonia </td>
+   <td style="text-align:left;"> EST </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 1.4287274 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Rwanda </td>
+   <td style="text-align:left;"> RWA </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 12.8287173 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Guinea-Bissau </td>
+   <td style="text-align:left;"> GNB </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 13.6599469 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Northern Mariana Islands </td>
+   <td style="text-align:left;"> MNP </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 1.5894918 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cambodia </td>
+   <td style="text-align:left;"> KHM </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 16.0265455 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Costa Rica </td>
+   <td style="text-align:left;"> CRI </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 1.4824857 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Somalia </td>
+   <td style="text-align:left;"> SOM </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 15.3043747 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Georgia </td>
+   <td style="text-align:left;"> GEO </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 7.9668452 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kyrgyzstan </td>
+   <td style="text-align:left;"> KGZ </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 6.3118626 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mauritania </td>
+   <td style="text-align:left;"> MRT </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 9.5510992 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mexico </td>
+   <td style="text-align:left;"> MEX </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 3.0514400 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kiribati </td>
+   <td style="text-align:left;"> KIR </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 13.9719748 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Jamaica </td>
+   <td style="text-align:left;"> JAM </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 1.7124655 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Norway </td>
+   <td style="text-align:left;"> NOR </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 0.0215507 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Eswatini </td>
+   <td style="text-align:left;"> SWZ </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 5.4908490 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saint Vincent and the Grenadines </td>
+   <td style="text-align:left;"> VCT </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 0.8205803 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Germany </td>
+   <td style="text-align:left;"> DEU </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0.0044754 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Barbados </td>
+   <td style="text-align:left;"> BRB </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0.0108307 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tokelau </td>
+   <td style="text-align:left;"> TKL </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 0.0588513 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 0.0241643 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kiribati </td>
+   <td style="text-align:left;"> KIR </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 13.6712003 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Puerto Rico </td>
+   <td style="text-align:left;"> PRI </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 0.0057400 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Namibia </td>
+   <td style="text-align:left;"> NAM </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 6.7380208 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Slovakia </td>
+   <td style="text-align:left;"> SVK </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 0.3380206 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nicaragua </td>
+   <td style="text-align:left;"> NIC </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 6.2664545 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cambodia </td>
+   <td style="text-align:left;"> KHM </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 14.9050656 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kiribati </td>
+   <td style="text-align:left;"> KIR </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 12.2424831 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Djibouti </td>
+   <td style="text-align:left;"> DJI </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 3.7141825 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Trinidad and Tobago </td>
+   <td style="text-align:left;"> TTO </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 0.1062870 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 0.0672701 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Algeria </td>
+   <td style="text-align:left;"> DZA </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 2.3047240 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Togo </td>
+   <td style="text-align:left;"> TGO </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 11.9795518 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ghana </td>
+   <td style="text-align:left;"> GHA </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 9.8744265 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Costa Rica </td>
+   <td style="text-align:left;"> CRI </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 0.6790604 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> North Korea </td>
+   <td style="text-align:left;"> PRK </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 14.0933377 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mexico </td>
+   <td style="text-align:left;"> MEX </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 3.2085859 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Uganda </td>
+   <td style="text-align:left;"> UGA </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 11.0921403 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Namibia </td>
+   <td style="text-align:left;"> NAM </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 6.1958219 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Malawi </td>
+   <td style="text-align:left;"> MWI </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 9.5154026 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Uganda </td>
+   <td style="text-align:left;"> UGA </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 11.0622373 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Brunei </td>
+   <td style="text-align:left;"> BRN </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 0.0394396 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Armenia </td>
+   <td style="text-align:left;"> ARM </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 0.4532683 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saudi Arabia </td>
+   <td style="text-align:left;"> SAU </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 0.0967188 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> India </td>
+   <td style="text-align:left;"> IND </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 12.2799871 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Chad </td>
+   <td style="text-align:left;"> TCD </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 15.1731836 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Guinea </td>
+   <td style="text-align:left;"> GIN </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 14.7775953 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Chile </td>
+   <td style="text-align:left;"> CHL </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 1.8040128 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Taiwan </td>
+   <td style="text-align:left;"> TWN </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 0.3756513 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bolivia </td>
+   <td style="text-align:left;"> BOL </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 7.3873424 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sudan </td>
+   <td style="text-align:left;"> SDN </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 11.6199007 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Georgia </td>
+   <td style="text-align:left;"> GEO </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 4.5711953 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Togo </td>
+   <td style="text-align:left;"> TGO </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 11.6856748 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Thailand </td>
+   <td style="text-align:left;"> THA </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 7.0895600 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Israel </td>
+   <td style="text-align:left;"> ISR </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 0.0103194 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Iceland </td>
+   <td style="text-align:left;"> ISL </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 0.0106592 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Argentina </td>
+   <td style="text-align:left;"> ARG </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 0.2891292 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Norway </td>
+   <td style="text-align:left;"> NOR </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 0.0124193 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Andorra </td>
+   <td style="text-align:left;"> AND </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 0.0056606 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cambodia </td>
+   <td style="text-align:left;"> KHM </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 16.4939009 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cyprus </td>
+   <td style="text-align:left;"> CYP </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 0.0943293 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ecuador </td>
+   <td style="text-align:left;"> ECU </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 0.8580190 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Iran </td>
+   <td style="text-align:left;"> IRN </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0.0850665 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nepal </td>
+   <td style="text-align:left;"> NPL </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 15.3957903 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> United States </td>
+   <td style="text-align:left;"> USA </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0.0105422 </td>
+   <td style="text-align:left;"> North America </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> North Macedonia </td>
+   <td style="text-align:left;"> MKD </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 2.0821503 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Latvia </td>
+   <td style="text-align:left;"> LVA </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 0.4394848 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tajikistan </td>
+   <td style="text-align:left;"> TJK </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 6.5175735 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Honduras </td>
+   <td style="text-align:left;"> HND </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 10.7768316 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Senegal </td>
+   <td style="text-align:left;"> SEN </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 10.0647276 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Iran </td>
+   <td style="text-align:left;"> IRN </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 0.0739227 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Eritrea </td>
+   <td style="text-align:left;"> ERI </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 10.2382636 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Jamaica </td>
+   <td style="text-align:left;"> JAM </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 7.2885524 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 3.5925211 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Latvia </td>
+   <td style="text-align:left;"> LVA </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0.5204009 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Lithuania </td>
+   <td style="text-align:left;"> LTU </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 0.5244295 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tajikistan </td>
+   <td style="text-align:left;"> TJK </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 12.5992595 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kiribati </td>
+   <td style="text-align:left;"> KIR </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 10.9992064 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Vanuatu </td>
+   <td style="text-align:left;"> VUT </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 16.5392168 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bhutan </td>
+   <td style="text-align:left;"> BTN </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 16.5966771 </td>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Chile </td>
+   <td style="text-align:left;"> CHL </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0.7850238 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Croatia </td>
+   <td style="text-align:left;"> HRV </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 0.6420743 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Dominica </td>
+   <td style="text-align:left;"> DMA </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 3.5247247 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Botswana </td>
+   <td style="text-align:left;"> BWA </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 4.5672332 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Uruguay </td>
+   <td style="text-align:left;"> URY </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 0.3042811 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ireland </td>
+   <td style="text-align:left;"> IRL </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 0.0552709 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Jamaica </td>
+   <td style="text-align:left;"> JAM </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 4.5080322 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Puerto Rico </td>
+   <td style="text-align:left;"> PRI </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 0.0093775 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Finland </td>
+   <td style="text-align:left;"> FIN </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 0.0108621 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Grenada </td>
+   <td style="text-align:left;"> GRD </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 1.8497998 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Iraq </td>
+   <td style="text-align:left;"> IRQ </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 0.6956982 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Algeria </td>
+   <td style="text-align:left;"> DZA </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 0.7250376 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bermuda </td>
+   <td style="text-align:left;"> BMU </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 0.9334103 </td>
+   <td style="text-align:left;"> North America </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Zambia </td>
+   <td style="text-align:left;"> ZMB </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 9.0377804 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Madagascar </td>
+   <td style="text-align:left;"> MDG </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 15.9176278 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Burkina Faso </td>
+   <td style="text-align:left;"> BFA </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 12.8842204 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Belize </td>
+   <td style="text-align:left;"> BLZ </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 1.7937447 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Rwanda </td>
+   <td style="text-align:left;"> RWA </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 12.3357055 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tokelau </td>
+   <td style="text-align:left;"> TKL </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 0.0132162 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Norway </td>
+   <td style="text-align:left;"> NOR </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0.0066274 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ethiopia </td>
+   <td style="text-align:left;"> ETH </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 13.0824327 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> France </td>
+   <td style="text-align:left;"> FRA </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 0.0341629 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Grenada </td>
+   <td style="text-align:left;"> GRD </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 3.5347482 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mongolia </td>
+   <td style="text-align:left;"> MNG </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 11.6580195 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Czechia </td>
+   <td style="text-align:left;"> CZE </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 0.1698383 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Central African Republic </td>
+   <td style="text-align:left;"> CAF </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 12.4595630 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> China </td>
+   <td style="text-align:left;"> CHN </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 7.9277682 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> United Arab Emirates </td>
+   <td style="text-align:left;"> ARE </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 0.0020616 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> El Salvador </td>
+   <td style="text-align:left;"> SLV </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 9.3074417 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cote d'Ivoire </td>
+   <td style="text-align:left;"> CIV </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 10.5151660 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Montenegro </td>
+   <td style="text-align:left;"> MNE </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 4.4440727 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kenya </td>
+   <td style="text-align:left;"> KEN </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 8.7403164 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Tunisia </td>
+   <td style="text-align:left;"> TUN </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 0.2105741 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kyrgyzstan </td>
+   <td style="text-align:left;"> KGZ </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 9.6641384 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Azerbaijan </td>
+   <td style="text-align:left;"> AZE </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 2.5926361 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cambodia </td>
+   <td style="text-align:left;"> KHM </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 17.1888673 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Japan </td>
+   <td style="text-align:left;"> JPN </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 0.0090530 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Samoa </td>
+   <td style="text-align:left;"> WSM </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 12.8589139 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kazakhstan </td>
+   <td style="text-align:left;"> KAZ </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 2.1903308 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Greenland </td>
+   <td style="text-align:left;"> GRL </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0.0827399 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Samoa </td>
+   <td style="text-align:left;"> WSM </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 12.8261521 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Spain </td>
+   <td style="text-align:left;"> ESP </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 0.1042913 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Comoros </td>
+   <td style="text-align:left;"> COM </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 13.5348550 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Oman </td>
+   <td style="text-align:left;"> OMN </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 0.8499383 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kyrgyzstan </td>
+   <td style="text-align:left;"> KGZ </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 9.1033560 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Syria </td>
+   <td style="text-align:left;"> SYR </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 1.8977519 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Russia </td>
+   <td style="text-align:left;"> RUS </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0.1580474 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Philippines </td>
+   <td style="text-align:left;"> PHL </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 7.0167477 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Serbia </td>
+   <td style="text-align:left;"> SRB </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 2.6718435 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Europe </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Turkmenistan </td>
+   <td style="text-align:left;"> TKM </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 0.0258030 </td>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Colombia </td>
+   <td style="text-align:left;"> COL </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 3.0296502 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Saint Kitts and Nevis </td>
+   <td style="text-align:left;"> KNA </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 0.7102436 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ecuador </td>
+   <td style="text-align:left;"> ECU </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 3.2347097 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Central African Republic </td>
+   <td style="text-align:left;"> CAF </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 11.0047958 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Morocco </td>
+   <td style="text-align:left;"> MAR </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 3.4925394 </td>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ethiopia </td>
+   <td style="text-align:left;"> ETH </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 13.6790511 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Myanmar </td>
+   <td style="text-align:left;"> MMR </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 17.2474953 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Asia </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Solomon Islands </td>
+   <td style="text-align:left;"> SLB </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 20.7302387 </td>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:left;"> Oceania </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bahamas </td>
+   <td style="text-align:left;"> BHS </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 0.1750553 </td>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:left;"> Americas </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Zambia </td>
+   <td style="text-align:left;"> ZMB </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 8.1238025 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sierra Leone </td>
+   <td style="text-align:left;"> SLE </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 13.3844332 </td>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:left;"> Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Gambia </td>
+   <td style="text-align:left;"> GMB </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 12.8027438 </td>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:left;"> Africa </td>
   </tr>
@@ -14960,7 +7682,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `country_region = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -14970,7 +7692,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `continent = countrycode(entity, origin = "country.name",
   destination = "continent")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -14988,7 +7710,7 @@ percent_deaths_by_household_pollution, : Ignoring unknown aesthetics: na.rm
 :::
 
 ::: {.cell-output-display}
-![](IndoorPollution_files/figure-html/unnamed-chunk-6-1.png){width=672}
+![](IndoorPollution_files/figure-html/unnamed-chunk-5-1.png){width=672}
 :::
 :::
 
@@ -15037,9 +7759,10 @@ exploratory_data %>%
   group_by(Regions) %>%
 
   summarize(
-    'Average percent death by region' = mean(n),
-    'Standard Deviation of % deaths by region' = sd(n),
-    'Number of Variables being measured' = length(unique(entity))) %>%
+    'Average Percent Deaths by Region' = mean(n),
+    'Standard Deviation of % Deaths by Region' = sd(n),
+    
+    'Number of Variables Measured' = length(unique(entity))) %>%
   
  kable() %>%
     kable_styling(bootstrap_options = c("hover", "striped"))
@@ -15051,7 +7774,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `Regions = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: America, Andean Latin America, Caribbean, Central Latin America, Commonwealth, Commonwealth Middle Income, East Asia & Pacific - World Bank region, Eastern Mediterranean Region, Europe, Europe & Central Asia - World Bank region, European Union, G20, High-income Asia Pacific, High-income North America, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Region of the Americas, Scotland, South Asia - World Bank region, Southeast Asia, East Asia, and Oceania, Southern sub-Saharan Africa, Timor, Tropical Latin America, Western Pacific Region, World, World Bank Low Income, World Bank Lower Middle Income
+! Some values were not matched unambiguously: Asia, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Commonwealth, Commonwealth Middle Income, East Asia & Pacific - World Bank region, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe & Central Asia - World Bank region, European Region, G20, High-income, High-income Asia Pacific, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Middle East & North Africa, Nordic Region, North Africa and Middle East, North America, Northern Ireland, OECD Countries, Region of the Americas, Scotland, Southeast Asia, Southern Latin America, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -15062,53 +7785,53 @@ Caused by warning in `countrycode_convert()`:
  <thead>
   <tr>
    <th style="text-align:left;"> Regions </th>
-   <th style="text-align:right;"> Average percent death by region </th>
-   <th style="text-align:right;"> Standard Deviation of % deaths by region </th>
-   <th style="text-align:right;"> Number of Variables being measured </th>
+   <th style="text-align:right;"> Average Percent Deaths by Region </th>
+   <th style="text-align:right;"> Standard Deviation of % Deaths by Region </th>
+   <th style="text-align:right;"> Number of Variables Measured </th>
   </tr>
  </thead>
 <tbody>
   <tr>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:right;"> 4.6119238 </td>
-   <td style="text-align:right;"> 5.5705938 </td>
+   <td style="text-align:right;"> 5.0564909 </td>
+   <td style="text-align:right;"> 6.006491 </td>
    <td style="text-align:right;"> 19 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:right;"> 0.7948049 </td>
-   <td style="text-align:right;"> 1.3377547 </td>
+   <td style="text-align:right;"> 0.9668023 </td>
+   <td style="text-align:right;"> 1.605355 </td>
    <td style="text-align:right;"> 28 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:right;"> 1.0783962 </td>
-   <td style="text-align:right;"> 1.6538769 </td>
-   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 1.8941899 </td>
+   <td style="text-align:right;"> 2.987595 </td>
+   <td style="text-align:right;"> 21 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:right;"> 0.0503989 </td>
-   <td style="text-align:right;"> 0.0662988 </td>
-   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 0.4200464 </td>
+   <td style="text-align:right;"> 1.088760 </td>
+   <td style="text-align:right;"> 12 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> North America </td>
-   <td style="text-align:right;"> 0.0041660 </td>
-   <td style="text-align:right;"> 0.0015257 </td>
+   <td style="text-align:right;"> 0.0593336 </td>
+   <td style="text-align:right;"> 0.076937 </td>
    <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:right;"> 7.6656696 </td>
-   <td style="text-align:right;"> 3.5133548 </td>
-   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 7.3360184 </td>
+   <td style="text-align:right;"> 1.832831 </td>
+   <td style="text-align:right;"> 3 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:right;"> 10.4144011 </td>
-   <td style="text-align:right;"> 4.1442384 </td>
-   <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 9.7122837 </td>
+   <td style="text-align:right;"> 3.633842 </td>
+   <td style="text-align:right;"> 20 </td>
   </tr>
 </tbody>
 </table>
@@ -15124,7 +7847,9 @@ Caused by warning in `countrycode_convert()`:
 
 This data summarizes the variables from only 2014-2019 to see a comparison of all the countries in recent years. Something that can be inferred from this data is that some countries have a significantly more significant standard deviation then others.
 
--    While South Asia and Sub-Saharan Africa have the highest average, the deviation is much smaller, suggesting most of the variables (countries) measured in this timespan are relatively close to the 10.00 % mean percent deaths by IAP
+-   While South Asia and Sub-Saharan Africa have the highest average, the deviation is much smaller, suggesting most of the variables (countries) measured in this timespan are relatively close to the 10.00 % mean percent deaths by IAP
+
+<!-- -->
 
     -   East Asia & Pacific are significantly lower in percent deaths by IAP at nearly half of the previously mentioned, however, the standard deviation is over 1% greater then either South Asia or Sub-Saharan Africa, suggesting that some countries could be significantly worse off then most.
 
@@ -15132,12 +7857,7 @@ This data summarizes the variables from only 2014-2019 to see a comparison of al
 
         -   This will be important for my hypothesis, since the geographic position of East Asia & pacific would likely make climate an interesting factor for comparison.
 
-
-
-```{=html}
 <!-- -->
-```
-
 
 -   Regions with the lowest deviation from the mean were Europe & Central Asia as well as North America (despite lacking a standard deviation, it is only made up of 3 countries and likely deviated minimally
 :::
@@ -15167,7 +7887,7 @@ count(year) %>%
 <tbody>
   <tr>
    <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 43 </td>
+   <td style="text-align:right;"> 35 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 1991 </td>
@@ -15175,51 +7895,51 @@ count(year) %>%
   </tr>
   <tr>
    <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 42 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1993 </td>
    <td style="text-align:right;"> 34 </td>
   </tr>
   <tr>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 42 </td>
+  </tr>
+  <tr>
    <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 43 </td>
+   <td style="text-align:right;"> 40 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 31 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 46 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 37 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 44 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 28 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 47 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 38 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2002 </td>
    <td style="text-align:right;"> 35 </td>
   </tr>
   <tr>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 35 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 40 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 42 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 41 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 30 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 40 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 31 </td>
+  </tr>
+  <tr>
    <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 37 </td>
+   <td style="text-align:right;"> 43 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2004 </td>
@@ -15227,63 +7947,63 @@ count(year) %>%
   </tr>
   <tr>
    <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 38 </td>
+   <td style="text-align:right;"> 47 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 41 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 42 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 45 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2009 </td>
    <td style="text-align:right;"> 46 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 38 </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 46 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 42 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 2008 </td>
    <td style="text-align:right;"> 43 </td>
   </tr>
   <tr>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 55 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 55 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 47 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 34 </td>
+  </tr>
+  <tr>
    <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 30 </td>
+   <td style="text-align:right;"> 36 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 49 </td>
+   <td style="text-align:right;"> 33 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 38 </td>
+   <td style="text-align:right;"> 49 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 42 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 35 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 45 </td>
+   <td style="text-align:right;"> 30 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 42 </td>
+   <td style="text-align:right;"> 30 </td>
   </tr>
 </tbody>
 </table>
@@ -15310,7 +8030,7 @@ This data shows the distribution of variables across several years.
 -   It seems that the quantity of variables spread across this time span eliminates any hypothesis that would not involve a temporal comparison. If focusing on a single-year comparison becomes useful, it may be valuable to pick a year that contains the most variables, since they are not all the same.
 :::
 
-region_groups \<-
+**Potential Hypothesis:**
 
 
 ::: {.cell}
@@ -15340,7 +8060,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `Regions = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -15351,9 +8071,46 @@ Caused by warning in `countrycode_convert()`:
 :::
 
 ::: {.cell-output-display}
-![](IndoorPollution_files/figure-html/unnamed-chunk-9-1.png){width=672}
+![](IndoorPollution_files/figure-html/unnamed-chunk-8-1.png){width=672}
 :::
 :::
 
 
-## Background: **Fuel combustion and Indoor Air Pollution**
+::: callout-note
+## Observations
+
+These graphs seem to give some very valuable comparative evidence for both the value of region and time based analysis. Some things that can be seen as trends in this graph would be the downward trend downward that can be seen at the global scale.
+
+-   Europe & Central Asia, Latin America & Caribbean ,Middle East & North Africa and North America were relatively low compared to East Asia & Pacific, South Asia and Sub-Saharan Africa.
+
+-   East Asia & Pacific countries seem to have the greatest reduction in the percent deaths that were measured
+
+-   While this is a global issue, there are clearly countries and regions that are significantly more impacted then others by the loss of life attributed to indoor air pollution and bio fuel combustion
+:::
+
+**Potential Hypothesis: Average % deaths decreased globally from 1990 - 2020**
+
+```{}
+```
+
+**Potential Hypothesis: Temperate vs. Tropical regions will impact the IAP of developing countries**
+
+## Hypothesis: **Fuel combustion and Indoor Air Pollution**
+
+Considering the data that is present, their are two layers of analysis that could generate useful hypothesis for understanding the global impact of indoor air pollution. Considering the country-specific data, it may be valuable to try and find an additional data set for each layer to use for an additional comparison. These second datasets will be considered in thy hypothesis for each layer.
+
+## Layer One: Regions and Climates
+
+**The correlation that would be most interesting to explore would be between the regional characteristics in terms of climate and the type of winters that are common. Temperate regions are more likely to invest in indoor heating which often involved the use of bio fuels like wood stoves. Poor ventilation is also likely to be a component that will play a role in temperate regions being associated with greater % deaths by IAP.**
+
+-   
+
+## Layer Two: Countries and Resources
+
+**It is likely that this data will show a correlation between countries with low economic resources having significantly higher rates of premature death to exposures that have been removed from developed country households**
+
+-   GDP is likely a strong contributing factor that does not even in tropical regions where ventilation is less of a concern, access to clean fuels is limited, indoor burning of fuels for cooking contributes to close proximity to the source of toxic compounds and heavy metals.
+
+    -   despite the likely correlation between a nations GDP and its percent deaths caused by IAP, it also seems the data will show an overall decrease in the 30yrs in every part of the world, but most noticeable in regions with high average percents.
+
+-   Central America, South America, North Africa, South Asia, and the Pacific Islands are the regions that may not be correlated to climate, but contain significant number of countries with low GDP that contribute to IAP deaths.

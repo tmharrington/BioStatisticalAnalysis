@@ -56,16 +56,6 @@ The data, listed by country and region, are mixed in the dataset and will likely
 :::
 
 ```{r}
-exploratory_data%>%
-  
-  rename(percent_deaths_by_household_pollution = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>% #shorten the long name 
-  
-  kable() %>%
-    kable_styling(bootstrap_options = c("hover", "striped"))
-
-```
-
-```{r}
 exploratory_data %>% 
   
   summarize(
@@ -173,9 +163,10 @@ exploratory_data %>%
   group_by(Regions) %>%
 
   summarize(
-    'Average percent death by region' = mean(n),
-    'Standard Deviation of % deaths by region' = sd(n),
-    'Number of Variables being measured' = length(unique(entity))) %>%
+    'Average Percent Deaths by Region' = mean(n),
+    'Standard Deviation of % Deaths by Region' = sd(n),
+    
+    'Number of Variables Measured' = length(unique(entity))) %>%
   
  kable() %>%
     kable_styling(bootstrap_options = c("hover", "striped"))
@@ -188,7 +179,9 @@ exploratory_data %>%
 
 This data summarizes the variables from only 2014-2019 to see a comparison of all the countries in recent years. Something that can be inferred from this data is that some countries have a significantly more significant standard deviation then others.
 
--    While South Asia and Sub-Saharan Africa have the highest average, the deviation is much smaller, suggesting most of the variables (countries) measured in this timespan are relatively close to the 10.00 % mean percent deaths by IAP
+-   While South Asia and Sub-Saharan Africa have the highest average, the deviation is much smaller, suggesting most of the variables (countries) measured in this timespan are relatively close to the 10.00 % mean percent deaths by IAP
+
+<!-- -->
 
     -   East Asia & Pacific are significantly lower in percent deaths by IAP at nearly half of the previously mentioned, however, the standard deviation is over 1% greater then either South Asia or Sub-Saharan Africa, suggesting that some countries could be significantly worse off then most.
 
@@ -196,9 +189,8 @@ This data summarizes the variables from only 2014-2019 to see a comparison of al
 
         -   This will be important for my hypothesis, since the geographic position of East Asia & pacific would likely make climate an interesting factor for comparison.
 
-```{=html}
 <!-- -->
-```
+
 -   Regions with the lowest deviation from the mean were Europe & Central Asia as well as North America (despite lacking a standard deviation, it is only made up of 3 countries and likely deviated minimally
 :::
 
@@ -230,7 +222,7 @@ This data shows the distribution of variables across several years.
 -   It seems that the quantity of variables spread across this time span eliminates any hypothesis that would not involve a temporal comparison. If focusing on a single-year comparison becomes useful, it may be valuable to pick a year that contains the most variables, since they are not all the same.
 :::
 
-region_groups \<-
+**Potential Hypothesis:**
 
 ```{r}
 exploratory_data %>%
@@ -251,4 +243,41 @@ exploratory_data %>%
   geom_smooth()
 ```
 
-## Background: **Fuel combustion and Indoor Air Pollution**
+::: callout-note
+## Observations
+
+These graphs seem to give some very valuable comparative evidence for both the value of region and time based analysis. Some things that can be seen as trends in this graph would be the downward trend downward that can be seen at the global scale.
+
+-   Europe & Central Asia, Latin America & Caribbean ,Middle East & North Africa and North America were relatively low compared to East Asia & Pacific, South Asia and Sub-Saharan Africa.
+
+-   East Asia & Pacific countries seem to have the greatest reduction in the percent deaths that were measured
+
+-   While this is a global issue, there are clearly countries and regions that are significantly more impacted then others by the loss of life attributed to indoor air pollution and bio fuel combustion
+:::
+
+**Potential Hypothesis: Average % deaths decreased globally from 1990 - 2020**
+
+```{}
+```
+
+**Potential Hypothesis: Temperate vs. Tropical regions will impact the IAP of developing countries**
+
+## Hypothesis: **Fuel combustion and Indoor Air Pollution**
+
+Considering the data that is present, their are two layers of analysis that could generate useful hypothesis for understanding the global impact of indoor air pollution. Considering the country-specific data, it may be valuable to try and find an additional data set for each layer to use for an additional comparison. These second datasets will be considered in thy hypothesis for each layer.
+
+## Layer One: Regions and Climates
+
+**The correlation that would be most interesting to explore would be between the regional characteristics in terms of climate and the type of winters that are common. Temperate regions are more likely to invest in indoor heating which often involved the use of bio fuels like wood stoves. Poor ventilation is also likely to be a component that will play a role in temperate regions being associated with greater % deaths by IAP.**
+
+-   
+
+## Layer Two: Countries and Resources
+
+**It is likely that this data will show a correlation between countries with low economic resources having significantly higher rates of premature death to exposures that have been removed from developed country households**
+
+-   GDP is likely a strong contributing factor that does not even in tropical regions where ventilation is less of a concern, access to clean fuels is limited, indoor burning of fuels for cooking contributes to close proximity to the source of toxic compounds and heavy metals.
+
+    -   despite the likely correlation between a nations GDP and its percent deaths caused by IAP, it also seems the data will show an overall decrease in the 30yrs in every part of the world, but most noticeable in regions with high average percents.
+
+-   Central America, South America, North Africa, South Asia, and the Pacific Islands are the regions that may not be correlated to climate, but contain significant number of countries with low GDP that contribute to IAP deaths.
