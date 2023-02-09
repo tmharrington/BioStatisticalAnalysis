@@ -335,7 +335,7 @@ model_region_fit %>%
 :::
 
 ```{r}
-model_data<- exploratory_data %>%
+. model_data<- exploratory_data %>%
   
   rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
   
