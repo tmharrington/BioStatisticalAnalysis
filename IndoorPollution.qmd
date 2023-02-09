@@ -73,9 +73,9 @@ kable(digits = c(1,0,0,4)) %>%
 
 This data set contains variables gathered across multiple years, listing the percent of deaths caused by indoor air pollutants created from indoor combustion. Given the amount of data present in this dataset, several potential hypotheses could likely be considered.
 
-The data, listed by country and region, are mixed in the dataset and will likely require some cleaning to separate. categorical data and contains variables that were collected over many years.
+The data, listed by country and region, are mixed in the data set and will likely require some cleaning to separate. categorical data and contains variables that were collected over many years.
 
--   Depending on the scope of research, it may be more useful to focus on the dataset containing regional data rather than country-specific to highlight what role climate plays in the effect of indoor air pollution.
+-   Depending on the scope of research, it may be more useful to focus on the data set containing regional data rather than country-specific to highlight what role climate plays in the effect of indoor air pollution.
 
     -   In temperate climates, it is more likely to use biofuels for heating as well as cooking. Alongside the availability of insulation material for homes that reduced the ability for indoor and outdoor atmosphere gas exchange, this may be an essential factor that could be compared with this data.
 
@@ -117,22 +117,18 @@ summarize(
 :::
 
 ```{r}
-  
-  # rename(percent_deaths_by_household_pollution = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>% #shorten the long name 
-  
- #  mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
+
+  # mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
   
  # mutate(continent = countrycode (entity, origin = "country.name", destination = "continent"))%>%
   
-  # filter(continent!= 0) %>%
+ #  filter(continent!= 0) %>%
   
  # kable() %>%
    # kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
 ```{r}
-library(countrycode)
-
 exploratory_data %>%
   
   rename(percent_deaths_by_household_pollution = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
@@ -284,7 +280,7 @@ These graphs seem to give some very valuable comparative evidence for both the v
 ```{r}
 model_data<- exploratory_data %>%
   
-  rename(n = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  rename("percent_deaths_by_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
   
    mutate("Regions" = countrycode(entity,origin = "country.name",
    destination= "region")) %>%
@@ -294,7 +290,7 @@ model_region_temp <- linear_reg() %>%
   set_engine("lm")  #construct model instance
 
 model_region_reg<-
-  recipe(year~n,
+  recipe(percent_deaths_by_IAP~year,
          data = model_data)
   #generate a recipe -- what variables do we have in y = mx+b
 
@@ -319,14 +315,53 @@ model_region_fit <- model_region %>% fit(model_data)
 
 This regression analysis provides some useful information that will be valuable to repeat with the entire data set.
 
--   **r-squared value**:describes the variance in independent value that is predictable by a dependent value.
+-   **r-squared value**: Describes the variance in independent value that is predictable by a dependent value.
 
     -   For this test, the r-squared value suggests that between some percent of the deaths caused by IAP in this data set is explained by the year variable.
 
-    -   
+-   **P-value**: this is the statistical variable that tells us if the prediction that year has a impact on the % deaths per year. The value 0 suggests year will show a correlation to a decrease in n in a larger population.
 :::
 
-=
+```{r}
+model_region_fit %>%
+  extract_fit_engine() %>%
+  tidy() %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.callout-note style="color:gray" appearance="simple"}
+## Observations
+:::
+
+```{r}
+model_data<- exploratory_data %>%
+  
+  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+   mutate("region" = countrycode(entity,origin = "country.name",
+   destination= "region"))
+  
+model_region_temp <- linear_reg() %>% 
+  set_engine("lm")  #construct model instance
+
+model_region_reg<-
+  recipe(percent_IAP,year+region, data = model_data) %>%
+step_interact(region:year)
+  #generate a recipe -- what variables do we have in y = mx+b +b(new variable will adjust slope beyond the baseline)
+
+model_region<-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_reg) #combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+ model_region_fit %>%
+  glance() %>% 
+  kable(digits=c(4,4,2,4,0,0,2,2,2,2,0,0)) %>% 
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
 
 ## Hypothesis: **Fuel combustion and Indoor Air Pollution**
 
