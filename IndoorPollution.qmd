@@ -11,7 +11,29 @@ prefer-html: true
 
 ## Introduction
 
-## determining hypothesis with testing data 
+**Since the earliest days of thinking about the dangers associated with pollution in the air, much of the conversation has been focused on the risks associated with our infrastructure --vehicles, energy, and manufacturing at the forefront. More recently, it is becoming more apparent that we are also in need of considering the risks associated with out indoor air pollutants, which is now understood to be a source of premature deaths worthy of concern.**
+
+-   WHO suggests indoor air pollutants can become well over 100x more concentrated in large, poorly ventilated indoor spaces both public and private. On top of that, it has been documented that people living in developed regions spend 80-90% of our lives indoors.
+
+-   Some reports suggest as much as three billion individuals are impacted by toxic indoor air pollutants every day, with as many as 3.8 million deaths yearly being attributed to IAP exposure.
+
+## Defining indoor Air Pollutants
+
+-   **Volatile Organic Compounds:** emitted from common household items such as aerosol cleaners, plastic products, furniture, paints, candles/scented items, adhesives, and many other products. VOC's are the least understood of the indoor air pollutants, and many have still yet to be identified, let alone medically understood.
+
+    -   The five most common VOCs include benzene, formaldehyde, methylene chloride, tetrachloroethylene, toluene, xylene and 1,3-butadiene
+
+-   **Particulate matter:** Dust, smoke, dirt, and other small particles created from many sources and suspended in moving air. Some of the most significant to indoor air pollution tend to be combustion from cooking, heating, or smoking. PM ranges from a mild irritant to major carcinogen, depending on the source.
+
+    -   burning bio fuels like wood or crops produce significantly more hazardous particulate matter then fuels like ethenol or even biodiesel. Wood contains heavy metals like arsenic, cadmium, and lead that can accumulate in soils and then get taken up into the air, as well as producing dust and ash from the incomplete combustion process.
+
+-   **Nitrogen Oxides:** Also an aspect of bio fuel combustion, NOx compounds are a known to have significant negative health affects affecting the respiratory and cardiovascular system, which has been linked to asthma, bronchitis, eye/skin/throat irritation, headaches & nausea as well as a weakened immune system
+
+-   **Carbon monoxide/dioxide:** Both carbon monoxide and dioxide are hazardous in large concentration and produced by the combustion of all fuels, including gas. Carbon monoxide can be particularly dangerous, with hundreds of deaths still caused in the US by accidental CO poisoning.
+
+-   **Radon:** Second leading cause of lung cancer globally, radon is naturally released by soil, rocks, and water, which can release slowly and build up inside poorly ventilated homes.
+
+    ## Determining Hypothesis with Testing Data
 
 ```{r}
 library(tidyverse)
@@ -21,11 +43,14 @@ library(tidymodels)
 library(janitor)
 library(magrittr)
  library(dplyr)
+library(countrycode)
 
 indoor_pollution <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-04-12/indoor_pollution.csv') %>%
 
 clean_names()
 ```
+
+### Quick Summary of Data -- Finding the Variables Present in the Data Set
 
 ```{r}
 
@@ -39,11 +64,11 @@ head(exploratory_data) %>%
   
   rename(percent_deaths_by_household_pollution = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>% #shorten the long name 
   
-kable() %>%
+kable(digits = c(1,0,0,4)) %>%
     kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
-::: callout-note
+::: {.callout-note style="color:gray" appearance="simple"}
 **Observation:**
 
 This data set contains variables gathered across multiple years, listing the percent of deaths caused by indoor air pollutants created from indoor combustion. Given the amount of data present in this dataset, several potential hypotheses could likely be considered.
@@ -62,16 +87,20 @@ The data, listed by country and region, are mixed in the dataset and will likely
 ```{r}
 exploratory_data %>% 
   
-  summarize(
+   mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  group_by(country_region) %>%
+  
+  
+summarize(
   "Lowest percentage of deaths" = min(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent),
   
   "Highest percentage of deaths"= max(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent),
   "average percentage of deaths" =mean(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent),
   "Standard deviation" = sd(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent)
 ) %>%
-  pivot_longer(cols = 1:4) %>%
   
-  kable(digits = c(1,3)) %>%
+  kable(digits = c(1,3,1,2,1)) %>%
     kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
@@ -88,21 +117,17 @@ exploratory_data %>%
 :::
 
 ```{r}
-library(countrycode)
-
-exploratory_data
-%>% 
   
-   rename(percent_deaths_by_household_pollution = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>% #shorten the long name 
+  # rename(percent_deaths_by_household_pollution = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>% #shorten the long name 
   
-   mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
+ #  mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
   
-  mutate(continent = countrycode (entity, origin = "country.name", destination = "continent"))%>%
+ # mutate(continent = countrycode (entity, origin = "country.name", destination = "continent"))%>%
   
-   filter(continent!= 0) %>%
+  # filter(continent!= 0) %>%
   
-  kable() %>%
-    kable_styling(bootstrap_options = c("hover", "striped"))
+ # kable() %>%
+   # kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
 ```{r}
@@ -147,10 +172,6 @@ exploratory_data %>%
 
 -   because these variables are taken across such a wide temporal scale, it does not serve as a distinctly insightful comparison. Still, some things can be inferred.
 :::
-
-What am I trying to do?
-
-graph the average percent deaths by region to determine if there is a correlation b
 
 ```{r}
 
@@ -232,10 +253,8 @@ exploratory_data %>%
   
   rename(n = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
   
-   mutate("Regions" = countrycode(entity, 
-                                       origin = "country.name", 
-                                       destination= "region"
-                                       )) %>%
+   mutate("Regions" = countrycode(entity,origin = "country.name",
+   destination= "region")) %>%
   filter(!is.na(Regions)) %>%
   
   group_by(Regions) %>%
@@ -263,24 +282,13 @@ These graphs seem to give some very valuable comparative evidence for both the v
 **Potential Hypothesis: Temperate vs. Tropical regions will impact the IAP of developing countries**
 
 ```{r}
-exploratory_data %>%
-  
-  rename(n = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-
-model_region_temp <- linear_reg() %>%
-  set_engine("lm")
-
-model_region_reg <- recipe(year~n,
-                           data = entity) %>%
-  
-  model_Region <-workflow() %>%
-  add_model(model_region_temp)
-```
-
-```{r}
 model_data<- exploratory_data %>%
   
-  rename(n = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent)
+  rename(n = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+   mutate("Regions" = countrycode(entity,origin = "country.name",
+   destination= "region")) %>%
+  filter(!is.na(Regions))
   
 model_region_temp <- linear_reg() %>% 
   set_engine("lm")  #construct model instance
@@ -297,15 +305,28 @@ model_region<-
 
 model_region_fit <- model_region %>% fit(model_data)
 
-model_region_fit %>%
-  glance() %>%
-  kable() %>%
+ model_region_fit %>%
+  glance() %>% 
+  kable(digits=c(4,4,2,4,0,0,2,2,2,2,0,0)) %>% 
   kable_styling(bootstrap_options = c("hover", "striped"))
-  
   
   
   # looking to build a regression analysis to determine if a correltion can be seen in the data. prediction is decreasing n over time grouped by region 
 ```
+
+::: {.callout-note appearance="simple"}
+## Observations
+
+This regression analysis provides some useful information that will be valuable to repeat with the entire data set.
+
+-   **r-squared value**:describes the variance in independent value that is predictable by a dependent value.
+
+    -   For this test, the r-squared value suggests that between some percent of the deaths caused by IAP in this data set is explained by the year variable.
+
+    -   
+:::
+
+=
 
 ## Hypothesis: **Fuel combustion and Indoor Air Pollution**
 
