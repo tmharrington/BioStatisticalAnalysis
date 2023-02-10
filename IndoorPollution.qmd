@@ -9,6 +9,10 @@ prefer-html: true
 
 # Air Pollution and Global GDP/Climate trends
 
+## Abstract
+
+Premature deaths related to indoor air pollution data for many countries across the globe have been collected over three decades, which have been compiled in this data set as percentages of the population for a given year. Using the information, this analysis will attempt to infer two important characteristics that may offer insight into the cause of inadequate/unsafe indoor conditions; impact of GDP on the percent deaths is the first layer, and impact of average climates in the regions with similar GDP is the second. Firstly, exploratory analysis done to generate these hypotheses found that time will be a significant factor to consider, throughout this analysis.
+
 ## Introduction
 
 **Since the earliest days of thinking about the dangers associated with pollution in the air, much of the conversation has been focused on the risks associated with our infrastructure --vehicles, energy, and manufacturing at the forefront. More recently, it is becoming more apparent that we are also in need of considering the risks associated with out indoor air pollutants, which is now understood to be a source of premature deaths worthy of concern.**
@@ -346,7 +350,7 @@ model_region_temp <- linear_reg() %>%
   set_engine("lm")  #construct model instance
 
 model_region_reg<-
-  recipe(percent_IAP,year+region, data = model_data) %>%
+  recipe(percent_IAP~year+region, data = model_data) %>%
 step_interact(region:year)
   #generate a recipe -- what variables do we have in y = mx+b +b(new variable will adjust slope beyond the baseline)
 
@@ -367,21 +371,33 @@ model_region_fit <- model_region %>% fit(model_data)
 
 Considering the data that is present, their are two layers of analysis that could generate useful hypothesis for understanding the global impact of indoor air pollution. Considering the country-specific data, it may be valuable to try and find an additional data set for each layer to use for an additional comparison. These second data sets will be considered in thy hypothesis for each layer.
 
-## Layer One: Regions and Climates
+## Layer One: Countries and Resources
 
-**The correlation that would be most interesting to explore would be between the regional characteristics in terms of climate and the type of winters that are common. Temperate regions are more likely to invest in indoor heating which often involved the use of bio fuels like wood stoves. Poor ventilation is also likely to be a component that will play a role in temperate regions being associated with greater % deaths by IAP.**
-
--   
-
-## Layer Two: Countries and Resources
-
-**It is likely that this data will show a correlation between countries with low economic resources having significantly higher rates of premature death to exposures that have been removed from developed country households**
+**It is likely that this data will show a correlation between the amount of resources a country has to invest in clean technologies and health care (represented by GDP) having the lowest percent deaths globally. Representing GDP by country would provide a good comparison to determine how strong this correlation is.**
 
 -   GDP is likely a strong contributing factor that does not even in tropical regions where ventilation is less of a concern, access to clean fuels is limited, indoor burning of fuels for cooking contributes to close proximity to the source of toxic compounds and heavy metals.
 
-    -   despite the likely correlation between a nations GDP and its percent deaths caused by IAP, it also seems the data will show an overall decrease in the 30yrs in every part of the world, but most noticeable in regions with high average percents.
+```{=html}
+<!-- -->
+```
+-   despite the likely correlation between a nations GDP and its percent deaths caused by IAP, it also seems the data will show an overall decrease in the 30yrs in every part of the world. [Comparing the amount that countries have improved over time may be a useful characteristic to infer from this dataset]{.underline}
 
--   Central America, South America, North Africa, South Asia, and the Pacific Islands are the regions that may not be correlated to climate, but contain significant number of countries with low GDP that contribute to IAP deaths.
+    -   What rate increase of GDP is required to create meaningful improvements in the percent of deaths from IAP?
+
+## Layer Two: Regions and Climates
+
+**Assuming GDP is a significant factor for percent deaths, comparing countries of similar GDP from different regions that are impacted by winter conditions may show a correlation between the need to winterize for cold regions increasing the exposure to toxic indoor air pollutants.**
+
+-   If this hypothesis proves a strong correlation between countries in different climate regions for a single year, it may be useful to extrapolate this comparison over the 30 year time span. if no correlation is found, it may not be worth further consideration.
+
+-   Temperate regions are more likely to invest in indoor heating which often involved the use of bio fuels like wood stoves. Poor ventilation is also likely to be a component that will play a role in temperate regions being associated with greater % deaths by IAP.
+
+```{=html}
+<!-- -->
+```
+-   
+
+## 
 
 ::: callout-note
 ## Future Questions
