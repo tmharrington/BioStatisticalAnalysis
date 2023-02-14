@@ -350,12 +350,6 @@ model_data<- exploratory_data %>%
 model_region_temp <- linear_reg() %>% 
   set_engine("lm")  #construct model instance
 
-<<<<<<< HEAD
-model_region_reg<- recipe(percent_IAP~region+year, data = model_data)%>%
-=======
-model_region_reg<-
-  recipe(percent_IAP~year+region, data = model_data) %>%
->>>>>>> 295b91e34de9865891390f1909481401fab5b844
 step_interact(region:year)
   #generate a recipe -- what variables do we have in y = mx+b +b(new variable will adjust slope beyond the baseline)
 
@@ -382,9 +376,8 @@ Considering the data that is present, their are two layers of analysis that coul
 
 -   GDP is likely a strong contributing factor that does not even in tropical regions where ventilation is less of a concern, access to clean fuels is limited, indoor burning of fuels for cooking contributes to close proximity to the source of toxic compounds and heavy metals.
 
-```{=html}
 <!-- -->
-```
+
 -   despite the likely correlation between a nations GDP and its percent deaths caused by IAP, it also seems the data will show an overall decrease in the 30yrs in every part of the world. [Comparing the amount that countries have improved over time may be a useful characteristic to infer from this dataset]{.underline}
 
     -   What rate increase of GDP is required to create meaningful improvements in the percent of deaths from IAP?
@@ -397,9 +390,8 @@ Considering the data that is present, their are two layers of analysis that coul
 
 -   Temperate regions are more likely to invest in indoor heating which often involved the use of bio fuels like wood stoves. Poor ventilation is also likely to be a component that will play a role in temperate regions being associated with greater % deaths by IAP.
 
-```{=html}
 <!-- -->
-```
+
 -   
 
 ## 
@@ -407,3 +399,19 @@ Considering the data that is present, their are two layers of analysis that coul
 ::: callout-note
 ## Future Questions
 :::
+
+```{r}
+library(gapminder)
+
+  gapminder %>% 
+    clean_names() %>%
+rename("entity"="country")
+  
+  merged_df <- merge.data.frame(indoor_pollution,
+                                gapminder,
+                                by = c("entity","year"),
+                                all = FALSE)
+
+```
+
+mn
