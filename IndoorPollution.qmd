@@ -382,9 +382,9 @@ model_data <- indoor_pollution %>%
 model_region_temp <- linear_reg() %>%
   set_engine("lm")  # construct model instance
 
-model_region_recipe <- recipe("percent_IAP", data = model_data) %>%
+model_region_recipe <- recipe(percent_IAP ~ region + year, data = model_data) %>%
   
-  step_interact(terms = c("region", "year")) # define a step for interaction between region and year
+  step_interact(~ region:year) # define a step for interaction between region and year
 
 model_region <-
   workflow() %>%
