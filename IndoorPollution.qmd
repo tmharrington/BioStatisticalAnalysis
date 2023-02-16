@@ -48,6 +48,7 @@ library(janitor)
 library(magrittr)
  library(dplyr)
 library(countrycode)
+library(gapminder)
 
 indoor_pollution <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-04-12/indoor_pollution.csv') %>%
 
@@ -350,13 +351,17 @@ model_data<- exploratory_data %>%
 model_region_temp <- linear_reg() %>% 
   set_engine("lm")  #construct model instance
 
-step_interact(region:year)
+model_region_reg<-
+  recipe(percent_IAP~region*year,
+         data = model_data)
+
+step_interact(terms= c("region","year"))
   #generate a recipe -- what variables do we have in y = mx+b +b(new variable will adjust slope beyond the baseline)
 
 model_region<-
   workflow() %>%
   add_model(model_region_temp) %>%
-  add_recipe(model_region_reg) #combine the model and recipe to generate a regression analysis
+  add_recipe(model_region_reg) %>% #combine the model and recipe to generate a regression analysis
 
 model_region_fit <- model_region %>% fit(model_data)
 
@@ -366,13 +371,41 @@ model_region_fit <- model_region %>% fit(model_data)
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
+```{r}
+model_data <- indoor_pollution %>%
+  
+  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  filter(!is.na(region))
+
+model_region_temp <- linear_reg() %>%
+  set_engine("lm")  # construct model instance
+
+model_region_recipe <- recipe("percent_IAP", data = model_data) %>%
+  
+  step_interact(terms = c("region", "year")) # define a step for interaction between region and year
+
+model_region <-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+model_region_fit %>%
+  glance() %>%
+  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
 ## Hypothesis: **Fuel combustion and Indoor Air Pollution**
 
 Considering the data that is present, their are two layers of analysis that could generate useful hypothesis for understanding the global impact of indoor air pollution. Considering the country-specific data, it may be valuable to try and find an additional data set for each layer to use for an additional comparison. These second data sets will be considered in thy hypothesis for each layer.
 
 ## Layer One: Countries and Resources
 
-**It is likely that this data will show a correlation between the amount of resources a country has to invest in clean technologies and health care (represented by GDP) having the lowest percent deaths globally. Representing GDP by country would provide a good comparison to determine how strong this correlation is.**
+**It is likely that this data will show a correlation between the amount of resources a country has to invest in clean technologies and health care (represented by GDP) having the lowest percent deaths globally. Representing GDP by country would provide a good comparison to determine this correlation's strength.**
 
 -   GDP is likely a strong contributing factor that does not even in tropical regions where ventilation is less of a concern, access to clean fuels is limited, indoor burning of fuels for cooking contributes to close proximity to the source of toxic compounds and heavy metals.
 
@@ -401,17 +434,39 @@ Considering the data that is present, their are two layers of analysis that coul
 :::
 
 ```{r}
-library(gapminder)
-
-  gapminder %>% 
+gm_df <- gapminder %>%
     clean_names() %>%
-rename("entity"="country")
-  
-  merged_df <- merge.data.frame(indoor_pollution,
-                                gapminder,
-                                by = c("entity","year"),
-                                all = FALSE)
+    rename("entity"="country")
+
+merged_df <- indoor_pollution %>%
+  left_join(gm_df) %>%
+  filter_all(all_vars(!is.na(.)))
 
 ```
 
-mn
+```{r}
+
+merged_df %>%
+  
+   rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate(region= countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  group_by(region) %>%
+  summarize(mean_gdp = mean(gdp_percap),
+            mean_deaths = mean(percent_IAP)) %>%
+  
+# create a scatter plot with GDP per capita on the x-axis and deaths caused by air pollution on the y-axis, colored by region
+  ggplot(aes(x = mean_gdp, y = mean_deaths, color = region)) +
+  geom_point(size = 3) +
+  labs(title = "GDP ($USD) per capita vs. % deaths caused by air pollution, by region",
+       x = "GDP per capita",
+       y = "Percent deaths caused by air pollution",
+       color = "Region")
+```
+
+::: callout-note
+## Observations
+
+This dataset visualization shows a clear trend where GDP and deaths are clearly related:
+:::
