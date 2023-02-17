@@ -137,19 +137,20 @@ summarize(
 exploratory_data %>%
   
   rename(percent_deaths_by_household_pollution = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-
   
    mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
-  
   mutate(continent = countrycode (entity, origin = "country.name", destination = "continent")) %>%
 
    filter(continent!= 0) %>%
-  
   ggplot() + 
   geom_histogram(mapping = aes(fill = country_region, 
                                x= percent_deaths_by_household_pollution,
                                na.rm = TRUE)) +
-  facet_wrap(~country_region)
+  facet_wrap(~country_region) +
+  labs(x = "Percent of deaths caused by indoor air pollution",
+     y = "Count",
+     title = "Distribution of Indoor Air Pollution-Related Deaths by Region")
+
 ```
 
 ::: callout-note
@@ -260,7 +261,7 @@ exploratory_data %>%
   
   group_by(Regions) %>%
   
-  ggplot(aes(x= year,y= n, group = 1)) +
+  ggplot(aes(x= year,y= n, group = 1, color = Regions, group = interaction(region,year))) +
   geom_line() +
   facet_wrap(~Regions)+
   geom_smooth()
@@ -320,9 +321,7 @@ model_region_fit <- model_region %>% fit(model_data)
 
 This regression analysis provides some useful information that will be valuable to repeat with the entire data set.
 
--   **r-squared value**: Describes the variance in independent value that is predictable by a dependent value.
-
-    -   For this test, the r-squared value suggests that between some percent of the deaths caused by IAP in this data set is explained by the year variable.
+-   **r-squared value**: Describes how well the variables fit the dependent variable (model) and describe the data. The higher the R\^2 value, the more significant the relationship between the model and the predictor. the r-squared value suggests that between some percent of the deaths caused by IAP in this data set is explained by the year variable. This will be important to rerun for the full data set.
 
 -   **P-value**: this is the statistical variable that tells us if the prediction that year has a impact on the % deaths per year. The value 0 suggests year will show a correlation to a decrease in n in a larger population.
 :::
@@ -340,39 +339,7 @@ model_region_fit %>%
 :::
 
 ```{r}
-model_data<- exploratory_data %>%
-  
-  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-  
-   mutate("region" = countrycode(entity, origin = "country.name",
-   destination= "region"))  %>%
-  filter(!is.na(region))
-  
-model_region_temp <- linear_reg() %>% 
-  set_engine("lm")  #construct model instance
-
-model_region_reg<-
-  recipe(percent_IAP~region*year,
-         data = model_data)
-
-step_interact(terms= c("region","year"))
-  #generate a recipe -- what variables do we have in y = mx+b +b(new variable will adjust slope beyond the baseline)
-
-model_region<-
-  workflow() %>%
-  add_model(model_region_temp) %>%
-  add_recipe(model_region_reg) %>% #combine the model and recipe to generate a regression analysis
-
-model_region_fit <- model_region %>% fit(model_data)
-
- model_region_fit %>%
-  glance() %>% 
-  kable(digits=c(4,4,2,4,0,0,2,2,2,2,0,0)) %>% 
-  kable_styling(bootstrap_options = c("hover", "striped"))
-```
-
-```{r}
-model_data <- indoor_pollution %>%
+model_data <- exploratory_data %>%
   
   rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
   
@@ -398,6 +365,12 @@ model_region_fit %>%
   kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
+
+::: {.callout-note style="color: gray" appearance="simple"}
+## Observations
+
+This is a multiple regression analysis generated to determine the amount (by percent) of deaths associated with indoor pollution that can be predicted based on region, as well as year.
+:::
 
 ## Hypothesis: **Fuel combustion and Indoor Air Pollution**
 
@@ -434,6 +407,52 @@ Considering the data that is present, their are two layers of analysis that coul
 :::
 
 ```{r}
+model_data<- indoor_pollution %>%
+  
+  rename("percent_deaths_by_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+   mutate("region" = countrycode(entity,origin = "country.name",
+   destination= "region")) %>%
+  filter(!is.na(region))
+  
+model_region_temp <- linear_reg() %>% 
+  set_engine("lm")  #construct model instance
+
+model_region_reg<-
+  recipe(percent_deaths_by_IAP~region+year,
+         data = model_data)
+  #generate a recipe -- what variables do we have in y = mx+b
+
+model_region<-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_reg) #combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+ model_region_fit %>%
+  glance() %>% 
+  kable(digits=c(4,4,2,4,0,0,2,2,2,2,0,0)) %>% 
+  kable_styling(bootstrap_options = c("hover", "striped"))
+  
+  
+  # looking to build a regression analysis to determine if a correltion can be seen in the data. prediction is decreasing n over time grouped by region 
+```
+
+```{r}
+ 
+model_region_fit %>%
+  extract_fit_engine() %>%
+  tidy() %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.callout-note style="color:gray" appearance="simple"}
+## Observations
+:::
+
+```{r}
 gm_df <- gapminder %>%
     clean_names() %>%
     rename("entity"="country")
@@ -452,21 +471,64 @@ merged_df %>%
   
   mutate(region= countrycode(entity, origin = "country.name", destination = "region")) %>%
   
-  group_by(region) %>%
+  group_by(entity,region) %>%
   summarize(mean_gdp = mean(gdp_percap),
             mean_deaths = mean(percent_IAP)) %>%
   
 # create a scatter plot with GDP per capita on the x-axis and deaths caused by air pollution on the y-axis, colored by region
   ggplot(aes(x = mean_gdp, y = mean_deaths, color = region)) +
-  geom_point(size = 3) +
+  geom_point(size = 2) +
   labs(title = "GDP ($USD) per capita vs. % deaths caused by air pollution, by region",
        x = "GDP per capita",
        y = "Percent deaths caused by air pollution",
-       color = "Region")
+       color = "Region") +
+  geom_smooth(method = "lm",
+              size = .75)
 ```
 
 ::: callout-note
 ## Observations
 
-This dataset visualization shows a clear trend where GDP and deaths are clearly related:
+This data is not grouped by year and includes data from 1952, 1957, 2002, and 2007. This visualization shows a clear impact that can be attributed to GDP
+
+-   South Asia has a 10% reduction in percent deaths with a small amount of variation in GDP, suggesting that some countries may be able to do more with a small change in GDP up to a certain point.
+
+    -   Latin America & Caribbean and East Asia & Pacific all have their highest percent deaths around where South Asia and Sub-Saharan Africa has their lowest (if considering the cluster of datum around the 10-15% seen in Sub-Saharan Africa).
+
+        -   Would a model based on region and GDP predict GDP having a large or small effect on % deaths for South Asia and Sub-Saharan Africa?
 :::
+
+```{r}
+model_data <- merged_df %>%
+  
+  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  filter(!is.na(region))
+
+model_region_temp <- linear_reg() %>%
+  set_engine("lm")  # construct model instance
+
+model_region_recipe <- recipe(percent_IAP~region+gdp_percap, data = model_data)
+
+model_region <-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+model_region_fit %>%
+  glance() %>%
+  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+```{r}
+ 
+model_region_fit %>%
+  extract_fit_engine() %>%
+  tidy() %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
