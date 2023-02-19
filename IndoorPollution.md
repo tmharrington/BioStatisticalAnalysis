@@ -98,7 +98,7 @@ library(tidymodels)
 ✖ dplyr::lag()             masks stats::lag()
 ✖ yardstick::spec()        masks readr::spec()
 ✖ recipes::step()          masks stats::step()
-• Search for functions across packages at https://www.tidymodels.org/find/
+• Learn how to get started at https://www.tidymodels.org/start/
 ```
 :::
 
@@ -195,40 +195,40 @@ kable(digits = c(1,0,0,2)) %>%
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Northern Ireland </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> Somalia </td>
+   <td style="text-align:left;"> SOM </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 16.80 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Micronesia (country) </td>
+   <td style="text-align:left;"> FSM </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 10.04 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cambodia </td>
+   <td style="text-align:left;"> KHM </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 17.91 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Trinidad and Tobago </td>
+   <td style="text-align:left;"> TTO </td>
    <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 0.01 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Sub-Saharan Africa - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 11.08 </td>
+   <td style="text-align:left;"> Lesotho </td>
+   <td style="text-align:left;"> LSO </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 6.29 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Madagascar </td>
-   <td style="text-align:left;"> MDG </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 16.52 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Papua New Guinea </td>
-   <td style="text-align:left;"> PNG </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 19.78 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cameroon </td>
-   <td style="text-align:left;"> CMR </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 9.38 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> European Union </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.63 </td>
+   <td style="text-align:left;"> South Korea </td>
+   <td style="text-align:left;"> KOR </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 0.14 </td>
   </tr>
 </tbody>
 </table>
@@ -284,7 +284,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `country_region = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -304,59 +304,59 @@ Caused by warning in `countrycode_convert()`:
 <tbody>
   <tr>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:right;"> 0.007 </td>
+   <td style="text-align:right;"> 0.005 </td>
    <td style="text-align:right;"> 23.5 </td>
-   <td style="text-align:right;"> 7.43 </td>
-   <td style="text-align:right;"> 7.5 </td>
+   <td style="text-align:right;"> 6.39 </td>
+   <td style="text-align:right;"> 6.7 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:right;"> 0.003 </td>
-   <td style="text-align:right;"> 14.3 </td>
-   <td style="text-align:right;"> 1.53 </td>
-   <td style="text-align:right;"> 2.5 </td>
+   <td style="text-align:right;"> 0.002 </td>
+   <td style="text-align:right;"> 11.6 </td>
+   <td style="text-align:right;"> 1.79 </td>
+   <td style="text-align:right;"> 2.8 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
    <td style="text-align:right;"> 0.003 </td>
-   <td style="text-align:right;"> 14.2 </td>
-   <td style="text-align:right;"> 2.95 </td>
-   <td style="text-align:right;"> 3.5 </td>
+   <td style="text-align:right;"> 16.4 </td>
+   <td style="text-align:right;"> 3.00 </td>
+   <td style="text-align:right;"> 3.3 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:right;"> 0.001 </td>
-   <td style="text-align:right;"> 9.4 </td>
-   <td style="text-align:right;"> 1.23 </td>
-   <td style="text-align:right;"> 2.0 </td>
+   <td style="text-align:right;"> 0.006 </td>
+   <td style="text-align:right;"> 16.7 </td>
+   <td style="text-align:right;"> 1.46 </td>
+   <td style="text-align:right;"> 2.8 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> North America </td>
-   <td style="text-align:right;"> 0.004 </td>
+   <td style="text-align:right;"> 0.003 </td>
    <td style="text-align:right;"> 1.2 </td>
-   <td style="text-align:right;"> 0.19 </td>
+   <td style="text-align:right;"> 0.18 </td>
    <td style="text-align:right;"> 0.4 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:right;"> 5.162 </td>
-   <td style="text-align:right;"> 19.9 </td>
-   <td style="text-align:right;"> 13.15 </td>
-   <td style="text-align:right;"> 3.8 </td>
+   <td style="text-align:right;"> 1.564 </td>
+   <td style="text-align:right;"> 19.3 </td>
+   <td style="text-align:right;"> 12.79 </td>
+   <td style="text-align:right;"> 4.7 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:right;"> 0.071 </td>
-   <td style="text-align:right;"> 17.3 </td>
-   <td style="text-align:right;"> 10.59 </td>
-   <td style="text-align:right;"> 3.8 </td>
+   <td style="text-align:right;"> 16.8 </td>
+   <td style="text-align:right;"> 10.21 </td>
+   <td style="text-align:right;"> 3.7 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> 0.002 </td>
    <td style="text-align:right;"> 17.7 </td>
-   <td style="text-align:right;"> 5.00 </td>
-   <td style="text-align:right;"> 4.9 </td>
+   <td style="text-align:right;"> 5.54 </td>
+   <td style="text-align:right;"> 5.1 </td>
   </tr>
 </tbody>
 </table>
@@ -421,7 +421,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `country_region = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -431,7 +431,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `continent = countrycode(entity, origin = "country.name",
   destination = "continent")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -509,7 +509,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `Regions = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: America, Andean Latin America, Australasia, Caribbean, Central Europe, Central Europe, Eastern Europe, and Central Asia, Commonwealth, Commonwealth High Income, East Asia & Pacific - World Bank region, Eastern Mediterranean Region, Europe, Europe & Central Asia - World Bank region, European Region, G20, High-income, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Middle East & North Africa, Middle SDI, North Africa and Middle East, North America, Northern Ireland, Oceania, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Tropical Latin America, Wales, Western Europe, Western sub-Saharan Africa, World, World Bank Low Income, World Bank Lower Middle Income
+! Some values were not matched unambiguously: Africa, African Region, Andean Latin America, Asia, Australasia, Caribbean, Central Europe, Central Latin America, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, Eastern Europe, Eastern Mediterranean Region, England, Europe, Europe & Central Asia - World Bank region, European Union, High-income, High-income Asia Pacific, High-middle SDI, Latin America & Caribbean - World Bank region, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North America, Northern Ireland, Region of the Americas, South Asia - World Bank region, Southern Latin America, Wales, Western Pacific Region, Western sub-Saharan Africa, World Bank High Income, World Bank Low Income
 ```
 :::
 
@@ -528,45 +528,45 @@ Caused by warning in `countrycode_convert()`:
 <tbody>
   <tr>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:right;"> 4.1296 </td>
-   <td style="text-align:right;"> 5.7910 </td>
-   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 6.6373 </td>
+   <td style="text-align:right;"> 8.1800 </td>
+   <td style="text-align:right;"> 17 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:right;"> 0.9199 </td>
-   <td style="text-align:right;"> 1.4319 </td>
-   <td style="text-align:right;"> 31 </td>
+   <td style="text-align:right;"> 0.4216 </td>
+   <td style="text-align:right;"> 0.6648 </td>
+   <td style="text-align:right;"> 26 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:right;"> 1.3965 </td>
-   <td style="text-align:right;"> 1.9847 </td>
-   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 1.3131 </td>
+   <td style="text-align:right;"> 1.9076 </td>
+   <td style="text-align:right;"> 21 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:right;"> 0.5868 </td>
-   <td style="text-align:right;"> 1.2378 </td>
-   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 0.5938 </td>
+   <td style="text-align:right;"> 1.7593 </td>
+   <td style="text-align:right;"> 12 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> North America </td>
-   <td style="text-align:right;"> 0.0937 </td>
-   <td style="text-align:right;"> 0.0781 </td>
-   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0.0274 </td>
+   <td style="text-align:right;"> 0.0532 </td>
+   <td style="text-align:right;"> 3 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:right;"> 12.5108 </td>
-   <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 9.4191 </td>
+   <td style="text-align:right;"> 4.6228 </td>
+   <td style="text-align:right;"> 4 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:right;"> 9.7049 </td>
-   <td style="text-align:right;"> 3.9703 </td>
-   <td style="text-align:right;"> 26 </td>
+   <td style="text-align:right;"> 8.9817 </td>
+   <td style="text-align:right;"> 4.7709 </td>
+   <td style="text-align:right;"> 25 </td>
   </tr>
 </tbody>
 </table>
@@ -622,95 +622,95 @@ count(year) %>%
 <tbody>
   <tr>
    <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 44 </td>
+   <td style="text-align:right;"> 47 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 35 </td>
+   <td style="text-align:right;"> 40 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 44 </td>
+   <td style="text-align:right;"> 38 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 46 </td>
+   <td style="text-align:right;"> 47 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 38 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 38 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 26 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 42 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 45 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1999 </td>
    <td style="text-align:right;"> 36 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 45 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 41 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 1995 </td>
    <td style="text-align:right;"> 37 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 38 </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 40 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 44 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 38 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 50 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 1997 </td>
    <td style="text-align:right;"> 39 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 43 </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 38 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 44 </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 34 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 39 </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 40 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 42 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2002 </td>
    <td style="text-align:right;"> 35 </td>
   </tr>
   <tr>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 37 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 37 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 45 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 31 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 45 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 47 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 42 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 47 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 40 </td>
+  </tr>
+  <tr>
    <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 39 </td>
+   <td style="text-align:right;"> 36 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2013 </td>
@@ -718,27 +718,27 @@ count(year) %>%
   </tr>
   <tr>
    <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 35 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 40 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2016 </td>
    <td style="text-align:right;"> 37 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 38 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2016 </td>
    <td style="text-align:right;"> 35 </td>
   </tr>
   <tr>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 49 </td>
+  </tr>
+  <tr>
    <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 48 </td>
+   <td style="text-align:right;"> 38 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 43 </td>
+   <td style="text-align:right;"> 47 </td>
   </tr>
 </tbody>
 </table>
@@ -791,7 +791,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `Regions = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -848,7 +848,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `Regions = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -896,18 +896,18 @@ model_region_fit <- model_region %>% fit(model_data)
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 0.0289 </td>
-   <td style="text-align:right;"> 0.0278 </td>
-   <td style="text-align:right;"> 5.75 </td>
-   <td style="text-align:right;"> 27.3642 </td>
+   <td style="text-align:right;"> 0.026 </td>
+   <td style="text-align:right;"> 0.0249 </td>
+   <td style="text-align:right;"> 5.43 </td>
+   <td style="text-align:right;"> 23.8831 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> -2923.68 </td>
-   <td style="text-align:right;"> 5853.36 </td>
-   <td style="text-align:right;"> 5867.85 </td>
-   <td style="text-align:right;"> 30482.97 </td>
-   <td style="text-align:right;"> 921 </td>
-   <td style="text-align:right;"> 923 </td>
+   <td style="text-align:right;"> -2792.54 </td>
+   <td style="text-align:right;"> 5591.08 </td>
+   <td style="text-align:right;"> 5605.48 </td>
+   <td style="text-align:right;"> 26416.99 </td>
+   <td style="text-align:right;"> 896 </td>
+   <td style="text-align:right;"> 898 </td>
   </tr>
 </tbody>
 </table>
@@ -959,17 +959,17 @@ model_region_fit %>%
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:right;"> 234.0181897 </td>
-   <td style="text-align:right;"> 43.7294896 </td>
-   <td style="text-align:right;"> 5.351496 </td>
-   <td style="text-align:right;"> 1e-07 </td>
+   <td style="text-align:right;"> 207.1623162 </td>
+   <td style="text-align:right;"> 41.3483285 </td>
+   <td style="text-align:right;"> 5.010174 </td>
+   <td style="text-align:right;"> 7.0e-07 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> year </td>
-   <td style="text-align:right;"> -0.1141259 </td>
-   <td style="text-align:right;"> 0.0218169 </td>
-   <td style="text-align:right;"> -5.231077 </td>
-   <td style="text-align:right;"> 2e-07 </td>
+   <td style="text-align:right;"> -0.1008006 </td>
+   <td style="text-align:right;"> 0.0206261 </td>
+   <td style="text-align:right;"> -4.887038 </td>
+   <td style="text-align:right;"> 1.2e-06 </td>
   </tr>
 </tbody>
 </table>
@@ -1002,7 +1002,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `region = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -1049,18 +1049,18 @@ model_region_fit %>%
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 0.5183 </td>
-   <td style="text-align:right;"> 0.5114 </td>
-   <td style="text-align:right;"> 4.08 </td>
-   <td style="text-align:right;"> 75.2296 </td>
+   <td style="text-align:right;"> 0.4887 </td>
+   <td style="text-align:right;"> 0.4812 </td>
+   <td style="text-align:right;"> 3.96 </td>
+   <td style="text-align:right;"> 64.9998 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 13 </td>
-   <td style="text-align:right;"> -2600.12 </td>
-   <td style="text-align:right;"> 5230.24 </td>
-   <td style="text-align:right;"> 5302.65 </td>
-   <td style="text-align:right;"> 15120.57 </td>
-   <td style="text-align:right;"> 909 </td>
-   <td style="text-align:right;"> 923 </td>
+   <td style="text-align:right;"> -2503.15 </td>
+   <td style="text-align:right;"> 5036.29 </td>
+   <td style="text-align:right;"> 5108.3 </td>
+   <td style="text-align:right;"> 13866.47 </td>
+   <td style="text-align:right;"> 884 </td>
+   <td style="text-align:right;"> 898 </td>
   </tr>
 </tbody>
 </table>
@@ -1085,12 +1085,8 @@ Considering the data that is present, their are two layers of analysis that coul
 
 **It is likely that this data will show a correlation between the amount of resources a country has to invest in clean technologies and health care (represented by GDP) having the lowest percent deaths globally. Representing GDP by country would provide a good comparison to determine this correlation's strength.**
 
--   GDP is likely a strong contributing factor that does not even in tropical regions where ventilation is less of a concern, access to clean fuels is limited, indoor burning of fuels for cooking contributes to close proximity to the source of toxic compounds and heavy metals.
-
-<!-- -->
-
+-   The following analysis will attempt to show a strong correlation between GDP and the deaths related to indoor pollution.
 -   despite the likely correlation between a nations GDP and its percent deaths caused by IAP, it also seems the data will show an overall decrease in the 30yrs in every part of the world. [Comparing the amount that countries have improved over time may be a useful characteristic to infer from this dataset]{.underline}
-
     -   What rate increase of GDP is required to create meaningful improvements in the percent of deaths from IAP?
 
 ## Layer Two: Regions and Climates
@@ -1101,15 +1097,835 @@ Considering the data that is present, their are two layers of analysis that coul
 
 -   Temperate regions are more likely to invest in indoor heating which often involved the use of bio fuels like wood stoves. Poor ventilation is also likely to be a component that will play a role in temperate regions being associated with greater % deaths by IAP.
 
-<!-- -->
+## Part 1: Countries and resources
 
--   
 
-## 
+::: {.cell}
+
+```{.r .cell-code}
+gm_df <- gapminder %>%
+    clean_names() %>%
+    rename("entity"="country")
+
+merged_df <- indoor_pollution %>%
+  left_join(gm_df) %>%
+  filter_all(all_vars(!is.na(.)))
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+Joining with `by = join_by(entity, year)`
+```
+:::
+:::
+
+::: {.cell}
+
+```{.r .cell-code}
+merged_df %>%
+  
+   rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate(region= countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  group_by(entity,region) %>%
+  summarize(mean_gdp = mean(gdp_percap),
+            mean_deaths = mean(percent_IAP)) %>%
+  
+# create a scatter plot with GDP per capita on the x-axis and deaths caused by air pollution on the y-axis, colored by region
+  ggplot(aes(x = mean_gdp, y = mean_deaths, color = region)) +
+  geom_point(size = 2) +
+  labs(title = "GDP ($USD) per capita vs. % deaths caused by air pollution, by region",
+       x = "GDP per capita",
+       y = "Percent deaths caused by air pollution",
+       color = "Region") +
+  geom_smooth(method = "lm",
+              size = .75)
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+`summarise()` has grouped output by 'entity'. You can override using the
+`.groups` argument.
+```
+:::
+
+::: {.cell-output .cell-output-stderr}
+```
+Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.
+```
+:::
+
+::: {.cell-output .cell-output-stderr}
+```
+`geom_smooth()` using formula = 'y ~ x'
+```
+:::
+
+::: {.cell-output .cell-output-stderr}
+```
+Warning in qt((1 - level)/2, df): NaNs produced
+```
+:::
+
+::: {.cell-output .cell-output-stderr}
+```
+Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning
+-Inf
+```
+:::
+
+::: {.cell-output-display}
+![](IndoorPollution_files/figure-html/unnamed-chunk-13-1.png){width=672}
+:::
+:::
+
 
 ::: callout-note
-## Future Questions
+## Observations
+
+This data is not grouped by year and includes data from 1952, 1957, 2002, and 2007. This visualization shows a clear impact that can be attributed to GDP
+
+-   South Asia has a 10% reduction in percent deaths with a small amount of variation in GDP, suggesting that some countries may be able to do more with a small change in GDP up to a certain point.
+
+    -   Latin America & Caribbean and East Asia & Pacific all have their highest percent deaths around where South Asia and Sub-Saharan Africa has their lowest (if considering the cluster of datum around the 10-15% seen in Sub-Saharan Africa).
+
+        -   Would a model based on region and GDP predict GDP having a large or small effect on % deaths for South Asia and Sub-Saharan Africa?
 :::
+
+### Regression Analysis : [Percent Deaths and Population]{.underline}
+
+
+::: {.cell}
+
+```{.r .cell-code}
+model_data <- merged_df %>%
+  
+  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  filter(!is.na(region))
+
+model_region_temp <- linear_reg() %>%
+  set_engine("lm")  # construct model instance
+
+model_region_recipe <- recipe(percent_IAP~pop, data = model_data)
+
+model_region <-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+model_region_fit %>%
+  glance() %>%
+  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> r.squared </th>
+   <th style="text-align:right;"> adj.r.squared </th>
+   <th style="text-align:right;"> sigma </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+   <th style="text-align:right;"> df </th>
+   <th style="text-align:right;"> logLik </th>
+   <th style="text-align:right;"> AIC </th>
+   <th style="text-align:right;"> BIC </th>
+   <th style="text-align:right;"> deviance </th>
+   <th style="text-align:right;"> df.residual </th>
+   <th style="text-align:right;"> nobs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0.012 </td>
+   <td style="text-align:right;"> 0.0101 </td>
+   <td style="text-align:right;"> 5.74 </td>
+   <td style="text-align:right;"> 6.3233 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1658.44 </td>
+   <td style="text-align:right;"> 3322.88 </td>
+   <td style="text-align:right;"> 3335.66 </td>
+   <td style="text-align:right;"> 17215 </td>
+   <td style="text-align:right;"> 522 </td>
+   <td style="text-align:right;"> 524 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
+
+
+### Regression Analysis : [Percent Deaths and Year]{.underline}
+
+
+::: {.cell}
+
+```{.r .cell-code}
+model_data <- merged_df %>%
+  
+  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  filter(!is.na(region))
+
+model_region_temp <- linear_reg() %>%
+  set_engine("lm")  # construct model instance
+
+model_region_recipe <- recipe(percent_IAP~year, data = model_data)
+
+model_region <-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+model_region_fit %>%
+  glance() %>%
+  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> r.squared </th>
+   <th style="text-align:right;"> adj.r.squared </th>
+   <th style="text-align:right;"> sigma </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+   <th style="text-align:right;"> df </th>
+   <th style="text-align:right;"> logLik </th>
+   <th style="text-align:right;"> AIC </th>
+   <th style="text-align:right;"> BIC </th>
+   <th style="text-align:right;"> deviance </th>
+   <th style="text-align:right;"> df.residual </th>
+   <th style="text-align:right;"> nobs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0.0137 </td>
+   <td style="text-align:right;"> 0.0118 </td>
+   <td style="text-align:right;"> 5.74 </td>
+   <td style="text-align:right;"> 7.2526 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1657.98 </td>
+   <td style="text-align:right;"> 3321.96 </td>
+   <td style="text-align:right;"> 3334.74 </td>
+   <td style="text-align:right;"> 17184.78 </td>
+   <td style="text-align:right;"> 522 </td>
+   <td style="text-align:right;"> 524 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
+
+::: {.cell}
+
+```{.r .cell-code}
+model_region_fit %>%
+  extract_fit_engine() %>%
+  tidy() %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> term </th>
+   <th style="text-align:right;"> estimate </th>
+   <th style="text-align:right;"> std.error </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:right;"> 247.6600221 </td>
+   <td style="text-align:right;"> 89.653891 </td>
+   <td style="text-align:right;"> 2.762401 </td>
+   <td style="text-align:right;"> 0.0059401 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> year </td>
+   <td style="text-align:right;"> -0.1207512 </td>
+   <td style="text-align:right;"> 0.044838 </td>
+   <td style="text-align:right;"> -2.693057 </td>
+   <td style="text-align:right;"> 0.0073077 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
+
+
+### Regression Analysis: [Percent Deaths and GDP]{.underline}
+
+
+::: {.cell}
+
+```{.r .cell-code}
+model_data <- merged_df %>%
+  
+  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  filter(!is.na(region))
+
+model_region_temp <- linear_reg() %>%
+  set_engine("lm")  # construct model instance
+
+model_region_recipe <- recipe(percent_IAP~gdp_percap, data = model_data)
+
+model_region <-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+model_region_fit %>%
+  glance() %>%
+  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> r.squared </th>
+   <th style="text-align:right;"> adj.r.squared </th>
+   <th style="text-align:right;"> sigma </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+   <th style="text-align:right;"> df </th>
+   <th style="text-align:right;"> logLik </th>
+   <th style="text-align:right;"> AIC </th>
+   <th style="text-align:right;"> BIC </th>
+   <th style="text-align:right;"> deviance </th>
+   <th style="text-align:right;"> df.residual </th>
+   <th style="text-align:right;"> nobs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0.5079 </td>
+   <td style="text-align:right;"> 0.507 </td>
+   <td style="text-align:right;"> 4.05 </td>
+   <td style="text-align:right;"> 538.7472 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1475.82 </td>
+   <td style="text-align:right;"> 2957.64 </td>
+   <td style="text-align:right;"> 2970.42 </td>
+   <td style="text-align:right;"> 8574.23 </td>
+   <td style="text-align:right;"> 522 </td>
+   <td style="text-align:right;"> 524 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
+
+
+### Regression Analysis: [Percent Deaths and Region]{.underline}
+
+
+::: {.cell}
+
+```{.r .cell-code}
+model_data <- merged_df %>%
+  
+  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  filter(!is.na(region))
+
+model_region_temp <- linear_reg() %>%
+  set_engine("lm")  # construct model instance
+
+model_region_recipe <- recipe(percent_IAP~region, data = model_data)
+
+model_region <-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+model_region_fit %>%
+  glance() %>%
+  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> r.squared </th>
+   <th style="text-align:right;"> adj.r.squared </th>
+   <th style="text-align:right;"> sigma </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+   <th style="text-align:right;"> df </th>
+   <th style="text-align:right;"> logLik </th>
+   <th style="text-align:right;"> AIC </th>
+   <th style="text-align:right;"> BIC </th>
+   <th style="text-align:right;"> deviance </th>
+   <th style="text-align:right;"> df.residual </th>
+   <th style="text-align:right;"> nobs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0.5917 </td>
+   <td style="text-align:right;"> 0.587 </td>
+   <td style="text-align:right;"> 3.71 </td>
+   <td style="text-align:right;"> 124.8931 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> -1426.88 </td>
+   <td style="text-align:right;"> 2869.76 </td>
+   <td style="text-align:right;"> 2903.85 </td>
+   <td style="text-align:right;"> 7113.28 </td>
+   <td style="text-align:right;"> 517 </td>
+   <td style="text-align:right;"> 524 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
+
+
+::: {.callout-note style="color:gray" appearance="simple"}
+## Discussion
+
+This analysis compared the relationship between percent deaths cause by Indoor air pollution to GDP, year, and region independently to understand the unique contributions of each. The hypothesis being tested suggests that GDP was the most significant factor impacting the percentage of a populations deaths. This test, however, shows that IAP could be predicted more accurately by region (59.2% IAP variation estimated to be predicted) then with GDP (50.8% variation in IAP deaths predicted by GDP).
+
+Year was estimated to predict only 1.3% of the variation in indoor air pollutant related premature deaths, which is likely related to the fact that the oldest data represented was from 1992, well into the period of modern medicine where drug availability would be making a large impact on global deaths to what we now consider treatable conditions and infections. A multi-variable regression analysis to explore the correlation between indoor deaths and year in each region may show that the countries with the highest deaths (South Asia, Sub-Saharan Africa, East Asia) is improving yearly at a rate that is faster then regions where the percent deaths in 1990 is already relatively low.
+
+Population was found to have the lowest impact in the percentage of deaths caused by indoor air pollution. This likely related to the fact that the deaths is given as a percentage of the population, so unless increasing the population contributes to a reduction of quality of life shared by the total population, the percentage should be relatively uneffected. However, population
+:::
+
+### Multi-variable Regression Analysis: [Year and Region]{.underline}
+
+
+::: {.cell}
+
+```{.r .cell-code}
+model_data <- merged_df %>%
+  
+  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  filter(!is.na(region))
+
+model_region_temp <- linear_reg() %>%
+  set_engine("lm")  # construct model instance
+
+model_region_recipe <- recipe(percent_IAP~region+year, data = model_data) %>%
+  step_interact(~year:starts_with("region"))
+
+model_region <-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+model_region_fit %>%
+  glance() %>%
+  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> r.squared </th>
+   <th style="text-align:right;"> adj.r.squared </th>
+   <th style="text-align:right;"> sigma </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+   <th style="text-align:right;"> df </th>
+   <th style="text-align:right;"> logLik </th>
+   <th style="text-align:right;"> AIC </th>
+   <th style="text-align:right;"> BIC </th>
+   <th style="text-align:right;"> deviance </th>
+   <th style="text-align:right;"> df.residual </th>
+   <th style="text-align:right;"> nobs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0.6067 </td>
+   <td style="text-align:right;"> 0.5967 </td>
+   <td style="text-align:right;"> 3.67 </td>
+   <td style="text-align:right;"> 60.5125 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> -1417.11 </td>
+   <td style="text-align:right;"> 2864.22 </td>
+   <td style="text-align:right;"> 2928.15 </td>
+   <td style="text-align:right;"> 6852.98 </td>
+   <td style="text-align:right;"> 510 </td>
+   <td style="text-align:right;"> 524 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
+
+::: {.cell}
+
+```{.r .cell-code}
+model_region_fit %>%
+  extract_fit_engine() %>%
+  tidy() %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> term </th>
+   <th style="text-align:right;"> estimate </th>
+   <th style="text-align:right;"> std.error </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:right;"> 314.0192253 </td>
+   <td style="text-align:right;"> 175.2099300 </td>
+   <td style="text-align:right;"> 1.7922456 </td>
+   <td style="text-align:right;"> 0.0736862 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionEurope &amp; Central Asia </td>
+   <td style="text-align:right;"> -182.9783849 </td>
+   <td style="text-align:right;"> 214.5874631 </td>
+   <td style="text-align:right;"> -0.8526984 </td>
+   <td style="text-align:right;"> 0.3942268 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionLatin America &amp; Caribbean </td>
+   <td style="text-align:right;"> -0.4775896 </td>
+   <td style="text-align:right;"> 222.2264047 </td>
+   <td style="text-align:right;"> -0.0021491 </td>
+   <td style="text-align:right;"> 0.9982861 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionMiddle East &amp; North Africa </td>
+   <td style="text-align:right;"> -10.5246842 </td>
+   <td style="text-align:right;"> 239.9160774 </td>
+   <td style="text-align:right;"> -0.0438682 </td>
+   <td style="text-align:right;"> 0.9650266 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionNorth America </td>
+   <td style="text-align:right;"> -311.0243801 </td>
+   <td style="text-align:right;"> 495.5685185 </td>
+   <td style="text-align:right;"> -0.6276113 </td>
+   <td style="text-align:right;"> 0.5305395 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionSouth Asia </td>
+   <td style="text-align:right;"> -61.8840952 </td>
+   <td style="text-align:right;"> 319.8881031 </td>
+   <td style="text-align:right;"> -0.1934554 </td>
+   <td style="text-align:right;"> 0.8466793 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionSub-Saharan Africa </td>
+   <td style="text-align:right;"> -57.0697143 </td>
+   <td style="text-align:right;"> 202.3150005 </td>
+   <td style="text-align:right;"> -0.2820835 </td>
+   <td style="text-align:right;"> 0.7779940 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> year </td>
+   <td style="text-align:right;"> -0.1537245 </td>
+   <td style="text-align:right;"> 0.0876265 </td>
+   <td style="text-align:right;"> -1.7543143 </td>
+   <td style="text-align:right;"> 0.0799772 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> `year_x_regionEurope &amp; Central Asia` </td>
+   <td style="text-align:right;"> 0.0888823 </td>
+   <td style="text-align:right;"> 0.1073201 </td>
+   <td style="text-align:right;"> 0.8281982 </td>
+   <td style="text-align:right;"> 0.4079457 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> `year_x_regionLatin America &amp; Caribbean` </td>
+   <td style="text-align:right;"> -0.0008242 </td>
+   <td style="text-align:right;"> 0.1111406 </td>
+   <td style="text-align:right;"> -0.0074160 </td>
+   <td style="text-align:right;"> 0.9940858 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> `year_x_regionMiddle East &amp; North Africa` </td>
+   <td style="text-align:right;"> 0.0027130 </td>
+   <td style="text-align:right;"> 0.1199876 </td>
+   <td style="text-align:right;"> 0.0226104 </td>
+   <td style="text-align:right;"> 0.9819699 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> `year_x_regionNorth America` </td>
+   <td style="text-align:right;"> 0.1522374 </td>
+   <td style="text-align:right;"> 0.2478453 </td>
+   <td style="text-align:right;"> 0.6142440 </td>
+   <td style="text-align:right;"> 0.5393280 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> `year_x_regionSouth Asia` </td>
+   <td style="text-align:right;"> 0.0350121 </td>
+   <td style="text-align:right;"> 0.1599834 </td>
+   <td style="text-align:right;"> 0.2188484 </td>
+   <td style="text-align:right;"> 0.8268557 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> `year_x_regionSub-Saharan Africa` </td>
+   <td style="text-align:right;"> 0.0307569 </td>
+   <td style="text-align:right;"> 0.1011824 </td>
+   <td style="text-align:right;"> 0.3039752 </td>
+   <td style="text-align:right;"> 0.7612708 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
+
+
+::: {.callout-note style="color:gray" appearance="simple"}
+## Disscussion
+
+This multi-variable regression extraction shows the compounding effect of year is not significant enough to increase or reduce the effect of year, which represent a strong predictive factor related to the percent of deaths caused by indoor air pollutants. The estimated correlation coefficient for most regions shows a predicted decline in indoor air pollution
+:::
+
+### Multi-variable Regression Analysis: [Percent Deaths and GDP + Region]{.underline}
+
+
+::: {.cell}
+
+```{.r .cell-code}
+model_data <- merged_df %>%
+  
+  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  filter(!is.na(region))
+
+model_region_temp <- linear_reg() %>%
+  set_engine("lm")  # construct model instance
+
+model_region_recipe <- recipe(percent_IAP~region+gdp_percap, data = model_data)
+
+model_region <-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+model_region_fit %>%
+  glance() %>%
+  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> r.squared </th>
+   <th style="text-align:right;"> adj.r.squared </th>
+   <th style="text-align:right;"> sigma </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+   <th style="text-align:right;"> df </th>
+   <th style="text-align:right;"> logLik </th>
+   <th style="text-align:right;"> AIC </th>
+   <th style="text-align:right;"> BIC </th>
+   <th style="text-align:right;"> deviance </th>
+   <th style="text-align:right;"> df.residual </th>
+   <th style="text-align:right;"> nobs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0.7187 </td>
+   <td style="text-align:right;"> 0.7149 </td>
+   <td style="text-align:right;"> 3.08 </td>
+   <td style="text-align:right;"> 188.342 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> -1329.28 </td>
+   <td style="text-align:right;"> 2676.57 </td>
+   <td style="text-align:right;"> 2714.92 </td>
+   <td style="text-align:right;"> 4901.1 </td>
+   <td style="text-align:right;"> 516 </td>
+   <td style="text-align:right;"> 524 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
+
+::: {.cell}
+
+```{.r .cell-code}
+model_region_fit %>%
+  extract_fit_engine() %>%
+  tidy() %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> term </th>
+   <th style="text-align:right;"> estimate </th>
+   <th style="text-align:right;"> std.error </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:right;"> 9.7699794 </td>
+   <td style="text-align:right;"> 0.4598732 </td>
+   <td style="text-align:right;"> 21.2449421 </td>
+   <td style="text-align:right;"> 0.0000000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionEurope &amp; Central Asia </td>
+   <td style="text-align:right;"> -2.8624409 </td>
+   <td style="text-align:right;"> 0.5282613 </td>
+   <td style="text-align:right;"> -5.4186082 </td>
+   <td style="text-align:right;"> 0.0000001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionLatin America &amp; Caribbean </td>
+   <td style="text-align:right;"> -3.3833421 </td>
+   <td style="text-align:right;"> 0.5288151 </td>
+   <td style="text-align:right;"> -6.3979680 </td>
+   <td style="text-align:right;"> 0.0000000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionMiddle East &amp; North Africa </td>
+   <td style="text-align:right;"> -5.1765360 </td>
+   <td style="text-align:right;"> 0.5639565 </td>
+   <td style="text-align:right;"> -9.1789632 </td>
+   <td style="text-align:right;"> 0.0000000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionNorth America </td>
+   <td style="text-align:right;"> -0.7626191 </td>
+   <td style="text-align:right;"> 1.2265741 </td>
+   <td style="text-align:right;"> -0.6217472 </td>
+   <td style="text-align:right;"> 0.5343827 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionSouth Asia </td>
+   <td style="text-align:right;"> 5.4219801 </td>
+   <td style="text-align:right;"> 0.7724558 </td>
+   <td style="text-align:right;"> 7.0191460 </td>
+   <td style="text-align:right;"> 0.0000000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionSub-Saharan Africa </td>
+   <td style="text-align:right;"> 1.8609394 </td>
+   <td style="text-align:right;"> 0.5044404 </td>
+   <td style="text-align:right;"> 3.6891162 </td>
+   <td style="text-align:right;"> 0.0002489 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> gdp_percap </td>
+   <td style="text-align:right;"> -0.0002616 </td>
+   <td style="text-align:right;"> 0.0000171 </td>
+   <td style="text-align:right;"> -15.2612106 </td>
+   <td style="text-align:right;"> 0.0000000 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
+
+
+## 
 
 
 ::: {.cell}
@@ -1282,266 +2098,6 @@ model_region_fit %>%
    <td style="text-align:right;"> 0.0060687 </td>
    <td style="text-align:right;"> -17.11695 </td>
    <td style="text-align:right;"> 0 </td>
-  </tr>
-</tbody>
-</table>
-
-`````
-
-:::
-:::
-
-
-::: {.callout-note style="color:gray" appearance="simple"}
-## Observations
-:::
-
-
-::: {.cell}
-
-```{.r .cell-code}
-gm_df <- gapminder %>%
-    clean_names() %>%
-    rename("entity"="country")
-
-merged_df <- indoor_pollution %>%
-  left_join(gm_df) %>%
-  filter_all(all_vars(!is.na(.)))
-```
-
-::: {.cell-output .cell-output-stderr}
-```
-Joining with `by = join_by(entity, year)`
-```
-:::
-:::
-
-::: {.cell}
-
-```{.r .cell-code}
-merged_df %>%
-  
-   rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-  
-  mutate(region= countrycode(entity, origin = "country.name", destination = "region")) %>%
-  
-  group_by(entity,region) %>%
-  summarize(mean_gdp = mean(gdp_percap),
-            mean_deaths = mean(percent_IAP)) %>%
-  
-# create a scatter plot with GDP per capita on the x-axis and deaths caused by air pollution on the y-axis, colored by region
-  ggplot(aes(x = mean_gdp, y = mean_deaths, color = region)) +
-  geom_point(size = 2) +
-  labs(title = "GDP ($USD) per capita vs. % deaths caused by air pollution, by region",
-       x = "GDP per capita",
-       y = "Percent deaths caused by air pollution",
-       color = "Region") +
-  geom_smooth(method = "lm",
-              size = .75)
-```
-
-::: {.cell-output .cell-output-stderr}
-```
-`summarise()` has grouped output by 'entity'. You can override using the
-`.groups` argument.
-```
-:::
-
-::: {.cell-output .cell-output-stderr}
-```
-Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-ℹ Please use `linewidth` instead.
-```
-:::
-
-::: {.cell-output .cell-output-stderr}
-```
-`geom_smooth()` using formula = 'y ~ x'
-```
-:::
-
-::: {.cell-output .cell-output-stderr}
-```
-Warning in qt((1 - level)/2, df): NaNs produced
-```
-:::
-
-::: {.cell-output .cell-output-stderr}
-```
-Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning
--Inf
-```
-:::
-
-::: {.cell-output-display}
-![](IndoorPollution_files/figure-html/unnamed-chunk-15-1.png){width=672}
-:::
-:::
-
-
-::: callout-note
-## Observations
-
-This data is not grouped by year and includes data from 1952, 1957, 2002, and 2007. This visualization shows a clear impact that can be attributed to GDP
-
--   South Asia has a 10% reduction in percent deaths with a small amount of variation in GDP, suggesting that some countries may be able to do more with a small change in GDP up to a certain point.
-
-    -   Latin America & Caribbean and East Asia & Pacific all have their highest percent deaths around where South Asia and Sub-Saharan Africa has their lowest (if considering the cluster of datum around the 10-15% seen in Sub-Saharan Africa).
-
-        -   Would a model based on region and GDP predict GDP having a large or small effect on % deaths for South Asia and Sub-Saharan Africa?
-:::
-
-
-::: {.cell}
-
-```{.r .cell-code}
-model_data <- merged_df %>%
-  
-  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-  
-  mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
-  filter(!is.na(region))
-
-model_region_temp <- linear_reg() %>%
-  set_engine("lm")  # construct model instance
-
-model_region_recipe <- recipe(percent_IAP~region+gdp_percap, data = model_data)
-
-model_region <-
-  workflow() %>%
-  add_model(model_region_temp) %>%
-  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
-
-model_region_fit <- model_region %>% fit(model_data)
-
-model_region_fit %>%
-  glance() %>%
-  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
-  kable_styling(bootstrap_options = c("hover", "striped"))
-```
-
-::: {.cell-output-display}
-
-`````{=html}
-<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:right;"> r.squared </th>
-   <th style="text-align:right;"> adj.r.squared </th>
-   <th style="text-align:right;"> sigma </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-   <th style="text-align:right;"> df </th>
-   <th style="text-align:right;"> logLik </th>
-   <th style="text-align:right;"> AIC </th>
-   <th style="text-align:right;"> BIC </th>
-   <th style="text-align:right;"> deviance </th>
-   <th style="text-align:right;"> df.residual </th>
-   <th style="text-align:right;"> nobs </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 0.7187 </td>
-   <td style="text-align:right;"> 0.7149 </td>
-   <td style="text-align:right;"> 3.08 </td>
-   <td style="text-align:right;"> 188.342 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> -1329.28 </td>
-   <td style="text-align:right;"> 2676.57 </td>
-   <td style="text-align:right;"> 2714.92 </td>
-   <td style="text-align:right;"> 4901.1 </td>
-   <td style="text-align:right;"> 516 </td>
-   <td style="text-align:right;"> 524 </td>
-  </tr>
-</tbody>
-</table>
-
-`````
-
-:::
-:::
-
-::: {.cell}
-
-```{.r .cell-code}
-model_region_fit %>%
-  extract_fit_engine() %>%
-  tidy() %>%
-  kable() %>%
-  kable_styling(bootstrap_options = c("hover", "striped"))
-```
-
-::: {.cell-output-display}
-
-`````{=html}
-<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> term </th>
-   <th style="text-align:right;"> estimate </th>
-   <th style="text-align:right;"> std.error </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:right;"> 9.7699794 </td>
-   <td style="text-align:right;"> 0.4598732 </td>
-   <td style="text-align:right;"> 21.2449421 </td>
-   <td style="text-align:right;"> 0.0000000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> regionEurope &amp; Central Asia </td>
-   <td style="text-align:right;"> -2.8624409 </td>
-   <td style="text-align:right;"> 0.5282613 </td>
-   <td style="text-align:right;"> -5.4186082 </td>
-   <td style="text-align:right;"> 0.0000001 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> regionLatin America &amp; Caribbean </td>
-   <td style="text-align:right;"> -3.3833421 </td>
-   <td style="text-align:right;"> 0.5288151 </td>
-   <td style="text-align:right;"> -6.3979680 </td>
-   <td style="text-align:right;"> 0.0000000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> regionMiddle East &amp; North Africa </td>
-   <td style="text-align:right;"> -5.1765360 </td>
-   <td style="text-align:right;"> 0.5639565 </td>
-   <td style="text-align:right;"> -9.1789632 </td>
-   <td style="text-align:right;"> 0.0000000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> regionNorth America </td>
-   <td style="text-align:right;"> -0.7626191 </td>
-   <td style="text-align:right;"> 1.2265741 </td>
-   <td style="text-align:right;"> -0.6217472 </td>
-   <td style="text-align:right;"> 0.5343827 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> regionSouth Asia </td>
-   <td style="text-align:right;"> 5.4219801 </td>
-   <td style="text-align:right;"> 0.7724558 </td>
-   <td style="text-align:right;"> 7.0191460 </td>
-   <td style="text-align:right;"> 0.0000000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> regionSub-Saharan Africa </td>
-   <td style="text-align:right;"> 1.8609394 </td>
-   <td style="text-align:right;"> 0.5044404 </td>
-   <td style="text-align:right;"> 3.6891162 </td>
-   <td style="text-align:right;"> 0.0002489 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> gdp_percap </td>
-   <td style="text-align:right;"> -0.0002616 </td>
-   <td style="text-align:right;"> 0.0000171 </td>
-   <td style="text-align:right;"> -15.2612106 </td>
-   <td style="text-align:right;"> 0.0000000 </td>
   </tr>
 </tbody>
 </table>

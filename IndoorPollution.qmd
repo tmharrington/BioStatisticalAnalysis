@@ -380,12 +380,8 @@ Considering the data that is present, their are two layers of analysis that coul
 
 **It is likely that this data will show a correlation between the amount of resources a country has to invest in clean technologies and health care (represented by GDP) having the lowest percent deaths globally. Representing GDP by country would provide a good comparison to determine this correlation's strength.**
 
--   GDP is likely a strong contributing factor that does not even in tropical regions where ventilation is less of a concern, access to clean fuels is limited, indoor burning of fuels for cooking contributes to close proximity to the source of toxic compounds and heavy metals.
-
-<!-- -->
-
+-   The following analysis will attempt to show a strong correlation between GDP and the deaths related to indoor pollution.
 -   despite the likely correlation between a nations GDP and its percent deaths caused by IAP, it also seems the data will show an overall decrease in the 30yrs in every part of the world. [Comparing the amount that countries have improved over time may be a useful characteristic to infer from this dataset]{.underline}
-
     -   What rate increase of GDP is required to create meaningful improvements in the percent of deaths from IAP?
 
 ## Layer Two: Regions and Climates
@@ -396,61 +392,7 @@ Considering the data that is present, their are two layers of analysis that coul
 
 -   Temperate regions are more likely to invest in indoor heating which often involved the use of bio fuels like wood stoves. Poor ventilation is also likely to be a component that will play a role in temperate regions being associated with greater % deaths by IAP.
 
-<!-- -->
-
--   
-
-## 
-
-::: callout-note
-## Future Questions
-:::
-
-```{r}
-model_data<- indoor_pollution %>%
-  
-  rename("percent_deaths_by_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-  
-   mutate("region" = countrycode(entity,origin = "country.name",
-   destination= "region")) %>%
-  filter(!is.na(region))
-  
-model_region_temp <- linear_reg() %>% 
-  set_engine("lm")  #construct model instance
-
-model_region_reg<-
-  recipe(percent_deaths_by_IAP~region+year,
-         data = model_data)
-  #generate a recipe -- what variables do we have in y = mx+b
-
-model_region<-
-  workflow() %>%
-  add_model(model_region_temp) %>%
-  add_recipe(model_region_reg) #combine the model and recipe to generate a regression analysis
-
-model_region_fit <- model_region %>% fit(model_data)
-
- model_region_fit %>%
-  glance() %>% 
-  kable(digits=c(4,4,2,4,0,0,2,2,2,2,0,0)) %>% 
-  kable_styling(bootstrap_options = c("hover", "striped"))
-  
-  
-  # looking to build a regression analysis to determine if a correltion can be seen in the data. prediction is decreasing n over time grouped by region 
-```
-
-```{r}
- 
-model_region_fit %>%
-  extract_fit_engine() %>%
-  tidy() %>%
-  kable() %>%
-  kable_styling(bootstrap_options = c("hover", "striped"))
-```
-
-::: {.callout-note style="color:gray" appearance="simple"}
-## Observations
-:::
+## Part 1: Countries and resources
 
 ```{r}
 gm_df <- gapminder %>%
@@ -498,6 +440,182 @@ This data is not grouped by year and includes data from 1952, 1957, 2002, and 20
         -   Would a model based on region and GDP predict GDP having a large or small effect on % deaths for South Asia and Sub-Saharan Africa?
 :::
 
+### Regression Analysis : [Percent Deaths and Population]{.underline}
+
+```{r}
+model_data <- merged_df %>%
+  
+  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  filter(!is.na(region))
+
+model_region_temp <- linear_reg() %>%
+  set_engine("lm")  # construct model instance
+
+model_region_recipe <- recipe(percent_IAP~pop, data = model_data)
+
+model_region <-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+model_region_fit %>%
+  glance() %>%
+  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+### Regression Analysis : [Percent Deaths and Year]{.underline}
+
+```{r}
+model_data <- merged_df %>%
+  
+  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  filter(!is.na(region))
+
+model_region_temp <- linear_reg() %>%
+  set_engine("lm")  # construct model instance
+
+model_region_recipe <- recipe(percent_IAP~year, data = model_data)
+
+model_region <-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+model_region_fit %>%
+  glance() %>%
+  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+```{r}
+model_region_fit %>%
+  extract_fit_engine() %>%
+  tidy() %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+### Regression Analysis: [Percent Deaths and GDP]{.underline}
+
+```{r}
+model_data <- merged_df %>%
+  
+  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  filter(!is.na(region))
+
+model_region_temp <- linear_reg() %>%
+  set_engine("lm")  # construct model instance
+
+model_region_recipe <- recipe(percent_IAP~gdp_percap, data = model_data)
+
+model_region <-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+model_region_fit %>%
+  glance() %>%
+  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+### Regression Analysis: [Percent Deaths and Region]{.underline}
+
+```{r}
+model_data <- merged_df %>%
+  
+  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  filter(!is.na(region))
+
+model_region_temp <- linear_reg() %>%
+  set_engine("lm")  # construct model instance
+
+model_region_recipe <- recipe(percent_IAP~region, data = model_data)
+
+model_region <-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+model_region_fit %>%
+  glance() %>%
+  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.callout-note style="color:gray" appearance="simple"}
+## Discussion
+
+This analysis compared the relationship between percent deaths cause by Indoor air pollution to GDP, year, and region independently to understand the unique contributions of each. The hypothesis being tested suggests that GDP was the most significant factor impacting the percentage of a populations deaths. This test, however, shows that IAP could be predicted more accurately by region (59.2% IAP variation estimated to be predicted) then with GDP (50.8% variation in IAP deaths predicted by GDP).
+
+Year was estimated to predict only 1.3% of the variation in indoor air pollutant related premature deaths, which is likely related to the fact that the oldest data represented was from 1992, well into the period of modern medicine where drug availability would be making a large impact on global deaths to what we now consider treatable conditions and infections. A multi-variable regression analysis to explore the correlation between indoor deaths and year in each region may show that the countries with the highest deaths (South Asia, Sub-Saharan Africa, East Asia) is improving yearly at a rate that is faster then regions where the percent deaths in 1990 is already relatively low.
+
+Population was found to have the lowest impact in the percentage of deaths caused by indoor air pollution. This likely related to the fact that the deaths is given as a percentage of the population, so unless increasing the population contributes to a reduction of quality of life shared by the total population, the percentage should be relatively uneffected. However, population
+:::
+
+### Multi-variable Regression Analysis: [Year and Region]{.underline}
+
+```{r}
+model_data <- merged_df %>%
+  
+  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  filter(!is.na(region))
+
+model_region_temp <- linear_reg() %>%
+  set_engine("lm")  # construct model instance
+
+model_region_recipe <- recipe(percent_IAP~region+year, data = model_data) %>%
+  step_interact(~year:starts_with("region"))
+
+model_region <-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+model_region_fit %>%
+  glance() %>%
+  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+```{r}
+ 
+model_region_fit %>%
+  extract_fit_engine() %>%
+  tidy() %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.callout-note style="color:gray" appearance="simple"}
+## Disscussion
+
+This multi-variable regression extraction shows the compounding effect of year is not significant enough to increase or reduce the effect of year, which represent a strong predictive factor related to the percent of deaths caused by indoor air pollutants. The estimated correlation coefficient for most regions shows a predicted decline in indoor air pollution
+:::
+
+### Multi-variable Regression Analysis: [Percent Deaths and GDP + Region]{.underline}
+
 ```{r}
 model_data <- merged_df %>%
   
@@ -522,6 +640,50 @@ model_region_fit %>%
   glance() %>%
   kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+```{r}
+ 
+model_region_fit %>%
+  extract_fit_engine() %>%
+  tidy() %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+## 
+
+```{r}
+model_data<- indoor_pollution %>%
+  
+  rename("percent_deaths_by_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+   mutate("region" = countrycode(entity,origin = "country.name",
+   destination= "region")) %>%
+  filter(!is.na(region))
+  
+model_region_temp <- linear_reg() %>% 
+  set_engine("lm")  #construct model instance
+
+model_region_reg<-
+  recipe(percent_deaths_by_IAP~region+year,
+         data = model_data)
+  #generate a recipe -- what variables do we have in y = mx+b
+
+model_region<-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_reg) #combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+ model_region_fit %>%
+  glance() %>% 
+  kable(digits=c(4,4,2,4,0,0,2,2,2,2,0,0)) %>% 
+  kable_styling(bootstrap_options = c("hover", "striped"))
+  
+  
+  # looking to build a regression analysis to determine if a correltion can be seen in the data. prediction is decreasing n over time grouped by region 
 ```
 
 ```{r}

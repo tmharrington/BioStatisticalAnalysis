@@ -202,7 +202,7 @@ The following object is masked from 'package:dplyr':
 ✖ dplyr::lag()             masks stats::lag()
 ✖ yardstick::spec()        masks readr::spec()
 ✖ recipes::step()          masks stats::step()
-• Search for functions across packages at https://www.tidymodels.org/find/</code></pre>
+• Learn how to get started at https://www.tidymodels.org/start/</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -272,40 +272,40 @@ dbl (2): Year, Deaths - Cause: All causes - Risk: Household air pollution fr...
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Northern Ireland </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> Somalia </td>
+   <td style="text-align:left;"> SOM </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 16.80 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Micronesia (country) </td>
+   <td style="text-align:left;"> FSM </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 10.04 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cambodia </td>
+   <td style="text-align:left;"> KHM </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 17.91 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Trinidad and Tobago </td>
+   <td style="text-align:left;"> TTO </td>
    <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 0.01 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Sub-Saharan Africa - World Bank region </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 11.08 </td>
+   <td style="text-align:left;"> Lesotho </td>
+   <td style="text-align:left;"> LSO </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 6.29 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Madagascar </td>
-   <td style="text-align:left;"> MDG </td>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 16.52 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Papua New Guinea </td>
-   <td style="text-align:left;"> PNG </td>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 19.78 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cameroon </td>
-   <td style="text-align:left;"> CMR </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 9.38 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> European Union </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 0.63 </td>
+   <td style="text-align:left;"> South Korea </td>
+   <td style="text-align:left;"> KOR </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 0.14 </td>
   </tr>
 </tbody>
 </table>
@@ -355,7 +355,7 @@ dbl (2): Year, Deaths - Cause: All causes - Risk: Household air pollution fr...
 ℹ In argument: `country_region = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia &amp; Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe &amp; Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America &amp; Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East &amp; North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income</code></pre>
+! Some values were not matched unambiguously: Africa, African Region, African Union, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia &amp; Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe &amp; Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America &amp; Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East &amp; North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income</code></pre>
 </div>
 <div class="cell-output-display">
 
@@ -372,59 +372,59 @@ Caused by warning in `countrycode_convert()`:
 <tbody>
   <tr>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:right;"> 0.007 </td>
+   <td style="text-align:right;"> 0.005 </td>
    <td style="text-align:right;"> 23.5 </td>
-   <td style="text-align:right;"> 7.43 </td>
-   <td style="text-align:right;"> 7.5 </td>
+   <td style="text-align:right;"> 6.39 </td>
+   <td style="text-align:right;"> 6.7 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:right;"> 0.003 </td>
-   <td style="text-align:right;"> 14.3 </td>
-   <td style="text-align:right;"> 1.53 </td>
-   <td style="text-align:right;"> 2.5 </td>
+   <td style="text-align:right;"> 0.002 </td>
+   <td style="text-align:right;"> 11.6 </td>
+   <td style="text-align:right;"> 1.79 </td>
+   <td style="text-align:right;"> 2.8 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
    <td style="text-align:right;"> 0.003 </td>
-   <td style="text-align:right;"> 14.2 </td>
-   <td style="text-align:right;"> 2.95 </td>
-   <td style="text-align:right;"> 3.5 </td>
+   <td style="text-align:right;"> 16.4 </td>
+   <td style="text-align:right;"> 3.00 </td>
+   <td style="text-align:right;"> 3.3 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:right;"> 0.001 </td>
-   <td style="text-align:right;"> 9.4 </td>
-   <td style="text-align:right;"> 1.23 </td>
-   <td style="text-align:right;"> 2.0 </td>
+   <td style="text-align:right;"> 0.006 </td>
+   <td style="text-align:right;"> 16.7 </td>
+   <td style="text-align:right;"> 1.46 </td>
+   <td style="text-align:right;"> 2.8 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> North America </td>
-   <td style="text-align:right;"> 0.004 </td>
+   <td style="text-align:right;"> 0.003 </td>
    <td style="text-align:right;"> 1.2 </td>
-   <td style="text-align:right;"> 0.19 </td>
+   <td style="text-align:right;"> 0.18 </td>
    <td style="text-align:right;"> 0.4 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:right;"> 5.162 </td>
-   <td style="text-align:right;"> 19.9 </td>
-   <td style="text-align:right;"> 13.15 </td>
-   <td style="text-align:right;"> 3.8 </td>
+   <td style="text-align:right;"> 1.564 </td>
+   <td style="text-align:right;"> 19.3 </td>
+   <td style="text-align:right;"> 12.79 </td>
+   <td style="text-align:right;"> 4.7 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:right;"> 0.071 </td>
-   <td style="text-align:right;"> 17.3 </td>
-   <td style="text-align:right;"> 10.59 </td>
-   <td style="text-align:right;"> 3.8 </td>
+   <td style="text-align:right;"> 16.8 </td>
+   <td style="text-align:right;"> 10.21 </td>
+   <td style="text-align:right;"> 3.7 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> 0.002 </td>
    <td style="text-align:right;"> 17.7 </td>
-   <td style="text-align:right;"> 5.00 </td>
-   <td style="text-align:right;"> 4.9 </td>
+   <td style="text-align:right;"> 5.54 </td>
+   <td style="text-align:right;"> 5.1 </td>
   </tr>
 </tbody>
 </table>
@@ -484,14 +484,14 @@ Note
 ℹ In argument: `country_region = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia &amp; Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe &amp; Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America &amp; Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East &amp; North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income</code></pre>
+! Some values were not matched unambiguously: Africa, African Region, African Union, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia &amp; Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe &amp; Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America &amp; Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East &amp; North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `continent = countrycode(entity, origin = "country.name",
   destination = "continent")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia &amp; Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe &amp; Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America &amp; Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East &amp; North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income</code></pre>
+! Some values were not matched unambiguously: Africa, African Region, African Union, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia &amp; Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe &amp; Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America &amp; Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East &amp; North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in geom_histogram(mapping = aes(fill = country_region, x =
@@ -556,7 +556,7 @@ Observations
 ℹ In argument: `Regions = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: America, Andean Latin America, Australasia, Caribbean, Central Europe, Central Europe, Eastern Europe, and Central Asia, Commonwealth, Commonwealth High Income, East Asia &amp; Pacific - World Bank region, Eastern Mediterranean Region, Europe, Europe &amp; Central Asia - World Bank region, European Region, G20, High-income, Latin America &amp; Caribbean - World Bank region, Low-middle SDI, Low SDI, Middle East &amp; North Africa, Middle SDI, North Africa and Middle East, North America, Northern Ireland, Oceania, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Tropical Latin America, Wales, Western Europe, Western sub-Saharan Africa, World, World Bank Low Income, World Bank Lower Middle Income</code></pre>
+! Some values were not matched unambiguously: Africa, African Region, Andean Latin America, Asia, Australasia, Caribbean, Central Europe, Central Latin America, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, Eastern Europe, Eastern Mediterranean Region, England, Europe, Europe &amp; Central Asia - World Bank region, European Union, High-income, High-income Asia Pacific, High-middle SDI, Latin America &amp; Caribbean - World Bank region, Micronesia (country), Middle East &amp; North Africa, Middle SDI, Nordic Region, North America, Northern Ireland, Region of the Americas, South Asia - World Bank region, Southern Latin America, Wales, Western Pacific Region, Western sub-Saharan Africa, World Bank High Income, World Bank Low Income</code></pre>
 </div>
 <div class="cell-output-display">
 
@@ -572,45 +572,45 @@ Caused by warning in `countrycode_convert()`:
 <tbody>
   <tr>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:right;"> 4.1296 </td>
-   <td style="text-align:right;"> 5.7910 </td>
-   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 6.6373 </td>
+   <td style="text-align:right;"> 8.1800 </td>
+   <td style="text-align:right;"> 17 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:right;"> 0.9199 </td>
-   <td style="text-align:right;"> 1.4319 </td>
-   <td style="text-align:right;"> 31 </td>
+   <td style="text-align:right;"> 0.4216 </td>
+   <td style="text-align:right;"> 0.6648 </td>
+   <td style="text-align:right;"> 26 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:right;"> 1.3965 </td>
-   <td style="text-align:right;"> 1.9847 </td>
-   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 1.3131 </td>
+   <td style="text-align:right;"> 1.9076 </td>
+   <td style="text-align:right;"> 21 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:right;"> 0.5868 </td>
-   <td style="text-align:right;"> 1.2378 </td>
-   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 0.5938 </td>
+   <td style="text-align:right;"> 1.7593 </td>
+   <td style="text-align:right;"> 12 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> North America </td>
-   <td style="text-align:right;"> 0.0937 </td>
-   <td style="text-align:right;"> 0.0781 </td>
-   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0.0274 </td>
+   <td style="text-align:right;"> 0.0532 </td>
+   <td style="text-align:right;"> 3 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:right;"> 12.5108 </td>
-   <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 9.4191 </td>
+   <td style="text-align:right;"> 4.6228 </td>
+   <td style="text-align:right;"> 4 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:right;"> 9.7049 </td>
-   <td style="text-align:right;"> 3.9703 </td>
-   <td style="text-align:right;"> 26 </td>
+   <td style="text-align:right;"> 8.9817 </td>
+   <td style="text-align:right;"> 4.7709 </td>
+   <td style="text-align:right;"> 25 </td>
   </tr>
 </tbody>
 </table>
@@ -662,95 +662,95 @@ Observations
 <tbody>
   <tr>
    <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 44 </td>
+   <td style="text-align:right;"> 47 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 35 </td>
+   <td style="text-align:right;"> 40 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 44 </td>
+   <td style="text-align:right;"> 38 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 46 </td>
+   <td style="text-align:right;"> 47 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 38 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 38 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 26 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 42 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 45 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1999 </td>
    <td style="text-align:right;"> 36 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 45 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 41 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 1995 </td>
    <td style="text-align:right;"> 37 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 38 </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 40 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 44 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 38 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 50 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 1997 </td>
    <td style="text-align:right;"> 39 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 43 </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 38 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 44 </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 34 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 39 </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 40 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 42 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2002 </td>
    <td style="text-align:right;"> 35 </td>
   </tr>
   <tr>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 37 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 37 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 45 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 31 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 45 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 47 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 42 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 47 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 40 </td>
+  </tr>
+  <tr>
    <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 39 </td>
+   <td style="text-align:right;"> 36 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2013 </td>
@@ -758,27 +758,27 @@ Observations
   </tr>
   <tr>
    <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 35 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 40 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2016 </td>
    <td style="text-align:right;"> 37 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 38 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2016 </td>
    <td style="text-align:right;"> 35 </td>
   </tr>
   <tr>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 49 </td>
+  </tr>
+  <tr>
    <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 48 </td>
+   <td style="text-align:right;"> 38 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 43 </td>
+   <td style="text-align:right;"> 47 </td>
   </tr>
 </tbody>
 </table>
@@ -829,7 +829,7 @@ Observations
 ℹ In argument: `Regions = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia &amp; Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe &amp; Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America &amp; Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East &amp; North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income</code></pre>
+! Some values were not matched unambiguously: Africa, African Region, African Union, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia &amp; Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe &amp; Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America &amp; Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East &amp; North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Duplicated aesthetics after name standardisation: group</code></pre>
@@ -874,7 +874,7 @@ Observations
 ℹ In argument: `Regions = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia &amp; Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe &amp; Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America &amp; Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East &amp; North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income</code></pre>
+! Some values were not matched unambiguously: Africa, African Region, African Union, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia &amp; Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe &amp; Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America &amp; Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East &amp; North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>model_region_temp <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>)  <span class="co">#construct model instance</span></span>
@@ -916,18 +916,18 @@ Caused by warning in `countrycode_convert()`:
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 0.0289 </td>
-   <td style="text-align:right;"> 0.0278 </td>
-   <td style="text-align:right;"> 5.75 </td>
-   <td style="text-align:right;"> 27.3642 </td>
+   <td style="text-align:right;"> 0.026 </td>
+   <td style="text-align:right;"> 0.0249 </td>
+   <td style="text-align:right;"> 5.43 </td>
+   <td style="text-align:right;"> 23.8831 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> -2923.68 </td>
-   <td style="text-align:right;"> 5853.36 </td>
-   <td style="text-align:right;"> 5867.85 </td>
-   <td style="text-align:right;"> 30482.97 </td>
-   <td style="text-align:right;"> 921 </td>
-   <td style="text-align:right;"> 923 </td>
+   <td style="text-align:right;"> -2792.54 </td>
+   <td style="text-align:right;"> 5591.08 </td>
+   <td style="text-align:right;"> 5605.48 </td>
+   <td style="text-align:right;"> 26416.99 </td>
+   <td style="text-align:right;"> 896 </td>
+   <td style="text-align:right;"> 898 </td>
   </tr>
 </tbody>
 </table>
@@ -973,17 +973,17 @@ Observations
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:right;"> 234.0181897 </td>
-   <td style="text-align:right;"> 43.7294896 </td>
-   <td style="text-align:right;"> 5.351496 </td>
-   <td style="text-align:right;"> 1e-07 </td>
+   <td style="text-align:right;"> 207.1623162 </td>
+   <td style="text-align:right;"> 41.3483285 </td>
+   <td style="text-align:right;"> 5.010174 </td>
+   <td style="text-align:right;"> 7.0e-07 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> year </td>
-   <td style="text-align:right;"> -0.1141259 </td>
-   <td style="text-align:right;"> 0.0218169 </td>
-   <td style="text-align:right;"> -5.231077 </td>
-   <td style="text-align:right;"> 2e-07 </td>
+   <td style="text-align:right;"> -0.1008006 </td>
+   <td style="text-align:right;"> 0.0206261 </td>
+   <td style="text-align:right;"> -4.887038 </td>
+   <td style="text-align:right;"> 1.2e-06 </td>
   </tr>
 </tbody>
 </table>
@@ -1015,7 +1015,7 @@ Observations
 ℹ In argument: `region = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia &amp; Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe &amp; Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America &amp; Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East &amp; North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income</code></pre>
+! Some values were not matched unambiguously: Africa, African Region, African Union, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia &amp; Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe &amp; Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America &amp; Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East &amp; North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>model_region_temp <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>)  <span class="co"># construct model instance</span></span>
@@ -1056,18 +1056,18 @@ Caused by warning in `countrycode_convert()`:
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 0.5183 </td>
-   <td style="text-align:right;"> 0.5114 </td>
-   <td style="text-align:right;"> 4.08 </td>
-   <td style="text-align:right;"> 75.2296 </td>
+   <td style="text-align:right;"> 0.4887 </td>
+   <td style="text-align:right;"> 0.4812 </td>
+   <td style="text-align:right;"> 3.96 </td>
+   <td style="text-align:right;"> 64.9998 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 13 </td>
-   <td style="text-align:right;"> -2600.12 </td>
-   <td style="text-align:right;"> 5230.24 </td>
-   <td style="text-align:right;"> 5302.65 </td>
-   <td style="text-align:right;"> 15120.57 </td>
-   <td style="text-align:right;"> 909 </td>
-   <td style="text-align:right;"> 923 </td>
+   <td style="text-align:right;"> -2503.15 </td>
+   <td style="text-align:right;"> 5036.29 </td>
+   <td style="text-align:right;"> 5108.3 </td>
+   <td style="text-align:right;"> 13866.47 </td>
+   <td style="text-align:right;"> 884 </td>
+   <td style="text-align:right;"> 898 </td>
   </tr>
 </tbody>
 </table>
@@ -1097,11 +1097,8 @@ Observations
 <h2 class="anchored" data-anchor-id="layer-one-countries-and-resources">Layer One: Countries and Resources</h2>
 <p><strong>It is likely that this data will show a correlation between the amount of resources a country has to invest in clean technologies and health care (represented by GDP) having the lowest percent deaths globally. Representing GDP by country would provide a good comparison to determine this correlation’s strength.</strong></p>
 <ul>
-<li>GDP is likely a strong contributing factor that does not even in tropical regions where ventilation is less of a concern, access to clean fuels is limited, indoor burning of fuels for cooking contributes to close proximity to the source of toxic compounds and heavy metals.</li>
-</ul>
-<!-- -->
-<ul>
-<li><p>despite the likely correlation between a nations GDP and its percent deaths caused by IAP, it also seems the data will show an overall decrease in the 30yrs in every part of the world. <u>Comparing the amount that countries have improved over time may be a useful characteristic to infer from this dataset</u></p>
+<li>The following analysis will attempt to show a strong correlation between GDP and the deaths related to indoor pollution.</li>
+<li>despite the likely correlation between a nations GDP and its percent deaths caused by IAP, it also seems the data will show an overall decrease in the 30yrs in every part of the world. <u>Comparing the amount that countries have improved over time may be a useful characteristic to infer from this dataset</u>
 <ul>
 <li>What rate increase of GDP is required to create meaningful improvements in the percent of deaths from IAP?</li>
 </ul></li>
@@ -1114,225 +1111,41 @@ Observations
 <li><p>If this hypothesis proves a strong correlation between countries in different climate regions for a single year, it may be useful to extrapolate this comparison over the 30 year time span. if no correlation is found, it may not be worth further consideration.</p></li>
 <li><p>Temperate regions are more likely to invest in indoor heating which often involved the use of bio fuels like wood stoves. Poor ventilation is also likely to be a component that will play a role in temperate regions being associated with greater % deaths by IAP.</p></li>
 </ul>
-<!-- -->
-<ul>
-<li></li>
-</ul>
 </section>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section"></h2>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Future Questions
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
+<section id="part-1-countries-and-resources" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-countries-and-resources">Part 1: Countries and resources</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>model_data<span class="ot">&lt;-</span> indoor_pollution <span class="sc">%&gt;%</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"percent_deaths_by_IAP"</span> <span class="ot">=</span> deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) <span class="sc">%&gt;%</span></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="st">"region"</span> <span class="ot">=</span> <span class="fu">countrycode</span>(entity,<span class="at">origin =</span> <span class="st">"country.name"</span>,</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">destination=</span> <span class="st">"region"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(region))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: There was 1 warning in `mutate()`.
-ℹ In argument: `region = countrycode(entity, origin = "country.name",
-  destination = "region")`.
-Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia &amp; Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe &amp; Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America &amp; Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East &amp; North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>model_region_temp <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>)  <span class="co">#construct model instance</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>model_region_reg<span class="ot">&lt;-</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">recipe</span>(percent_deaths_by_IAP<span class="sc">~</span>region<span class="sc">+</span>year,</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">data =</span> model_data)</span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#generate a recipe -- what variables do we have in y = mx+b</span></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>model_region<span class="ot">&lt;-</span></span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(model_region_temp) <span class="sc">%&gt;%</span></span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(model_region_reg) <span class="co">#combine the model and recipe to generate a regression analysis</span></span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="ot">&lt;-</span> model_region <span class="sc">%&gt;%</span> <span class="fu">fit</span>(model_data)</span>
-<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a> model_region_fit <span class="sc">%&gt;%</span></span>
-<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glance</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-
-<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:right;"> r.squared </th>
-   <th style="text-align:right;"> adj.r.squared </th>
-   <th style="text-align:right;"> sigma </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-   <th style="text-align:right;"> df </th>
-   <th style="text-align:right;"> logLik </th>
-   <th style="text-align:right;"> AIC </th>
-   <th style="text-align:right;"> BIC </th>
-   <th style="text-align:right;"> deviance </th>
-   <th style="text-align:right;"> df.residual </th>
-   <th style="text-align:right;"> nobs </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 0.485 </td>
-   <td style="text-align:right;"> 0.4844 </td>
-   <td style="text-align:right;"> 4.09 </td>
-   <td style="text-align:right;"> 814.2017 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> -17129.13 </td>
-   <td style="text-align:right;"> 34276.27 </td>
-   <td style="text-align:right;"> 34336.65 </td>
-   <td style="text-align:right;"> 101191.3 </td>
-   <td style="text-align:right;"> 6052 </td>
-   <td style="text-align:right;"> 6060 </td>
-  </tr>
-</tbody>
-</table>
-
-</div>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># looking to build a regression analysis to determine if a correltion can be seen in the data. prediction is decreasing n over time grouped by region </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="sc">%&gt;%</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_fit_engine</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-
-<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> term </th>
-   <th style="text-align:right;"> estimate </th>
-   <th style="text-align:right;"> std.error </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:right;"> 215.0160055 </td>
-   <td style="text-align:right;"> 12.1653870 </td>
-   <td style="text-align:right;"> 17.67441 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> regionEurope &amp; Central Asia </td>
-   <td style="text-align:right;"> -5.2048013 </td>
-   <td style="text-align:right;"> 0.1632245 </td>
-   <td style="text-align:right;"> -31.88738 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> regionLatin America &amp; Caribbean </td>
-   <td style="text-align:right;"> -3.7369585 </td>
-   <td style="text-align:right;"> 0.1784606 </td>
-   <td style="text-align:right;"> -20.93996 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> regionMiddle East &amp; North Africa </td>
-   <td style="text-align:right;"> -5.2642480 </td>
-   <td style="text-align:right;"> 0.2060686 </td>
-   <td style="text-align:right;"> -25.54610 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> regionNorth America </td>
-   <td style="text-align:right;"> -6.6191471 </td>
-   <td style="text-align:right;"> 0.4491160 </td>
-   <td style="text-align:right;"> -14.73817 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> regionSouth Asia </td>
-   <td style="text-align:right;"> 5.8435538 </td>
-   <td style="text-align:right;"> 0.2925611 </td>
-   <td style="text-align:right;"> 19.97379 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> regionSub-Saharan Africa </td>
-   <td style="text-align:right;"> 3.5796533 </td>
-   <td style="text-align:right;"> 0.1659380 </td>
-   <td style="text-align:right;"> 21.57224 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> year </td>
-   <td style="text-align:right;"> -0.1038778 </td>
-   <td style="text-align:right;"> 0.0060687 </td>
-   <td style="text-align:right;"> -17.11695 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-</tbody>
-</table>
-
-</div>
-</div>
-<div class="callout-note callout callout-style-simple callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Observations
-</div>
-</div>
-<div class="callout-body-container callout-body" style="color:gray">
-
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>gm_df <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">"entity"</span><span class="ot">=</span><span class="st">"country"</span>)</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>merged_df <span class="ot">&lt;-</span> indoor_pollution <span class="sc">%&gt;%</span></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(gm_df) <span class="sc">%&gt;%</span></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter_all</span>(<span class="fu">all_vars</span>(<span class="sc">!</span><span class="fu">is.na</span>(.)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>gm_df <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">"entity"</span><span class="ot">=</span><span class="st">"country"</span>)</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>merged_df <span class="ot">&lt;-</span> indoor_pollution <span class="sc">%&gt;%</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(gm_df) <span class="sc">%&gt;%</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter_all</span>(<span class="fu">all_vars</span>(<span class="sc">!</span><span class="fu">is.na</span>(.)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining with `by = join_by(entity, year)`</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>merged_df <span class="sc">%&gt;%</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">rename</span>(<span class="st">"percent_IAP"</span> <span class="ot">=</span> deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) <span class="sc">%&gt;%</span></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">region=</span> <span class="fu">countrycode</span>(entity, <span class="at">origin =</span> <span class="st">"country.name"</span>, <span class="at">destination =</span> <span class="st">"region"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(entity,region) <span class="sc">%&gt;%</span></span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_gdp =</span> <span class="fu">mean</span>(gdp_percap),</span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_deaths =</span> <span class="fu">mean</span>(percent_IAP)) <span class="sc">%&gt;%</span></span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="co"># create a scatter plot with GDP per capita on the x-axis and deaths caused by air pollution on the y-axis, colored by region</span></span>
-<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mean_gdp, <span class="at">y =</span> mean_deaths, <span class="at">color =</span> region)) <span class="sc">+</span></span>
-<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"GDP ($USD) per capita vs. % deaths caused by air pollution, by region"</span>,</span>
-<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"GDP per capita"</span>,</span>
-<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Percent deaths caused by air pollution"</span>,</span>
-<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Region"</span>) <span class="sc">+</span></span>
-<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
-<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a>              <span class="at">size =</span> .<span class="dv">75</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>merged_df <span class="sc">%&gt;%</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">rename</span>(<span class="st">"percent_IAP"</span> <span class="ot">=</span> deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) <span class="sc">%&gt;%</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">region=</span> <span class="fu">countrycode</span>(entity, <span class="at">origin =</span> <span class="st">"country.name"</span>, <span class="at">destination =</span> <span class="st">"region"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(entity,region) <span class="sc">%&gt;%</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_gdp =</span> <span class="fu">mean</span>(gdp_percap),</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_deaths =</span> <span class="fu">mean</span>(percent_IAP)) <span class="sc">%&gt;%</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="co"># create a scatter plot with GDP per capita on the x-axis and deaths caused by air pollution on the y-axis, colored by region</span></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mean_gdp, <span class="at">y =</span> mean_deaths, <span class="at">color =</span> region)) <span class="sc">+</span></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"GDP ($USD) per capita vs. % deaths caused by air pollution, by region"</span>,</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"GDP per capita"</span>,</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Percent deaths caused by air pollution"</span>,</span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Region"</span>) <span class="sc">+</span></span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>              <span class="at">size =</span> .<span class="dv">75</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'entity'. You can override using the
 `.groups` argument.</code></pre>
@@ -1352,7 +1165,7 @@ Observations
 -Inf</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="IndoorPollution_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+<p><img src="IndoorPollution_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -1377,6 +1190,325 @@ Observations
 </ul>
 </div>
 </div>
+<section id="regression-analysis-percent-deaths-and-population" class="level3">
+<h3 class="anchored" data-anchor-id="regression-analysis-percent-deaths-and-population">Regression Analysis : <u>Percent Deaths and Population</u></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>model_data <span class="ot">&lt;-</span> merged_df <span class="sc">%&gt;%</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"percent_IAP"</span> <span class="ot">=</span> deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) <span class="sc">%&gt;%</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"region"</span> <span class="ot">=</span> <span class="fu">countrycode</span>(entity, <span class="at">origin =</span> <span class="st">"country.name"</span>, <span class="at">destination =</span> <span class="st">"region"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(region))</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>model_region_temp <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>)  <span class="co"># construct model instance</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>model_region_recipe <span class="ot">&lt;-</span> <span class="fu">recipe</span>(percent_IAP<span class="sc">~</span>pop, <span class="at">data =</span> model_data)</span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>model_region <span class="ot">&lt;-</span></span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(model_region_temp) <span class="sc">%&gt;%</span></span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(model_region_recipe)  <span class="co"># combine the model and recipe to generate a regression analysis</span></span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="ot">&lt;-</span> model_region <span class="sc">%&gt;%</span> <span class="fu">fit</span>(model_data)</span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="sc">%&gt;%</span></span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glance</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> r.squared </th>
+   <th style="text-align:right;"> adj.r.squared </th>
+   <th style="text-align:right;"> sigma </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+   <th style="text-align:right;"> df </th>
+   <th style="text-align:right;"> logLik </th>
+   <th style="text-align:right;"> AIC </th>
+   <th style="text-align:right;"> BIC </th>
+   <th style="text-align:right;"> deviance </th>
+   <th style="text-align:right;"> df.residual </th>
+   <th style="text-align:right;"> nobs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0.012 </td>
+   <td style="text-align:right;"> 0.0101 </td>
+   <td style="text-align:right;"> 5.74 </td>
+   <td style="text-align:right;"> 6.3233 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1658.44 </td>
+   <td style="text-align:right;"> 3322.88 </td>
+   <td style="text-align:right;"> 3335.66 </td>
+   <td style="text-align:right;"> 17215 </td>
+   <td style="text-align:right;"> 522 </td>
+   <td style="text-align:right;"> 524 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</section>
+<section id="regression-analysis-percent-deaths-and-year" class="level3">
+<h3 class="anchored" data-anchor-id="regression-analysis-percent-deaths-and-year">Regression Analysis : <u>Percent Deaths and Year</u></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>model_data <span class="ot">&lt;-</span> merged_df <span class="sc">%&gt;%</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"percent_IAP"</span> <span class="ot">=</span> deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) <span class="sc">%&gt;%</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"region"</span> <span class="ot">=</span> <span class="fu">countrycode</span>(entity, <span class="at">origin =</span> <span class="st">"country.name"</span>, <span class="at">destination =</span> <span class="st">"region"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(region))</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>model_region_temp <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>)  <span class="co"># construct model instance</span></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>model_region_recipe <span class="ot">&lt;-</span> <span class="fu">recipe</span>(percent_IAP<span class="sc">~</span>year, <span class="at">data =</span> model_data)</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>model_region <span class="ot">&lt;-</span></span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(model_region_temp) <span class="sc">%&gt;%</span></span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(model_region_recipe)  <span class="co"># combine the model and recipe to generate a regression analysis</span></span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="ot">&lt;-</span> model_region <span class="sc">%&gt;%</span> <span class="fu">fit</span>(model_data)</span>
+<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="sc">%&gt;%</span></span>
+<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glance</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> r.squared </th>
+   <th style="text-align:right;"> adj.r.squared </th>
+   <th style="text-align:right;"> sigma </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+   <th style="text-align:right;"> df </th>
+   <th style="text-align:right;"> logLik </th>
+   <th style="text-align:right;"> AIC </th>
+   <th style="text-align:right;"> BIC </th>
+   <th style="text-align:right;"> deviance </th>
+   <th style="text-align:right;"> df.residual </th>
+   <th style="text-align:right;"> nobs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0.0137 </td>
+   <td style="text-align:right;"> 0.0118 </td>
+   <td style="text-align:right;"> 5.74 </td>
+   <td style="text-align:right;"> 7.2526 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1657.98 </td>
+   <td style="text-align:right;"> 3321.96 </td>
+   <td style="text-align:right;"> 3334.74 </td>
+   <td style="text-align:right;"> 17184.78 </td>
+   <td style="text-align:right;"> 522 </td>
+   <td style="text-align:right;"> 524 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="sc">%&gt;%</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_fit_engine</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> term </th>
+   <th style="text-align:right;"> estimate </th>
+   <th style="text-align:right;"> std.error </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:right;"> 247.6600221 </td>
+   <td style="text-align:right;"> 89.653891 </td>
+   <td style="text-align:right;"> 2.762401 </td>
+   <td style="text-align:right;"> 0.0059401 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> year </td>
+   <td style="text-align:right;"> -0.1207512 </td>
+   <td style="text-align:right;"> 0.044838 </td>
+   <td style="text-align:right;"> -2.693057 </td>
+   <td style="text-align:right;"> 0.0073077 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</section>
+<section id="regression-analysis-percent-deaths-and-gdp" class="level3">
+<h3 class="anchored" data-anchor-id="regression-analysis-percent-deaths-and-gdp">Regression Analysis: <u>Percent Deaths and GDP</u></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>model_data <span class="ot">&lt;-</span> merged_df <span class="sc">%&gt;%</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"percent_IAP"</span> <span class="ot">=</span> deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) <span class="sc">%&gt;%</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"region"</span> <span class="ot">=</span> <span class="fu">countrycode</span>(entity, <span class="at">origin =</span> <span class="st">"country.name"</span>, <span class="at">destination =</span> <span class="st">"region"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(region))</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>model_region_temp <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>)  <span class="co"># construct model instance</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>model_region_recipe <span class="ot">&lt;-</span> <span class="fu">recipe</span>(percent_IAP<span class="sc">~</span>gdp_percap, <span class="at">data =</span> model_data)</span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>model_region <span class="ot">&lt;-</span></span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(model_region_temp) <span class="sc">%&gt;%</span></span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(model_region_recipe)  <span class="co"># combine the model and recipe to generate a regression analysis</span></span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="ot">&lt;-</span> model_region <span class="sc">%&gt;%</span> <span class="fu">fit</span>(model_data)</span>
+<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="sc">%&gt;%</span></span>
+<span id="cb49-21"><a href="#cb49-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glance</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb49-22"><a href="#cb49-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb49-23"><a href="#cb49-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> r.squared </th>
+   <th style="text-align:right;"> adj.r.squared </th>
+   <th style="text-align:right;"> sigma </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+   <th style="text-align:right;"> df </th>
+   <th style="text-align:right;"> logLik </th>
+   <th style="text-align:right;"> AIC </th>
+   <th style="text-align:right;"> BIC </th>
+   <th style="text-align:right;"> deviance </th>
+   <th style="text-align:right;"> df.residual </th>
+   <th style="text-align:right;"> nobs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0.5079 </td>
+   <td style="text-align:right;"> 0.507 </td>
+   <td style="text-align:right;"> 4.05 </td>
+   <td style="text-align:right;"> 538.7472 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1475.82 </td>
+   <td style="text-align:right;"> 2957.64 </td>
+   <td style="text-align:right;"> 2970.42 </td>
+   <td style="text-align:right;"> 8574.23 </td>
+   <td style="text-align:right;"> 522 </td>
+   <td style="text-align:right;"> 524 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</section>
+<section id="regression-analysis-percent-deaths-and-region" class="level3">
+<h3 class="anchored" data-anchor-id="regression-analysis-percent-deaths-and-region">Regression Analysis: <u>Percent Deaths and Region</u></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>model_data <span class="ot">&lt;-</span> merged_df <span class="sc">%&gt;%</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"percent_IAP"</span> <span class="ot">=</span> deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) <span class="sc">%&gt;%</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"region"</span> <span class="ot">=</span> <span class="fu">countrycode</span>(entity, <span class="at">origin =</span> <span class="st">"country.name"</span>, <span class="at">destination =</span> <span class="st">"region"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(region))</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>model_region_temp <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>)  <span class="co"># construct model instance</span></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>model_region_recipe <span class="ot">&lt;-</span> <span class="fu">recipe</span>(percent_IAP<span class="sc">~</span>region, <span class="at">data =</span> model_data)</span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>model_region <span class="ot">&lt;-</span></span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(model_region_temp) <span class="sc">%&gt;%</span></span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(model_region_recipe)  <span class="co"># combine the model and recipe to generate a regression analysis</span></span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="ot">&lt;-</span> model_region <span class="sc">%&gt;%</span> <span class="fu">fit</span>(model_data)</span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="sc">%&gt;%</span></span>
+<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glance</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> r.squared </th>
+   <th style="text-align:right;"> adj.r.squared </th>
+   <th style="text-align:right;"> sigma </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+   <th style="text-align:right;"> df </th>
+   <th style="text-align:right;"> logLik </th>
+   <th style="text-align:right;"> AIC </th>
+   <th style="text-align:right;"> BIC </th>
+   <th style="text-align:right;"> deviance </th>
+   <th style="text-align:right;"> df.residual </th>
+   <th style="text-align:right;"> nobs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0.5917 </td>
+   <td style="text-align:right;"> 0.587 </td>
+   <td style="text-align:right;"> 3.71 </td>
+   <td style="text-align:right;"> 124.8931 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> -1426.88 </td>
+   <td style="text-align:right;"> 2869.76 </td>
+   <td style="text-align:right;"> 2903.85 </td>
+   <td style="text-align:right;"> 7113.28 </td>
+   <td style="text-align:right;"> 517 </td>
+   <td style="text-align:right;"> 524 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="callout-note callout callout-style-simple callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Discussion
+</div>
+</div>
+<div class="callout-body-container callout-body" style="color:gray">
+<p>This analysis compared the relationship between percent deaths cause by Indoor air pollution to GDP, year, and region independently to understand the unique contributions of each. The hypothesis being tested suggests that GDP was the most significant factor impacting the percentage of a populations deaths. This test, however, shows that IAP could be predicted more accurately by region (59.2% IAP variation estimated to be predicted) then with GDP (50.8% variation in IAP deaths predicted by GDP).</p>
+<p>Year was estimated to predict only 1.3% of the variation in indoor air pollutant related premature deaths, which is likely related to the fact that the oldest data represented was from 1992, well into the period of modern medicine where drug availability would be making a large impact on global deaths to what we now consider treatable conditions and infections. A multi-variable regression analysis to explore the correlation between indoor deaths and year in each region may show that the countries with the highest deaths (South Asia, Sub-Saharan Africa, East Asia) is improving yearly at a rate that is faster then regions where the percent deaths in 1990 is already relatively low.</p>
+<p>Population was found to have the lowest impact in the percentage of deaths caused by indoor air pollution. This likely related to the fact that the deaths is given as a percentage of the population, so unless increasing the population contributes to a reduction of quality of life shared by the total population, the percentage should be relatively uneffected. However, population</p>
+</div>
+</div>
+</section>
+<section id="multi-variable-regression-analysis-year-and-region" class="level3">
+<h3 class="anchored" data-anchor-id="multi-variable-regression-analysis-year-and-region">Multi-variable Regression Analysis: <u>Year and Region</u></h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>model_data <span class="ot">&lt;-</span> merged_df <span class="sc">%&gt;%</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  </span>
@@ -1388,19 +1520,221 @@ Observations
 <span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>model_region_temp <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>)  <span class="co"># construct model instance</span></span>
 <span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>model_region_recipe <span class="ot">&lt;-</span> <span class="fu">recipe</span>(percent_IAP<span class="sc">~</span>region<span class="sc">+</span>gdp_percap, <span class="at">data =</span> model_data)</span>
-<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>model_region <span class="ot">&lt;-</span></span>
-<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(model_region_temp) <span class="sc">%&gt;%</span></span>
-<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(model_region_recipe)  <span class="co"># combine the model and recipe to generate a regression analysis</span></span>
-<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="ot">&lt;-</span> model_region <span class="sc">%&gt;%</span> <span class="fu">fit</span>(model_data)</span>
-<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="sc">%&gt;%</span></span>
-<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glance</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb51-23"><a href="#cb51-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>model_region_recipe <span class="ot">&lt;-</span> <span class="fu">recipe</span>(percent_IAP<span class="sc">~</span>region<span class="sc">+</span>year, <span class="at">data =</span> model_data) <span class="sc">%&gt;%</span></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_interact</span>(<span class="sc">~</span>year<span class="sc">:</span><span class="fu">starts_with</span>(<span class="st">"region"</span>))</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>model_region <span class="ot">&lt;-</span></span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(model_region_temp) <span class="sc">%&gt;%</span></span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(model_region_recipe)  <span class="co"># combine the model and recipe to generate a regression analysis</span></span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="ot">&lt;-</span> model_region <span class="sc">%&gt;%</span> <span class="fu">fit</span>(model_data)</span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="sc">%&gt;%</span></span>
+<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glance</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb51-23"><a href="#cb51-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb51-24"><a href="#cb51-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> r.squared </th>
+   <th style="text-align:right;"> adj.r.squared </th>
+   <th style="text-align:right;"> sigma </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+   <th style="text-align:right;"> df </th>
+   <th style="text-align:right;"> logLik </th>
+   <th style="text-align:right;"> AIC </th>
+   <th style="text-align:right;"> BIC </th>
+   <th style="text-align:right;"> deviance </th>
+   <th style="text-align:right;"> df.residual </th>
+   <th style="text-align:right;"> nobs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0.6067 </td>
+   <td style="text-align:right;"> 0.5967 </td>
+   <td style="text-align:right;"> 3.67 </td>
+   <td style="text-align:right;"> 60.5125 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> -1417.11 </td>
+   <td style="text-align:right;"> 2864.22 </td>
+   <td style="text-align:right;"> 2928.15 </td>
+   <td style="text-align:right;"> 6852.98 </td>
+   <td style="text-align:right;"> 510 </td>
+   <td style="text-align:right;"> 524 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_fit_engine</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> term </th>
+   <th style="text-align:right;"> estimate </th>
+   <th style="text-align:right;"> std.error </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:right;"> 314.0192253 </td>
+   <td style="text-align:right;"> 175.2099300 </td>
+   <td style="text-align:right;"> 1.7922456 </td>
+   <td style="text-align:right;"> 0.0736862 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionEurope &amp; Central Asia </td>
+   <td style="text-align:right;"> -182.9783849 </td>
+   <td style="text-align:right;"> 214.5874631 </td>
+   <td style="text-align:right;"> -0.8526984 </td>
+   <td style="text-align:right;"> 0.3942268 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionLatin America &amp; Caribbean </td>
+   <td style="text-align:right;"> -0.4775896 </td>
+   <td style="text-align:right;"> 222.2264047 </td>
+   <td style="text-align:right;"> -0.0021491 </td>
+   <td style="text-align:right;"> 0.9982861 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionMiddle East &amp; North Africa </td>
+   <td style="text-align:right;"> -10.5246842 </td>
+   <td style="text-align:right;"> 239.9160774 </td>
+   <td style="text-align:right;"> -0.0438682 </td>
+   <td style="text-align:right;"> 0.9650266 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionNorth America </td>
+   <td style="text-align:right;"> -311.0243801 </td>
+   <td style="text-align:right;"> 495.5685185 </td>
+   <td style="text-align:right;"> -0.6276113 </td>
+   <td style="text-align:right;"> 0.5305395 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionSouth Asia </td>
+   <td style="text-align:right;"> -61.8840952 </td>
+   <td style="text-align:right;"> 319.8881031 </td>
+   <td style="text-align:right;"> -0.1934554 </td>
+   <td style="text-align:right;"> 0.8466793 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionSub-Saharan Africa </td>
+   <td style="text-align:right;"> -57.0697143 </td>
+   <td style="text-align:right;"> 202.3150005 </td>
+   <td style="text-align:right;"> -0.2820835 </td>
+   <td style="text-align:right;"> 0.7779940 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> year </td>
+   <td style="text-align:right;"> -0.1537245 </td>
+   <td style="text-align:right;"> 0.0876265 </td>
+   <td style="text-align:right;"> -1.7543143 </td>
+   <td style="text-align:right;"> 0.0799772 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> `year_x_regionEurope &amp; Central Asia` </td>
+   <td style="text-align:right;"> 0.0888823 </td>
+   <td style="text-align:right;"> 0.1073201 </td>
+   <td style="text-align:right;"> 0.8281982 </td>
+   <td style="text-align:right;"> 0.4079457 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> `year_x_regionLatin America &amp; Caribbean` </td>
+   <td style="text-align:right;"> -0.0008242 </td>
+   <td style="text-align:right;"> 0.1111406 </td>
+   <td style="text-align:right;"> -0.0074160 </td>
+   <td style="text-align:right;"> 0.9940858 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> `year_x_regionMiddle East &amp; North Africa` </td>
+   <td style="text-align:right;"> 0.0027130 </td>
+   <td style="text-align:right;"> 0.1199876 </td>
+   <td style="text-align:right;"> 0.0226104 </td>
+   <td style="text-align:right;"> 0.9819699 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> `year_x_regionNorth America` </td>
+   <td style="text-align:right;"> 0.1522374 </td>
+   <td style="text-align:right;"> 0.2478453 </td>
+   <td style="text-align:right;"> 0.6142440 </td>
+   <td style="text-align:right;"> 0.5393280 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> `year_x_regionSouth Asia` </td>
+   <td style="text-align:right;"> 0.0350121 </td>
+   <td style="text-align:right;"> 0.1599834 </td>
+   <td style="text-align:right;"> 0.2188484 </td>
+   <td style="text-align:right;"> 0.8268557 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> `year_x_regionSub-Saharan Africa` </td>
+   <td style="text-align:right;"> 0.0307569 </td>
+   <td style="text-align:right;"> 0.1011824 </td>
+   <td style="text-align:right;"> 0.3039752 </td>
+   <td style="text-align:right;"> 0.7612708 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="callout-note callout callout-style-simple callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Disscussion
+</div>
+</div>
+<div class="callout-body-container callout-body" style="color:gray">
+<p>This multi-variable regression extraction shows the compounding effect of year is not significant enough to increase or reduce the effect of year, which represent a strong predictive factor related to the percent of deaths caused by indoor air pollutants. The estimated correlation coefficient for most regions shows a predicted decline in indoor air pollution</p>
+</div>
+</div>
+</section>
+<section id="multi-variable-regression-analysis-percent-deaths-and-gdp-region" class="level3">
+<h3 class="anchored" data-anchor-id="multi-variable-regression-analysis-percent-deaths-and-gdp-region">Multi-variable Regression Analysis: <u>Percent Deaths and GDP + Region</u></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>model_data <span class="ot">&lt;-</span> merged_df <span class="sc">%&gt;%</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"percent_IAP"</span> <span class="ot">=</span> deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) <span class="sc">%&gt;%</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"region"</span> <span class="ot">=</span> <span class="fu">countrycode</span>(entity, <span class="at">origin =</span> <span class="st">"country.name"</span>, <span class="at">destination =</span> <span class="st">"region"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(region))</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>model_region_temp <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>)  <span class="co"># construct model instance</span></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>model_region_recipe <span class="ot">&lt;-</span> <span class="fu">recipe</span>(percent_IAP<span class="sc">~</span>region<span class="sc">+</span>gdp_percap, <span class="at">data =</span> model_data)</span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>model_region <span class="ot">&lt;-</span></span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(model_region_temp) <span class="sc">%&gt;%</span></span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(model_region_recipe)  <span class="co"># combine the model and recipe to generate a regression analysis</span></span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="ot">&lt;-</span> model_region <span class="sc">%&gt;%</span> <span class="fu">fit</span>(model_data)</span>
+<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="sc">%&gt;%</span></span>
+<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glance</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
@@ -1441,11 +1775,11 @@ Observations
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="sc">%&gt;%</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_fit_engine</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_fit_engine</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
@@ -1514,6 +1848,164 @@ Observations
    <td style="text-align:right;"> 0.0000171 </td>
    <td style="text-align:right;"> -15.2612106 </td>
    <td style="text-align:right;"> 0.0000000 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</section>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>model_data<span class="ot">&lt;-</span> indoor_pollution <span class="sc">%&gt;%</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"percent_deaths_by_IAP"</span> <span class="ot">=</span> deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) <span class="sc">%&gt;%</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="st">"region"</span> <span class="ot">=</span> <span class="fu">countrycode</span>(entity,<span class="at">origin =</span> <span class="st">"country.name"</span>,</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">destination=</span> <span class="st">"region"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(region))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `region = countrycode(entity, origin = "country.name",
+  destination = "region")`.
+Caused by warning in `countrycode_convert()`:
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia &amp; Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe &amp; Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America &amp; Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East &amp; North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>model_region_temp <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>)  <span class="co">#construct model instance</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>model_region_reg<span class="ot">&lt;-</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">recipe</span>(percent_deaths_by_IAP<span class="sc">~</span>region<span class="sc">+</span>year,</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">data =</span> model_data)</span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#generate a recipe -- what variables do we have in y = mx+b</span></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>model_region<span class="ot">&lt;-</span></span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(model_region_temp) <span class="sc">%&gt;%</span></span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(model_region_reg) <span class="co">#combine the model and recipe to generate a regression analysis</span></span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="ot">&lt;-</span> model_region <span class="sc">%&gt;%</span> <span class="fu">fit</span>(model_data)</span>
+<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a> model_region_fit <span class="sc">%&gt;%</span></span>
+<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glance</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> r.squared </th>
+   <th style="text-align:right;"> adj.r.squared </th>
+   <th style="text-align:right;"> sigma </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+   <th style="text-align:right;"> df </th>
+   <th style="text-align:right;"> logLik </th>
+   <th style="text-align:right;"> AIC </th>
+   <th style="text-align:right;"> BIC </th>
+   <th style="text-align:right;"> deviance </th>
+   <th style="text-align:right;"> df.residual </th>
+   <th style="text-align:right;"> nobs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0.485 </td>
+   <td style="text-align:right;"> 0.4844 </td>
+   <td style="text-align:right;"> 4.09 </td>
+   <td style="text-align:right;"> 814.2017 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> -17129.13 </td>
+   <td style="text-align:right;"> 34276.27 </td>
+   <td style="text-align:right;"> 34336.65 </td>
+   <td style="text-align:right;"> 101191.3 </td>
+   <td style="text-align:right;"> 6052 </td>
+   <td style="text-align:right;"> 6060 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># looking to build a regression analysis to determine if a correltion can be seen in the data. prediction is decreasing n over time grouped by region </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>model_region_fit <span class="sc">%&gt;%</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_fit_engine</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"hover"</span>, <span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> term </th>
+   <th style="text-align:right;"> estimate </th>
+   <th style="text-align:right;"> std.error </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:right;"> 215.0160055 </td>
+   <td style="text-align:right;"> 12.1653870 </td>
+   <td style="text-align:right;"> 17.67441 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionEurope &amp; Central Asia </td>
+   <td style="text-align:right;"> -5.2048013 </td>
+   <td style="text-align:right;"> 0.1632245 </td>
+   <td style="text-align:right;"> -31.88738 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionLatin America &amp; Caribbean </td>
+   <td style="text-align:right;"> -3.7369585 </td>
+   <td style="text-align:right;"> 0.1784606 </td>
+   <td style="text-align:right;"> -20.93996 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionMiddle East &amp; North Africa </td>
+   <td style="text-align:right;"> -5.2642480 </td>
+   <td style="text-align:right;"> 0.2060686 </td>
+   <td style="text-align:right;"> -25.54610 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionNorth America </td>
+   <td style="text-align:right;"> -6.6191471 </td>
+   <td style="text-align:right;"> 0.4491160 </td>
+   <td style="text-align:right;"> -14.73817 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionSouth Asia </td>
+   <td style="text-align:right;"> 5.8435538 </td>
+   <td style="text-align:right;"> 0.2925611 </td>
+   <td style="text-align:right;"> 19.97379 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionSub-Saharan Africa </td>
+   <td style="text-align:right;"> 3.5796533 </td>
+   <td style="text-align:right;"> 0.1659380 </td>
+   <td style="text-align:right;"> 21.57224 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> year </td>
+   <td style="text-align:right;"> -0.1038778 </td>
+   <td style="text-align:right;"> 0.0060687 </td>
+   <td style="text-align:right;"> -17.11695 </td>
+   <td style="text-align:right;"> 0 </td>
   </tr>
 </tbody>
 </table>
