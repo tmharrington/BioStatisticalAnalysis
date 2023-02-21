@@ -58,14 +58,15 @@ clean_names()
 ### Quick Summary of Data -- Finding the Variables Present in the Data Set
 
 ```{r}
-
+# Create a data split containing 15% of the total dataset for exploratory analysis
  iap_splits <- initial_split(indoor_pollution, prop = 0.15,
                                    pool = 1) 
+ 
 
-exploratory_data <- training(iap_splits)
-test_data <- testing(iap_splits)
+exploratory_data <- training(iap_splits) ##Rename training split
+test_data <- testing(iap_splits) ##Rename testing split
 
-head(exploratory_data) %>%
+head(exploratory_data) %>% 
   
   rename(percent_deaths_by_household_pollution = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>% #shorten the long name 
   
@@ -90,11 +91,24 @@ The data, listed by country and region, are mixed in the data set and will likel
 :::
 
 ```{r}
-exploratory_data %>% 
+exploratory_data %>%
+  
+   mutate(region = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  filter(region!= 0) %>%
+  group_by(region, entity) %>%
+  summarise() %>%
+  group_by(region) %>%
+  summarise("Unique Countries" = paste(unique(entity), collapse = ", "))
+```
+
+(
+
+```{r}
+exploratory_data %>% #quick summary of some of the data to see what the range is.
   
    mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
   
-  group_by(country_region) %>%
+  group_by(country_region) %>% #group the data by region to split the summary
   
   
 summarize(
@@ -112,13 +126,13 @@ summarize(
 ::: callout-note
 **Observations:**
 
--   0.0016 % deaths is extremely low, especially compared to the maximum at 23%, and even the average of 5.57 shows a significant spread across data points this broad range suggests
+-   All regions besides S. Asia have at least one country that has a very low percent deaths caused by indoor air pollution, while the highest and average percent deaths by region ranges fairly widely.
 
-    -   This data does not provide particularly useful information since the data is not group by year. Potentially plotting the mean percentage across time could provide a useful visual to see how this data changes.
+    -   South Asia is clearly the most impacted region by indoor air pollution as shown in this breakdown. Not only is the lowest percent deaths 2.1%, but the average is 3% higher then Sub-Saharan Africa (10.3%) which is nearly double the next largest, Ease Asia & Pacific (7.0%)
 
--   the maximum deaths at 23.04% is extremely high, and I am very curious at which country/region was measured this high-- potentially an outlier?
+        -   **Afghanistan, Bangladesh, Bhutan, India, Maldives, Nepal, Pakistan, Sri Lanka** are the only countries that are contained in the S. Asia region, with exceedingly poor air quality seemingly being a widespread issue for these countries. India has the second largest population of any country, meaning although this region is represented by less countries, it is representing a large amount of human being. This will likely be something that returns in future analysis and inference.
 
--   5.77 standard deviation seems very large for the size of the data set being considered. This will be interesting to reference when seperating by country, region or year.
+    -   
 :::
 
 ```{r}
@@ -323,14 +337,14 @@ This regression analysis provides some useful information that will be valuable 
 
 -   **r-squared value**: Describes how well the variables fit the dependent variable (model) and describe the data. The higher the R\^2 value, the more significant the relationship between the model and the predictor. the r-squared value suggests that between some percent of the deaths caused by IAP in this data set is explained by the year variable. This will be important to rerun for the full data set.
 
--   **P-value**: this is the statistical variable that tells us if the prediction that year has a impact on the % deaths per year. The value 0 suggests year will show a correlation to a decrease in n in a larger population.
+-   **P-value**: this is the statistical variable generated to describe if the prediction that year has a statistically significant impact on the % deaths per year. The small p-value suggests year will show a correlation to a decrease in n in a larger population, even if the overall impact is relatively small.
 :::
 
 ```{r}
 model_region_fit %>%
   extract_fit_engine() %>%
   tidy() %>%
-  kable() %>%
+  kable(digits = c(4,3,3,3)) %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
@@ -362,7 +376,7 @@ model_region_fit <- model_region %>% fit(model_data)
 
 model_region_fit %>%
   glance() %>%
-  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
+  kable(digits = c(4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 4, 4)) %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
@@ -453,40 +467,16 @@ model_data <- merged_df %>%
 model_region_temp <- linear_reg() %>%
   set_engine("lm")  # construct model instance
 
+# Run a regression analysis, determine if population size is a factor contributing to indoor air pollution deaths. 
+## This analysis will be valuable for determining if population has any compounding effect with other variables in further analysis. 
+
 model_region_recipe <- recipe(percent_IAP~pop, data = model_data)
 
+ # combine the recipe with the model to generate a regression analysis
 model_region <-
   workflow() %>%
-  add_model(model_region_temp) %>%
-  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
-
-model_region_fit <- model_region %>% fit(model_data)
-
-model_region_fit %>%
-  glance() %>%
-  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
-  kable_styling(bootstrap_options = c("hover", "striped"))
-```
-
-### Regression Analysis : [Percent Deaths and Year]{.underline}
-
-```{r}
-model_data <- merged_df %>%
-  
-  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-  
-  mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
-  filter(!is.na(region))
-
-model_region_temp <- linear_reg() %>%
-  set_engine("lm")  # construct model instance
-
-model_region_recipe <- recipe(percent_IAP~year, data = model_data)
-
-model_region <-
-  workflow() %>%
-  add_model(model_region_temp) %>%
-  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
+  add_model(model_region_temp) %>% 
+  add_recipe(model_region_recipe) 
 
 model_region_fit <- model_region %>% fit(model_data)
 
@@ -500,7 +490,43 @@ model_region_fit %>%
 model_region_fit %>%
   extract_fit_engine() %>%
   tidy() %>%
-  kable() %>%
+  kable(digits = c(4,4,4,4)) %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+### Regression Analysis : [Percent Deaths and Year]{.underline}
+
+```{r}
+indoor_pollution %>%
+  
+  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  filter(!is.na(region))
+
+model_region_temp <- linear_reg() %>%
+  set_engine("lm")  # construct model instance
+
+model_region_recipe <- recipe(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent~year, data = indoor_pollution)
+
+model_region <-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(indoor_pollution)
+
+model_region_fit %>%
+  glance() %>%
+  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+```{r}
+model_region_fit %>%
+  extract_fit_engine() %>%
+  tidy() %>%
+  kable(digits =c(4,4,4,4)) %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
@@ -604,7 +630,7 @@ model_region_fit %>%
 model_region_fit %>%
   extract_fit_engine() %>%
   tidy() %>%
-  kable() %>%
+  kable(digits =c(4,4,3,3)) %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
@@ -643,18 +669,17 @@ model_region_fit %>%
 ```
 
 ```{r}
- 
 model_region_fit %>%
   extract_fit_engine() %>%
   tidy() %>%
-  kable() %>%
+  kable(digits = c(3,3,3,4)) %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
-## 
+## Multi-Variable Regression Analysis: 
 
 ```{r}
-model_data<- indoor_pollution %>%
+model_data <- merged_df %>%
   
   rename("percent_deaths_by_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
   
@@ -666,7 +691,7 @@ model_region_temp <- linear_reg() %>%
   set_engine("lm")  #construct model instance
 
 model_region_reg<-
-  recipe(percent_deaths_by_IAP~region+year,
+  recipe(percent_deaths_by_IAP~gdp_percap+pop,
          data = model_data)
   #generate a recipe -- what variables do we have in y = mx+b
 
@@ -691,6 +716,6 @@ model_region_fit <- model_region %>% fit(model_data)
 model_region_fit %>%
   extract_fit_engine() %>%
   tidy() %>%
-  kable() %>%
+  kable(digits =c(3,5,3,3)) %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
