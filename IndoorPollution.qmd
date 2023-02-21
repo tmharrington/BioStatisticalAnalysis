@@ -386,9 +386,9 @@ model_region_fit %>%
 This is a multiple regression analysis generated to determine the amount (by percent) of deaths associated with indoor pollution that can be predicted based on region, as well as year.
 :::
 
-## Hypothesis: **Fuel combustion and Indoor Air Pollution**
+# Hypothesis: Regions, Resources and Regulations
 
-Considering the data that is present, their are two layers of analysis that could generate useful hypothesis for understanding the global impact of indoor air pollution. Considering the country-specific data, it may be valuable to try and find an additional data set for each layer to use for an additional comparison. These second data sets will be considered in thy hypothesis for each layer.
+Considering the data that is present, both in time span and global scale, some of the most valuable information that can be inferred from the data is the relationship between characteristics of a specific nation which can be influential in the amount of indoor pollution. Countries
 
 ## Layer One: Countries and Resources
 
@@ -417,29 +417,6 @@ merged_df <- indoor_pollution %>%
   left_join(gm_df) %>%
   filter_all(all_vars(!is.na(.)))
 
-```
-
-```{r}
-
-merged_df %>%
-  
-   rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-  
-  mutate(region= countrycode(entity, origin = "country.name", destination = "region")) %>%
-  
-  group_by(entity,region) %>%
-  summarize(mean_gdp = mean(gdp_percap),
-            mean_deaths = mean(percent_IAP)) %>%
-  
-# create a scatter plot with GDP per capita on the x-axis and deaths caused by air pollution on the y-axis, colored by region
-  ggplot(aes(x = mean_gdp, y = mean_deaths, color = region)) +
-  geom_point(size = 2) +
-  labs(title = "GDP ($USD) per capita vs. % deaths caused by air pollution, by region",
-       x = "GDP per capita",
-       y = "Percent deaths caused by air pollution",
-       color = "Region") +
-  geom_smooth(method = "lm",
-              size = .75)
 ```
 
 ::: callout-note
@@ -526,7 +503,7 @@ model_region_fit %>%
 model_region_fit %>%
   extract_fit_engine() %>%
   tidy() %>%
-  kable(digits =c(4,4,4,4)) %>%
+  kable() %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
@@ -558,6 +535,14 @@ model_region_fit %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
+```{r}
+model_region_fit %>%
+  extract_fit_engine() %>%
+  tidy() %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
 ### Regression Analysis: [Percent Deaths and Region]{.underline}
 
 ```{r}
@@ -586,7 +571,7 @@ model_region_fit %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
-### Regression Analysis: [Percent Deaths and life expectancy]{.underline}
+### Regression Analysis: [Percent Deaths effect on life expectancy]{.underline}
 
 ```{r}
 model_data <- merged_df %>%
@@ -599,7 +584,7 @@ model_data <- merged_df %>%
 model_region_temp <- linear_reg() %>%
   set_engine("lm")  # construct model instance
 
-model_region_recipe <- recipe(percent_IAP~life_exp, data = model_data)
+model_region_recipe <- recipe(life_exp~percent_IAP, data = model_data)
 
 model_region <-
   workflow() %>%
@@ -623,10 +608,11 @@ model_region_fit %>%
 ```
 
 ::: {.callout-note style="color:gray" appearance="simple"}
-
 ## Discussion
 
-This analysis compared the relationship between percent deaths cause by Indoor air pollution to GDP, year, and region independently to understand the unique contributions of each. The hypothesis being tested suggests that GDP was the most significant factor impacting the percentage of a populations deaths. This test, however, shows that IAP could be predicted more accurately by region (59.2% IAP variation estimated to be predicted) then with GDP (50.8% variation in IAP deaths predicted by GDP).
+These analysis offer some additional insight into the earlier table-layout observations made in the exploratory analysis phase. Every single-variable regression analysis performed offered a strong level of confidence (p\<0.001) although the correlation varied significantly. Considering the interpretations of these results will be useful for influencing the multi-variable analysis, which can further expand on the significance and compounding effect of these relationships.
+
+compared the relationship between percent deaths cause by Indoor air pollution to GDP, year, and region independently to understand the unique contributions of each. The hypothesis being tested suggests that GDP was the most significant factor impacting the percentage of a populations deaths. This test, however, shows that IAP could be predicted more accurately by region (59.2% IAP variation estimated to be predicted) then with GDP (50.8% variation in IAP deaths predicted by GDP).
 
 Year was estimated to predict only 1.3% of the variation in indoor air pollutant related premature deaths, which is likely related to the fact that the oldest data represented was from 1992, well into the period of modern medicine where drug availability would be making a large impact on global deaths to what we now consider treatable conditions and infections. A multi-variable regression analysis to explore the correlation between indoor deaths and year in each region may show that the countries with the highest deaths (South Asia, Sub-Saharan Africa, East Asia) is improving yearly at a rate that is faster then regions where the percent deaths in 1990 is already relatively low.
 
@@ -634,6 +620,27 @@ Population was found to have the lowest impact in the percentage of deaths cause
 :::
 
 ### Multi-variable Regression Analysis: [Year and Region]{.underline}
+
+```{r}
+
+merged_df %>%
+  
+   rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate(region= countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  group_by(year,region) %>%
+  summarize(mean_deaths = mean(percent_IAP)) %>%
+  
+# create a scatter plot with GDP per capita on the x-axis and deaths caused by air pollution on the y-axis, colored by region
+  ggplot(aes(x = year, y = mean_deaths, color = region)) +
+  geom_line(size = 1) +
+  labs(title = "Percent Deaths from IAP vs Year, by Region",
+       x = "year (1992-2007)",
+       y = "Percent deaths caused by air pollution",
+       color = "Region") +
+  geom_smooth(method = "lm")
+```
 
 ```{r}
 model_data <- merged_df %>%
@@ -680,6 +687,29 @@ This multi-variable regression extraction shows the compounding effect of year i
 ### Multi-variable Regression Analysis: [Percent Deaths and GDP + Region]{.underline}
 
 ```{r}
+
+merged_df %>%
+  
+   rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate(region= countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  group_by(entity,region) %>%
+  summarize(mean_gdp = mean(gdp_percap),
+            mean_deaths = mean(percent_IAP)) %>%
+  
+# create a scatter plot with GDP per capita on the x-axis and deaths caused by air pollution on the y-axis, colored by region
+  ggplot(aes(x = mean_gdp, y = mean_deaths, color = region)) +
+  geom_point(size = 2) +
+  labs(title = "GDP ($USD) per capita vs. % deaths caused by air pollution, by region",
+       x = "GDP per capita",
+       y = "Percent deaths caused by air pollution",
+       color = "Region") +
+  geom_smooth(method = "lm",
+              size = .75)
+```
+
+```{r}
 model_data <- merged_df %>%
   
   rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
@@ -713,7 +743,29 @@ model_region_fit %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
-## Multi-Variable Regression Analysis: [GDP by Country]{.underline}
+### Multi-Variable Regression analysis: [Percent IAP vs. GDP by country]{.underline}
+
+```{r}
+
+merged_df %>%
+  
+   rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate(region= countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  group_by(entity) %>%
+  summarize(mean_gdp = mean(gdp_percap),
+            mean_deaths = mean(percent_IAP)) %>%
+  
+# create a scatter plot with GDP per capita on the x-axis and deaths caused by air pollution on the y-axis, colored by country instead of region
+  ggplot(aes(x = mean_gdp, y = mean_deaths, group = entity)) +
+  geom_point(size = 1) +
+  geom_smooth() +
+  labs(title = " ",
+       x = "",
+       y = "",
+       color = "Region")
+```
 
 ```{r}
 model_data <- merged_df %>%
@@ -746,7 +798,29 @@ model_region_fit <- model_region %>% fit(model_data)
   
 ```
 
-## Multi-Variable Regression Analysis: [GDP and population size]{.underline}
+## Multi-Variable Regression Analysis: [GDP and population size, by entity]{.underline}
+
+```{r}
+
+merged_df %>%
+  
+   rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate(region = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  group_by(entity) %>%
+  summarize(mean_population = mean(pop),
+            mean_deaths = mean(percent_IAP)) %>%
+  
+# create a scatter plot with GDP per capita on the x-axis and deaths caused by air pollution on the y-axis, colored by country instead of region
+  ggplot(aes(x = log(mean_population), y = mean_deaths)) +
+  geom_point(size = 1) +
+  geom_smooth(method = "lm",
+              se=FALSE) +
+  labs(title = " ",
+       x = "average population by region (log10 scale)",
+       y = "percent deaths by IAP")
+```
 
 ```{r}
 model_data <- merged_df %>%
@@ -831,3 +905,11 @@ model_region_fit %>%
   kable(digits =c(3,5,3,3)) %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
+
+# Conclusions
+
+# Future Questions
+
+-   Studies suggest that in developed countries, people spend 80-90% of their lives indoors. The US, being the wealthiest nation, has the resources to reduce indoor air pollution through regulation, investment, and adequate medical care. However, countries with growing GDP and capitalistic societies may face increased time indoors without the resources to regulate indoor and outdoor environments, leading to greater exposure to pollutants and inadequate healthcare. As countries create economic opportunities and urbanize, indoor air pollution may increase. Analysis to Identifying the point at which GDP and premature deaths caused by indoor air pollution are correlated can inform targeted prevention efforts.
+
+-   
