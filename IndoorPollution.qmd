@@ -55,7 +55,7 @@ indoor_pollution <- readr::read_csv('https://raw.githubusercontent.com/rfordatas
 clean_names()
 ```
 
-### Table A: Describing the Variables 
+### Table A: Describing the Variables
 
 ```{r}
 # Create a data split containing 15% of the total dataset for exploratory analysis
@@ -144,7 +144,7 @@ This data shows the distribution of variables across several years.
 -   It seems that the quantity of variables spread across this time span eliminates any hypothesis that would not involve a temporal comparison. If focusing on a single-year comparison becomes functional to the goals of this analysis, it may be valuable to pick a year with the most variables since they are not all the same.
 :::
 
-### Table C: Single Variable Regression Analysis -- Indoor Air Pollution and Year 
+### Table C: Single Variable Regression Analysis -- Indoor Air Pollution and Year
 
 ```{r}
 model_data<- exploratory_data %>%
@@ -192,17 +192,15 @@ This regression analysis provides some useful information that will be valuable 
 ### Table D: Percent Premature Deaths caused by Air pollution -- Global averages Summary
 
 ```{r}
-exploratory_data %>% #quick summary of some of the data to see what the range is.
+exploratory_data %>%
   
-  #Use country_code package to create new column defining the region of each country
    mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
   filter(country_region!= 0) %>%
   
    rename("percent_iap" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-
-  #Group the data by region to split the summary
-  group_by(country_region) %>% 
   
+  group_by(country_region) %>%
   
 summarize(
   "Lowest percentage of deaths" = min(percent_iap),
@@ -216,16 +214,40 @@ summarize(
     kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
+### Graph B: Bland-Altman Plot -- relationship between current percentages of IAP deaths and change over time (1995-2015)
+
+```{r}
+BA_plot <- exploratory_data %>% #Bland-Altman plots show the relationship between two paried variables to determine how much change is .
+  
+   mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  filter(country_region!= 0) %>%
+  
+   rename("percent_iap" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+
+  mutate(year = paste0("Y", year)) %>%
+  spread(year, percent_iap) %>%
+  mutate(current = Y2015,
+         change = Y2015 - Y1995)
+  
+BA_plot %>%
+  
+  ggplot(aes(current, change)) +
+    geom_point()
+```
+
 ::: callout-note
 **Observations:**
 
--   All regions besides S. Asia have at least one country that has a very low percent deaths caused by indoor air pollution, while the highest and average percent deaths by region ranges fairly widely.
+While this does not describe a large number of variables, the graph tells us that although some countries still have very high levels of current deaths caused by indoor air pollution, the general direction is a decreasing amount of indoor air pollution
 
-    -   South Asia is clearly the most impacted region by indoor air pollution as shown in this breakdown. Not only is the lowest percent deaths 2.1%, but the average is 3% higher then Sub-Saharan Africa (10.3%) which is nearly double the next largest, Ease Asia & Pacific (7.0%)
+-   data points in the top left corner mean that there has not been a significant amount of change between 2019 and 1995, nor was there a significant amount of deaths to begin with.
 
-        -   **Afghanistan, Bangladesh, Bhutan, India, Maldives, Nepal, Pakistan, Sri Lanka** are the only countries that are contained in the S. Asia region (Table 2), with exceedingly poor air quality seemingly being a widespread issue for these countries. India has the second largest population of any country, meaning although this region is represented by less countries, it is representing a large amount of human being. This will likely be something that returns in future analysis and inference.
+-   No points are present in the top right, which would suggest countries that have very high percent deaths by indoor air pollution, and have not significantly reduced those rates since 1995
 
-    -   
+-   Points towards the bottom right suggest countries that have made significant progress since 1995, but still remain having high rates of premature deaths from iap
+
+Considering how few points are on this graph it would be hard to make any generalized predictions about what we would expect from the rest of the data, let alone the entire data set. one thing that is likely being demonstrated by this graph despite the small sample size, is that most countries will likely be trending down in percent of premature deaths from indoor air pollution.
 :::
 
 ### Table E: Percent Premature Deaths caused by Air pollution -- [2014-2019]{.underline}
@@ -261,14 +283,14 @@ exploratory_data %>%
 
 This data summarizes the variables from only 2014-2019 to see a comparison of all the countries in recent years. Something that can be inferred from this data is that some countries have a significantly more significant standard deviation then others.
 
--   While South Asia and Sub-Saharan Africa have the highest average, the deviation is much smggesting most of the variables (countries) measured in this timespan are relatively close to the 10.00 % mean percent deaths by IAP
+-   While South Asia and Sub-Saharan Africa have the highest average, the deviation is much suggesting most of the variables (countries) measured in this time span are relatively close to the 10.00 % mean percent deaths by IAP
 -   East Asia & Pacific are significantly lower in percent deaths by IAP at nearly half of the previously mentioned, however, the standard deviation is over 1% greater then either South Asia or Sub-Saharan Africa, suggesting that some countries could be significantly worse off then most.
 -   although Middle East & North Africa does not have a particularly large standard deviation, it is the largest in comparison to its average. This Region along with Latin America & Caribbean do not fit this theory as nicely, and show the need for economic factors that play a role in deaths caused by pollution.
 -   This will be important for my hypothesis, since the geographic position of East Asia & pacific would likely make climate an interesting factor for comparison.
 -   Regions with the lowest deviation from the mean were Europe & Central Asia as well as North America (despite lacking a stawithon, it is only made up of 3 countries and likely deviated minimally
 :::
 
-### Graph B: Distribution percentages of Premature Deaths from IAP, grouped by Region
+### Graph C: Distribution percentages of Premature Deaths from IAP, grouped by Region
 
 ```{r}
 exploratory_data %>%
@@ -315,7 +337,7 @@ exploratory_data %>%
 -   because these variables are taken across such a wide temporal scale, it does not serve as a distinctly insightful comparison. Still, some things can be inferred.
 :::
 
-### Graph C: Change in Percent Deaths by Region and Year(1990-2020)
+### Graph D: Change in Percent Deaths by Region and Year (1990-2020)
 
 ```{r}
 exploratory_data %>%
