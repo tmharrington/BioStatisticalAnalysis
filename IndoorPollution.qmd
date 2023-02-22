@@ -29,7 +29,7 @@ Premature deaths related to indoor air pollution data for many countries across 
 
 -   **Particulate matter:** Dust, smoke, dirt, and other small particles created from many sources and suspended in moving air. Some of the most significant indoor air pollutants are produced by combustion from cooking, heating, or smoking. PM ranges from a mild irritant to a major cause of death depending on the concentration and extent of exposure.
 
-    -   Burning biofuels like wood or crops produce significantly more hazardous particulate matter then fuels like ethanol or biodiesel. Wood contains heavy metals like arsenic, cadmium, and lead that can accumulate in soils and then get taken into the air, producing dust and ash from incomplete combustion.
+    -   Burning bio fuels like wood or crops produce significantly more hazardous particulate matter then fuels like ethanol or bio diesel. Wood contains heavy metals like arsenic, cadmium, and lead that can accumulate in soils and then get taken into the air, producing dust and ash from incomplete combustion.
 
 -   **Nitrogen Oxides:** Also an aspect of biofuel combustion, NOx compounds are known to have significant adverse health affects affecting the respiratory and cardiovascular system, which has been linked to asthma, bronchitis, eye/skin/throat irritation, headaches & nausea as well as a weakened immune system
 
@@ -55,22 +55,26 @@ indoor_pollution <- readr::read_csv('https://raw.githubusercontent.com/rfordatas
 clean_names()
 ```
 
-### Quick Summary of Data -- Finding the Variables Present in the Data Set
+### Table A: Describing the Variables 
 
 ```{r}
 # Create a data split containing 15% of the total dataset for exploratory analysis
  iap_splits <- initial_split(indoor_pollution, prop = 0.15,
-                                   pool = 1) 
- 
-
+                                   pool = 1)
+   
+# Extract the training & Testing split from the data split and rename it as exploratory_data
 exploratory_data <- training(iap_splits) ##Rename training split
 test_data <- testing(iap_splits) ##Rename testing split
 
+# Select the first six rows of the exploratory_data dataset
+
 head(exploratory_data) %>% 
   
+  # Rename a column and format the table using kable() and kable_styling()
+
   rename(percent_deaths_by_household_pollution = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>% #shorten the long name 
   
-kable(digits = c(1,0,0,2)) %>%
+kable(digits = c(1,0,0,2)) %>% ##apply significant figure contstraints to the output
     kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
@@ -90,162 +94,38 @@ The data, listed by country and region, are mixed in the data set and will likel
 -   focusing on the countries rather than regions in this data could be used to show how countries that have invested in new technologies or better homes could correlate with either improved or worsened indoor air quality. Suppose homes are made more insulated but old gas stoves and wood fires are built into them. In that case, it is possible that the data could show up to a point a worsened impact on indoor air quality is associated with a country's growth in economic opportunity.
 :::
 
+### Table B: Grouped Countries by Region
+
 ```{r}
 exploratory_data %>%
   
-   mutate(region = countrycode(entity, origin = "country.name", destination = "region")) %>%
-  filter(region!= 0) %>%
+  # Adding a new column to the dataset
+  mutate(region = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  # Filtering out "entities" in the dataset that are not countries
+  filter(region!= 0) %>% ## continent or region can be used
+  
+  # Grouping the dataset by region and entity, and summarizing the data
   group_by(region, entity) %>%
   summarise() %>%
+  
+  # Grouping the summarized data by region and reading out the new column
   group_by(region) %>%
   summarise("Unique Countries" = paste(unique(entity), collapse = ", "))
+
+## could not figure out how to make this show the entire list of countries, even in the notebook output.
 ```
 
-(
-
-```{r}
-exploratory_data %>% #quick summary of some of the data to see what the range is.
-  
-   mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
-  
-  group_by(country_region) %>% #group the data by region to split the summary
-  
-  
-summarize(
-  "Lowest percentage of deaths" = min(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent),
-  
-  "Highest percentage of deaths"= max(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent),
-  "Average percentage of deaths" =mean(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent),
-  "Standard Deviation" = sd(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent)
-) %>%
-  
-  kable(digits = c(1,3,1,2,1)) %>%
-    kable_styling(bootstrap_options = c("hover", "striped"))
-```
-
-::: callout-note
-**Observations:**
-
--   All regions besides S. Asia have at least one country that has a very low percent deaths caused by indoor air pollution, while the highest and average percent deaths by region ranges fairly widely.
-
-    -   South Asia is clearly the most impacted region by indoor air pollution as shown in this breakdown. Not only is the lowest percent deaths 2.1%, but the average is 3% higher then Sub-Saharan Africa (10.3%) which is nearly double the next largest, Ease Asia & Pacific (7.0%)
-
-        -   **Afghanistan, Bangladesh, Bhutan, India, Maldives, Nepal, Pakistan, Sri Lanka** are the only countries that are contained in the S. Asia region, with exceedingly poor air quality seemingly being a widespread issue for these countries. India has the second largest population of any country, meaning although this region is represented by less countries, it is representing a large amount of human being. This will likely be something that returns in future analysis and inference.
-
-    -   
-:::
-
-```{r}
-
-  # mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
-  
- # mutate(continent = countrycode (entity, origin = "country.name", destination = "continent"))%>%
-  
- #  filter(continent!= 0) %>%
-  
- # kable() %>%
-   # kable_styling(bootstrap_options = c("hover", "striped"))
-```
+### Graph A: Distribution of Observations by Year
 
 ```{r}
 exploratory_data %>%
   
-  rename(percent_deaths_by_household_pollution = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-  
-   mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
-  mutate(continent = countrycode (entity, origin = "country.name", destination = "continent")) %>%
-
-   filter(continent!= 0) %>%
-  ggplot() + 
-  geom_histogram(mapping = aes(fill = country_region, 
-                               x= percent_deaths_by_household_pollution,
-                               na.rm = TRUE)) +
-  facet_wrap(~country_region) +
-  labs(x = "Percent of deaths caused by indoor air pollution",
-     y = "Count",
-     title = "Distribution of Indoor Air Pollution-Related Deaths by Region")
-
-```
-
-::: callout-note
-## Observations
-
--   these graphs show variables taken across a range of 30 years where the number of deaths in the country attributed to indoor air pollution caused by the combustion of bio fuels. each graph represents a distribution of these variables grouped by region.
-
-    -   **East Asia & Pacific** contains a large distribution of countries with different rates of death. there is a larger amount of countries in east asia with a very low percentage of deaths for this cause.
-
-    -   **Europe and Central Asia** has the largest amount of variables measured at 0 percent deaths caused by IAP (over 125) compared to any other region. Nearly all variables in this region are below 10 percent deaths by IAP, but a fairly large amount of variables fall between 1% and 5%.
-
-    -   **Latin America & Caribbean** data is relatively spread out across 0% through 5% with over 100 countries in this group. there are a a smaller number of countries spread between 6% and 15% with no species over 15 percent.
-
-    -   **Middle East and North Africa** does not contain a large number of countries in the histogram (less then 100). The largest portion are between 0% and 5%, relatively low levels compared to other countries like East Asia and Sub-Saharan Africa.
-
-    -   **North America** is represented by the fewest countries of any region in this comparison. Considering that two of these countries are the U.S and Canada it is not suprising that there are a very low percentage of deaths per year caused by indoor air pollution.
-
-    -   **South Asia** is not represented by any countries that are 0 or even nearly 0% deaths caused by IAP from bio fuels. Although this region has \~50 variables, the % death ranges from a minimum of 4% to as high as 19%.
-
-    -   **Sub-Saharan Africa** is represented by a larger number of variables that are in the 5%-15% range. this region will likely provide an interesting year-to-year comparison that could show improvement over time.
-
--   because these variables are taken across such a wide temporal scale, it does not serve as a distinctly insightful comparison. Still, some things can be inferred.
-:::
-
-```{r}
-
-exploratory_data %>%
-  
-  filter(year>2014) %>%
-  
-  rename(n = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-  
-   mutate("Regions" = countrycode(entity, 
-                                       origin = "country.name", 
-                                       destination= "region"
-                                       )) %>%
-  filter(!is.na(Regions)) %>%
-  group_by(Regions) %>%
-
-  summarize(
-    'Average Percent Deaths by Region' = mean(n),
-    'Standard Deviation of % Deaths by Region' = sd(n),
-    
-    'Number of Variables Measured' = length(unique(entity))) %>%
-  
- kable(digits = c(0,4,4,0)) %>%
-    kable_styling(bootstrap_options = c("hover", "striped"))
-
-
-```
-
-::: callout-note
-## Observations
-
-This data summarizes the variables from only 2014-2019 to see a comparison of all the countries in recent years. Something that can be inferred from this data is that some countries have a significantly more significant standard deviation then others.
-
--   While South Asia and Sub-Saharan Africa have the highest average, the deviation is much smggesting most of the variables (countries) measured in this timespan are relatively close to the 10.00 % mean percent deaths by IAP
-
-<!-- -->
-
-    -   East Asia & Pacific are significantly lower in percent deaths by IAP at nearly half of the previously mentioned, however, the standard deviation is over 1% greater then either South Asia or Sub-Saharan Africa, suggesting that some countries could be significantly worse off then most.
-
-    -   although Middle East & North Africa does not have a particularly large standard deviation, it is the largest in comparison to its average. This Region along with Latin America & Caribbean do not fit this theory as nicely, and show the need for economic factors that play a role in deaths caused by pollution.
-
-        -   This will be important for my hypothesis, since the geographic position of East Asia & pacific would likely make climate an interesting factor for comparison.
-
-<!-- -->
-
--   Regions with the lowest deviation from the mean were Europe & Central Asia as well as North America (despite lacking a stawithon, it is only made up of 3 countries and likely deviated minimally
-:::
-
-```{r}
-exploratory_data %>%
-  
-count(year) %>%
- 
-  kable() %>%
-    kable_styling(bootstrap_options = c("hover", "striped"))
-  
-                           
-  
+ggplot()+
+  geom_bar(aes(year),
+           color="blue")+
+  labs(title="Distribution of observations by Year",
+       y ="# Observations")
 ```
 
 ::: {.callout-note style="color:gray" appearance="simple"}
@@ -264,38 +144,7 @@ This data shows the distribution of variables across several years.
 -   It seems that the quantity of variables spread across this time span eliminates any hypothesis that would not involve a temporal comparison. If focusing on a single-year comparison becomes functional to the goals of this analysis, it may be valuable to pick a year with the most variables since they are not all the same.
 :::
 
-```{r}
-exploratory_data %>%
-  
-  rename(n = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-  
-   mutate("Regions" = countrycode(entity,origin = "country.name",
-   destination= "region")) %>%
-  filter(!is.na(Regions)) %>%
-  
-  group_by(Regions) %>%
-  
-  ggplot(aes(x= year,y= n, group = 1, color = Regions, group = interaction(region,year))) +
-  geom_line() +
-  facet_wrap(~Regions)+
-  geom_smooth()
-```
-
-::: callout-note
-## Observations
-
-These graphs seem to give some very valuable comparative evidence for both the value of region and time based analysis. Some things that can be seen as trends in this graph would be the downward trend downward that can be seen at the global scale.
-
--   Europe & Central Asia, Latin America & Caribbean ,Middle East & North Africa and North America were relatively low compared to East Asia & Pacific, South Asia and Sub-Saharan Africa.
-
--   East Asia & Pacific countries seem to have the greatest reduction in the percent deaths that were measured
-
--   While this is a global issue, there are clearly countries and regions that are significantly more impacted then others by the loss of life attributed to indoor air pollution and bio fuel combustion
-:::
-
-**Potential Hypothesis: Average % deaths decreased globally from 1990 - 2020**
-
-**Potential Hypothesis: Temperate vs. Tropical regions will impact the IAP of developing countries**
+### Table C: Single Variable Regression Analysis -- Indoor Air Pollution and Year 
 
 ```{r}
 model_data<- exploratory_data %>%
@@ -330,7 +179,7 @@ model_region_fit <- model_region %>% fit(model_data)
   # looking to build a regression analysis to determine if a correltion can be seen in the data. prediction is decreasing n over time grouped by region 
 ```
 
-::: {.callout-note appearance="simple"}
+::: {.callout-note style="color:gray" appearance="simple"}
 ## Observations
 
 This regression analysis provides some useful information that will be valuable to repeat with the entire data set.
@@ -340,17 +189,203 @@ This regression analysis provides some useful information that will be valuable 
 -   **P-value**: this is the statistical variable generated to describe if the prediction that year has a statistically significant impact on the % deaths per year. The small p-value suggests year will show a correlation to a decrease in n in a larger population, even if the overall impact is relatively small.
 :::
 
+### Table D: Percent Premature Deaths caused by Air pollution -- Global averages Summary
+
 ```{r}
-model_region_fit %>%
-  extract_fit_engine() %>%
-  tidy() %>%
-  kable(digits = c(4,3,3,3)) %>%
-  kable_styling(bootstrap_options = c("hover", "striped"))
+exploratory_data %>% #quick summary of some of the data to see what the range is.
+  
+  #Use country_code package to create new column defining the region of each country
+   mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  filter(country_region!= 0) %>%
+  
+   rename("percent_iap" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+
+  #Group the data by region to split the summary
+  group_by(country_region) %>% 
+  
+  
+summarize(
+  "Lowest percentage of deaths" = min(percent_iap),
+  "Highest percentage of deaths"= max(percent_iap),
+  "Average percentage of deaths" =mean(percent_iap),
+  "Standard Deviation" = sd(percent_iap),
+  'Number of Variables Measured' = length(unique(entity)
+)) %>%
+  
+  kable(digits = c(1,3,1,2,1)) %>%
+    kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: callout-note
+**Observations:**
+
+-   All regions besides S. Asia have at least one country that has a very low percent deaths caused by indoor air pollution, while the highest and average percent deaths by region ranges fairly widely.
+
+    -   South Asia is clearly the most impacted region by indoor air pollution as shown in this breakdown. Not only is the lowest percent deaths 2.1%, but the average is 3% higher then Sub-Saharan Africa (10.3%) which is nearly double the next largest, Ease Asia & Pacific (7.0%)
+
+        -   **Afghanistan, Bangladesh, Bhutan, India, Maldives, Nepal, Pakistan, Sri Lanka** are the only countries that are contained in the S. Asia region (Table 2), with exceedingly poor air quality seemingly being a widespread issue for these countries. India has the second largest population of any country, meaning although this region is represented by less countries, it is representing a large amount of human being. This will likely be something that returns in future analysis and inference.
+
+    -   
+:::
+
+### Table E: Percent Premature Deaths caused by Air pollution -- [2014-2019]{.underline}
+
+```{r}
+exploratory_data %>%
+  
+  filter(year>2014) %>%
+  
+  rename(percent_iap = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+   mutate("Regions" = countrycode(entity, 
+                                       origin = "country.name", 
+                                       destination= "region"
+                                       )) %>%
+  filter(!is.na(Regions)) %>%
+  group_by(Regions) %>%
+
+  summarize( "Lowest percentage of deaths" = min(percent_iap),
+  "Highest percentage of deaths"= max(percent_iap),
+  "Average percentage of deaths" =mean(percent_iap),
+  "Standard Deviation" = sd(percent_iap),
+  'Number of Variables Measured' = length(unique(entity)
+)) %>%
+  
+ kable(digits = c(0,4,4,0)) %>%
+    kable_styling(bootstrap_options = c("hover", "striped"))
+
 ```
 
 ::: {.callout-note style="color:gray" appearance="simple"}
 ## Observations
+
+This data summarizes the variables from only 2014-2019 to see a comparison of all the countries in recent years. Something that can be inferred from this data is that some countries have a significantly more significant standard deviation then others.
+
+-   While South Asia and Sub-Saharan Africa have the highest average, the deviation is much smggesting most of the variables (countries) measured in this timespan are relatively close to the 10.00 % mean percent deaths by IAP
+-   East Asia & Pacific are significantly lower in percent deaths by IAP at nearly half of the previously mentioned, however, the standard deviation is over 1% greater then either South Asia or Sub-Saharan Africa, suggesting that some countries could be significantly worse off then most.
+-   although Middle East & North Africa does not have a particularly large standard deviation, it is the largest in comparison to its average. This Region along with Latin America & Caribbean do not fit this theory as nicely, and show the need for economic factors that play a role in deaths caused by pollution.
+-   This will be important for my hypothesis, since the geographic position of East Asia & pacific would likely make climate an interesting factor for comparison.
+-   Regions with the lowest deviation from the mean were Europe & Central Asia as well as North America (despite lacking a stawithon, it is only made up of 3 countries and likely deviated minimally
 :::
+
+### Graph B: Distribution percentages of Premature Deaths from IAP, grouped by Region
+
+```{r}
+exploratory_data %>%
+  
+  rename(percent_iap = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+   mutate(region = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  mutate(continent = countrycode (entity, origin = "country.name", destination = "continent")) %>%
+  
+   filter(continent!= 0) %>%
+  ggplot() + 
+  #Histograms are useful for visualizing range, tendency, and outliers of a set of continuous or discrete variables.
+  
+  geom_histogram(mapping = aes(fill = region, 
+                               x= percent_iap,
+                               na.rm = TRUE)) +
+  facet_wrap(~region) + ## seperate into distinct graphs using region
+  labs(x = "Percent of deaths caused by indoor air pollution",
+     y = "# Countries",
+     title = "Distribution of Indoor Air Pollution-Related Deaths by Region")
+
+```
+
+::: {.callout-note style="color: gray" appearance="simple"}
+## Observations
+
+-   these graphs show variables taken across a range of 30 years where the number of deaths in the country attributed to indoor air pollution caused by the combustion of bio fuels. each graph represents a distribution of these variables grouped by region. There is a clear tendency in most regions towards 0% deaths by IAP, except for Sub-Saharan Africa that is clustered between 10-15%, and South Asia that is evenly distributed between 5 and 20% premature deaths by IAP.
+
+    -   **East Asia & Pacific** contains a large distribution of countries with different rates of death. there is a larger amount of countries in east asia with a very low percentage of deaths for this cause.
+
+    -   **Europe and Central Asia** has the largest amount of variables measured at 0 percent deaths caused by IAP (over 125) compared to any other region. Nearly all variables in this region are below 10 percent deaths by IAP, but a fairly large amount of variables fall between 1% and 5%.
+
+    -   **Latin America & Caribbean** data is relatively spread out across 0% through 5% with over 100 countries in this group. there are a a smaller number of countries spread between 6% and 15% with no species over 15 percent.
+
+    -   **Middle East and North Africa** does not contain a large number of countries in the histogram (less then 100). The largest portion are between 0% and 5%, relatively low levels compared to other countries like East Asia and Sub-Saharan Africa.
+
+    -   **North America** is represented by the fewest countries of any region in this comparison. Considering that two of these countries are the U.S and Canada it is not suprising that there are a very low percentage of deaths per year caused by indoor air pollution.
+
+    -   **South Asia** is not represented by any countries that are 0 or even nearly 0% deaths caused by IAP from bio fuels. Although this region has \~50 variables, the % death ranges from a minimum of 4% to as high as 19%.
+
+    -   **Sub-Saharan Africa** is represented by a larger number of variables that are in the 5%-15% range. this region will likely provide an interesting year-to-year comparison that could show improvement over time.
+
+-   because these variables are taken across such a wide temporal scale, it does not serve as a distinctly insightful comparison. Still, some things can be inferred.
+:::
+
+### Graph C: Change in Percent Deaths by Region and Year(1990-2020)
+
+```{r}
+exploratory_data %>%
+  
+  rename(percent_iap = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+   mutate("region" = countrycode(entity,origin = "country.name",
+   destination= "region")) %>%
+  filter(!is.na(region)) %>%
+  
+  ggplot(aes(year,
+             percent_iap, 
+             group = interaction(region,mean(percent_iap),
+             color = region
+             ))) +
+  geom_line() +
+  facet_wrap(~region)+
+  geom_smooth() +
+   labs(x = "Year", y = "Percentage of Premature deaths caused by Indoor air pollution", title = "Trends in Indoor Air Pollution-Related Deaths by Region") + # Add labels to the axes and title
+  theme_minimal() # Apply a minimal theme to the plot
+```
+
+::: callout-note
+## Observations
+
+These graphs seem to give some very valuable comparative evidence for both the value of region and time based analysis. Some things that can be seen as trends in this graph would be the downward trend downward that can be seen at the global scale.
+
+-   Europe & Central Asia, Latin America & Caribbean ,Middle East & North Africa and North America were relatively low compared to East Asia & Pacific, South Asia and Sub-Saharan Africa.
+
+-   East Asia & Pacific countries seem to have the greatest reduction in the percent deaths that were measured
+
+-   While this is a global issue, there are clearly countries and regions that are significantly more impacted then others by the loss of life attributed to indoor air pollution and bio fuelcombustion
+:::
+
+### Table F: Single Variable Regression Analysis -- Correlation Between Percent Deaths Caused by Indoor Air Pollution and Region
+
+```{r}
+model_data<- exploratory_data %>%
+  
+  rename("percent_deaths_by_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+   mutate("region" = countrycode(entity,origin = "country.name",
+   destination= "region")) %>%
+  filter(!is.na(region))
+  
+model_region_temp <- linear_reg() %>% 
+  set_engine("lm")  #construct model instance
+
+model_region_reg<-
+  recipe(percent_deaths_by_IAP~region,
+         data = model_data)
+  #generate a recipe -- what variables do we have in y = mx+b
+
+model_region<-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_reg) #combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+ model_region_fit %>%
+  glance() %>% 
+  kable(digits=c(4,4,2,4,0,0,2,2,2,2,0,0)) %>% 
+  kable_styling(bootstrap_options = c("hover", "striped"))
+  
+  
+  # looking to build a regression analysis to determine if a correltion can be seen in the data. prediction is decreasing n over time grouped by region 
+```
+
+### Table G: Multi-Variable Regression Analysis -- Determining correlation to premature deaths from IAP between region and year
 
 ```{r}
 model_data <- exploratory_data %>%
@@ -383,7 +418,7 @@ model_region_fit %>%
 ::: {.callout-note style="color: gray" appearance="simple"}
 ## Observations
 
-This is a multiple regression analysis generated to determine the amount (by percent) of deaths associated with indoor pollution that can be predicted based on region, as well as year.
+This is a multiple regression analysis generated to determine the amount (by percent) of deaths associated with indoor pollution that can be predicted based on region, as well as year. The most interesting note to make is that the r\^2 value of this prediction (0.483) is more significant then either of the variables measured as a single-variable regression test (r2 values were 0.451 for region and 0.0156 for year). This suggests there is a compounding relationship between year and region that may be worth investigating further as part of the hypothesis.
 :::
 
 # Hypothesis: Regions, Resources and Regulations
@@ -431,7 +466,7 @@ This data is not grouped by year and includes data from 1952, 1957, 2002, and 20
         -   Would a model based on region and GDP predict GDP having a large or small effect on % deaths for South Asia and Sub-Saharan Africa?
 :::
 
-### Regression Analysis : [Percent Deaths and Population]{.underline}
+### 1a Regression Analysis : [Percent Deaths and Population]{.underline}
 
 ```{r}
 model_data <- merged_df %>%
@@ -471,7 +506,7 @@ model_region_fit %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
-### Regression Analysis : [Percent Deaths and Year]{.underline}
+### 1b Regression Analysis : [Percent Deaths and Year]{.underline}
 
 ```{r}
 indoor_pollution %>%
@@ -507,7 +542,7 @@ model_region_fit %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
-### Regression Analysis: [Percent Deaths and GDP]{.underline}
+### 1c Regression Analysis: [Percent Deaths and GDP]{.underline}
 
 ```{r}
 model_data <- merged_df %>%
@@ -543,7 +578,7 @@ model_region_fit %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
-### Regression Analysis: [Percent Deaths and Region]{.underline}
+### 1d Regression Analysis: [Percent Deaths and Region]{.underline}
 
 ```{r}
 model_data <- merged_df %>%
@@ -571,7 +606,7 @@ model_region_fit %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
-### Regression Analysis: [Percent Deaths effect on life expectancy]{.underline}
+### 1e Regression Analysis: [Percent Deaths effect on life expectancy]{.underline}
 
 ```{r}
 model_data <- merged_df %>%
@@ -619,7 +654,7 @@ Year was estimated to predict only 1.3% of the variation in indoor air pollutant
 Population was found to have the lowest impact in the percentage of deaths caused by indoor air pollution. This likely related to the fact that the deaths is given as a percentage of the population, so unless increasing the population contributes to a reduction of quality of life shared by the total population, the percentage should be relatively unaffected.
 :::
 
-### Multi-variable Regression Analysis: [Year and Region]{.underline}
+### 2a Multi-variable Regression Analysis: [Year and Region]{.underline}
 
 ```{r}
 
@@ -678,13 +713,7 @@ model_region_fit %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
-::: {.callout-note style="color:gray" appearance="simple"}
-## Discussion
-
-This multi-variable regression extraction shows the compounding effect of year is not significant enough to increase or reduce the effect of year, which represent a strong predictive factor related to the percent of deaths caused by indoor air pollutants. The estimated correlation coefficient for most regions shows a predicted decline in indoor air pollution
-:::
-
-### Multi-variable Regression Analysis: [Percent Deaths and GDP + Region]{.underline}
+### 2b. Multi-variable Regression Analysis: [Percent Deaths and GDP + Region]{.underline}
 
 ```{r}
 
@@ -701,7 +730,7 @@ merged_df %>%
 # create a scatter plot with GDP per capita on the x-axis and deaths caused by air pollution on the y-axis, colored by region
   ggplot(aes(x = mean_gdp, y = mean_deaths, color = region)) +
   geom_point(size = 2) +
-  labs(title = "GDP ($USD) per capita vs. % deaths caused by air pollution, by region",
+  labs(title = "GDP ($USD) per capita vs. Percent , by Region",
        x = "GDP per capita",
        y = "Percent deaths caused by air pollution",
        color = "Region") +
@@ -743,7 +772,7 @@ model_region_fit %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
-### Multi-Variable Regression analysis: [Percent IAP vs. GDP by country]{.underline}
+### 2c Multi-Variable Regression analysis: [Percent IAP vs. GDP by country]{.underline}
 
 ```{r}
 
@@ -798,7 +827,7 @@ model_region_fit <- model_region %>% fit(model_data)
   
 ```
 
-## Multi-Variable Regression Analysis: [GDP and population size, by entity]{.underline}
+### 2d Multi-Variable Regression analysis: [GDP and Population size, by Country]{.underline}
 
 ```{r}
 
@@ -864,7 +893,7 @@ model_region_fit %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
-## Multi-Variable Regression Analysis: [GDP, population size, and life expectancy]{.underline}
+### 2e Multi-Variable Regression Analysis: GDP, Population Size, and life expectancy
 
 ```{r}
 model_data <- merged_df %>%
@@ -905,6 +934,10 @@ model_region_fit %>%
   kable(digits =c(3,5,3,3)) %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
+
+::: {.callout-note style="color:gray" appearance="simple"}
+## Discussion
+:::
 
 # Conclusions
 
