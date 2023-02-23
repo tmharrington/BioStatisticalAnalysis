@@ -4,7 +4,7 @@ author: "Trevor Harrington"
 format: html
 editor: visual
 keep-md: TRUE
-prefer-html: true
+prefer-html: TRUE
 ---
 
 
@@ -17,11 +17,17 @@ Premature deaths related to indoor air pollution data for many countries across 
 
 ## Introduction
 
-**Since the earliest days of thinking about the dangers associated with pollution in the air, much of the conversation has been focused on the risks associated with our infrastructure --vehicles, energy, and manufacturing at the forefront. More recently, it is becoming more apparent that we are also in need of considering the risks associated with out indoor air pollutants, which is now understood to be a source of premature deaths worthy of concern.**
+Since the earliest days of thinking about the dangers associated with pollution in the air, much of the conversation has been focused on the risks associated with our infrastructure --vehicles, energy, and manufacturing at the forefront. More recently, it has become apparent that we are also in need of considering the risks associated with out indoor air pollutants, which is now understood to be a source of premature deaths worthy of concern. Access to clean energy for households is one of the major challenges facing developing countries around the globe, with an estimated 3 billion impacted by the effects of indoor pollution and 4.3 of them suffering premature deaths in 2012 alone (Air quality and health, 2014) . The World Health Organization estimates that "Almost half of all deaths due to lower respiratory infection among children under 5 years of age are caused by inhaling particulate matter (soot) from household air pollution." and also estimates that as much as 90% of the premature deaths related to indoor, or household air pollution are found in middle- or low- income countries (Air quality and health, 2014), a fact that may suggest several disparities such as access to healthcare, clean energy, and regulatory protections for what can be installed in residential homes.
 
--   WHO suggests indoor air pollutants can become well over 100x more concentrated in large, poorly ventilated indoor spaces both public and private. On top of that, it has been documented that people living in developed regions spend 80-90% of our lives indoors.
+-   Indoor air pollutants can become well over 100x more concentrated in large, poorly ventilated indoor spaces both public and private. Moreover it has been documented that people living in developed regions spend 80-90% of our lives indoors which suggests significant prolonged exposure, even in high-income countries (González-Martín et al., 2021). While "indoor pollutants" represents a wide range of potential pollutants, some like those generated from combustion of bio fuels have particularly dangerous health implications when burned indoors.
 
--   Some reports suggest as much as three billion individuals are impacted by toxic indoor air pollutants every day, with as many as 3.8 million deaths yearly being attributed to IAP exposure.
+<!-- -->
+
+-   WHO considered Sub-Saharan Africa to be the most significantly impacted by the combined affects of rapid population growth with relatively poor economies, and even worse access to clean energy technologies (Air quality and health, 2014).
+
+<!-- -->
+
+-   Some reports suggest as much as three billion individuals are impacted by toxic indoor air pollutants every day, with as many as 4 million deaths yearly being attributed to IAP exposure (Gordon et al., 2014)
 
 ## Defining Indoor Air Pollutants
 
@@ -31,7 +37,8 @@ Premature deaths related to indoor air pollution data for many countries across 
 
 -   **Particulate matter:** Dust, smoke, dirt, and other small particles created from many sources and suspended in moving air. Some of the most significant indoor air pollutants are produced by combustion from cooking, heating, or smoking. PM ranges from a mild irritant to a major cause of death depending on the concentration and extent of exposure.
 
-    -   Burning biofuels like wood or crops produce significantly more hazardous particulate matter then fuels like ethanol or biodiesel. Wood contains heavy metals like arsenic, cadmium, and lead that can accumulate in soils and then get taken into the air, producing dust and ash from incomplete combustion.
+    -   Particulate matter represents the largest cause of premature deaths related to indoor air pollutants; Research has suggested that air pollution is responsible for 1 in 10 deaths globally (González-Martín et al., 2021).
+    -   Burning bio fuels like wood or crops produce significantly more hazardous particulate matter then fuels like ethanol or bio diesel. Wood contains heavy metals like arsenic, cadmium, and lead that can accumulate in soils and then get taken into the air, producing dust and ash from incomplete combustion. These sources of fuel are most common in developing countries, and regions with limited access to cleaner fuels.
 
 -   **Nitrogen Oxides:** Also an aspect of biofuel combustion, NOx compounds are known to have significant adverse health affects affecting the respiratory and cardiovascular system, which has been linked to asthma, bronchitis, eye/skin/throat irritation, headaches & nausea as well as a weakened immune system
 
@@ -98,7 +105,7 @@ library(tidymodels)
 ✖ dplyr::lag()             masks stats::lag()
 ✖ yardstick::spec()        masks readr::spec()
 ✖ recipes::step()          masks stats::step()
-• Use suppressPackageStartupMessages() to eliminate package startup messages
+• Use tidymodels_prefer() to resolve common conflicts.
 ```
 :::
 
@@ -161,7 +168,7 @@ dbl (2): Year, Deaths - Cause: All causes - Risk: Household air pollution fr...
 :::
 
 
-### Quick Summary of Data -- Finding the Variables Present in the Data Set
+### Table A: Describing the Variables
 
 
 ::: {.cell}
@@ -169,17 +176,21 @@ dbl (2): Year, Deaths - Cause: All causes - Risk: Household air pollution fr...
 ```{.r .cell-code}
 # Create a data split containing 15% of the total dataset for exploratory analysis
  iap_splits <- initial_split(indoor_pollution, prop = 0.15,
-                                   pool = 1) 
- 
-
+                                   pool = 1)
+   
+# Extract the training & Testing split from the data split and rename it as exploratory_data
 exploratory_data <- training(iap_splits) ##Rename training split
 test_data <- testing(iap_splits) ##Rename testing split
 
+# Select the first six rows of the exploratory_data dataset
+
 head(exploratory_data) %>% 
   
+  # Rename a column and format the table using kable() and kable_styling()
+
   rename(percent_deaths_by_household_pollution = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>% #shorten the long name 
   
-kable(digits = c(1,0,0,2)) %>%
+kable(digits = c(1,0,0,2)) %>% ##apply significant figure contstraints to the output
     kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
@@ -197,40 +208,40 @@ kable(digits = c(1,0,0,2)) %>%
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Malaysia </td>
-   <td style="text-align:left;"> MYS </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.10 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Chile </td>
-   <td style="text-align:left;"> CHL </td>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 0.60 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Poland </td>
-   <td style="text-align:left;"> POL </td>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 3.25 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Caribbean </td>
+   <td style="text-align:left;"> Western sub-Saharan Africa </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 3.88 </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 12.26 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> G20 </td>
+   <td style="text-align:left;"> South Sudan </td>
+   <td style="text-align:left;"> SSD </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 11.57 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Uzbekistan </td>
+   <td style="text-align:left;"> UZB </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 3.13 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bosnia and Herzegovina </td>
+   <td style="text-align:left;"> BIH </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 4.54 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Grenada </td>
+   <td style="text-align:left;"> GRD </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 4.10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Europe </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 6.72 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Israel </td>
-   <td style="text-align:left;"> ISR </td>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 0.01 </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0.57 </td>
   </tr>
 </tbody>
 </table>
@@ -244,18 +255,22 @@ kable(digits = c(1,0,0,2)) %>%
 ::: {.callout-note style="color:gray" appearance="simple"}
 **Observation:**
 
-This data set contains variables gathered across multiple years, listing the percent of deaths caused by indoor air pollutants created from indoor combustion. Given the amount of data present in this dataset, several potential hypotheses could likely be considered.
+This data set contains variables gathered across multiple years, listing the percent of deaths caused by indoor air pollutants created from indoor combustion. Given the amount of data present in this data set, several potential hypotheses could likely be considered.
 
 The data, listed by country and region, are mixed in the data set and will likely require some cleaning to separate. categorical data and contains variables that were collected over many years.
 
 -   Depending on the scope of research, it may be more useful to focus on the data set containing regional data rather than country-specific to highlight what role climate plays in the effect of indoor air pollution.
 
-    -   In temperate climates, it is more likely to use biofuels for heating as well as cooking. Alongside the availability of insulation material for homes that reduced the ability for indoor and outdoor atmosphere gas exchange, this may be an essential factor that could be compared with this data.
+    -   In temperate climates, it is more likely to use bio fuels for heating as well as cooking. Alongside the availability of insulation material for homes that reduced the ability for indoor and outdoor atmosphere gas exchange, this may be an essential factor that could be compared with this data.
 
-    -   Using the temporal variable that is available in this data, some conclusions could be made about the
+    -   Using the temporal variable that is available in this data, some inferences may be developed to correlate the rate at which different regions are improving compared to each other.
 
--   focusing on the countries rather than regions in this data could be used to show how countries that have invested in new technologies or better homes could correlate with either improved or worsened indoor air quality. Suppose homes are made more insulated but old gas stoves and wood fires are built into them. In that case, it is possible that the data could show up to a point a worsened impact on indoor air quality is associated with a country's growth in economic opportunity.
+        -   Grouping the data by region and providing some additional data about the average temperature would be interesting to see if, when accounting for all variables, the difference in climate has a significant impact on regional premature deaths from indoor air pollution.
+
+-   Considering the data by country could provide some valuable insight into the impact of politics and economic factors on indoor pollution. It is likely that GDP is a major factor that would sum the impact of a country improving its access to clean energy technology, preventative regulations, and healthcare. Adding in additional data about country-specific metrics will be extremely valuable for this analysis.
 :::
+
+### Table B: Grouped Countries by Region
 
 
 ::: {.cell}
@@ -263,10 +278,17 @@ The data, listed by country and region, are mixed in the data set and will likel
 ```{.r .cell-code}
 exploratory_data %>%
   
-   mutate(region = countrycode(entity, origin = "country.name", destination = "region")) %>%
-  filter(region!= 0) %>%
+  # Adding a new column to the dataset
+  mutate(region = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  # Filtering out "entities" in the dataset that are not countries
+  filter(region!= 0) %>% ## continent or region can be used
+  
+  # Grouping the dataset by region and entity, and summarizing the data
   group_by(region, entity) %>%
   summarise() %>%
+  
+  # Grouping the summarized data by region and reading out the new column
   group_by(region) %>%
   summarise("Unique Countries" = paste(unique(entity), collapse = ", "))
 ```
@@ -302,231 +324,14 @@ Caused by warning in `countrycode_convert()`:
 7 Sub-Saharan Africa         Angola, Benin, Botswana, Burkina Faso, Burundi, Ca…
 ```
 :::
-:::
-
-
-(
-
-
-::: {.cell}
 
 ```{.r .cell-code}
-exploratory_data %>% #quick summary of some of the data to see what the range is.
-  
-   mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
-  
-  group_by(country_region) %>% #group the data by region to split the summary
-  
-  
-summarize(
-  "Lowest percentage of deaths" = min(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent),
-  
-  "Highest percentage of deaths"= max(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent),
-  "Average percentage of deaths" =mean(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent),
-  "Standard Deviation" = sd(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent)
-) %>%
-  
-  kable(digits = c(1,3,1,2,1)) %>%
-    kable_styling(bootstrap_options = c("hover", "striped"))
-```
-
-::: {.cell-output .cell-output-stderr}
-```
-Warning: There was 1 warning in `mutate()`.
-ℹ In argument: `country_region = countrycode(entity, origin = "country.name",
-  destination = "region")`.
-Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+## could not figure out how to make this show the entire list of countries, even in the notebook output.
 ```
 :::
 
-::: {.cell-output-display}
 
-`````{=html}
-<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> country_region </th>
-   <th style="text-align:right;"> Lowest percentage of deaths </th>
-   <th style="text-align:right;"> Highest percentage of deaths </th>
-   <th style="text-align:right;"> Average percentage of deaths </th>
-   <th style="text-align:right;"> Standard Deviation </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:right;"> 0.005 </td>
-   <td style="text-align:right;"> 21.3 </td>
-   <td style="text-align:right;"> 6.50 </td>
-   <td style="text-align:right;"> 6.7 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:right;"> 0.002 </td>
-   <td style="text-align:right;"> 13.4 </td>
-   <td style="text-align:right;"> 1.48 </td>
-   <td style="text-align:right;"> 2.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:right;"> 0.003 </td>
-   <td style="text-align:right;"> 14.3 </td>
-   <td style="text-align:right;"> 3.05 </td>
-   <td style="text-align:right;"> 3.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:right;"> 0.001 </td>
-   <td style="text-align:right;"> 15.3 </td>
-   <td style="text-align:right;"> 1.39 </td>
-   <td style="text-align:right;"> 2.7 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North America </td>
-   <td style="text-align:right;"> 0.006 </td>
-   <td style="text-align:right;"> 0.6 </td>
-   <td style="text-align:right;"> 0.16 </td>
-   <td style="text-align:right;"> 0.2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:right;"> 4.650 </td>
-   <td style="text-align:right;"> 19.3 </td>
-   <td style="text-align:right;"> 12.65 </td>
-   <td style="text-align:right;"> 4.3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:right;"> 0.045 </td>
-   <td style="text-align:right;"> 17.3 </td>
-   <td style="text-align:right;"> 10.28 </td>
-   <td style="text-align:right;"> 3.8 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 0.002 </td>
-   <td style="text-align:right;"> 18.0 </td>
-   <td style="text-align:right;"> 5.00 </td>
-   <td style="text-align:right;"> 5.2 </td>
-  </tr>
-</tbody>
-</table>
-
-`````
-
-:::
-:::
-
-
-::: callout-note
-**Observations:**
-
--   All regions besides S. Asia have at least one country that has a very low percent deaths caused by indoor air pollution, while the highest and average percent deaths by region ranges fairly widely.
-
-    -   South Asia is clearly the most impacted region by indoor air pollution as shown in this breakdown. Not only is the lowest percent deaths 2.1%, but the average is 3% higher then Sub-Saharan Africa (10.3%) which is nearly double the next largest, Ease Asia & Pacific (7.0%)
-
-        -   **Afghanistan, Bangladesh, Bhutan, India, Maldives, Nepal, Pakistan, Sri Lanka** are the only countries that are contained in the S. Asia region, with exceedingly poor air quality seemingly being a widespread issue for these countries. India has the second largest population of any country, meaning although this region is represented by less countries, it is representing a large amount of human being. This will likely be something that returns in future analysis and inference.
-
-    -   
-:::
-
-
-::: {.cell}
-
-```{.r .cell-code}
-  # mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
-  
- # mutate(continent = countrycode (entity, origin = "country.name", destination = "continent"))%>%
-  
- #  filter(continent!= 0) %>%
-  
- # kable() %>%
-   # kable_styling(bootstrap_options = c("hover", "striped"))
-```
-:::
-
-::: {.cell}
-
-```{.r .cell-code}
-exploratory_data %>%
-  
-  rename(percent_deaths_by_household_pollution = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-  
-   mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
-  mutate(continent = countrycode (entity, origin = "country.name", destination = "continent")) %>%
-
-   filter(continent!= 0) %>%
-  ggplot() + 
-  geom_histogram(mapping = aes(fill = country_region, 
-                               x= percent_deaths_by_household_pollution,
-                               na.rm = TRUE)) +
-  facet_wrap(~country_region) +
-  labs(x = "Percent of deaths caused by indoor air pollution",
-     y = "Count",
-     title = "Distribution of Indoor Air Pollution-Related Deaths by Region")
-```
-
-::: {.cell-output .cell-output-stderr}
-```
-Warning: There was 1 warning in `mutate()`.
-ℹ In argument: `country_region = countrycode(entity, origin = "country.name",
-  destination = "region")`.
-Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
-```
-:::
-
-::: {.cell-output .cell-output-stderr}
-```
-Warning: There was 1 warning in `mutate()`.
-ℹ In argument: `continent = countrycode(entity, origin = "country.name",
-  destination = "continent")`.
-Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
-```
-:::
-
-::: {.cell-output .cell-output-stderr}
-```
-Warning in geom_histogram(mapping = aes(fill = country_region, x =
-percent_deaths_by_household_pollution, : Ignoring unknown aesthetics: na.rm
-```
-:::
-
-::: {.cell-output .cell-output-stderr}
-```
-`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-:::
-
-::: {.cell-output-display}
-![](IndoorPollution_files/figure-html/unnamed-chunk-6-1.png){width=672}
-:::
-:::
-
-
-::: callout-note
-## Observations
-
--   these graphs show variables taken across a range of 30 years where the number of deaths in the country attributed to indoor air pollution caused by the combustion of bio fuels. each graph represents a distribution of these variables grouped by region.
-
-    -   **East Asia & Pacific** contains a large distribution of countries with different rates of death. there is a larger amount of countries in east asia with a very low percentage of deaths for this cause.
-
-    -   **Europe and Central Asia** has the largest amount of variables measured at 0 percent deaths caused by IAP (over 125) compared to any other region. Nearly all variables in this region are below 10 percent deaths by IAP, but a fairly large amount of variables fall between 1% and 5%.
-
-    -   **Latin America & Caribbean** data is relatively spread out across 0% through 5% with over 100 countries in this group. there are a a smaller number of countries spread between 6% and 15% with no species over 15 percent.
-
-    -   **Middle East and North Africa** does not contain a large number of countries in the histogram (less then 100). The largest portion are between 0% and 5%, relatively low levels compared to other countries like East Asia and Sub-Saharan Africa.
-
-    -   **North America** is represented by the fewest countries of any region in this comparison. Considering that two of these countries are the U.S and Canada it is not suprising that there are a very low percentage of deaths per year caused by indoor air pollution.
-
-    -   **South Asia** is not represented by any countries that are 0 or even nearly 0% deaths caused by IAP from bio fuels. Although this region has \~50 variables, the % death ranges from a minimum of 4% to as high as 19%.
-
-    -   **Sub-Saharan Africa** is represented by a larger number of variables that are in the 5%-15% range. this region will likely provide an interesting year-to-year comparison that could show improvement over time.
-
--   because these variables are taken across such a wide temporal scale, it does not serve as a distinctly insightful comparison. Still, some things can be inferred.
-:::
+/liGraph A: Distribution of Observations by Year
 
 
 ::: {.cell}
@@ -534,269 +339,15 @@ percent_deaths_by_household_pollution, : Ignoring unknown aesthetics: na.rm
 ```{.r .cell-code}
 exploratory_data %>%
   
-  filter(year>2014) %>%
-  
-  rename(n = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-  
-   mutate("Regions" = countrycode(entity, 
-                                       origin = "country.name", 
-                                       destination= "region"
-                                       )) %>%
-  filter(!is.na(Regions)) %>%
-  group_by(Regions) %>%
-
-  summarize(
-    'Average Percent Deaths by Region' = mean(n),
-    'Standard Deviation of % Deaths by Region' = sd(n),
-    
-    'Number of Variables Measured' = length(unique(entity))) %>%
-  
- kable(digits = c(0,4,4,0)) %>%
-    kable_styling(bootstrap_options = c("hover", "striped"))
-```
-
-::: {.cell-output .cell-output-stderr}
-```
-Warning: There was 1 warning in `mutate()`.
-ℹ In argument: `Regions = countrycode(entity, origin = "country.name",
-  destination = "region")`.
-Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Union, Andean Latin America, Asia, Caribbean, Central Asia, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, Eastern Europe, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Union, G20, High-income, High-income North America, Middle East & North Africa, Middle SDI, Nordic Region, Oceania, Region of the Americas, South-East Asia Region, Southeast Asia, Southern Latin America, Southern sub-Saharan Africa, Western Europe, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income
-```
-:::
-
-::: {.cell-output-display}
-
-`````{=html}
-<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> Regions </th>
-   <th style="text-align:right;"> Average Percent Deaths by Region </th>
-   <th style="text-align:right;"> Standard Deviation of % Deaths by Region </th>
-   <th style="text-align:right;"> Number of Variables Measured </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:right;"> 6.2558 </td>
-   <td style="text-align:right;"> 6.9724 </td>
-   <td style="text-align:right;"> 19 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:right;"> 0.4975 </td>
-   <td style="text-align:right;"> 1.0142 </td>
-   <td style="text-align:right;"> 28 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:right;"> 1.7890 </td>
-   <td style="text-align:right;"> 3.0338 </td>
-   <td style="text-align:right;"> 20 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:right;"> 0.9756 </td>
-   <td style="text-align:right;"> 2.0375 </td>
-   <td style="text-align:right;"> 10 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North America </td>
-   <td style="text-align:right;"> 0.0795 </td>
-   <td style="text-align:right;"> 0.1042 </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:right;"> 11.0733 </td>
-   <td style="text-align:right;"> 2.4180 </td>
-   <td style="text-align:right;"> 4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sub-Saharan Africa </td>
-   <td style="text-align:right;"> 8.3015 </td>
-   <td style="text-align:right;"> 4.5549 </td>
-   <td style="text-align:right;"> 23 </td>
-  </tr>
-</tbody>
-</table>
-
-`````
-
-:::
-:::
-
-
-::: callout-note
-## Observations
-
-This data summarizes the variables from only 2014-2019 to see a comparison of all the countries in recent years. Something that can be inferred from this data is that some countries have a significantly more significant standard deviation then others.
-
--   While South Asia and Sub-Saharan Africa have the highest average, the deviation is much smggesting most of the variables (countries) measured in this timespan are relatively close to the 10.00 % mean percent deaths by IAP
-
-<!-- -->
-
-    -   East Asia & Pacific are significantly lower in percent deaths by IAP at nearly half of the previously mentioned, however, the standard deviation is over 1% greater then either South Asia or Sub-Saharan Africa, suggesting that some countries could be significantly worse off then most.
-
-    -   although Middle East & North Africa does not have a particularly large standard deviation, it is the largest in comparison to its average. This Region along with Latin America & Caribbean do not fit this theory as nicely, and show the need for economic factors that play a role in deaths caused by pollution.
-
-        -   This will be important for my hypothesis, since the geographic position of East Asia & pacific would likely make climate an interesting factor for comparison.
-
-<!-- -->
-
--   Regions with the lowest deviation from the mean were Europe & Central Asia as well as North America (despite lacking a stawithon, it is only made up of 3 countries and likely deviated minimally
-:::
-
-
-::: {.cell}
-
-```{.r .cell-code}
-exploratory_data %>%
-  
-count(year) %>%
- 
-  kable() %>%
-    kable_styling(bootstrap_options = c("hover", "striped"))
+ggplot()+
+  geom_bar(aes(year),
+           color="blue")+
+  labs(title="Distribution of observations by Year",
+       y ="# Observations")
 ```
 
 ::: {.cell-output-display}
-
-`````{=html}
-<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:right;"> year </th>
-   <th style="text-align:right;"> n </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 1990 </td>
-   <td style="text-align:right;"> 40 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1991 </td>
-   <td style="text-align:right;"> 44 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;"> 59 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1993 </td>
-   <td style="text-align:right;"> 49 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:right;"> 28 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 41 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1996 </td>
-   <td style="text-align:right;"> 48 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 44 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1998 </td>
-   <td style="text-align:right;"> 31 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 39 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2000 </td>
-   <td style="text-align:right;"> 35 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 39 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2002 </td>
-   <td style="text-align:right;"> 35 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2003 </td>
-   <td style="text-align:right;"> 31 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 48 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2005 </td>
-   <td style="text-align:right;"> 51 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 43 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2007 </td>
-   <td style="text-align:right;"> 49 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2008 </td>
-   <td style="text-align:right;"> 38 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2009 </td>
-   <td style="text-align:right;"> 37 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2010 </td>
-   <td style="text-align:right;"> 38 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2011 </td>
-   <td style="text-align:right;"> 30 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2012 </td>
-   <td style="text-align:right;"> 26 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 31 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 44 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2015 </td>
-   <td style="text-align:right;"> 49 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2016 </td>
-   <td style="text-align:right;"> 36 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 44 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 37 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2019 </td>
-   <td style="text-align:right;"> 37 </td>
-  </tr>
-</tbody>
-</table>
-
-`````
-
+![](IndoorPollution_files/figure-html/unnamed-chunk-4-1.png){width=672}
 :::
 :::
 
@@ -806,80 +357,12 @@ count(year) %>%
 
 This data shows the distribution of variables across several years.
 
--   This spread suggests there is a lot of value in interpreting this data by year.
-
-    -   How do different regions compare to each other? What can be said about the rate of progress towards reducing the number of deaths over the 30 years of data records?
-
-    -   Can environmental factors be considered? N. America has a lot of rich natural resources and mild climates that, among other factors, have enabled its success in terms of providing humanitarian needs to a large population.
-
-        -   areas where temperatures are very cold probably have more insulated homes burning bio fuels on top of cooking with combustion. Can a correlation be made suggesting that, despite economic wealth per capita, IAP caused by combustion is a bigger issue in Northern countries? This would likely only apply to countries that have not reached "western civilization" levels of wealth
+-   This spread suggests there is a lot of value in interpreting this data by year. This could provide several different benefits for interpreting the data assuming that year is a valuable predictor for the change in premature deaths by country or region. comparing the rate of change between regions could be an interesting visualization to see where progress is being made, and if there were any major periods of regression.
 
 -   It seems that the quantity of variables spread across this time span eliminates any hypothesis that would not involve a temporal comparison. If focusing on a single-year comparison becomes functional to the goals of this analysis, it may be valuable to pick a year with the most variables since they are not all the same.
 :::
 
-
-::: {.cell}
-
-```{.r .cell-code}
-exploratory_data %>%
-  
-  rename(n = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-  
-   mutate("Regions" = countrycode(entity,origin = "country.name",
-   destination= "region")) %>%
-  filter(!is.na(Regions)) %>%
-  
-  group_by(Regions) %>%
-  
-  ggplot(aes(x= year,y= n, group = 1, color = Regions, group = interaction(region,year))) +
-  geom_line() +
-  facet_wrap(~Regions)+
-  geom_smooth()
-```
-
-::: {.cell-output .cell-output-stderr}
-```
-Warning: There was 1 warning in `mutate()`.
-ℹ In argument: `Regions = countrycode(entity, origin = "country.name",
-  destination = "region")`.
-Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
-```
-:::
-
-::: {.cell-output .cell-output-stderr}
-```
-Warning: Duplicated aesthetics after name standardisation: group
-```
-:::
-
-::: {.cell-output .cell-output-stderr}
-```
-`geom_smooth()` using method = 'loess' and formula = 'y ~ x'
-```
-:::
-
-::: {.cell-output-display}
-![](IndoorPollution_files/figure-html/unnamed-chunk-9-1.png){width=672}
-:::
-:::
-
-
-::: callout-note
-## Observations
-
-These graphs seem to give some very valuable comparative evidence for both the value of region and time based analysis. Some things that can be seen as trends in this graph would be the downward trend downward that can be seen at the global scale.
-
--   Europe & Central Asia, Latin America & Caribbean ,Middle East & North Africa and North America were relatively low compared to East Asia & Pacific, South Asia and Sub-Saharan Africa.
-
--   East Asia & Pacific countries seem to have the greatest reduction in the percent deaths that were measured
-
--   While this is a global issue, there are clearly countries and regions that are significantly more impacted then others by the loss of life attributed to indoor air pollution and bio fuel combustion
-:::
-
-**Potential Hypothesis: Average % deaths decreased globally from 1990 - 2020**
-
-**Potential Hypothesis: Temperate vs. Tropical regions will impact the IAP of developing countries**
+### Table C: Single Variable Regression Analysis -- Indoor Air Pollution and Year
 
 
 ::: {.cell}
@@ -948,18 +431,18 @@ model_region_fit <- model_region %>% fit(model_data)
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 0.0435 </td>
-   <td style="text-align:right;"> 0.0424 </td>
-   <td style="text-align:right;"> 5.46 </td>
-   <td style="text-align:right;"> 40.4143 </td>
+   <td style="text-align:right;"> 0.0511 </td>
+   <td style="text-align:right;"> 0.05 </td>
+   <td style="text-align:right;"> 5.71 </td>
+   <td style="text-align:right;"> 48.5474 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> -2774.98 </td>
-   <td style="text-align:right;"> 5555.95 </td>
-   <td style="text-align:right;"> 5570.33 </td>
-   <td style="text-align:right;"> 26459.5 </td>
-   <td style="text-align:right;"> 889 </td>
-   <td style="text-align:right;"> 891 </td>
+   <td style="text-align:right;"> -2856.31 </td>
+   <td style="text-align:right;"> 5718.62 </td>
+   <td style="text-align:right;"> 5733.04 </td>
+   <td style="text-align:right;"> 29384.5 </td>
+   <td style="text-align:right;"> 902 </td>
+   <td style="text-align:right;"> 904 </td>
   </tr>
 </tbody>
 </table>
@@ -974,7 +457,7 @@ model_region_fit <- model_region %>% fit(model_data)
 :::
 
 
-::: {.callout-note appearance="simple"}
+::: {.callout-note style="color:gray" appearance="simple"}
 ## Observations
 
 This regression analysis provides some useful information that will be valuable to repeat with the entire data set.
@@ -984,6 +467,571 @@ This regression analysis provides some useful information that will be valuable 
 -   **P-value**: this is the statistical variable generated to describe if the prediction that year has a statistically significant impact on the % deaths per year. The small p-value suggests year will show a correlation to a decrease in n in a larger population, even if the overall impact is relatively small.
 :::
 
+### Table D: Percent Premature Deaths caused by Air pollution -- Global averages Summary
+
+
+::: {.cell}
+
+```{.r .cell-code}
+exploratory_data %>%
+  
+   mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  filter(country_region!= 0) %>%
+  
+   rename("percent_iap" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  group_by(country_region) %>%
+  
+summarize(
+  "Lowest percentage of deaths" = min(percent_iap),
+  "Highest percentage of deaths"= max(percent_iap),
+  "Average percentage of deaths" =mean(percent_iap),
+  "Standard Deviation" = sd(percent_iap),
+  'Number of Variables Measured' = length(unique(entity)
+)) %>%
+  
+  kable(digits = c(1,3,1,2,1)) %>%
+    kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `country_region = countrycode(entity, origin = "country.name",
+  destination = "region")`.
+Caused by warning in `countrycode_convert()`:
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+```
+:::
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> country_region </th>
+   <th style="text-align:right;"> Lowest percentage of deaths </th>
+   <th style="text-align:right;"> Highest percentage of deaths </th>
+   <th style="text-align:right;"> Average percentage of deaths </th>
+   <th style="text-align:right;"> Standard Deviation </th>
+   <th style="text-align:right;"> Number of Variables Measured </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:right;"> 0.005 </td>
+   <td style="text-align:right;"> 23.5 </td>
+   <td style="text-align:right;"> 7.13 </td>
+   <td style="text-align:right;"> 7.0 </td>
+   <td style="text-align:right;"> 35 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:right;"> 0.002 </td>
+   <td style="text-align:right;"> 13.5 </td>
+   <td style="text-align:right;"> 1.72 </td>
+   <td style="text-align:right;"> 2.9 </td>
+   <td style="text-align:right;"> 52 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:right;"> 0.002 </td>
+   <td style="text-align:right;"> 16.4 </td>
+   <td style="text-align:right;"> 3.13 </td>
+   <td style="text-align:right;"> 3.9 </td>
+   <td style="text-align:right;"> 35 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:right;"> 0.001 </td>
+   <td style="text-align:right;"> 16.7 </td>
+   <td style="text-align:right;"> 1.51 </td>
+   <td style="text-align:right;"> 3.1 </td>
+   <td style="text-align:right;"> 21 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> North America </td>
+   <td style="text-align:right;"> 0.005 </td>
+   <td style="text-align:right;"> 1.0 </td>
+   <td style="text-align:right;"> 0.18 </td>
+   <td style="text-align:right;"> 0.3 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:right;"> 5.028 </td>
+   <td style="text-align:right;"> 19.6 </td>
+   <td style="text-align:right;"> 13.12 </td>
+   <td style="text-align:right;"> 4.2 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:right;"> 0.103 </td>
+   <td style="text-align:right;"> 17.3 </td>
+   <td style="text-align:right;"> 10.66 </td>
+   <td style="text-align:right;"> 3.8 </td>
+   <td style="text-align:right;"> 48 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
+
+
+::: {.callout-note style="color:gray" appearance="simple"}
+## Observations
+
+While my research in the introduction states the the most impact region is Sub-Saharan Africa, this table seems to suggest that South Asia is equally as bad if not worse with a higher average, minimum, and maximum of percent deaths. These two regions will be interesting to consider in comparison to each other; potentially some characteristics about this data are misleading due to the small sample size (only 8 variables are measured in S. Asia). A more thorough summary of the full data set may come in closer agreement with WHO's estimates.
+
+-   Can environmental factors be considered? N. America has a lot of rich natural resources and mild climates that, among other factors, have enabled its success in terms of providing humanitarian needs to a large population.
+
+    -   Areas where temperatures are very cold probably have more insulated homes burning bio fuels on top of cooking with combustion. Can a correlation be made suggesting that, despite economic wealth per capita, IAP caused by combustion is a bigger issue in Northern countries? This would likely only apply to countries that have not reached "western civilization" levels of wealth
+:::
+
+### Graph B: Bland-Altman Plot -- relationship between current percentages of IAP deaths and change over time (1995-2015)
+
+
+::: {.cell}
+
+```{.r .cell-code}
+BA_plot <- exploratory_data %>% #Bland-Altman plots show the relationship between two paried variables to determine how much change is .
+  
+   mutate(country_region = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  filter(country_region!= 0) %>%
+  
+   rename("percent_iap" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+
+  mutate(year = paste0("Y", year)) %>%
+  spread(year, percent_iap) %>%
+  mutate(current = Y2015,
+         change = Y2015 - Y1995)
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `country_region = countrycode(entity, origin = "country.name",
+  destination = "region")`.
+Caused by warning in `countrycode_convert()`:
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+```
+:::
+
+```{.r .cell-code}
+BA_plot %>%
+  
+  ggplot(aes(current, change)) +
+    geom_point()
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+Warning: Removed 196 rows containing missing values (`geom_point()`).
+```
+:::
+
+::: {.cell-output-display}
+![](IndoorPollution_files/figure-html/unnamed-chunk-7-1.png){width=672}
+:::
+:::
+
+
+::: callout-note
+**Observations:**
+
+While this does not describe a large number of variables, the graph tells us that although some countries still have very high levels of current deaths caused by indoor air pollution, the general direction is a decreasing amount of indoor air pollution
+
+-   data points in the top left corner mean that there has not been a significant amount of change between 2019 and 1995, nor was there a significant amount of deaths to begin with.
+
+-   No points are present in the top right, which would suggest countries that have very high percent deaths by indoor air pollution, and have not significantly reduced those rates since 1995
+
+-   Points towards the bottom right suggest countries that have made significant progress since 1995, but still remain having high rates of premature deaths from iap
+
+Considering how few points are on this graph it would be hard to make any generalized predictions about what we would expect from the rest of the data, let alone the entire data set. one thing that is likely being demonstrated by this graph despite the small sample size, is that most countries will likely be trending down in percent of premature deaths from indoor air pollution.
+:::
+
+### Table E: Percent Premature Deaths caused by Air pollution -- [2014-2019]{.underline}
+
+
+::: {.cell}
+
+```{.r .cell-code}
+exploratory_data %>%
+  
+  filter(year>2014) %>%
+  
+  rename(percent_iap = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+   mutate("Regions" = countrycode(entity, 
+                                       origin = "country.name", 
+                                       destination= "region"
+                                       )) %>%
+  filter(!is.na(Regions)) %>%
+  group_by(Regions) %>%
+
+  summarize( "Lowest percentage of deaths" = min(percent_iap),
+  "Highest percentage of deaths"= max(percent_iap),
+  "Average percentage of deaths" =mean(percent_iap),
+  "Standard Deviation" = sd(percent_iap),
+  'Number of Variables Measured' = length(unique(entity)
+)) %>%
+  
+ kable(digits = c(0,4,4,0)) %>%
+    kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `Regions = countrycode(entity, origin = "country.name",
+  destination = "region")`.
+Caused by warning in `countrycode_convert()`:
+! Some values were not matched unambiguously: African Region, America, Asia, Central Asia, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Commonwealth Middle Income, Eastern Europe, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Union, G20, High-income North America, High-middle SDI, High SDI, Low SDI, North Africa and Middle East, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, Southeast Asia, Sub-Saharan Africa - World Bank region, Timor, Wales, World Bank High Income
+```
+:::
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Regions </th>
+   <th style="text-align:right;"> Lowest percentage of deaths </th>
+   <th style="text-align:right;"> Highest percentage of deaths </th>
+   <th style="text-align:right;"> Average percentage of deaths </th>
+   <th style="text-align:right;"> Standard Deviation </th>
+   <th style="text-align:right;"> Number of Variables Measured </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> East Asia &amp; Pacific </td>
+   <td style="text-align:right;"> 0.0050 </td>
+   <td style="text-align:right;"> 20.9890 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 17 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Europe &amp; Central Asia </td>
+   <td style="text-align:right;"> 0.0022 </td>
+   <td style="text-align:right;"> 6.5176 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 32 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Latin America &amp; Caribbean </td>
+   <td style="text-align:right;"> 0.0025 </td>
+   <td style="text-align:right;"> 13.8504 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 22 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Middle East &amp; North Africa </td>
+   <td style="text-align:right;"> 0.0006 </td>
+   <td style="text-align:right;"> 0.9557 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> North America </td>
+   <td style="text-align:right;"> 0.0055 </td>
+   <td style="text-align:right;"> 0.0059 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> South Asia </td>
+   <td style="text-align:right;"> 5.0277 </td>
+   <td style="text-align:right;"> 12.8791 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sub-Saharan Africa </td>
+   <td style="text-align:right;"> 0.6493 </td>
+   <td style="text-align:right;"> 14.4647 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 25 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
+
+
+::: {.callout-note style="color:gray" appearance="simple"}
+## Observations
+
+This data summarizes the variables from only 2014-2019 to see a comparison of all the countries in recent years. Something that can be inferred from this data is that some countries have a significantly more significant standard deviation then others.
+
+-   While South Asia and Sub-Saharan Africa have the highest average, the deviation is much suggesting most of the variables (countries) measured in this time span are relatively close to the 10.00 % mean percent deaths by IAP
+-   East Asia & Pacific are significantly lower in percent deaths by IAP at nearly half of the previously mentioned, however, the standard deviation is over 1% greater then either South Asia or Sub-Saharan Africa, suggesting that some countries could be significantly worse off then most.
+-   although Middle East & North Africa does not have a particularly large standard deviation, it is the largest in comparison to its average. This Region along with Latin America & Caribbean do not fit this theory as nicely, and show the need for economic factors that play a role in deaths caused by pollution.
+-   This will be important for my hypothesis, since the geographic position of East Asia & pacific would likely make climate an interesting factor for comparison.
+-   Regions with the lowest deviation from the mean were Europe & Central Asia as well as North America (despite lacking a stawithon, it is only made up of 3 countries and likely deviated minimally
+:::
+
+### Graph C: Distribution percentages of Premature Deaths from IAP, grouped by Region
+
+
+::: {.cell}
+
+```{.r .cell-code}
+exploratory_data %>%
+  
+  rename(percent_iap = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+   mutate(region = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  mutate(continent = countrycode (entity, origin = "country.name", destination = "continent")) %>%
+  
+   filter(continent!= 0) %>%
+  ggplot() + 
+  #Histograms are useful for visualizing range, tendency, and outliers of a set of continuous or discrete variables.
+  
+  geom_histogram(mapping = aes(fill = region, 
+                               x= percent_iap,
+                               na.rm = TRUE)) +
+  facet_wrap(~region) + ## seperate into distinct graphs using region
+  labs(x = "Percent of deaths caused by indoor air pollution",
+     y = "# Countries",
+     title = "Distribution of Indoor Air Pollution-Related Deaths by Region")
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `region = countrycode(entity, origin = "country.name",
+  destination = "region")`.
+Caused by warning in `countrycode_convert()`:
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+```
+:::
+
+::: {.cell-output .cell-output-stderr}
+```
+Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `continent = countrycode(entity, origin = "country.name",
+  destination = "continent")`.
+Caused by warning in `countrycode_convert()`:
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+```
+:::
+
+::: {.cell-output .cell-output-stderr}
+```
+Warning in geom_histogram(mapping = aes(fill = region, x = percent_iap, :
+Ignoring unknown aesthetics: na.rm
+```
+:::
+
+::: {.cell-output .cell-output-stderr}
+```
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+```
+:::
+
+::: {.cell-output-display}
+![](IndoorPollution_files/figure-html/unnamed-chunk-9-1.png){width=672}
+:::
+:::
+
+
+::: {.callout-note style="color: gray" appearance="simple"}
+## Observations
+
+-   these graphs show variables taken across a range of 30 years where the number of deaths in the country attributed to indoor air pollution caused by the combustion of bio fuels. each graph represents a distribution of these variables grouped by region. There is a clear tendency in most regions towards 0% deaths by IAP, except for Sub-Saharan Africa that is clustered between 10-15%, and South Asia that is evenly distributed between 5 and 20% premature deaths by IAP.
+
+    -   **East Asia & Pacific** contains a large distribution of countries with different rates of death. there is a larger amount of countries in east asia with a very low percentage of deaths for this cause.
+
+    -   **Europe and Central Asia** has the largest amount of variables measured at 0 percent deaths caused by IAP (over 125) compared to any other region. Nearly all variables in this region are below 10 percent deaths by IAP, but a fairly large amount of variables fall between 1% and 5%.
+
+    -   **Latin America & Caribbean** data is relatively spread out across 0% through 5% with over 100 countries in this group. there are a a smaller number of countries spread between 6% and 15% with no species over 15 percent.
+
+    -   **Middle East and North Africa** does not contain a large number of countries in the histogram (less then 100). The largest portion are between 0% and 5%, relatively low levels compared to other countries like East Asia and Sub-Saharan Africa.
+
+    -   **North America** is represented by the fewest countries of any region in this comparison. Considering that two of these countries are the U.S and Canada it is not suprising that there are a very low percentage of deaths per year caused by indoor air pollution.
+
+    -   **South Asia** is not represented by any countries that are 0 or even nearly 0% deaths caused by IAP from bio fuels. Although this region has \~50 variables, the % death ranges from a minimum of 4% to as high as 19%.
+
+    -   **Sub-Saharan Africa** is represented by a larger number of variables that are in the 5%-15% range. this region will likely provide an interesting year-to-year comparison that could show improvement over time.
+
+-   because these variables are taken across such a wide temporal scale, it does not serve as a distinctly insightful comparison. Still, some things can be inferred.
+:::
+
+### Graph D: Change in Percent Deaths by Region and Year (1990-2020)
+
+
+::: {.cell}
+
+```{.r .cell-code}
+exploratory_data %>%
+  
+  rename(percent_iap = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+   mutate("region" = countrycode(entity,origin = "country.name",
+   destination= "region")) %>%
+  filter(!is.na(region)) %>%
+  
+  ggplot(aes(year,
+             percent_iap, 
+             group = interaction(region,mean(percent_iap),
+             color = region
+             ))) +
+  geom_line() +
+  facet_wrap(~region)+
+  geom_smooth() +
+   labs(x = "Year", y = "Percentage of Premature deaths caused by Indoor air pollution", title = "Trends in Indoor Air Pollution-Related Deaths by Region") + # Add labels to the axes and title
+  theme_minimal() # Apply a minimal theme to the plot
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `region = countrycode(entity, origin = "country.name",
+  destination = "region")`.
+Caused by warning in `countrycode_convert()`:
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+```
+:::
+
+::: {.cell-output .cell-output-stderr}
+```
+`geom_smooth()` using method = 'loess' and formula = 'y ~ x'
+```
+:::
+
+::: {.cell-output-display}
+![](IndoorPollution_files/figure-html/unnamed-chunk-10-1.png){width=672}
+:::
+:::
+
+
+::: callout-note
+## Observations
+
+These graphs seem to give some very valuable comparative evidence for both the value of region and time based analysis. Some things that can be seen as trends in this graph would be the downward trend downward that can be seen at the global scale.
+
+-   Europe & Central Asia, Latin America & Caribbean , Middle East & North Africa and North America were relatively low compared to East Asia & Pacific, South Asia and Sub-Saharan Africa.
+
+-   While this is a global issue, this graph fairly clearly justifies the assumption that there will be a major regional difference seen in the data. it is not clear how well this analysis will be able to describe the cause for such a large difference besides the general claim of access to technology capable of preventing indoor pollution-related premature deaths are readily available in higher GDP regions.
+
+-   It would be interesting to see how cases of diseases and infections related to household air pollution compare on a regional scale; although developed nations are able to prevent premature death, it is still a prevalent topic even in the US where the Biden administration is attempting to pass a widely politicized, but arguably wise legislative agenda beginning the transition to electric stoves for cooking, especially in small apartment buildings and homes.
+:::
+
+### Table F: Single Variable Regression Analysis -- Correlation Between Percent Deaths Caused by Indoor Air Pollution and Region
+
+
+::: {.cell}
+
+```{.r .cell-code}
+model_data<- exploratory_data %>%
+  
+  rename("percent_deaths_by_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+   mutate("region" = countrycode(entity,origin = "country.name",
+   destination= "region")) %>%
+  filter(!is.na(region))
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `region = countrycode(entity, origin = "country.name",
+  destination = "region")`.
+Caused by warning in `countrycode_convert()`:
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+```
+:::
+
+```{.r .cell-code}
+model_region_temp <- linear_reg() %>% 
+  set_engine("lm")  #construct model instance
+
+model_region_reg<-
+  recipe(percent_deaths_by_IAP~region,
+         data = model_data)
+  
+#generate a recipe -- what variables do we have in y = mx+b
+
+model_region<-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_reg) #combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+ model_region_fit %>%
+  glance() %>% 
+  kable(digits=c(4,4,2,4,0,0,2,2,2,2,0,0)) %>% 
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> r.squared </th>
+   <th style="text-align:right;"> adj.r.squared </th>
+   <th style="text-align:right;"> sigma </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+   <th style="text-align:right;"> df </th>
+   <th style="text-align:right;"> logLik </th>
+   <th style="text-align:right;"> AIC </th>
+   <th style="text-align:right;"> BIC </th>
+   <th style="text-align:right;"> deviance </th>
+   <th style="text-align:right;"> df.residual </th>
+   <th style="text-align:right;"> nobs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0.4681 </td>
+   <td style="text-align:right;"> 0.4646 </td>
+   <td style="text-align:right;"> 4.28 </td>
+   <td style="text-align:right;"> 131.5871 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> -2594.63 </td>
+   <td style="text-align:right;"> 5205.25 </td>
+   <td style="text-align:right;"> 5243.71 </td>
+   <td style="text-align:right;"> 16469.7 </td>
+   <td style="text-align:right;"> 897 </td>
+   <td style="text-align:right;"> 904 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+
+```{.r .cell-code}
+  # looking to build a regression analysis to determine if a correltion can be seen in the data. prediction is decreasing n over time grouped by region 
+```
+:::
 
 ::: {.cell}
 
@@ -991,7 +1039,7 @@ This regression analysis provides some useful information that will be valuable 
 model_region_fit %>%
   extract_fit_engine() %>%
   tidy() %>%
-  kable(digits = c(4,3,3,3)) %>%
+  kable(digits = c(4,4,4,4)) %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
@@ -1011,16 +1059,51 @@ model_region_fit %>%
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:right;"> 270.444 </td>
-   <td style="text-align:right;"> 41.726 </td>
-   <td style="text-align:right;"> 6.481 </td>
+   <td style="text-align:right;"> 7.1329 </td>
+   <td style="text-align:right;"> 0.3464 </td>
+   <td style="text-align:right;"> 20.5905 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> year </td>
-   <td style="text-align:right;"> -0.132 </td>
-   <td style="text-align:right;"> 0.021 </td>
-   <td style="text-align:right;"> -6.357 </td>
+   <td style="text-align:left;"> regionEurope &amp; Central Asia </td>
+   <td style="text-align:right;"> -5.4141 </td>
+   <td style="text-align:right;"> 0.4448 </td>
+   <td style="text-align:right;"> -12.1733 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionLatin America &amp; Caribbean </td>
+   <td style="text-align:right;"> -3.9999 </td>
+   <td style="text-align:right;"> 0.4932 </td>
+   <td style="text-align:right;"> -8.1102 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionMiddle East &amp; North Africa </td>
+   <td style="text-align:right;"> -5.6185 </td>
+   <td style="text-align:right;"> 0.5712 </td>
+   <td style="text-align:right;"> -9.8357 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionNorth America </td>
+   <td style="text-align:right;"> -6.9556 </td>
+   <td style="text-align:right;"> 1.2379 </td>
+   <td style="text-align:right;"> -5.6189 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionSouth Asia </td>
+   <td style="text-align:right;"> 5.9848 </td>
+   <td style="text-align:right;"> 0.8124 </td>
+   <td style="text-align:right;"> 7.3666 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionSub-Saharan Africa </td>
+   <td style="text-align:right;"> 3.5276 </td>
+   <td style="text-align:right;"> 0.4470 </td>
+   <td style="text-align:right;"> 7.8912 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
 </tbody>
@@ -1032,9 +1115,87 @@ model_region_fit %>%
 :::
 
 
-::: {.callout-note style="color:gray" appearance="simple"}
-## Observations
+### Table G: Single Variable Regression Analysis -- Correlation Between Percent Deaths Caused by Indoor Air Pollution and Country
+
+
+::: {.cell}
+
+```{.r .cell-code}
+model_data<- exploratory_data %>%
+  
+  rename("percent_deaths_by_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent)
+  
+model_region_temp <- linear_reg() %>% 
+  set_engine("lm")  #construct model instance
+
+model_region_reg<-
+  recipe(percent_deaths_by_IAP~entity,
+         data = model_data)
+  
+#generate a recipe -- what variables do we have in y = mx+b
+
+model_region<-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_reg) #combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+ model_region_fit %>%
+  glance() %>% 
+  kable(digits=c(4,4,2,4,0,0,2,2,2,2,0,0)) %>% 
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> r.squared </th>
+   <th style="text-align:right;"> adj.r.squared </th>
+   <th style="text-align:right;"> sigma </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+   <th style="text-align:right;"> df </th>
+   <th style="text-align:right;"> logLik </th>
+   <th style="text-align:right;"> AIC </th>
+   <th style="text-align:right;"> BIC </th>
+   <th style="text-align:right;"> deviance </th>
+   <th style="text-align:right;"> df.residual </th>
+   <th style="text-align:right;"> nobs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0.9477 </td>
+   <td style="text-align:right;"> 0.9327 </td>
+   <td style="text-align:right;"> 1.47 </td>
+   <td style="text-align:right;"> 63.5657 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 266 </td>
+   <td style="text-align:right;"> -2015.84 </td>
+   <td style="text-align:right;"> 4567.69 </td>
+   <td style="text-align:right;"> 5932.05 </td>
+   <td style="text-align:right;"> 2018.23 </td>
+   <td style="text-align:right;"> 934 </td>
+   <td style="text-align:right;"> 1201 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
 :::
+
+```{.r .cell-code}
+  # looking to build a regression analysis to determine if a correltion can be seen in the data. prediction is decreasing n over time grouped by region 
+```
+:::
+
+
+### Table H: Multiple Variable Regression Analysis -- Determining correlation to premature deaths from IAP between region and year
 
 
 ::: {.cell}
@@ -1101,18 +1262,18 @@ model_region_fit %>%
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 0.5079 </td>
-   <td style="text-align:right;"> 0.5007 </td>
-   <td style="text-align:right;"> 3.9396 </td>
-   <td style="text-align:right;"> 69.641 </td>
+   <td style="text-align:right;"> 0.5028 </td>
+   <td style="text-align:right;"> 0.4955 </td>
+   <td style="text-align:right;"> 4.1594 </td>
+   <td style="text-align:right;"> 69.2211 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 13 </td>
-   <td style="text-align:right;"> -2478.85 </td>
-   <td style="text-align:right;"> 4987.69 </td>
-   <td style="text-align:right;"> 5059.58 </td>
-   <td style="text-align:right;"> 13611.31 </td>
-   <td style="text-align:right;"> 877 </td>
-   <td style="text-align:right;"> 891 </td>
+   <td style="text-align:right;"> -2564.2 </td>
+   <td style="text-align:right;"> 5158.4 </td>
+   <td style="text-align:right;"> 5230.51 </td>
+   <td style="text-align:right;"> 15397.59 </td>
+   <td style="text-align:right;"> 890 </td>
+   <td style="text-align:right;"> 904 </td>
   </tr>
 </tbody>
 </table>
@@ -1126,42 +1287,56 @@ model_region_fit %>%
 ::: {.callout-note style="color: gray" appearance="simple"}
 ## Observations
 
-This is a multiple regression analysis generated to determine the amount (by percent) of deaths associated with indoor pollution that can be predicted based on region, as well as year.
+**Table F** is a linear regression describing the correlation between percent indoor pollution and region. Considering Graph D it seemed there would be a strong relationship between these variables which was proven by this test. with an adjusted r\^2 value of 46.1% (p \<0.001) this analysis suggests that region is a valuable predictor for percent deaths, and will likely be a focus of the hypothesis in this analysis. Considering the estimated provided from the simple regression model, this result like mentioned in Table D, suggests that South Asia looks to have equal if not worse impacts on human health in regards to indoor air pollutants. Considering characteristics of these regions like average GDP, population size, and access to resourced may provide some interesting perspective for why they may be so similar.
+
+**Table G** describes the same relationship as table F, but instead of region compares deaths from IAP by country. The strength of this variable (R\^2 = 93.8%, p\<0.001) suggests, unsuprisingly, that country is an very effective predictor for the percent of indoor air pollution-related premature deaths. Although this is a significant factor, it does not provide any further explanation for why that relationship is so strong, which can be at least partially understood through other variables such as region, year, and GDP. Attempting to compare other variables using country, such as GDP and population, could provide valuable inference for what kind of characteristics most significantly increase death rates from indoor pollutants.
+
+**Table H** is a multiple regression analysis generated to determine how well the data present in the exploratory analysis fits both region and year variables together. Considering that both simple regression analysis showed a correlation, comparing them together can provide insight for how strong the relationship is in each region. The most interesting note to make is that the adjusted r\^2 value of this prediction (0.494) is more significant then either of the variables measured as a single-variable regression test (r2 values were 0.451 for region and 0.0156 for year). This suggests there is a compounding relationship between year and region that may be worth investigating further as part of the hypothesis.
+
+Because the relationship between year and percent deaths by IAP is relatively low (2.35%) it may not be worth including in the analysis. It may be valuable to reconsider this assumption after generating a Bland-Altman graph to visualize the relationship with the entire data set.
 :::
 
-## Hypothesis: **Fuel combustion and Indoor Air Pollution**
+# Hypothesis:
 
-Considering the data that is present, their are two layers of analysis that could generate useful hypothesis for understanding the global impact of indoor air pollution. Considering the country-specific data, it may be valuable to try and find an additional data set for each layer to use for an additional comparison. These second data sets will be considered in thy hypothesis for each layer.
+The final data set containing the additional variables used for this analysis halves the temporal scale from a three-decade analysis to just fifteen years with five-year intervals (1952, 1957, 2002, 2007). This reduction suggests that the initial regression analysis (Table C) may prove a small enough predictive factor that it can be largely considered null, minus some exploration of its statistical significance.
 
 ## Layer One: Countries and Resources
 
-**It is likely that this data will show a correlation between the amount of resources a country has to invest in clean technologies and health care (represented by GDP) having the lowest percent deaths globally. Representing GDP by country would provide a good comparison to determine this correlation's strength.**
+**Countries with a higher GDP and larger population size have lower percentages of premature deaths caused by indoor pollution from bio fuels.**
 
--   The following analysis will attempt to show a strong correlation between GDP and the deaths related to indoor pollution.
--   despite the likely correlation between a nations GDP and its percent deaths caused by IAP, it also seems the data will show an overall decrease in the 30yrs in every part of the world. [Comparing the amount that countries have improved over time may be a useful characteristic to infer from this dataset]{.underline}
-    -   What rate increase of GDP is required to create meaningful improvements in the percent of deaths from IAP?
+-   higher GDP may be associated with greater access to alternative fuels and cleaner cooking technologies, which can reduce indoor pollution levels. Although it is possible population size may have a positive correlation to premature deaths from indoor pollution, this study aims to show that, assuming GDP is above the average global (13,000 \$USD) this should represent economic growth, and a reduction in percent premature deaths from IAP.
+-   This hypothesis assumes that countries with higher GDP and larger population size may have more resources and infrastructure to invest in clean cooking and heating technologies, leading to lower levels of indoor pollution and related premature deaths.
+    -   To reduce the impact of neglecting this variable, it may be useful to run an analysis specifically determining the significance of the relationship between percent deaths and year, or alternatively reduce the number of years being considered.
 
-## Layer Two: Regions and Climates
+**Null Hypothesis:**
 
-**Assuming GDP is a significant factor for percent deaths, comparing countries of similar GDP from different regions that are impacted by winter conditions may show a correlation between the need to winterize for cold regions increasing the exposure to toxic indoor air pollutants.**
+## Layer Two: Regional Differences
+
+**There are significant differences in the percentage of premature deaths caused by indoor pollution from bio fuels across regions, even after controlling for GDP, population size, and other relevant factors.**
+
+-   This hypothesis assumes that regional factors such as cultural norms, access to alternative fuels, and air quality regulations may impact indoor pollution levels and related premature deaths, and that these factors may differ between regions even after controlling for other variables
 
 -   If this hypothesis proves a strong correlation between countries in different climate regions for a single year, it may be useful to extrapolate this comparison over the 30 year time span. if no correlation is found, it may not be worth further consideration.
 
 -   Temperate regions are more likely to invest in indoor heating which often involved the use of bio fuels like wood stoves. Poor ventilation is also likely to be a component that will play a role in temperate regions being associated with greater % deaths by IAP.
 
-## Part 1: Countries and resources
+**Null Hypothesis:**
+
+# Hypothesis 1 Test: **Countries and Resources**
 
 
 ::: {.cell}
 
 ```{.r .cell-code}
-gm_df <- gapminder %>%
+#gapminder provides life expectency, population, GDP for years 1952, 1957, 2002, 2007; can be used to generate unique 
+gm_df <- gapminder %>% 
     clean_names() %>%
     rename("entity"="country")
 
+#Generate a new df and join the gapminder and indoor pollution dataframes
 merged_df <- indoor_pollution %>%
-  left_join(gm_df) %>%
-  filter_all(all_vars(!is.na(.)))
+  left_join(gm_df) %>%  
+  filter_all(all_vars(!is.na(.))) ## remove all the variables that dont have a match in both dataframes
 ```
 
 ::: {.cell-output .cell-output-stderr}
@@ -1171,82 +1346,318 @@ Joining with `by = join_by(entity, year)`
 :::
 :::
 
+
+## [Single Variable Visualization and Linear Regression]{.underline}
+
+### [1.1) Percent Deaths and Year]{.underline}
+
+
 ::: {.cell}
 
 ```{.r .cell-code}
-merged_df %>%
+indoor_pollution %>%
   
-   rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
   
-  mutate(region= countrycode(entity, origin = "country.name", destination = "region")) %>%
-  
-  group_by(entity,region) %>%
-  summarize(mean_gdp = mean(gdp_percap),
-            mean_deaths = mean(percent_IAP)) %>%
-  
-# create a scatter plot with GDP per capita on the x-axis and deaths caused by air pollution on the y-axis, colored by region
-  ggplot(aes(x = mean_gdp, y = mean_deaths, color = region)) +
-  geom_point(size = 2) +
-  labs(title = "GDP ($USD) per capita vs. % deaths caused by air pollution, by region",
-       x = "GDP per capita",
-       y = "Percent deaths caused by air pollution",
-       color = "Region") +
-  geom_smooth(method = "lm",
-              size = .75)
+  mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  filter(!is.na(region))
 ```
 
 ::: {.cell-output .cell-output-stderr}
 ```
-`summarise()` has grouped output by 'entity'. You can override using the
-`.groups` argument.
+Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `region = countrycode(entity, origin = "country.name",
+  destination = "region")`.
+Caused by warning in `countrycode_convert()`:
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
-::: {.cell-output .cell-output-stderr}
+::: {.cell-output .cell-output-stdout}
 ```
-Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-ℹ Please use `linewidth` instead.
+# A tibble: 6,060 × 5
+   entity      code   year percent_IAP region    
+   <chr>       <chr> <dbl>       <dbl> <chr>     
+ 1 Afghanistan AFG    1990        19.6 South Asia
+ 2 Afghanistan AFG    1991        19.3 South Asia
+ 3 Afghanistan AFG    1992        19.5 South Asia
+ 4 Afghanistan AFG    1993        19.7 South Asia
+ 5 Afghanistan AFG    1994        19.4 South Asia
+ 6 Afghanistan AFG    1995        19.6 South Asia
+ 7 Afghanistan AFG    1996        19.8 South Asia
+ 8 Afghanistan AFG    1997        19.7 South Asia
+ 9 Afghanistan AFG    1998        19.0 South Asia
+10 Afghanistan AFG    1999        19.9 South Asia
+# … with 6,050 more rows
 ```
 :::
 
-::: {.cell-output .cell-output-stderr}
-```
-`geom_smooth()` using formula = 'y ~ x'
-```
-:::
+```{.r .cell-code}
+model_region_temp <- linear_reg() %>%
+  set_engine("lm")  # construct model instance
 
-::: {.cell-output .cell-output-stderr}
-```
-Warning in qt((1 - level)/2, df): NaNs produced
-```
-:::
+model_region_recipe <- recipe(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent~year, data = indoor_pollution)
 
-::: {.cell-output .cell-output-stderr}
+model_region <-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(indoor_pollution)
+
+model_region_fit %>%
+  glance() %>%
+  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
 ```
-Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning
--Inf
-```
-:::
 
 ::: {.cell-output-display}
-![](IndoorPollution_files/figure-html/unnamed-chunk-14-1.png){width=672}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> r.squared </th>
+   <th style="text-align:right;"> adj.r.squared </th>
+   <th style="text-align:right;"> sigma </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+   <th style="text-align:right;"> df </th>
+   <th style="text-align:right;"> logLik </th>
+   <th style="text-align:right;"> AIC </th>
+   <th style="text-align:right;"> BIC </th>
+   <th style="text-align:right;"> deviance </th>
+   <th style="text-align:right;"> df.residual </th>
+   <th style="text-align:right;"> nobs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0.0285 </td>
+   <td style="text-align:right;"> 0.0284 </td>
+   <td style="text-align:right;"> 5.47 </td>
+   <td style="text-align:right;"> 235.1636 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -24978.2 </td>
+   <td style="text-align:right;"> 49962.39 </td>
+   <td style="text-align:right;"> 49983.36 </td>
+   <td style="text-align:right;"> 239742.8 </td>
+   <td style="text-align:right;"> 8008 </td>
+   <td style="text-align:right;"> 8010 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
+
+::: {.cell}
+
+```{.r .cell-code}
+model_region_fit %>%
+  extract_fit_engine() %>%
+  tidy() %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> term </th>
+   <th style="text-align:right;"> estimate </th>
+   <th style="text-align:right;"> std.error </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:right;"> 222.3923682 </td>
+   <td style="text-align:right;"> 14.1584405 </td>
+   <td style="text-align:right;"> 15.70741 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> year </td>
+   <td style="text-align:right;"> -0.1083154 </td>
+   <td style="text-align:right;"> 0.0070633 </td>
+   <td style="text-align:right;"> -15.33505 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
 :::
 :::
 
 
-::: callout-note
-## Observations
+### [1.2) Percent Deaths and Region]{.underline}
 
-This data is not grouped by year and includes data from 1952, 1957, 2002, and 2007. This visualization shows a clear impact that can be attributed to GDP
 
--   South Asia has a 10% reduction in percent deaths with a small amount of variation in GDP, suggesting that some countries may be able to do more with a small change in GDP up to a certain point.
+::: {.cell}
 
-    -   Latin America & Caribbean and East Asia & Pacific all have their highest percent deaths around where South Asia and Sub-Saharan Africa has their lowest (if considering the cluster of datum around the 10-15% seen in Sub-Saharan Africa).
+```{.r .cell-code}
+model_data <- merged_df %>%
+  
+  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  filter(!is.na(region))
 
-        -   Would a model based on region and GDP predict GDP having a large or small effect on % deaths for South Asia and Sub-Saharan Africa?
+model_region_temp <- linear_reg() %>%
+  set_engine("lm")  # construct model instance
+
+model_region_recipe <- recipe(percent_IAP~region, data = model_data)
+
+model_region <-
+  workflow() %>%
+  add_model(model_region_temp) %>%
+  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
+
+model_region_fit <- model_region %>% fit(model_data)
+
+model_region_fit %>%
+  glance() %>%
+  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> r.squared </th>
+   <th style="text-align:right;"> adj.r.squared </th>
+   <th style="text-align:right;"> sigma </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+   <th style="text-align:right;"> df </th>
+   <th style="text-align:right;"> logLik </th>
+   <th style="text-align:right;"> AIC </th>
+   <th style="text-align:right;"> BIC </th>
+   <th style="text-align:right;"> deviance </th>
+   <th style="text-align:right;"> df.residual </th>
+   <th style="text-align:right;"> nobs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0.5917 </td>
+   <td style="text-align:right;"> 0.587 </td>
+   <td style="text-align:right;"> 3.71 </td>
+   <td style="text-align:right;"> 124.8931 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> -1426.88 </td>
+   <td style="text-align:right;"> 2869.76 </td>
+   <td style="text-align:right;"> 2903.85 </td>
+   <td style="text-align:right;"> 7113.28 </td>
+   <td style="text-align:right;"> 517 </td>
+   <td style="text-align:right;"> 524 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
 :::
 
-### Regression Analysis : [Percent Deaths and Population]{.underline}
+::: {.cell}
+
+```{.r .cell-code}
+model_region_fit %>%
+  extract_fit_engine() %>%
+  tidy() %>%
+  kable(digits = c(4,4,4,4)) %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> term </th>
+   <th style="text-align:right;"> estimate </th>
+   <th style="text-align:right;"> std.error </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:right;"> 6.6471 </td>
+   <td style="text-align:right;"> 0.4957 </td>
+   <td style="text-align:right;"> 13.4103 </td>
+   <td style="text-align:right;"> 0e+00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionEurope &amp; Central Asia </td>
+   <td style="text-align:right;"> -5.2581 </td>
+   <td style="text-align:right;"> 0.6071 </td>
+   <td style="text-align:right;"> -8.6614 </td>
+   <td style="text-align:right;"> 0e+00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionLatin America &amp; Caribbean </td>
+   <td style="text-align:right;"> -2.1256 </td>
+   <td style="text-align:right;"> 0.6287 </td>
+   <td style="text-align:right;"> -3.3811 </td>
+   <td style="text-align:right;"> 8e-04 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionMiddle East &amp; North Africa </td>
+   <td style="text-align:right;"> -5.1001 </td>
+   <td style="text-align:right;"> 0.6787 </td>
+   <td style="text-align:right;"> -7.5142 </td>
+   <td style="text-align:right;"> 0e+00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionNorth America </td>
+   <td style="text-align:right;"> -6.6256 </td>
+   <td style="text-align:right;"> 1.4020 </td>
+   <td style="text-align:right;"> -4.7259 </td>
+   <td style="text-align:right;"> 0e+00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionSouth Asia </td>
+   <td style="text-align:right;"> 8.1226 </td>
+   <td style="text-align:right;"> 0.9050 </td>
+   <td style="text-align:right;"> 8.9756 </td>
+   <td style="text-align:right;"> 0e+00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> regionSub-Saharan Africa </td>
+   <td style="text-align:right;"> 4.4288 </td>
+   <td style="text-align:right;"> 0.5724 </td>
+   <td style="text-align:right;"> 7.7378 </td>
+   <td style="text-align:right;"> 0e+00 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
+
+
+### 1.3) [Percent Deaths and Population]{.underline}
 
 
 ::: {.cell}
@@ -1371,160 +1782,38 @@ model_region_fit %>%
 :::
 
 
-### Regression Analysis : [Percent Deaths and Year]{.underline}
+### 1.4) Regression Analysis: [Percent Deaths and GDP]{.underline}
 
 
 ::: {.cell}
 
 ```{.r .cell-code}
-indoor_pollution %>%
+merged_df %>%
   
   rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
   
   mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
-  filter(!is.na(region))
+  filter(!is.na(region)) %>%
+  
+  ggplot(aes(percent_IAP,
+            gdp_percap)) +
+  geom_line() +
+  geom_smooth() +
+  labs(title = "Life expectency vs. Indoor Air Pollution",
+       x = "GDP ($USD)",
+       y = "Percent Premature Deaths")
 ```
 
 ::: {.cell-output .cell-output-stderr}
 ```
-Warning: There was 1 warning in `mutate()`.
-ℹ In argument: `region = countrycode(entity, origin = "country.name",
-  destination = "region")`.
-Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+`geom_smooth()` using method = 'loess' and formula = 'y ~ x'
 ```
 :::
-
-::: {.cell-output .cell-output-stdout}
-```
-# A tibble: 6,060 × 5
-   entity      code   year percent_IAP region    
-   <chr>       <chr> <dbl>       <dbl> <chr>     
- 1 Afghanistan AFG    1990        19.6 South Asia
- 2 Afghanistan AFG    1991        19.3 South Asia
- 3 Afghanistan AFG    1992        19.5 South Asia
- 4 Afghanistan AFG    1993        19.7 South Asia
- 5 Afghanistan AFG    1994        19.4 South Asia
- 6 Afghanistan AFG    1995        19.6 South Asia
- 7 Afghanistan AFG    1996        19.8 South Asia
- 8 Afghanistan AFG    1997        19.7 South Asia
- 9 Afghanistan AFG    1998        19.0 South Asia
-10 Afghanistan AFG    1999        19.9 South Asia
-# … with 6,050 more rows
-```
-:::
-
-```{.r .cell-code}
-model_region_temp <- linear_reg() %>%
-  set_engine("lm")  # construct model instance
-
-model_region_recipe <- recipe(deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent~year, data = indoor_pollution)
-
-model_region <-
-  workflow() %>%
-  add_model(model_region_temp) %>%
-  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
-
-model_region_fit <- model_region %>% fit(indoor_pollution)
-
-model_region_fit %>%
-  glance() %>%
-  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
-  kable_styling(bootstrap_options = c("hover", "striped"))
-```
 
 ::: {.cell-output-display}
-
-`````{=html}
-<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:right;"> r.squared </th>
-   <th style="text-align:right;"> adj.r.squared </th>
-   <th style="text-align:right;"> sigma </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-   <th style="text-align:right;"> df </th>
-   <th style="text-align:right;"> logLik </th>
-   <th style="text-align:right;"> AIC </th>
-   <th style="text-align:right;"> BIC </th>
-   <th style="text-align:right;"> deviance </th>
-   <th style="text-align:right;"> df.residual </th>
-   <th style="text-align:right;"> nobs </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 0.0285 </td>
-   <td style="text-align:right;"> 0.0284 </td>
-   <td style="text-align:right;"> 5.47 </td>
-   <td style="text-align:right;"> 235.1636 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> -24978.2 </td>
-   <td style="text-align:right;"> 49962.39 </td>
-   <td style="text-align:right;"> 49983.36 </td>
-   <td style="text-align:right;"> 239742.8 </td>
-   <td style="text-align:right;"> 8008 </td>
-   <td style="text-align:right;"> 8010 </td>
-  </tr>
-</tbody>
-</table>
-
-`````
-
+![](IndoorPollution_files/figure-html/unnamed-chunk-22-1.png){width=672}
 :::
 :::
-
-::: {.cell}
-
-```{.r .cell-code}
-model_region_fit %>%
-  extract_fit_engine() %>%
-  tidy() %>%
-  kable(digits =c(4,4,4,4)) %>%
-  kable_styling(bootstrap_options = c("hover", "striped"))
-```
-
-::: {.cell-output-display}
-
-`````{=html}
-<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> term </th>
-   <th style="text-align:right;"> estimate </th>
-   <th style="text-align:right;"> std.error </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:right;"> 222.3924 </td>
-   <td style="text-align:right;"> 14.1584 </td>
-   <td style="text-align:right;"> 15.7074 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> year </td>
-   <td style="text-align:right;"> -0.1083 </td>
-   <td style="text-align:right;"> 0.0071 </td>
-   <td style="text-align:right;"> -15.3350 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-</tbody>
-</table>
-
-`````
-
-:::
-:::
-
-
-### Regression Analysis: [Percent Deaths and GDP]{.underline}
-
 
 ::: {.cell}
 
@@ -1597,35 +1886,13 @@ model_region_fit %>%
 :::
 :::
 
-
-### Regression Analysis: [Percent Deaths and Region]{.underline}
-
-
 ::: {.cell}
 
 ```{.r .cell-code}
-model_data <- merged_df %>%
-  
-  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-  
-  mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
-  filter(!is.na(region))
-
-model_region_temp <- linear_reg() %>%
-  set_engine("lm")  # construct model instance
-
-model_region_recipe <- recipe(percent_IAP~region, data = model_data)
-
-model_region <-
-  workflow() %>%
-  add_model(model_region_temp) %>%
-  add_recipe(model_region_recipe)  # combine the model and recipe to generate a regression analysis
-
-model_region_fit <- model_region %>% fit(model_data)
-
 model_region_fit %>%
-  glance() %>%
-  kable(digits = c(4, 4, 2, 4, 0, 0, 2, 2, 2, 2, 0, 0)) %>%
+  extract_fit_engine() %>%
+  tidy() %>%
+  kable() %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
@@ -1635,34 +1902,27 @@ model_region_fit %>%
 <table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
-   <th style="text-align:right;"> r.squared </th>
-   <th style="text-align:right;"> adj.r.squared </th>
-   <th style="text-align:right;"> sigma </th>
+   <th style="text-align:left;"> term </th>
+   <th style="text-align:right;"> estimate </th>
+   <th style="text-align:right;"> std.error </th>
    <th style="text-align:right;"> statistic </th>
    <th style="text-align:right;"> p.value </th>
-   <th style="text-align:right;"> df </th>
-   <th style="text-align:right;"> logLik </th>
-   <th style="text-align:right;"> AIC </th>
-   <th style="text-align:right;"> BIC </th>
-   <th style="text-align:right;"> deviance </th>
-   <th style="text-align:right;"> df.residual </th>
-   <th style="text-align:right;"> nobs </th>
   </tr>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 0.5917 </td>
-   <td style="text-align:right;"> 0.587 </td>
-   <td style="text-align:right;"> 3.71 </td>
-   <td style="text-align:right;"> 124.8931 </td>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:right;"> 9.8365378 </td>
+   <td style="text-align:right;"> 0.2359062 </td>
+   <td style="text-align:right;"> 41.69681 </td>
    <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> -1426.88 </td>
-   <td style="text-align:right;"> 2869.76 </td>
-   <td style="text-align:right;"> 2903.85 </td>
-   <td style="text-align:right;"> 7113.28 </td>
-   <td style="text-align:right;"> 517 </td>
-   <td style="text-align:right;"> 524 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> gdp_percap </td>
+   <td style="text-align:right;"> -0.0003717 </td>
+   <td style="text-align:right;"> 0.0000160 </td>
+   <td style="text-align:right;"> -23.21093 </td>
+   <td style="text-align:right;"> 0 </td>
   </tr>
 </tbody>
 </table>
@@ -1673,8 +1933,38 @@ model_region_fit %>%
 :::
 
 
-### Regression Analysis: [Percent Deaths and life expectancy]{.underline}
+### 1.5) [Percent Deaths effect on life expectancy]{.underline}
 
+
+::: {.cell}
+
+```{.r .cell-code}
+merged_df %>%
+  
+  rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate("region" = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  filter(!is.na(region)) %>%
+  
+  ggplot(aes(percent_IAP,
+            life_exp)) +
+  geom_line() +
+  geom_smooth() +
+  labs(title = "Life expectency vs. Indoor Air Pollution",
+       x = "Percent Premature Deaths",
+       y = "Life Expectency (years)")
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+`geom_smooth()` using method = 'loess' and formula = 'y ~ x'
+```
+:::
+
+::: {.cell-output-display}
+![](IndoorPollution_files/figure-html/unnamed-chunk-25-1.png){width=672}
+:::
+:::
 
 ::: {.cell}
 
@@ -1689,7 +1979,7 @@ model_data <- merged_df %>%
 model_region_temp <- linear_reg() %>%
   set_engine("lm")  # construct model instance
 
-model_region_recipe <- recipe(percent_IAP~life_exp, data = model_data)
+model_region_recipe <- recipe(life_exp~percent_IAP, data = model_data)
 
 model_region <-
   workflow() %>%
@@ -1728,14 +2018,14 @@ model_region_fit %>%
   <tr>
    <td style="text-align:right;"> 0.5767 </td>
    <td style="text-align:right;"> 0.5759 </td>
-   <td style="text-align:right;"> 3.76 </td>
+   <td style="text-align:right;"> 7.69 </td>
    <td style="text-align:right;"> 711.1291 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> -1436.37 </td>
-   <td style="text-align:right;"> 2878.74 </td>
-   <td style="text-align:right;"> 2891.52 </td>
-   <td style="text-align:right;"> 7375.62 </td>
+   <td style="text-align:right;"> -1811.22 </td>
+   <td style="text-align:right;"> 3628.44 </td>
+   <td style="text-align:right;"> 3641.22 </td>
+   <td style="text-align:right;"> 30842.82 </td>
    <td style="text-align:right;"> 522 </td>
    <td style="text-align:right;"> 524 </td>
   </tr>
@@ -1773,15 +2063,15 @@ model_region_fit %>%
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:right;"> 30.5141 </td>
-   <td style="text-align:right;"> 0.9258 </td>
-   <td style="text-align:right;"> 32.9606 </td>
+   <td style="text-align:right;"> 75.0811 </td>
+   <td style="text-align:right;"> 0.4938 </td>
+   <td style="text-align:right;"> 152.0376 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> life_exp </td>
-   <td style="text-align:right;"> -0.3714 </td>
-   <td style="text-align:right;"> 0.0139 </td>
+   <td style="text-align:left;"> percent_IAP </td>
+   <td style="text-align:right;"> -1.5529 </td>
+   <td style="text-align:right;"> 0.0582 </td>
    <td style="text-align:right;"> -26.6670 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
@@ -1795,18 +2085,68 @@ model_region_fit %>%
 
 
 ::: {.callout-note style="color:gray" appearance="simple"}
-
 ## Discussion
 
-This analysis compared the relationship between percent deaths cause by Indoor air pollution to GDP, year, and region independently to understand the unique contributions of each. The hypothesis being tested suggests that GDP was the most significant factor impacting the percentage of a populations deaths. This test, however, shows that IAP could be predicted more accurately by region (59.2% IAP variation estimated to be predicted) then with GDP (50.8% variation in IAP deaths predicted by GDP).
+These analysis offer some additional insight into the earlier table-layout observations made in the exploratory analysis phase. Every single-variable regression analysis performed offered a strong level of confidence (p\<0.001) although the correlation varied significantly. Considering the interpretations of these results will be useful for influencing the multi-variable analysis, which can further expand on the significance and compounding effect of these relationships.
+
+compared the relationship between percent deaths cause by Indoor air pollution to GDP, year, and region independently to understand the unique contributions of each. The hypothesis being tested suggests that GDP was the most significant factor impacting the percentage of a populations deaths. This test, however, shows that IAP could be predicted more accurately by region (59.2% IAP variation estimated to be predicted) then with GDP (50.8% variation in IAP deaths predicted by GDP).
 
 Year was estimated to predict only 1.3% of the variation in indoor air pollutant related premature deaths, which is likely related to the fact that the oldest data represented was from 1992, well into the period of modern medicine where drug availability would be making a large impact on global deaths to what we now consider treatable conditions and infections. A multi-variable regression analysis to explore the correlation between indoor deaths and year in each region may show that the countries with the highest deaths (South Asia, Sub-Saharan Africa, East Asia) is improving yearly at a rate that is faster then regions where the percent deaths in 1990 is already relatively low.
 
 Population was found to have the lowest impact in the percentage of deaths caused by indoor air pollution. This likely related to the fact that the deaths is given as a percentage of the population, so unless increasing the population contributes to a reduction of quality of life shared by the total population, the percentage should be relatively unaffected.
 :::
 
-### Multi-variable Regression Analysis: [Year and Region]{.underline}
+## [Multiple Variable Visualization and Linear Regression]{.underline}
 
+### 1.7) [Year and Region]{.underline}
+
+
+::: {.cell}
+
+```{.r .cell-code}
+merged_df %>%
+  
+   rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate(region= countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  group_by(year,region) %>%
+  summarize(mean_deaths = mean(percent_IAP)) %>%
+  
+# create a scatter plot with GDP per capita on the x-axis and deaths caused by air pollution on the y-axis, colored by region
+  ggplot(aes(x = year, y = mean_deaths, color = region)) +
+  geom_line(size = 1) +
+  labs(title = "Percent Deaths from IAP vs Year, by Region",
+       x = "year (1992-2007)",
+       y = "Percent deaths caused by air pollution",
+       color = "Region") +
+  geom_smooth(method = "lm")
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+`summarise()` has grouped output by 'year'. You can override using the
+`.groups` argument.
+```
+:::
+
+::: {.cell-output .cell-output-stderr}
+```
+Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.
+```
+:::
+
+::: {.cell-output .cell-output-stderr}
+```
+`geom_smooth()` using formula = 'y ~ x'
+```
+:::
+
+::: {.cell-output-display}
+![](IndoorPollution_files/figure-html/unnamed-chunk-28-1.png){width=672}
+:::
+:::
 
 ::: {.cell}
 
@@ -2011,14 +2351,58 @@ model_region_fit %>%
 :::
 
 
-::: {.callout-note style="color:gray" appearance="simple"}
-## Discussion
+### 1.8) Multi-variable Regression Analysis: [Percent Deaths and GDP + Region]{.underline}
 
-This multi-variable regression extraction shows the compounding effect of year is not significant enough to increase or reduce the effect of year, which represent a strong predictive factor related to the percent of deaths caused by indoor air pollutants. The estimated correlation coefficient for most regions shows a predicted decline in indoor air pollution
+
+::: {.cell}
+
+```{.r .cell-code}
+merged_df %>%
+  
+   rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate(region= countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  group_by(entity,region) %>%
+  summarize(mean_gdp = mean(gdp_percap),
+            mean_deaths = mean(percent_IAP)) %>%
+  
+# create a scatter plot with GDP per capita on the x-axis and deaths caused by air pollution on the y-axis, colored by region
+  ggplot(aes(x = mean_gdp, y = mean_deaths, color = region)) +
+  geom_point(size = 2) +
+  labs(title = "GDP ($USD) per capita vs. Percent , by Region",
+       x = "GDP per capita",
+       y = "Percent deaths caused by air pollution",
+       color = "Region") +
+  geom_smooth(method = "lm",
+              size = .75)
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+`summarise()` has grouped output by 'entity'. You can override using the
+`.groups` argument.
+`geom_smooth()` using formula = 'y ~ x'
+```
 :::
 
-### Multi-variable Regression Analysis: [Percent Deaths and GDP + Region]{.underline}
+::: {.cell-output .cell-output-stderr}
+```
+Warning in qt((1 - level)/2, df): NaNs produced
+```
+:::
 
+::: {.cell-output .cell-output-stderr}
+```
+Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning
+-Inf
+```
+:::
+
+::: {.cell-output-display}
+![](IndoorPollution_files/figure-html/unnamed-chunk-31-1.png){width=672}
+:::
+:::
 
 ::: {.cell}
 
@@ -2180,8 +2564,42 @@ model_region_fit %>%
 :::
 
 
-## Multi-Variable Regression Analysis: [GDP by Country]{.underline}
+### 1.9) Multi-Variable Regression analysis: [Percent IAP vs. GDP by country]{.underline}
 
+
+::: {.cell}
+
+```{.r .cell-code}
+merged_df %>%
+  
+   rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate(region= countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  group_by(entity) %>%
+  summarize(mean_gdp = mean(gdp_percap),
+            mean_deaths = mean(percent_IAP)) %>%
+  
+# create a scatter plot with GDP per capita on the x-axis and deaths caused by air pollution on the y-axis, colored by country instead of region
+  ggplot(aes(x = mean_gdp, y = mean_deaths, group = entity)) +
+  geom_point(size = 1) +
+  geom_smooth() +
+  labs(title = " ",
+       x = "",
+       y = "",
+       color = "Region")
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+`geom_smooth()` using method = 'loess' and formula = 'y ~ x'
+```
+:::
+
+::: {.cell-output-display}
+![](IndoorPollution_files/figure-html/unnamed-chunk-34-1.png){width=672}
+:::
+:::
 
 ::: {.cell}
 
@@ -2259,8 +2677,42 @@ model_region_fit <- model_region %>% fit(model_data)
 :::
 
 
-## Multi-Variable Regression Analysis: [GDP and population size]{.underline}
+### 1.10) Multi-Variable Regression analysis: [GDP and Population size, by Country]{.underline}
 
+
+::: {.cell}
+
+```{.r .cell-code}
+merged_df %>%
+  
+   rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+  mutate(region = countrycode(entity, origin = "country.name", destination = "region")) %>%
+  
+  group_by(entity) %>%
+  summarize(mean_population = mean(pop),
+            mean_deaths = mean(percent_IAP)) %>%
+  
+# create a scatter plot with GDP per capita on the x-axis and deaths caused by air pollution on the y-axis, colored by country instead of region
+  ggplot(aes(x = log(mean_population), y = mean_deaths)) +
+  geom_point(size = 1) +
+  geom_smooth(method = "lm",
+              se=FALSE) +
+  labs(title = " ",
+       x = "average population by region (log10 scale)",
+       y = "percent deaths by IAP")
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+`geom_smooth()` using formula = 'y ~ x'
+```
+:::
+
+::: {.cell-output-display}
+![](IndoorPollution_files/figure-html/unnamed-chunk-36-1.png){width=672}
+:::
+:::
 
 ::: {.cell}
 
@@ -2395,7 +2847,7 @@ model_region_fit %>%
 :::
 
 
-## Multi-Variable Regression Analysis: [GDP, population size, and life expectancy]{.underline}
+### 1.11) Multi-Variable Regression Analysis: GDP, Population Size, and life expectancy
 
 
 ::: {.cell}
@@ -2532,3 +2984,14 @@ model_region_fit %>%
 
 :::
 :::
+
+
+::: {.callout-note style="color:gray" appearance="simple"}
+## Discussion
+:::
+
+# Conclusions
+
+# Future Questions
+
+-   Studies suggest that in developed countries, people spend 80-90% of their lives indoors. The US, being the wealthiest nation, has the resources to reduce indoor air pollution through regulation, investment, and adequate medical care. However, countries with growing GDP and capitalistic societies may face increased time indoors without the resources to regulate indoor and outdoor environments, leading to greater exposure to pollutants and inadequate healthcare. As countries create economic opportunities and urbanize, indoor air pollution may increase. Analysis to Identifying the point at which GDP and premature deaths caused by indoor air pollution are correlated can inform targeted prevention efforts.
