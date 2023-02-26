@@ -1158,6 +1158,99 @@ model_region_fit %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
+### 1.12) Two-Sample t-test: Correlating GDP and Percent IAP by Group
+
+In this analysis, several t-test will be performed to compare the mean percentages of premature deaths caused by indoor air pollution in countries with different ranges of GDP per capita using the worldbank.org 2021 averages for high- middle- and low- income GDP, as well as an additional high(er) income t-test to observe what happens to the t-value and degree of freedom when all countries included are more likely to have access to better technologies and health care. although the values for GDP are not adjusted for inflation, and likely do not represent accurate values for the purchasing power from 1992-2007, it will still provide valuable information for how significant the proportion changes with increasing GDP
+
+The t-test enables this research to determine whether there was a statistically significant difference in the proportion of premature deaths caused by indoor air pollution between countries with different GDP per capita ranges. More specifically, the goal of these t-tests is to statistically represent the impact that increasing GDP per capita for the lowest income countries has significant impact that decreases as GDP gets closer the percentage of deaths comparable to the most developed high-income countries. Assuming this hypothesis is correct, it is likely that there will a major decrease in the difference in mean between groups as the lower GDP gets closer to high-income countries.
+
+**Low-Income Countries** **(\$0 - \$1085 USD)**
+
+```{r}
+  
+# Create a new column to indicate whether the GDP per capita is below or above 2500 $USD
+tt_merged_df <- merged_df %>%
+  mutate(gdp_cat = ifelse(gdp_percap < 1085, "below", "above")) %>%
+    
+  rename("percent_iap" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+   mutate("region" = countrycode(entity,origin = "country.name",
+   destination= "region")) %>%
+  filter(!is.na(region))
+
+# Perform t-test
+ttest <- t.test(percent_iap ~ gdp_cat, data = tt_merged_df)
+
+# Print the t-test results
+print(ttest)
+```
+
+**Middle-Income Countries (\$1086 - \$4255 USD)**
+
+```{r}
+  
+# Create a new column to indicate whether the GDP per capita is below or above 5000 $USD
+tt_merged_df <- merged_df %>%
+  filter(gdp_percap > 1086) %>%
+  mutate(gdp_cat = ifelse(gdp_percap < 4255, "below", "above")) %>%
+    
+  rename("percent_iap" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+   mutate("region" = countrycode(entity,origin = "country.name",
+   destination= "region")) %>%
+  filter(!is.na(region))
+
+# Perform t-test
+ttest <- t.test(percent_iap ~ gdp_cat, data = tt_merged_df)
+
+# Print the t-test results
+print(ttest)
+```
+
+**High-Income Countries (\$4256 - \$13205 USD)**
+
+```{r}
+  
+# Create a new column to indicate whether the GDP per capita is below or above 10000
+tt_merged_df <- merged_df %>%
+  filter(gdp_percap > 4256) %>%
+  mutate(gdp_cat = ifelse(gdp_percap < 13205, "below", "above")) %>%
+    
+  rename("percent_iap" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+   mutate("region" = countrycode(entity,origin = "country.name",
+   destination= "region")) %>%
+  filter(!is.na(region))
+
+# Perform t-test
+ttest <- t.test(percent_iap ~ gdp_cat, data = tt_merged_df)
+
+# Print the t-test results
+print(ttest)
+```
+
+**high(er)-Income Countries** **(\$13206 - \$18,000 USD)**
+
+```{r}
+  
+# Create a new column to indicate whether the GDP per capita is below or above 10000
+tt_merged_df <- merged_df %>%
+   filter(gdp_percap > 13206) %>%
+  mutate(gdp_cat = ifelse(gdp_percap < 18000, "below", "above")) %>%
+    
+  rename("percent_iap" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+   mutate("region" = countrycode(entity,origin = "country.name",
+   destination= "region")) %>%
+  filter(!is.na(region))
+
+# Perform t-test
+ttest <- t.test(percent_iap ~ gdp_cat, data = tt_merged_df)
+
+# Print the t-test results
+print(ttest)
+```
+
 ::: {.callout-note style="color:gray" appearance="simple"}
 ## Discussion
 
@@ -1174,12 +1267,56 @@ In total, this analysis found that for any given 1 year change, a global average
 **Table 1.10**
 
 **Table 1.11**
+
+**Table 1.11** provided four different t-tests that compared the proportion in the percent of premature deaths seen in low- middle- high- and high(er)- income countries. This test found exceedingly strong correlation between GDP and Percent deaths from IAP, which was expected considering the results in section 1.4, 1.8, and 1.9. However, these results went much further in terms of explaining how this breaks down in economically grouped countries. The result of this analysis showed a strong relationship (p\<0.001) for every analysis except high(er) income countries, although this result was also significant (p = 0.02703).
+
+The change in percentage of premature deaths between low income countries (avg= 13.15%) and middle income countries (avg = 4.42%) was found by this test to
 :::
+
+```{r}
+  
+# Create a new column to indicate whether the GDP per capita is below or above 10000
+tt_merged_df <- merged_df %>%
+  mutate(gdp_cat = ifelse(gdp_percap < 15000, "below", "above")) %>%
+    
+  rename("percent_iap" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+   mutate("region" = countrycode(entity,origin = "country.name",
+   destination= "region")) %>%
+  filter(!is.na(region))
+
+# Perform t-test
+ttest <- t.test(percent_iap ~ gdp_cat, data = tt_merged_df)
+
+# Print the t-test results
+print(ttest)
+```
+
+```{r}
+  
+# Create a new column to indicate whether the GDP per capita is below or above 10000
+tt_merged_df <- merged_df %>%
+  filter(gdp_percap > 10000) %>%
+  mutate(gdp_cat = ifelse(gdp_percap < 20000, "below", "above")) %>%
+    
+  rename("percent_iap" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
+  
+   mutate("region" = countrycode(entity,origin = "country.name",
+   destination= "region")) %>%
+  filter(!is.na(region))
+
+# Perform t-test
+ttest <- t.test(percent_iap ~ gdp_cat, data = tt_merged_df)
+
+# Print the t-test results
+print(ttest)
+```
 
 # Conclusions
 
 # Future Questions
 
 -   Studies suggest that in developed countries, people spend 80-90% of their lives indoors. The US, being the wealthiest nation, has the resources to reduce indoor air pollution through regulation, investment, and adequate medical care. However, countries with growing GDP and capitalistic societies may face increased time indoors without the resources to regulate indoor and outdoor environments, leading to greater exposure to pollutants and inadequate healthcare. As countries create economic opportunities and urbanize, indoor air pollution may increase. Analysis to Identifying the point at which GDP and premature deaths caused by indoor air pollution are correlated can inform targeted prevention efforts.
+-   Using a t-test to run a qualitative comparison of the proportion of deaths occuring in countries that have
 
 # Citations
