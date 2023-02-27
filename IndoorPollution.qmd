@@ -5,6 +5,8 @@ format: html
 editor: visual
 keep-md: TRUE
 prefer-html: TRUE
+code-fold: TRUE
+bibliography: C:/Users/trevo/OneDrive/Documents/R/BioStatisticalAnalysis/IndoorPollution_files/2023-02-27 Bioinformatics part 1.bib
 ---
 
 # Air Pollution and Global GDP/Climate trends
@@ -12,6 +14,8 @@ prefer-html: TRUE
 ## Abstract
 
 Premature deaths related to indoor air pollution data, largely from the combustion of bio fuels like wood and coal, is a leading cause of death for many middle- and lower- income countries around the globe, with major health implications for even the developed parts of the world. This analysis aims to assess and infer the impacts of geographic features and economic/political factors related to the percent of premature deaths caused by indoor air pollution countries across the globe. This data has been collected for almost three decades (1990-2019) and will be utilized in this analysis, along with a somewhat smaller dataset for some tests, to infer two important characteristics that may offer insight into the cause of inadequate/unsafe indoor conditions. Impact of GDP as a determinant of access to clean fuel alternatives and healthcare is expected to be the significant, if not most correlated factor of premature deaths from indoor air pollution. Secondly, this analysis will interpret the regional differences contribute to the average premature deaths in that geographic group.
+
+------------------------------------------------------------------------
 
 ## Introduction
 
@@ -43,6 +47,8 @@ Since the earliest days of thinking about the dangers associated with pollution 
 ### Bio Fuels and the reason for global concern
 
 In developed countries, regulatory requirements and consumer protections mean that most of the largest global threats have been largely minimized; homes are required to have chimneys for fireplaces, carbon monoxide sensors are a requirement for hotels and buildings with gas heaters or wood fireplaces. These preventative measure target the specific act of burning bio fuels inside homes which is by far the largest contributor to premature deaths caused by indoor air pollution, with a widely cited 2002 study by Ezzati and Kammen (2002) found bio fuel use is Uganda homes, related to three major activities (stove for cooking, heating water, and warmth), generated pollutant concentrations, particularly particulate matter as high as 140 times background levels. The risk associated to these indoor air pollutants from biofuels also represents a large contract from impact in males and females in a population, with Ezzati and Kammen (2002) finding women were receiving 75% of the exposure from being in increased proximity to household activities like cooking.
+
+------------------------------------------------------------------------
 
 ## Determining Hypothesis with Testing Data
 
@@ -533,6 +539,8 @@ model_region_fit %>%
 Because the relationship between year and percent deaths by IAP is relatively low (2.35%) it may not be worth including in the analysis. It may be valuable to reconsider this assumption after generating a Bland-Altman graph to visualize the relationship with the entire data set.
 :::
 
+------------------------------------------------------------------------
+
 # Hypothesis:
 
 The final data set containing the additional variables used for this analysis halves the temporal scale from a three-decade analysis to just fifteen years with five-year intervals (1952, 1957, 2002, 2007). This reduction suggests that the initial regression analysis (Table C) may prove a small enough predictive factor that it can be largely considered null, minus some exploration of its statistical significance.
@@ -549,6 +557,8 @@ The final data set containing the additional variables used for this analysis ha
 -   Temperate regions are more likely to invest in indoor heating which often involved the use of bio fuels like wood stoves. Poor ventilation is also likely to be a component that will play a role in temperate regions being associated with greater % deaths by IAP. it is possible that analysis into exposure levels based on regions and even determine if years after a cold winter will reflect higher rates of exposure-related premature deaths.
 
 **Null Hypothesis:** There is no significant association between a country's GDP or population size and the percentage of premature deaths caused by indoor pollution from biofuels. Furthermore, there are no significant regional differences in the percentage of premature deaths caused by indoor pollution from biofuels after controlling for GDP, population size, and other relevant factors.
+
+------------------------------------------------------------------------
 
 # Hypothesis Testing
 
@@ -779,6 +789,12 @@ model_region_fit %>%
 
 ```{r}
 merged_df %>%
+summarize(mean(life_exp))%>%
+  print()
+```
+
+```{r}
+merged_df %>%
   
   rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
   
@@ -828,8 +844,7 @@ model_region_fit %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
-::: {.callout-note style="color:gray" appearance="simple"}
-## Discussion
+# Discussion
 
 The analyses conducted provide further understanding of the observations made during the exploratory analysis phase. Each single-variable regression analysis conducted was highly reliable (p\<0.001), although the strength of correlation varied considerably. Examining the implications of these findings will be valuable in comprehending the outcomes of multiple variable analysis, which can provide more insight into the importance and cumulative impact of these connections. In this study, the association between the percentage of deaths caused by indoor air pollution (IAP) and three independent variables, namely GDP, year, and region, were compared separately to comprehend their distinct contributions. The hypothesis under examination posited that GDP had the greatest influence on the proportion of deaths caused by IAP. However, the results of the analysis revealed that region was a better predictor of IAP (59.2% of the variation in IAP deaths was estimated to be predictable by region) than GDP (only 50.8% of the variation in IAP deaths was predicted by GDP).
 
@@ -841,10 +856,13 @@ Section 1.3, 1.4, and 1.5 use the merged dataset combining the original indoor p
 
 **Section 1.3** Population was found to have the lowest impact in the percentage of deaths caused by indoor air pollution (r\^2 = 0.012, p\<0.001). This likely related to the fact that the deaths is given as a percentage of the population, so unless increasing the population contributes to a reduction of quality of life shared by the total population, the percentage should be relatively unaffected. The estimate for this value is 0.00 suggesting no significant linear relationship exists between population and percent premature deaths when only considering this single variable.
 
-**Section 1.4** GDP is the second of the main variables being investigated in this analysis, and is hypothesized to be the most significant predictor for estimating a given country or region's percentage of premature deaths from IAP. The estimate generated by this regression analysis found that for approximately every 0.00037 \$USD increase in GDP there is a 1% decrease in deaths caused by indoor air pollutants (r\^2 = 50.8, p\<0.001). This value, while very small, suggests that GDP may be a stronger predictor when considering the compound relationship between GDP and region or entity as an additional variable.
+**Section 1.4** GDP is the second of the main variables being investigated in this analysis, and is hypothesized to be the most significant predictor for estimating a given country or region's percentage of premature deaths from IAP. The estimate generated by this regression analysis found (with results scaled x100) for every 100\$ increase to GDP per capita, the percentage of premature deaths caused by indoor pollution decreases by 0.0372%, (p \<0.001, R\^2 = 0.5079). The intercept provided by this analysis suggests that when GDP is = 0 the mean percentage of premature deaths from indoor pollution would be 9.84%. These results provide strong evidence for the hypothesis of this analysis. to be compounded when controlling for regions.
 
-**Section 1.5** was created to consider the role that deaths from indoor air pollution plays on life expectancy. The graph generated in this section appears to show that countries suffering from high rates of indoor air pollution tend to also have lower life expectancy, ranging from approximately 75 to 60. This graph is supported by the regression analysis that suggests for every 1% increase in percent premature deaths from indoor air pollution, a decrease of 1.55 years is predicted (r\^2 = 0.577) this analysis strongly asserts the growing concern related to the health impacted related to indoor air pollution. This correlation is a great representation of why this analysis and the data collection associated represents valuable research needed for for public health and national development.
-:::
+**Section 1.5** was created to consider the role that deaths from indoor air pollution plays on life expectancy. The graph generated in this section appears to show that countries suffering from high rates of indoor air pollution tend to also have lower life expectancy, ranging from approximately 75 to 60. This graph is supported by the regression analysis that suggests for every 1% increase in percent premature deaths from indoor air pollution, a decrease in life experctancy of 1.55 years is predicted (p \<0.01, r\^2 = 0.577).
+
+This analysis also provided an intercept that estimates if percent IAP were = 0, average life expectancy would increase from the mean (65.43 years) to 75.08 years old. This is a nearly 10 year estimated increase on global lifespans that could be achieved by improving the quality of the air inside of households and public spaces.
+
+------------------------------------------------------------------------
 
 ## [Multiple Variable Visualization and Linear Regression]{.underline}
 
@@ -892,8 +910,11 @@ BA_plot %>%
   
   ggplot(aes(current, change)) +
     geom_point()+
-  facet_wrap(~region)+
-  geom_smooth(method = "lm")
+  geom_smooth(method = "lm",
+              se = FALSE)+
+  labs(x = "Current (2015)",
+       y = "Change (2015 - 1995)",
+       title = "Bland-Altman plot for Change in Percentage Premature Deaths (1992-2007)")
 ```
 
 ```{r}
@@ -1050,6 +1071,15 @@ model_region_fit <- model_region %>% fit(model_data)
   
 ```
 
+```{r}
+model_region_fit %>%
+  extract_fit_engine() %>%
+  tidy() %>%
+   arrange(desc(estimate)) %>%
+  kable(digits = c(3,3,3,4)) %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
 ### 1.10) [GDP and Population size, by Country]{.underline}
 
 ```{r}
@@ -1070,8 +1100,8 @@ merged_df %>%
   geom_smooth(method = "lm",
               se=FALSE) +
   labs(title = " ",
-       x = "average population by region (log10 scale)",
-       y = "percent deaths by IAP")
+       x = "Average Population by Country (log10 scale)",
+       y = "Percent Deaths by IAP")
 ```
 
 ```{r}
@@ -1095,70 +1125,17 @@ model_region<-
   workflow() %>%
   add_model(model_region_temp) %>%
   add_recipe(model_region_reg) #combine the model and recipe to generate a regression analysis
-
-model_region_fit <- model_region %>% fit(model_data)
-
- model_region_fit %>%
-  glance() %>% 
-  kable(digits=c(4,4,2,4,0,0,2,2,2,2,0,0)) %>% 
-  kable_styling(bootstrap_options = c("hover", "striped"))
-  
-  
-  # looking to build a regression analysis to determine if a correltion can be seen in the data. prediction is decreasing n over time grouped by region 
 ```
 
 ```{r}
- 
 model_region_fit %>%
   extract_fit_engine() %>%
   tidy() %>%
-  kable(digits =c(3,5,3,3)) %>%
+  kable(digits = c(3,3,3,4)) %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
-### 1.11) Multi-Variable Regression Analysis: GDP, Population Size
-
-```{r}
-model_data <- merged_df %>%
-  
-  rename("percent_deaths_by_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-  
-   mutate("region" = countrycode(entity,origin = "country.name",
-   destination= "region")) %>%
-  filter(!is.na(region))
-  
-model_region_temp <- linear_reg() %>% 
-  set_engine("lm")  #construct model instance
-
-model_region_reg<-
-  recipe(percent_deaths_by_IAP~life_exp+pop+gdp_percap,
-         data = model_data)
-  #generate a recipe -- what variables do we have in y = mx+b
-
-model_region<-
-  workflow() %>%
-  add_model(model_region_temp) %>%
-  add_recipe(model_region_reg) #combine the model and recipe to generate a regression analysis
-
-model_region_fit <- model_region %>% fit(model_data)
-
- model_region_fit %>%
-  glance() %>% 
-  kable(digits=c(4,4,2,4,0,0,2,2,2,2,0,0)) %>% 
-  kable_styling(bootstrap_options = c("hover", "striped"))
-  
-```
-
-```{r}
- 
-model_region_fit %>%
-  extract_fit_engine() %>%
-  tidy() %>%
-  kable(digits =c(3,5,3,3)) %>%
-  kable_styling(bootstrap_options = c("hover", "striped"))
-```
-
-### 1.12) Two-Sample t-test: Correlating GDP and Percent IAP by Group
+### 1.11) Two-Sample t-test: Correlating GDP and Percent IAP by Group
 
 In this analysis, several t-test will be performed to compare the mean percentages of premature deaths caused by indoor air pollution in countries with different ranges of GDP per capita using the worldbank.org 2021 averages for high- middle- and low- income GDP, as well as an additional high(er) income t-test to observe what happens to the t-value and degree of freedom when all countries included are more likely to have access to better technologies and health care. although the values for GDP are not adjusted for inflation, and likely do not represent accurate values for the purchasing power from 1992-2007, it will still provide valuable information for how significant the proportion changes with increasing GDP
 
@@ -1251,8 +1228,7 @@ ttest <- t.test(percent_iap ~ gdp_cat, data = tt_merged_df)
 print(ttest)
 ```
 
-::: {.callout-note style="color:gray" appearance="simple"}
-## Discussion
+# Discussion
 
 These multiple variables tests provide a stronger idea of the kinds of relationships this data can infer. Several of these observations were particularly interesting, while others may not be particularly valuable.
 
@@ -1260,63 +1236,69 @@ These multiple variables tests provide a stronger idea of the kinds of relations
 
 In total, this analysis found that for any given 1 year change, a global average change in percent of premature deaths from indoor air pollution decreased by 1.57 on average. This would suggest that, despite some countries facing new challenges due to socioeconomic changes, this global rate remains decreasing. This analysis ended up proving more beneficial then previously anticipated, and suggests that tracking the progress over time may provide important evidence for understanding the effectiveness of other factors like GDP and population size change over time.
 
-**Section 1.8** This analysis combines the major test questions for this analysis -- GDP and Region -- into a single graph and multiple variable analysis that was aimed at understanding how regional averages of GDP compound the relationship seen in Section 1.2 and 1.4. The single variable analysis for GDP (r\^2 = 50.8%, p \<0.001) and region (
+**Section 1.8** This analysis combines the major test questions for this analysis -- GDP and Region -- into a single graph and multiple variable analysis that was aimed at understanding how regional averages of GDP compound the relationship seen in Section 1.2 and 1.4.
 
-**Table 1.9**
+The results of the regression analysis performed to correlate the percentage of deaths and GDP seperated by region. The R\^2 value (0.7149) suggests a 71% of the variation in premature deaths can be predicted with GDP and Region. The model fitting this data for each region used a region-- East Asia and Pacific as an "intercept" for which all the subsequent coefficients are adding or subtracting from.
 
-**Table 1.10**
+**(p\<0.001 for all results except North America)**
 
-**Table 1.11**
+-   The coefficient for **East Asia and Pacific** describes the expected average percentage of premature deaths caused by indoor air pollution is 9.770%
 
-**Table 1.11** provided four different t-tests that compared the proportion in the percent of premature deaths seen in low- middle- high- and high(er)- income countries. This test found exceedingly strong correlation between GDP and Percent deaths from IAP, which was expected considering the results in section 1.4, 1.8, and 1.9. However, these results went much further in terms of explaining how this breaks down in economically grouped countries. The result of this analysis showed a strong relationship (p\<0.001) for every analysis except high(er) income countries, although this result was also significant (p = 0.02703).
+-   For countries in **Europe & Central Asia**, the average expected percentage of premature deaths caused by indoor air pollution is 6.908% (9.770 - 2.862) for a GDP of 0.
 
-The change in percentage of premature deaths between low income countries (avg= 13.15%) and middle income countries (avg = 4.42%) was found by this test to
-:::
+-   For countries in **Latin America & Caribbean**, the average expected percentage of premature deaths caused by indoor air pollution is 6.387% (9.770 - 3.383) for a GDP of 0.
 
-```{r}
-  
-# Create a new column to indicate whether the GDP per capita is below or above 10000
-tt_merged_df <- merged_df %>%
-  mutate(gdp_cat = ifelse(gdp_percap < 15000, "below", "above")) %>%
-    
-  rename("percent_iap" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-  
-   mutate("region" = countrycode(entity,origin = "country.name",
-   destination= "region")) %>%
-  filter(!is.na(region))
+-   For countries in **Middle East & North Africa**, the average expected percentage of premature deaths caused by indoor air pollution is 4.593% (9.770 - 5.177) for a GDP of 0.
 
-# Perform t-test
-ttest <- t.test(percent_iap ~ gdp_cat, data = tt_merged_df)
+-   For countries in **North America**, the average expected percentage of premature deaths caused by indoor air pollution is 9.007% (9.770 - 0.763) for a GDP of 0. **(p = 0.543)**
 
-# Print the t-test results
-print(ttest)
-```
+    -   This value is likely significantly incorrect, and may be a result of an exceedingly small sample size that does not accurately predict the relationship between GDP and premature deaths in North America from IAP.
 
-```{r}
-  
-# Create a new column to indicate whether the GDP per capita is below or above 10000
-tt_merged_df <- merged_df %>%
-  filter(gdp_percap > 10000) %>%
-  mutate(gdp_cat = ifelse(gdp_percap < 20000, "below", "above")) %>%
-    
-  rename("percent_iap" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-  
-   mutate("region" = countrycode(entity,origin = "country.name",
-   destination= "region")) %>%
-  filter(!is.na(region))
+-   For countries in **South Asia**, the average expected percentage of premature deaths caused by indoor air pollution is 15.192% (9.770 + 5.422) for a GDP of 0.
 
-# Perform t-test
-ttest <- t.test(percent_iap ~ gdp_cat, data = tt_merged_df)
+-   For countries in **Sub-Saharan Africa**, the average expected percentage of premature deaths caused by indoor air pollution is 11.631% (9.770 + 1.861) for a GDP of 0.
 
-# Print the t-test results
-print(ttest)
-```
+    In Summary this regression analysis suggests that there is a positive relationship between GDP and the percentage of premature deaths caused by indoor air pollution across regions, and that GDP is a significant predictor of this relationship.
+
+**Section 1.9** The goal of this section is aimed to determine how significant the relationship between GDP and country is for predicted the percentage of premature deaths. This result recieved the highest r-squared value of any test run in this analysis (r\^2 = 0.9612, p \<0.001) suggesting most of the variation can be interpreted through analyzing a given countries GDP. For this model fit the intercept is Afghanistan with the highest percentage of deaths when GDP is set to 0 at 19.45, \~10% higher then the global average recorded in the merged_df dataset.
+
+Considering the Region and GDP had an r-squared value of 0.7149, the second highest value in this dataset, it is clear that these three factors are the most significant predictive characteristics for percentage of indoor air pollution-related premature deaths. This Analysis, however, will not focus on this table in the conclusion since comparisons of countries is largely outside the scope of this study. Nonetheless, it is valuable to understand the amount of predictive power in these dependent variables.
+
+**Table 1.10** This section returns for a final interpretation of the single-variable test considering the relationship between GDP and population size fromSection 1.3, which found a significant correlation (p= 0.0122) with very little correlation to the variation in the dataset (r\^2 = 0.012). While these results were statistically significant, the multi-variable analysis controlling for GDP found a small t-statistic value (2.45) suggesting that the correlation is not significantly representative of a large portion of the sample.
+
+Considering these results, it is likely that a hypothesis testing impact of population size for a correlation with percentage of indoor air pollution-related deaths would be NULL
+
+**Table 1.11** provided four different t-tests that compared the proportion in the percent of premature deaths seen in low- middle- high- and high(er)- income countries. This test found exceedingly strong correlation between GDP and Percent deaths from IAP, which was expected considering the results in section 1.4, 1.8, and 1.9. However, these results went much further in terms of explaining how this breaks down in economically grouped countries. The result of this analysis showed a strong relationship (p=0.001) for every analysis except high(er) income countries, although this result was also significant (p = 0.02703).
+
+-   Low-Income countries (\$0 - \$1085 USD) were found in this analysis to have an average percentage of premature deaths to be 13.15%, while the average for all GDPs above this group = 4.42% (t = -23.628, df = 281.64, p-value \< 2.2e-16 )
+
+-   Middle-Income Countries (\$4256 - \$13205 USD) in this test, had an average % premature deaths of 9.96%, with all GDP's greater having an average of 1.76% (t = -21.997, df = 185.07, p-value \< 2.2e-16) Middle- income countries were found to have. on average, 3.20% less premature deaths, which is a significant increase considering the small increase in GDP as well as the fact that excluding these groups from the population brings the average below 2% premature deaths attributed to IAP
+
+-   High Income countries (\$4256 - \$13205 USD) were found to have an even smaller average, as expected, but dropping even more significantly then between low- and middle- income countries. The average percent deaths for high-income countries was found to be 2.93%, while the average for all GDP's above this range had an average of 0.43% (t = -10.262, df = 206.63, p-value \< 2.2e-16). The difference in average percentage of deaths between middle- and high- income countries was found to be 7.02% over twice the reduction as moving from low- to middle- income as a country
+
+
+
+
+
+
+------------------------------------------------------------------------
 
 # Conclusions
+
+This analysis aimed to answer the hypothesis proposes that countries with higher GDP and larger population size have lower percentages of premature deaths caused by indoor pollution from biofuels, and that significant differences in the percentage of premature deaths caused by indoor pollution from biofuels exist across regions even after controlling for GDP, population size, and other relevant factors.
+
+In Section 1.1, the low R\^2 value for the correlation between indoor air pollution deaths and year suggests that improvements in health care and disease prevention have played a larger role in reducing premature deaths than changes in indoor air quality over time. However, as the section notes, analyzing the relationship between year and indoor air pollution deaths on a regional basis could provide more insight into trends and disparities. The high R\^2 value for the correlation between region and indoor air pollution deaths in Section 1.2 supports the hypothesis that regional factors play a significant role in determining the prevalence of indoor air pollution and its associated health risks. This could be due to a variety of factors, such as differences in household fuel sources, housing quality, and cultural practices. Understanding these regional differences can help policymakers and public health officials target interventions and resources more effectively. While population size did not show a strong correlation with indoor air pollution deaths in Section 1.3, it is still an important factor to consider in the context of public health. For example, even if the percentage of premature deaths caused by indoor air pollution is low in a country with a large population, the absolute number of deaths could still be significant. Additionally, rapid population growth can exacerbate existing environmental and health challenges.The relationship between GDP and indoor air pollution deaths in Section 1.4 suggests that economic development can play a positive role in reducing indoor air pollution and its associated health risks. However, it is important to note that the relationship is not necessarily linear or straightforward. For example, while higher GDP can enable households to switch to cleaner fuel sources, it can also lead to increased industrialization and urbanization, which can create new sources of pollution.
+
+The relationship between indoor air pollution deaths and life expectancy in Section 1.5 highlights the broader impacts of indoor air pollution on population health. Improving indoor air quality could have significant benefits beyond reducing premature deaths, such as increasing overall life expectancy and reducing the burden of disease. The regional differences in indoor air pollution deaths shown in Section 1.7 further emphasize the importance of understanding and addressing the unique challenges faced by different regions. For example, household fuel sources in Sub-Saharan Africa may differ significantly from those in Europe and Central Asia, which could contribute to differences in indoor air quality and associated health risks.
+
+Overall, these observations suggest that indoor air pollution is a complex and multifaceted issue that requires a nuanced understanding of regional and socioeconomic factors. While GDP and population size are important predictors of indoor air pollution deaths, they cannot fully explain the variation seen across regions and countries. Further research and analysis are needed to develop targeted interventions and policies to address this critical public health issue.
+
+------------------------------------------------------------------------
 
 # Future Questions
 
 -   Studies suggest that in developed countries, people spend 80-90% of their lives indoors. The US, being the wealthiest nation, has the resources to reduce indoor air pollution through regulation, investment, and adequate medical care. However, countries with growing GDP and capitalistic societies may face increased time indoors without the resources to regulate indoor and outdoor environments, leading to greater exposure to pollutants and inadequate healthcare. As countries create economic opportunities and urbanize, indoor air pollution may increase. Analysis to Identifying the point at which GDP and premature deaths caused by indoor air pollution are correlated can inform targeted prevention efforts.
--   Using a t-test to run a qualitative comparison of the proportion of deaths occuring in countries that have
+
+------------------------------------------------------------------------
 
 # Citations

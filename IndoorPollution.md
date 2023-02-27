@@ -5,6 +5,8 @@ format: html
 editor: visual
 keep-md: TRUE
 prefer-html: TRUE
+code-fold: TRUE
+bibliography: C:/Users/trevo/OneDrive/Documents/R/BioStatisticalAnalysis/IndoorPollution_files/2023-02-27 Bioinformatics part 1.bib
 ---
 
 
@@ -14,6 +16,8 @@ prefer-html: TRUE
 ## Abstract
 
 Premature deaths related to indoor air pollution data, largely from the combustion of bio fuels like wood and coal, is a leading cause of death for many middle- and lower- income countries around the globe, with major health implications for even the developed parts of the world. This analysis aims to assess and infer the impacts of geographic features and economic/political factors related to the percent of premature deaths caused by indoor air pollution countries across the globe. This data has been collected for almost three decades (1990-2019) and will be utilized in this analysis, along with a somewhat smaller dataset for some tests, to infer two important characteristics that may offer insight into the cause of inadequate/unsafe indoor conditions. Impact of GDP as a determinant of access to clean fuel alternatives and healthcare is expected to be the significant, if not most correlated factor of premature deaths from indoor air pollution. Secondly, this analysis will interpret the regional differences contribute to the average premature deaths in that geographic group.
+
+------------------------------------------------------------------------
 
 ## Introduction
 
@@ -45,6 +49,8 @@ Since the earliest days of thinking about the dangers associated with pollution 
 ### Bio Fuels and the reason for global concern
 
 In developed countries, regulatory requirements and consumer protections mean that most of the largest global threats have been largely minimized; homes are required to have chimneys for fireplaces, carbon monoxide sensors are a requirement for hotels and buildings with gas heaters or wood fireplaces. These preventative measure target the specific act of burning bio fuels inside homes which is by far the largest contributor to premature deaths caused by indoor air pollution, with a widely cited 2002 study by Ezzati and Kammen (2002) found bio fuel use is Uganda homes, related to three major activities (stove for cooking, heating water, and warmth), generated pollutant concentrations, particularly particulate matter as high as 140 times background levels. The risk associated to these indoor air pollutants from biofuels also represents a large contract from impact in males and females in a population, with Ezzati and Kammen (2002) finding women were receiving 75% of the exposure from being in increased proximity to household activities like cooking.
+
+------------------------------------------------------------------------
 
 ## Determining Hypothesis with Testing Data
 
@@ -92,40 +98,40 @@ kable(digits = c(1,0,0,2)) %>% ##apply significant figure contstraints to the ou
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Cambodia </td>
-   <td style="text-align:left;"> KHM </td>
+   <td style="text-align:left;"> Somalia </td>
+   <td style="text-align:left;"> SOM </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 14.75 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Puerto Rico </td>
+   <td style="text-align:left;"> PRI </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 0.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Costa Rica </td>
+   <td style="text-align:left;"> CRI </td>
    <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 14.52 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> North America </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.01 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Caribbean </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2018 </td>
-   <td style="text-align:right;"> 3.88 </td>
+   <td style="text-align:right;"> 0.61 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Tonga </td>
    <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 2006 </td>
-   <td style="text-align:right;"> 7.07 </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 8.42 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> North America </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> Chile </td>
+   <td style="text-align:left;"> CHL </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 0.40 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Trinidad and Tobago </td>
+   <td style="text-align:left;"> TTO </td>
    <td style="text-align:right;"> 2017 </td>
    <td style="text-align:right;"> 0.01 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Region of the Americas </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 1.15 </td>
   </tr>
 </tbody>
 </table>
@@ -183,7 +189,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `region = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -204,7 +210,7 @@ Caused by warning in `countrycode_convert()`:
 3 Latin America & Caribbean  Antigua and Barbuda, Argentina, Bahamas, Barbados,…
 4 Middle East & North Africa Algeria, Bahrain, Djibouti, Egypt, Iran, Iraq, Isr…
 5 North America              Bermuda, Canada, United States                     
-6 South Asia                 Afghanistan, Bangladesh, India, Maldives, Nepal, P…
+6 South Asia                 Afghanistan, Bangladesh, Bhutan, India, Maldives, …
 7 Sub-Saharan Africa         Angola, Benin, Botswana, Burkina Faso, Burundi, Ca…
 ```
 :::
@@ -269,7 +275,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `Regions = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -317,18 +323,18 @@ model_region_fit <- model_region %>% fit(model_data)
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 0.0177 </td>
-   <td style="text-align:right;"> 0.0166 </td>
-   <td style="text-align:right;"> 5.6 </td>
-   <td style="text-align:right;"> 16.1521 </td>
+   <td style="text-align:right;"> 0.0194 </td>
+   <td style="text-align:right;"> 0.0183 </td>
+   <td style="text-align:right;"> 5.65 </td>
+   <td style="text-align:right;"> 17.5788 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> -2816.39 </td>
-   <td style="text-align:right;"> 5638.78 </td>
-   <td style="text-align:right;"> 5653.18 </td>
-   <td style="text-align:right;"> 28022.33 </td>
-   <td style="text-align:right;"> 895 </td>
-   <td style="text-align:right;"> 897 </td>
+   <td style="text-align:right;"> -2802.62 </td>
+   <td style="text-align:right;"> 5611.24 </td>
+   <td style="text-align:right;"> 5625.61 </td>
+   <td style="text-align:right;"> 28321.13 </td>
+   <td style="text-align:right;"> 888 </td>
+   <td style="text-align:right;"> 890 </td>
   </tr>
 </tbody>
 </table>
@@ -368,17 +374,17 @@ model_region_fit %>%
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:right;"> 178.0881 </td>
-   <td style="text-align:right;"> 43.0652 </td>
-   <td style="text-align:right;"> 4.1353 </td>
-   <td style="text-align:right;"> 0e+00 </td>
+   <td style="text-align:right;"> 189.2638 </td>
+   <td style="text-align:right;"> 43.9005 </td>
+   <td style="text-align:right;"> 4.3112 </td>
+   <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> year </td>
-   <td style="text-align:right;"> -0.0863 </td>
-   <td style="text-align:right;"> 0.0215 </td>
-   <td style="text-align:right;"> -4.0190 </td>
-   <td style="text-align:right;"> 1e-04 </td>
+   <td style="text-align:right;"> -0.0918 </td>
+   <td style="text-align:right;"> 0.0219 </td>
+   <td style="text-align:right;"> -4.1927 </td>
+   <td style="text-align:right;"> 0 </td>
   </tr>
 </tbody>
 </table>
@@ -433,7 +439,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `country_region = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -455,58 +461,58 @@ Caused by warning in `countrycode_convert()`:
   <tr>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
    <td style="text-align:right;"> 0.005 </td>
-   <td style="text-align:right;"> 23.2 </td>
-   <td style="text-align:right;"> 7.19 </td>
-   <td style="text-align:right;"> 7.1 </td>
-   <td style="text-align:right;"> 35 </td>
+   <td style="text-align:right;"> 22.7 </td>
+   <td style="text-align:right;"> 6.73 </td>
+   <td style="text-align:right;"> 6.7 </td>
+   <td style="text-align:right;"> 34 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:right;"> 0.003 </td>
-   <td style="text-align:right;"> 13.4 </td>
-   <td style="text-align:right;"> 1.57 </td>
-   <td style="text-align:right;"> 2.7 </td>
-   <td style="text-align:right;"> 51 </td>
+   <td style="text-align:right;"> 0.002 </td>
+   <td style="text-align:right;"> 13.5 </td>
+   <td style="text-align:right;"> 1.41 </td>
+   <td style="text-align:right;"> 2.6 </td>
+   <td style="text-align:right;"> 52 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
    <td style="text-align:right;"> 0.003 </td>
-   <td style="text-align:right;"> 15.8 </td>
-   <td style="text-align:right;"> 2.95 </td>
-   <td style="text-align:right;"> 3.5 </td>
+   <td style="text-align:right;"> 14.3 </td>
+   <td style="text-align:right;"> 2.97 </td>
+   <td style="text-align:right;"> 3.4 </td>
    <td style="text-align:right;"> 35 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Middle East &amp; North Africa </td>
    <td style="text-align:right;"> 0.001 </td>
-   <td style="text-align:right;"> 16.7 </td>
-   <td style="text-align:right;"> 1.52 </td>
-   <td style="text-align:right;"> 3.1 </td>
-   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 9.0 </td>
+   <td style="text-align:right;"> 1.09 </td>
+   <td style="text-align:right;"> 2.1 </td>
+   <td style="text-align:right;"> 20 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> North America </td>
-   <td style="text-align:right;"> 0.005 </td>
-   <td style="text-align:right;"> 1.0 </td>
-   <td style="text-align:right;"> 0.17 </td>
-   <td style="text-align:right;"> 0.4 </td>
+   <td style="text-align:right;"> 0.003 </td>
+   <td style="text-align:right;"> 0.9 </td>
+   <td style="text-align:right;"> 0.20 </td>
+   <td style="text-align:right;"> 0.3 </td>
    <td style="text-align:right;"> 3 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> South Asia </td>
    <td style="text-align:right;"> 2.320 </td>
-   <td style="text-align:right;"> 19.9 </td>
-   <td style="text-align:right;"> 12.31 </td>
-   <td style="text-align:right;"> 4.5 </td>
-   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 19.7 </td>
+   <td style="text-align:right;"> 13.49 </td>
+   <td style="text-align:right;"> 4.8 </td>
+   <td style="text-align:right;"> 8 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:right;"> 0.050 </td>
-   <td style="text-align:right;"> 16.5 </td>
-   <td style="text-align:right;"> 9.82 </td>
-   <td style="text-align:right;"> 4.2 </td>
-   <td style="text-align:right;"> 47 </td>
+   <td style="text-align:right;"> 17.3 </td>
+   <td style="text-align:right;"> 10.71 </td>
+   <td style="text-align:right;"> 3.8 </td>
+   <td style="text-align:right;"> 48 </td>
   </tr>
 </tbody>
 </table>
@@ -553,7 +559,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `country_region = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -566,7 +572,7 @@ BA_plot %>%
 
 ::: {.cell-output .cell-output-stderr}
 ```
-Warning: Removed 195 rows containing missing values (`geom_point()`).
+Warning: Removed 198 rows containing missing values (`geom_point()`).
 ```
 :::
 
@@ -626,7 +632,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `Regions = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: African Region, America, Caribbean, Central Asia, Central Europe, Eastern Europe, and Central Asia, Commonwealth, Commonwealth High Income, Commonwealth Middle Income, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Europe, European Union, G20, High-income Asia Pacific, High-middle SDI, High SDI, Micronesia (country), Middle East & North Africa, North Africa and Middle East, North America, Northern Ireland, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Western Europe, Western Pacific Region, World, World Bank High Income, World Bank Lower Middle Income
+! Some values were not matched unambiguously: Africa, African Union, Andean Latin America, Central Asia, Central Latin America, Commonwealth, Commonwealth Low Income, Commonwealth Middle Income, East Asia & Pacific - World Bank region, Eastern sub-Saharan Africa, England, Europe & Central Asia - World Bank region, European Region, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, Latin America & Caribbean - World Bank region, Low SDI, Micronesia (country), Middle East & North Africa, Nordic Region, Region of the Americas, Scotland, South-East Asia Region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income
 ```
 :::
 
@@ -647,59 +653,59 @@ Caused by warning in `countrycode_convert()`:
 <tbody>
   <tr>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:right;"> 0.0050 </td>
-   <td style="text-align:right;"> 16.6388 </td>
-   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0.0046 </td>
+   <td style="text-align:right;"> 18.6228 </td>
    <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 19 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:right;"> 0.0026 </td>
-   <td style="text-align:right;"> 5.9882 </td>
+   <td style="text-align:right;"> 0.0022 </td>
+   <td style="text-align:right;"> 6.5176 </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 31 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 26 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:right;"> 0.0519 </td>
+   <td style="text-align:right;"> 0.0119 </td>
    <td style="text-align:right;"> 13.9483 </td>
-   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
    <td style="text-align:right;"> 3 </td>
    <td style="text-align:right;"> 19 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:right;"> 0.0014 </td>
-   <td style="text-align:right;"> 3.4583 </td>
+   <td style="text-align:right;"> 0.0007 </td>
+   <td style="text-align:right;"> 7.2581 </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 15 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> North America </td>
-   <td style="text-align:right;"> 0.0051 </td>
-   <td style="text-align:right;"> 0.0051 </td>
+   <td style="text-align:right;"> 0.0030 </td>
+   <td style="text-align:right;"> 0.0055 </td>
    <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:right;"> 5.8834 </td>
-   <td style="text-align:right;"> 14.4885 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 9.0752 </td>
+   <td style="text-align:right;"> 12.0990 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:right;"> 0.0505 </td>
-   <td style="text-align:right;"> 15.5553 </td>
+   <td style="text-align:right;"> 15.1508 </td>
    <td style="text-align:right;"> 9 </td>
    <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 26 </td>
   </tr>
 </tbody>
 </table>
@@ -755,7 +761,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `region = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -765,7 +771,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `continent = countrycode(entity, origin = "country.name",
   destination = "continent")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -842,7 +848,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `region = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -900,7 +906,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `region = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -927,7 +933,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `region = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -976,18 +982,18 @@ model_region_fit <- model_region %>% fit(model_data)
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 0.4231 </td>
-   <td style="text-align:right;"> 0.4193 </td>
-   <td style="text-align:right;"> 4.3 </td>
-   <td style="text-align:right;"> 108.8101 </td>
+   <td style="text-align:right;"> 0.5214 </td>
+   <td style="text-align:right;"> 0.5182 </td>
+   <td style="text-align:right;"> 3.96 </td>
+   <td style="text-align:right;"> 160.3308 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> -2577.66 </td>
-   <td style="text-align:right;"> 5171.32 </td>
-   <td style="text-align:right;"> 5209.71 </td>
-   <td style="text-align:right;"> 16456.42 </td>
+   <td style="text-align:right;"> -2483.42 </td>
+   <td style="text-align:right;"> 4982.84 </td>
+   <td style="text-align:right;"> 5021.17 </td>
+   <td style="text-align:right;"> 13822.67 </td>
+   <td style="text-align:right;"> 883 </td>
    <td style="text-align:right;"> 890 </td>
-   <td style="text-align:right;"> 897 </td>
   </tr>
 </tbody>
 </table>
@@ -1027,51 +1033,51 @@ model_region_fit %>%
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:right;"> 7.1943 </td>
-   <td style="text-align:right;"> 0.3476 </td>
-   <td style="text-align:right;"> 20.6949 </td>
+   <td style="text-align:right;"> 6.7304 </td>
+   <td style="text-align:right;"> 0.3418 </td>
+   <td style="text-align:right;"> 19.6916 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> regionEurope &amp; Central Asia </td>
-   <td style="text-align:right;"> -5.6258 </td>
-   <td style="text-align:right;"> 0.4498 </td>
-   <td style="text-align:right;"> -12.5077 </td>
+   <td style="text-align:right;"> -5.3169 </td>
+   <td style="text-align:right;"> 0.4280 </td>
+   <td style="text-align:right;"> -12.4236 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> regionLatin America &amp; Caribbean </td>
-   <td style="text-align:right;"> -4.2486 </td>
-   <td style="text-align:right;"> 0.4792 </td>
-   <td style="text-align:right;"> -8.8663 </td>
+   <td style="text-align:right;"> -3.7608 </td>
+   <td style="text-align:right;"> 0.4595 </td>
+   <td style="text-align:right;"> -8.1849 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> regionMiddle East &amp; North Africa </td>
-   <td style="text-align:right;"> -5.6746 </td>
-   <td style="text-align:right;"> 0.5497 </td>
-   <td style="text-align:right;"> -10.3238 </td>
+   <td style="text-align:right;"> -5.6394 </td>
+   <td style="text-align:right;"> 0.5448 </td>
+   <td style="text-align:right;"> -10.3523 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> regionNorth America </td>
-   <td style="text-align:right;"> -7.0219 </td>
-   <td style="text-align:right;"> 1.3423 </td>
-   <td style="text-align:right;"> -5.2312 </td>
+   <td style="text-align:right;"> -6.5314 </td>
+   <td style="text-align:right;"> 1.1922 </td>
+   <td style="text-align:right;"> -5.4784 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> regionSouth Asia </td>
-   <td style="text-align:right;"> 5.1135 </td>
-   <td style="text-align:right;"> 0.8153 </td>
-   <td style="text-align:right;"> 6.2720 </td>
+   <td style="text-align:right;"> 6.7557 </td>
+   <td style="text-align:right;"> 0.8346 </td>
+   <td style="text-align:right;"> 8.0943 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> regionSub-Saharan Africa </td>
-   <td style="text-align:right;"> 2.6209 </td>
-   <td style="text-align:right;"> 0.4618 </td>
-   <td style="text-align:right;"> 5.6747 </td>
+   <td style="text-align:right;"> 3.9760 </td>
+   <td style="text-align:right;"> 0.4307 </td>
+   <td style="text-align:right;"> 9.2319 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
 </tbody>
@@ -1137,17 +1143,17 @@ model_region_fit <- model_region %>% fit(model_data)
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 0.9421 </td>
-   <td style="text-align:right;"> 0.9259 </td>
-   <td style="text-align:right;"> 1.49 </td>
-   <td style="text-align:right;"> 58.2243 </td>
+   <td style="text-align:right;"> 0.9557 </td>
+   <td style="text-align:right;"> 0.9432 </td>
+   <td style="text-align:right;"> 1.32 </td>
+   <td style="text-align:right;"> 76.4651 </td>
    <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 262 </td>
-   <td style="text-align:right;"> -2038.17 </td>
-   <td style="text-align:right;"> 4604.33 </td>
-   <td style="text-align:right;"> 5948.33 </td>
-   <td style="text-align:right;"> 2094.66 </td>
-   <td style="text-align:right;"> 938 </td>
+   <td style="text-align:right;"> 264 </td>
+   <td style="text-align:right;"> -1890.17 </td>
+   <td style="text-align:right;"> 4312.34 </td>
+   <td style="text-align:right;"> 5666.52 </td>
+   <td style="text-align:right;"> 1637.12 </td>
+   <td style="text-align:right;"> 936 </td>
    <td style="text-align:right;"> 1201 </td>
   </tr>
 </tbody>
@@ -1183,7 +1189,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `region = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Region, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Low Income, Commonwealth Middle Income, East Asia, East Asia & Pacific - World Bank region, Eastern Europe, Eastern Mediterranean Region, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Latin America & Caribbean - World Bank region, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, North America, Northern Ireland, Oceania, OECD Countries, Region of the Americas, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income, World Bank Upper Middle Income
 ```
 :::
 
@@ -1230,18 +1236,18 @@ model_region_fit %>%
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 0.4462 </td>
-   <td style="text-align:right;"> 0.438 </td>
-   <td style="text-align:right;"> 4.23 </td>
-   <td style="text-align:right;"> 54.7243 </td>
+   <td style="text-align:right;"> 0.5534 </td>
+   <td style="text-align:right;"> 0.5468 </td>
+   <td style="text-align:right;"> 3.8371 </td>
+   <td style="text-align:right;"> 83.5133 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 13 </td>
-   <td style="text-align:right;"> -2559.38 </td>
-   <td style="text-align:right;"> 5148.75 </td>
-   <td style="text-align:right;"> 5220.74 </td>
-   <td style="text-align:right;"> 15799.06 </td>
-   <td style="text-align:right;"> 883 </td>
-   <td style="text-align:right;"> 897 </td>
+   <td style="text-align:right;"> -2452.59 </td>
+   <td style="text-align:right;"> 4935.18 </td>
+   <td style="text-align:right;"> 5007.05 </td>
+   <td style="text-align:right;"> 12897.38 </td>
+   <td style="text-align:right;"> 876 </td>
+   <td style="text-align:right;"> 890 </td>
   </tr>
 </tbody>
 </table>
@@ -1264,6 +1270,8 @@ model_region_fit %>%
 Because the relationship between year and percent deaths by IAP is relatively low (2.35%) it may not be worth including in the analysis. It may be valuable to reconsider this assumption after generating a Bland-Altman graph to visualize the relationship with the entire data set.
 :::
 
+------------------------------------------------------------------------
+
 # Hypothesis:
 
 The final data set containing the additional variables used for this analysis halves the temporal scale from a three-decade analysis to just fifteen years with five-year intervals (1952, 1957, 2002, 2007). This reduction suggests that the initial regression analysis (Table C) may prove a small enough predictive factor that it can be largely considered null, minus some exploration of its statistical significance.
@@ -1280,6 +1288,8 @@ The final data set containing the additional variables used for this analysis ha
 -   Temperate regions are more likely to invest in indoor heating which often involved the use of bio fuels like wood stoves. Poor ventilation is also likely to be a component that will play a role in temperate regions being associated with greater % deaths by IAP. it is possible that analysis into exposure levels based on regions and even determine if years after a cold winter will reflect higher rates of exposure-related premature deaths.
 
 **Null Hypothesis:** There is no significant association between a country's GDP or population size and the percentage of premature deaths caused by indoor pollution from biofuels. Furthermore, there are no significant regional differences in the percentage of premature deaths caused by indoor pollution from biofuels after controlling for GDP, population size, and other relevant factors.
+
+------------------------------------------------------------------------
 
 # Hypothesis Testing
 
@@ -1985,6 +1995,24 @@ model_region_fit %>%
 
 ```{.r .cell-code}
 merged_df %>%
+summarize(mean(life_exp))%>%
+  print()
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+# A tibble: 1 × 1
+  `mean(life_exp)`
+             <dbl>
+1             65.4
+```
+:::
+:::
+
+::: {.cell}
+
+```{.r .cell-code}
+merged_df %>%
   
   rename("percent_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
   
@@ -2007,7 +2035,7 @@ merged_df %>%
 :::
 
 ::: {.cell-output-display}
-![](IndoorPollution_files/figure-html/unnamed-chunk-29-1.png){width=672}
+![](IndoorPollution_files/figure-html/unnamed-chunk-30-1.png){width=672}
 :::
 :::
 
@@ -2129,8 +2157,7 @@ model_region_fit %>%
 :::
 
 
-::: {.callout-note style="color:gray" appearance="simple"}
-## Discussion
+# Discussion
 
 The analyses conducted provide further understanding of the observations made during the exploratory analysis phase. Each single-variable regression analysis conducted was highly reliable (p\<0.001), although the strength of correlation varied considerably. Examining the implications of these findings will be valuable in comprehending the outcomes of multiple variable analysis, which can provide more insight into the importance and cumulative impact of these connections. In this study, the association between the percentage of deaths caused by indoor air pollution (IAP) and three independent variables, namely GDP, year, and region, were compared separately to comprehend their distinct contributions. The hypothesis under examination posited that GDP had the greatest influence on the proportion of deaths caused by IAP. However, the results of the analysis revealed that region was a better predictor of IAP (59.2% of the variation in IAP deaths was estimated to be predictable by region) than GDP (only 50.8% of the variation in IAP deaths was predicted by GDP).
 
@@ -2142,10 +2169,13 @@ Section 1.3, 1.4, and 1.5 use the merged dataset combining the original indoor p
 
 **Section 1.3** Population was found to have the lowest impact in the percentage of deaths caused by indoor air pollution (r\^2 = 0.012, p\<0.001). This likely related to the fact that the deaths is given as a percentage of the population, so unless increasing the population contributes to a reduction of quality of life shared by the total population, the percentage should be relatively unaffected. The estimate for this value is 0.00 suggesting no significant linear relationship exists between population and percent premature deaths when only considering this single variable.
 
-**Section 1.4** GDP is the second of the main variables being investigated in this analysis, and is hypothesized to be the most significant predictor for estimating a given country or region's percentage of premature deaths from IAP. The estimate generated by this regression analysis found that for approximately every 0.00037 \$USD increase in GDP there is a 1% decrease in deaths caused by indoor air pollutants (r\^2 = 50.8, p\<0.001). This value, while very small, suggests that GDP may be a stronger predictor when considering the compound relationship between GDP and region or entity as an additional variable.
+**Section 1.4** GDP is the second of the main variables being investigated in this analysis, and is hypothesized to be the most significant predictor for estimating a given country or region's percentage of premature deaths from IAP. The estimate generated by this regression analysis found (with results scaled x100) for every 100\$ increase to GDP per capita, the percentage of premature deaths caused by indoor pollution decreases by 0.0372%, (p \<0.001, R\^2 = 0.5079). The intercept provided by this analysis suggests that when GDP is = 0 the mean percentage of premature deaths from indoor pollution would be 9.84%. These results provide strong evidence for the hypothesis of this analysis. to be compounded when controlling for regions.
 
-**Section 1.5** was created to consider the role that deaths from indoor air pollution plays on life expectancy. The graph generated in this section appears to show that countries suffering from high rates of indoor air pollution tend to also have lower life expectancy, ranging from approximately 75 to 60. This graph is supported by the regression analysis that suggests for every 1% increase in percent premature deaths from indoor air pollution, a decrease of 1.55 years is predicted (r\^2 = 0.577) this analysis strongly asserts the growing concern related to the health impacted related to indoor air pollution. This correlation is a great representation of why this analysis and the data collection associated represents valuable research needed for for public health and national development.
-:::
+**Section 1.5** was created to consider the role that deaths from indoor air pollution plays on life expectancy. The graph generated in this section appears to show that countries suffering from high rates of indoor air pollution tend to also have lower life expectancy, ranging from approximately 75 to 60. This graph is supported by the regression analysis that suggests for every 1% increase in percent premature deaths from indoor air pollution, a decrease in life experctancy of 1.55 years is predicted (p \<0.01, r\^2 = 0.577).
+
+This analysis also provided an intercept that estimates if percent IAP were = 0, average life expectancy would increase from the mean (65.43 years) to 75.08 years old. This is a nearly 10 year estimated increase on global lifespans that could be achieved by improving the quality of the air inside of households and public spaces.
+
+------------------------------------------------------------------------
 
 ## [Multiple Variable Visualization and Linear Regression]{.underline}
 
@@ -2207,7 +2237,7 @@ Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 :::
 
 ::: {.cell-output-display}
-![](IndoorPollution_files/figure-html/unnamed-chunk-32-1.png){width=672}
+![](IndoorPollution_files/figure-html/unnamed-chunk-33-1.png){width=672}
 :::
 :::
 
@@ -2244,8 +2274,11 @@ BA_plot %>%
   
   ggplot(aes(current, change)) +
     geom_point()+
-  facet_wrap(~region)+
-  geom_smooth(method = "lm")
+  geom_smooth(method = "lm",
+              se = FALSE)+
+  labs(x = "Current (2015)",
+       y = "Change (2015 - 1995)",
+       title = "Bland-Altman plot for Change in Percentage Premature Deaths (1992-2007)")
 ```
 
 ::: {.cell-output .cell-output-stderr}
@@ -2255,7 +2288,7 @@ BA_plot %>%
 :::
 
 ::: {.cell-output-display}
-![](IndoorPollution_files/figure-html/unnamed-chunk-33-1.png){width=672}
+![](IndoorPollution_files/figure-html/unnamed-chunk-34-1.png){width=672}
 :::
 :::
 
@@ -2513,7 +2546,7 @@ Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning
 :::
 
 ::: {.cell-output-display}
-![](IndoorPollution_files/figure-html/unnamed-chunk-36-1.png){width=672}
+![](IndoorPollution_files/figure-html/unnamed-chunk-37-1.png){width=672}
 :::
 :::
 
@@ -2712,7 +2745,7 @@ merged_df %>%
 :::
 
 ::: {.cell-output-display}
-![](IndoorPollution_files/figure-html/unnamed-chunk-39-1.png){width=672}
+![](IndoorPollution_files/figure-html/unnamed-chunk-40-1.png){width=672}
 :::
 :::
 
@@ -2791,6 +2824,963 @@ model_region_fit <- model_region %>% fit(model_data)
 :::
 :::
 
+::: {.cell}
+
+```{.r .cell-code}
+model_region_fit %>%
+  extract_fit_engine() %>%
+  tidy() %>%
+   arrange(desc(estimate)) %>%
+  kable(digits = c(3,3,3,4)) %>%
+  kable_styling(bootstrap_options = c("hover", "striped"))
+```
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> term </th>
+   <th style="text-align:right;"> estimate </th>
+   <th style="text-align:right;"> std.error </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:right;"> 19.451 </td>
+   <td style="text-align:right;"> 0.569 </td>
+   <td style="text-align:right;"> 34.2074 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> gdp_percap </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> -4.5728 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityNepal </td>
+   <td style="text-align:right;"> -0.878 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -1.0918 </td>
+   <td style="text-align:right;"> 0.276 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMyanmar </td>
+   <td style="text-align:right;"> -2.398 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -2.9839 </td>
+   <td style="text-align:right;"> 0.003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityCambodia </td>
+   <td style="text-align:right;"> -2.664 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -3.3142 </td>
+   <td style="text-align:right;"> 0.001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBangladesh </td>
+   <td style="text-align:right;"> -2.832 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -3.5234 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMadagascar </td>
+   <td style="text-align:right;"> -3.251 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -4.0440 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySudan </td>
+   <td style="text-align:right;"> -4.165 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -5.1789 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityNiger </td>
+   <td style="text-align:right;"> -4.172 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -5.1899 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySao Tome and Principe </td>
+   <td style="text-align:right;"> -4.182 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -5.2015 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySomalia </td>
+   <td style="text-align:right;"> -4.344 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -5.4048 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityHaiti </td>
+   <td style="text-align:right;"> -4.632 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -5.7622 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityChad </td>
+   <td style="text-align:right;"> -4.831 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -6.0100 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityGuinea </td>
+   <td style="text-align:right;"> -5.154 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -6.4120 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBenin </td>
+   <td style="text-align:right;"> -5.327 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -6.6266 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityPakistan </td>
+   <td style="text-align:right;"> -5.579 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -6.9349 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityGuinea-Bissau </td>
+   <td style="text-align:right;"> -5.617 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -6.9878 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySierra Leone </td>
+   <td style="text-align:right;"> -5.618 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -6.9898 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityComoros </td>
+   <td style="text-align:right;"> -5.763 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -7.1695 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityEthiopia </td>
+   <td style="text-align:right;"> -5.763 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -7.1702 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityGambia </td>
+   <td style="text-align:right;"> -5.852 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -7.2802 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityIndia </td>
+   <td style="text-align:right;"> -6.961 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -8.6573 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityChina </td>
+   <td style="text-align:right;"> -6.971 </td>
+   <td style="text-align:right;"> 0.805 </td>
+   <td style="text-align:right;"> -8.6548 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityVietnam </td>
+   <td style="text-align:right;"> -6.997 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -8.7024 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityTogo </td>
+   <td style="text-align:right;"> -7.209 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -8.9683 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBurkina Faso </td>
+   <td style="text-align:right;"> -7.215 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -8.9755 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMali </td>
+   <td style="text-align:right;"> -7.248 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -9.0177 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityRwanda </td>
+   <td style="text-align:right;"> -7.269 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -9.0439 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityLiberia </td>
+   <td style="text-align:right;"> -7.271 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -9.0454 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMozambique </td>
+   <td style="text-align:right;"> -7.338 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -9.1292 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBurundi </td>
+   <td style="text-align:right;"> -7.542 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -9.3824 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityAngola </td>
+   <td style="text-align:right;"> -7.716 </td>
+   <td style="text-align:right;"> 0.806 </td>
+   <td style="text-align:right;"> -9.5783 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityCentral African Republic </td>
+   <td style="text-align:right;"> -7.782 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -9.6811 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityGuatemala </td>
+   <td style="text-align:right;"> -8.041 </td>
+   <td style="text-align:right;"> 0.809 </td>
+   <td style="text-align:right;"> -9.9390 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityEritrea </td>
+   <td style="text-align:right;"> -8.108 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -10.0867 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityNigeria </td>
+   <td style="text-align:right;"> -8.154 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -10.1406 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityNicaragua </td>
+   <td style="text-align:right;"> -8.187 </td>
+   <td style="text-align:right;"> 0.805 </td>
+   <td style="text-align:right;"> -10.1747 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySenegal </td>
+   <td style="text-align:right;"> -8.262 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -10.2763 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityHonduras </td>
+   <td style="text-align:right;"> -8.487 </td>
+   <td style="text-align:right;"> 0.806 </td>
+   <td style="text-align:right;"> -10.5329 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityCote d'Ivoire </td>
+   <td style="text-align:right;"> -8.548 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -10.6315 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMongolia </td>
+   <td style="text-align:right;"> -8.551 </td>
+   <td style="text-align:right;"> 0.805 </td>
+   <td style="text-align:right;"> -10.6291 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityTanzania </td>
+   <td style="text-align:right;"> -8.603 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -10.7028 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityEquatorial Guinea </td>
+   <td style="text-align:right;"> -8.718 </td>
+   <td style="text-align:right;"> 0.813 </td>
+   <td style="text-align:right;"> -10.7298 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMauritania </td>
+   <td style="text-align:right;"> -9.109 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -11.3298 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityUganda </td>
+   <td style="text-align:right;"> -9.394 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -11.6871 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityGhana </td>
+   <td style="text-align:right;"> -9.457 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -11.7648 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMalawi </td>
+   <td style="text-align:right;"> -9.537 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -11.8655 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityCameroon </td>
+   <td style="text-align:right;"> -9.999 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -12.4330 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityPhilippines </td>
+   <td style="text-align:right;"> -10.088 </td>
+   <td style="text-align:right;"> 0.805 </td>
+   <td style="text-align:right;"> -12.5320 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityAlbania </td>
+   <td style="text-align:right;"> -10.116 </td>
+   <td style="text-align:right;"> 0.807 </td>
+   <td style="text-align:right;"> -12.5296 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityParaguay </td>
+   <td style="text-align:right;"> -10.249 </td>
+   <td style="text-align:right;"> 0.807 </td>
+   <td style="text-align:right;"> -12.6932 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityKenya </td>
+   <td style="text-align:right;"> -10.442 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -12.9891 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityZambia </td>
+   <td style="text-align:right;"> -10.694 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -13.3041 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySri Lanka </td>
+   <td style="text-align:right;"> -10.828 </td>
+   <td style="text-align:right;"> 0.805 </td>
+   <td style="text-align:right;"> -13.4444 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityIndonesia </td>
+   <td style="text-align:right;"> -10.868 </td>
+   <td style="text-align:right;"> 0.805 </td>
+   <td style="text-align:right;"> -13.4940 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityNamibia </td>
+   <td style="text-align:right;"> -10.878 </td>
+   <td style="text-align:right;"> 0.808 </td>
+   <td style="text-align:right;"> -13.4713 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityLesotho </td>
+   <td style="text-align:right;"> -10.963 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -13.6375 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBosnia and Herzegovina </td>
+   <td style="text-align:right;"> -11.368 </td>
+   <td style="text-align:right;"> 0.810 </td>
+   <td style="text-align:right;"> -14.0314 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityEl Salvador </td>
+   <td style="text-align:right;"> -12.106 </td>
+   <td style="text-align:right;"> 0.810 </td>
+   <td style="text-align:right;"> -14.9441 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBotswana </td>
+   <td style="text-align:right;"> -12.147 </td>
+   <td style="text-align:right;"> 0.831 </td>
+   <td style="text-align:right;"> -14.6124 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityDjibouti </td>
+   <td style="text-align:right;"> -12.418 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -15.4388 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityZimbabwe </td>
+   <td style="text-align:right;"> -12.860 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -15.9990 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBolivia </td>
+   <td style="text-align:right;"> -12.881 </td>
+   <td style="text-align:right;"> 0.806 </td>
+   <td style="text-align:right;"> -15.9807 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityGabon </td>
+   <td style="text-align:right;"> -13.092 </td>
+   <td style="text-align:right;"> 0.855 </td>
+   <td style="text-align:right;"> -15.3166 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySerbia </td>
+   <td style="text-align:right;"> -13.744 </td>
+   <td style="text-align:right;"> 0.823 </td>
+   <td style="text-align:right;"> -16.6932 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityPeru </td>
+   <td style="text-align:right;"> -13.843 </td>
+   <td style="text-align:right;"> 0.812 </td>
+   <td style="text-align:right;"> -17.0413 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityThailand </td>
+   <td style="text-align:right;"> -14.036 </td>
+   <td style="text-align:right;"> 0.813 </td>
+   <td style="text-align:right;"> -17.2737 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityDominican Republic </td>
+   <td style="text-align:right;"> -14.131 </td>
+   <td style="text-align:right;"> 0.808 </td>
+   <td style="text-align:right;"> -17.4912 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMorocco </td>
+   <td style="text-align:right;"> -14.316 </td>
+   <td style="text-align:right;"> 0.806 </td>
+   <td style="text-align:right;"> -17.7657 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMontenegro </td>
+   <td style="text-align:right;"> -14.788 </td>
+   <td style="text-align:right;"> 0.818 </td>
+   <td style="text-align:right;"> -18.0853 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityOman </td>
+   <td style="text-align:right;"> -14.850 </td>
+   <td style="text-align:right;"> 0.917 </td>
+   <td style="text-align:right;"> -16.1925 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBrazil </td>
+   <td style="text-align:right;"> -14.998 </td>
+   <td style="text-align:right;"> 0.821 </td>
+   <td style="text-align:right;"> -18.2734 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityNorway </td>
+   <td style="text-align:right;"> -15.024 </td>
+   <td style="text-align:right;"> 1.243 </td>
+   <td style="text-align:right;"> -12.0836 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityJamaica </td>
+   <td style="text-align:right;"> -15.083 </td>
+   <td style="text-align:right;"> 0.817 </td>
+   <td style="text-align:right;"> -18.4570 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityColombia </td>
+   <td style="text-align:right;"> -15.109 </td>
+   <td style="text-align:right;"> 0.813 </td>
+   <td style="text-align:right;"> -18.5856 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySaudi Arabia </td>
+   <td style="text-align:right;"> -15.150 </td>
+   <td style="text-align:right;"> 0.933 </td>
+   <td style="text-align:right;"> -16.2346 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityKuwait </td>
+   <td style="text-align:right;"> -15.245 </td>
+   <td style="text-align:right;"> 1.193 </td>
+   <td style="text-align:right;"> -12.7741 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityRomania </td>
+   <td style="text-align:right;"> -15.260 </td>
+   <td style="text-align:right;"> 0.821 </td>
+   <td style="text-align:right;"> -18.5782 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySouth Africa </td>
+   <td style="text-align:right;"> -15.329 </td>
+   <td style="text-align:right;"> 0.820 </td>
+   <td style="text-align:right;"> -18.6868 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMexico </td>
+   <td style="text-align:right;"> -15.497 </td>
+   <td style="text-align:right;"> 0.834 </td>
+   <td style="text-align:right;"> -18.5827 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityUnited States </td>
+   <td style="text-align:right;"> -15.531 </td>
+   <td style="text-align:right;"> 1.161 </td>
+   <td style="text-align:right;"> -13.3791 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityPanama </td>
+   <td style="text-align:right;"> -15.532 </td>
+   <td style="text-align:right;"> 0.819 </td>
+   <td style="text-align:right;"> -18.9558 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySingapore </td>
+   <td style="text-align:right;"> -15.605 </td>
+   <td style="text-align:right;"> 1.127 </td>
+   <td style="text-align:right;"> -13.8478 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityTaiwan </td>
+   <td style="text-align:right;"> -15.747 </td>
+   <td style="text-align:right;"> 0.937 </td>
+   <td style="text-align:right;"> -16.8081 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySwitzerland </td>
+   <td style="text-align:right;"> -15.898 </td>
+   <td style="text-align:right;"> 1.105 </td>
+   <td style="text-align:right;"> -14.3839 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityHungary </td>
+   <td style="text-align:right;"> -15.996 </td>
+   <td style="text-align:right;"> 0.857 </td>
+   <td style="text-align:right;"> -18.6650 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBulgaria </td>
+   <td style="text-align:right;"> -16.042 </td>
+   <td style="text-align:right;"> 0.819 </td>
+   <td style="text-align:right;"> -19.5845 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityNetherlands </td>
+   <td style="text-align:right;"> -16.108 </td>
+   <td style="text-align:right;"> 1.073 </td>
+   <td style="text-align:right;"> -15.0143 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityCanada </td>
+   <td style="text-align:right;"> -16.162 </td>
+   <td style="text-align:right;"> 1.063 </td>
+   <td style="text-align:right;"> -15.2040 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityAustria </td>
+   <td style="text-align:right;"> -16.163 </td>
+   <td style="text-align:right;"> 1.062 </td>
+   <td style="text-align:right;"> -15.2194 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityDenmark </td>
+   <td style="text-align:right;"> -16.213 </td>
+   <td style="text-align:right;"> 1.058 </td>
+   <td style="text-align:right;"> -15.3216 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityPoland </td>
+   <td style="text-align:right;"> -16.239 </td>
+   <td style="text-align:right;"> 0.839 </td>
+   <td style="text-align:right;"> -19.3500 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityIceland </td>
+   <td style="text-align:right;"> -16.289 </td>
+   <td style="text-align:right;"> 1.047 </td>
+   <td style="text-align:right;"> -15.5614 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityIreland </td>
+   <td style="text-align:right;"> -16.367 </td>
+   <td style="text-align:right;"> 1.033 </td>
+   <td style="text-align:right;"> -15.8389 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBelgium </td>
+   <td style="text-align:right;"> -16.369 </td>
+   <td style="text-align:right;"> 1.035 </td>
+   <td style="text-align:right;"> -15.8152 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityAustralia </td>
+   <td style="text-align:right;"> -16.384 </td>
+   <td style="text-align:right;"> 1.029 </td>
+   <td style="text-align:right;"> -15.9269 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityJapan </td>
+   <td style="text-align:right;"> -16.399 </td>
+   <td style="text-align:right;"> 1.030 </td>
+   <td style="text-align:right;"> -15.9213 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityGermany </td>
+   <td style="text-align:right;"> -16.404 </td>
+   <td style="text-align:right;"> 1.032 </td>
+   <td style="text-align:right;"> -15.8935 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBahrain </td>
+   <td style="text-align:right;"> -16.477 </td>
+   <td style="text-align:right;"> 0.952 </td>
+   <td style="text-align:right;"> -17.3025 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityEcuador </td>
+   <td style="text-align:right;"> -16.501 </td>
+   <td style="text-align:right;"> 0.816 </td>
+   <td style="text-align:right;"> -20.2330 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySweden </td>
+   <td style="text-align:right;"> -16.505 </td>
+   <td style="text-align:right;"> 1.017 </td>
+   <td style="text-align:right;"> -16.2222 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityUnited Kingdom </td>
+   <td style="text-align:right;"> -16.537 </td>
+   <td style="text-align:right;"> 1.014 </td>
+   <td style="text-align:right;"> -16.3033 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityFrance </td>
+   <td style="text-align:right;"> -16.560 </td>
+   <td style="text-align:right;"> 1.009 </td>
+   <td style="text-align:right;"> -16.4085 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySlovenia </td>
+   <td style="text-align:right;"> -16.567 </td>
+   <td style="text-align:right;"> 0.910 </td>
+   <td style="text-align:right;"> -18.2042 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityCosta Rica </td>
+   <td style="text-align:right;"> -16.643 </td>
+   <td style="text-align:right;"> 0.819 </td>
+   <td style="text-align:right;"> -20.3294 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityFinland </td>
+   <td style="text-align:right;"> -16.668 </td>
+   <td style="text-align:right;"> 0.995 </td>
+   <td style="text-align:right;"> -16.7533 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityItaly </td>
+   <td style="text-align:right;"> -16.685 </td>
+   <td style="text-align:right;"> 0.986 </td>
+   <td style="text-align:right;"> -16.9155 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityIraq </td>
+   <td style="text-align:right;"> -16.769 </td>
+   <td style="text-align:right;"> 0.807 </td>
+   <td style="text-align:right;"> -20.7783 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySpain </td>
+   <td style="text-align:right;"> -16.823 </td>
+   <td style="text-align:right;"> 0.953 </td>
+   <td style="text-align:right;"> -17.6556 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityChile </td>
+   <td style="text-align:right;"> -16.917 </td>
+   <td style="text-align:right;"> 0.834 </td>
+   <td style="text-align:right;"> -20.2963 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityGreece </td>
+   <td style="text-align:right;"> -17.053 </td>
+   <td style="text-align:right;"> 0.934 </td>
+   <td style="text-align:right;"> -18.2607 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityNew Zealand </td>
+   <td style="text-align:right;"> -17.131 </td>
+   <td style="text-align:right;"> 0.938 </td>
+   <td style="text-align:right;"> -18.2611 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityIsrael </td>
+   <td style="text-align:right;"> -17.171 </td>
+   <td style="text-align:right;"> 0.934 </td>
+   <td style="text-align:right;"> -18.3849 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityCroatia </td>
+   <td style="text-align:right;"> -17.259 </td>
+   <td style="text-align:right;"> 0.838 </td>
+   <td style="text-align:right;"> -20.5938 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityPortugal </td>
+   <td style="text-align:right;"> -17.261 </td>
+   <td style="text-align:right;"> 0.901 </td>
+   <td style="text-align:right;"> -19.1595 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityLibya </td>
+   <td style="text-align:right;"> -17.458 </td>
+   <td style="text-align:right;"> 0.832 </td>
+   <td style="text-align:right;"> -20.9818 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityArgentina </td>
+   <td style="text-align:right;"> -17.522 </td>
+   <td style="text-align:right;"> 0.834 </td>
+   <td style="text-align:right;"> -21.0146 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMauritius </td>
+   <td style="text-align:right;"> -17.537 </td>
+   <td style="text-align:right;"> 0.822 </td>
+   <td style="text-align:right;"> -21.3248 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityPuerto Rico </td>
+   <td style="text-align:right;"> -17.624 </td>
+   <td style="text-align:right;"> 0.890 </td>
+   <td style="text-align:right;"> -19.8112 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityIran </td>
+   <td style="text-align:right;"> -17.732 </td>
+   <td style="text-align:right;"> 0.826 </td>
+   <td style="text-align:right;"> -21.4671 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityLebanon </td>
+   <td style="text-align:right;"> -17.779 </td>
+   <td style="text-align:right;"> 0.825 </td>
+   <td style="text-align:right;"> -21.5558 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityTurkey </td>
+   <td style="text-align:right;"> -17.814 </td>
+   <td style="text-align:right;"> 0.816 </td>
+   <td style="text-align:right;"> -21.8412 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityUruguay </td>
+   <td style="text-align:right;"> -17.884 </td>
+   <td style="text-align:right;"> 0.825 </td>
+   <td style="text-align:right;"> -21.6731 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityTunisia </td>
+   <td style="text-align:right;"> -17.900 </td>
+   <td style="text-align:right;"> 0.811 </td>
+   <td style="text-align:right;"> -22.0695 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMalaysia </td>
+   <td style="text-align:right;"> -17.982 </td>
+   <td style="text-align:right;"> 0.831 </td>
+   <td style="text-align:right;"> -21.6345 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityAlgeria </td>
+   <td style="text-align:right;"> -18.024 </td>
+   <td style="text-align:right;"> 0.811 </td>
+   <td style="text-align:right;"> -22.2356 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityCuba </td>
+   <td style="text-align:right;"> -18.084 </td>
+   <td style="text-align:right;"> 0.815 </td>
+   <td style="text-align:right;"> -22.1959 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityVenezuela </td>
+   <td style="text-align:right;"> -18.129 </td>
+   <td style="text-align:right;"> 0.832 </td>
+   <td style="text-align:right;"> -21.7786 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityTrinidad and Tobago </td>
+   <td style="text-align:right;"> -18.191 </td>
+   <td style="text-align:right;"> 0.840 </td>
+   <td style="text-align:right;"> -21.6611 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityEgypt </td>
+   <td style="text-align:right;"> -18.336 </td>
+   <td style="text-align:right;"> 0.809 </td>
+   <td style="text-align:right;"> -22.6781 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySyria </td>
+   <td style="text-align:right;"> -18.452 </td>
+   <td style="text-align:right;"> 0.807 </td>
+   <td style="text-align:right;"> -22.8648 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityJordan </td>
+   <td style="text-align:right;"> -18.949 </td>
+   <td style="text-align:right;"> 0.807 </td>
+   <td style="text-align:right;"> -23.4826 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
+
 
 ### 1.10) [GDP and Population size, by Country]{.underline}
 
@@ -2814,8 +3804,8 @@ merged_df %>%
   geom_smooth(method = "lm",
               se=FALSE) +
   labs(title = " ",
-       x = "average population by region (log10 scale)",
-       y = "percent deaths by IAP")
+       x = "Average Population by Country (log10 scale)",
+       y = "Percent Deaths by IAP")
 ```
 
 ::: {.cell-output .cell-output-stderr}
@@ -2825,7 +3815,7 @@ merged_df %>%
 :::
 
 ::: {.cell-output-display}
-![](IndoorPollution_files/figure-html/unnamed-chunk-41-1.png){width=672}
+![](IndoorPollution_files/figure-html/unnamed-chunk-43-1.png){width=672}
 :::
 :::
 
@@ -2852,59 +3842,6 @@ model_region<-
   workflow() %>%
   add_model(model_region_temp) %>%
   add_recipe(model_region_reg) #combine the model and recipe to generate a regression analysis
-
-model_region_fit <- model_region %>% fit(model_data)
-
- model_region_fit %>%
-  glance() %>% 
-  kable(digits=c(4,4,2,4,0,0,2,2,2,2,0,0)) %>% 
-  kable_styling(bootstrap_options = c("hover", "striped"))
-```
-
-::: {.cell-output-display}
-
-`````{=html}
-<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:right;"> r.squared </th>
-   <th style="text-align:right;"> adj.r.squared </th>
-   <th style="text-align:right;"> sigma </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-   <th style="text-align:right;"> df </th>
-   <th style="text-align:right;"> logLik </th>
-   <th style="text-align:right;"> AIC </th>
-   <th style="text-align:right;"> BIC </th>
-   <th style="text-align:right;"> deviance </th>
-   <th style="text-align:right;"> df.residual </th>
-   <th style="text-align:right;"> nobs </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 0.5135 </td>
-   <td style="text-align:right;"> 0.5116 </td>
-   <td style="text-align:right;"> 4.03 </td>
-   <td style="text-align:right;"> 274.9573 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> -1472.82 </td>
-   <td style="text-align:right;"> 2953.64 </td>
-   <td style="text-align:right;"> 2970.68 </td>
-   <td style="text-align:right;"> 8476.55 </td>
-   <td style="text-align:right;"> 521 </td>
-   <td style="text-align:right;"> 524 </td>
-  </tr>
-</tbody>
-</table>
-
-`````
-
-:::
-
-```{.r .cell-code}
-  # looking to build a regression analysis to determine if a correltion can be seen in the data. prediction is decreasing n over time grouped by region 
 ```
 :::
 
@@ -2914,7 +3851,7 @@ model_region_fit <- model_region %>% fit(model_data)
 model_region_fit %>%
   extract_fit_engine() %>%
   tidy() %>%
-  kable(digits =c(3,5,3,3)) %>%
+  kable(digits = c(3,3,3,4)) %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
@@ -2934,163 +3871,927 @@ model_region_fit %>%
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:right;"> 9.68950 </td>
-   <td style="text-align:right;"> 0.242 </td>
-   <td style="text-align:right;"> 39.984 </td>
+   <td style="text-align:right;"> 19.451 </td>
+   <td style="text-align:right;"> 0.569 </td>
+   <td style="text-align:right;"> 34.2074 </td>
    <td style="text-align:right;"> 0.000 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> gdp_percap </td>
-   <td style="text-align:right;"> -0.00037 </td>
    <td style="text-align:right;"> 0.000 </td>
-   <td style="text-align:right;"> -23.175 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> -4.5728 </td>
    <td style="text-align:right;"> 0.000 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> pop </td>
-   <td style="text-align:right;"> 0.00000 </td>
+   <td style="text-align:left;"> entityAlbania </td>
+   <td style="text-align:right;"> -10.116 </td>
+   <td style="text-align:right;"> 0.807 </td>
+   <td style="text-align:right;"> -12.5296 </td>
    <td style="text-align:right;"> 0.000 </td>
-   <td style="text-align:right;"> 2.450 </td>
-   <td style="text-align:right;"> 0.015 </td>
   </tr>
-</tbody>
-</table>
-
-`````
-
-:::
-:::
-
-
-### 1.11) Multi-Variable Regression Analysis: GDP, Population Size
-
-
-::: {.cell}
-
-```{.r .cell-code}
-model_data <- merged_df %>%
-  
-  rename("percent_deaths_by_IAP" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-  
-   mutate("region" = countrycode(entity,origin = "country.name",
-   destination= "region")) %>%
-  filter(!is.na(region))
-  
-model_region_temp <- linear_reg() %>% 
-  set_engine("lm")  #construct model instance
-
-model_region_reg<-
-  recipe(percent_deaths_by_IAP~life_exp+pop+gdp_percap,
-         data = model_data)
-  #generate a recipe -- what variables do we have in y = mx+b
-
-model_region<-
-  workflow() %>%
-  add_model(model_region_temp) %>%
-  add_recipe(model_region_reg) #combine the model and recipe to generate a regression analysis
-
-model_region_fit <- model_region %>% fit(model_data)
-
- model_region_fit %>%
-  glance() %>% 
-  kable(digits=c(4,4,2,4,0,0,2,2,2,2,0,0)) %>% 
-  kable_styling(bootstrap_options = c("hover", "striped"))
-```
-
-::: {.cell-output-display}
-
-`````{=html}
-<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
- <thead>
   <tr>
-   <th style="text-align:right;"> r.squared </th>
-   <th style="text-align:right;"> adj.r.squared </th>
-   <th style="text-align:right;"> sigma </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-   <th style="text-align:right;"> df </th>
-   <th style="text-align:right;"> logLik </th>
-   <th style="text-align:right;"> AIC </th>
-   <th style="text-align:right;"> BIC </th>
-   <th style="text-align:right;"> deviance </th>
-   <th style="text-align:right;"> df.residual </th>
-   <th style="text-align:right;"> nobs </th>
+   <td style="text-align:left;"> entityAlgeria </td>
+   <td style="text-align:right;"> -18.024 </td>
+   <td style="text-align:right;"> 0.811 </td>
+   <td style="text-align:right;"> -22.2356 </td>
+   <td style="text-align:right;"> 0.000 </td>
   </tr>
- </thead>
-<tbody>
   <tr>
-   <td style="text-align:right;"> 0.659 </td>
-   <td style="text-align:right;"> 0.657 </td>
-   <td style="text-align:right;"> 3.38 </td>
-   <td style="text-align:right;"> 334.9941 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> -1379.71 </td>
-   <td style="text-align:right;"> 2769.41 </td>
-   <td style="text-align:right;"> 2790.72 </td>
-   <td style="text-align:right;"> 5941.21 </td>
-   <td style="text-align:right;"> 520 </td>
-   <td style="text-align:right;"> 524 </td>
+   <td style="text-align:left;"> entityAngola </td>
+   <td style="text-align:right;"> -7.716 </td>
+   <td style="text-align:right;"> 0.806 </td>
+   <td style="text-align:right;"> -9.5783 </td>
+   <td style="text-align:right;"> 0.000 </td>
   </tr>
-</tbody>
-</table>
-
-`````
-
-:::
-:::
-
-::: {.cell}
-
-```{.r .cell-code}
-model_region_fit %>%
-  extract_fit_engine() %>%
-  tidy() %>%
-  kable(digits =c(3,5,3,3)) %>%
-  kable_styling(bootstrap_options = c("hover", "striped"))
-```
-
-::: {.cell-output-display}
-
-`````{=html}
-<table class="table table-hover table-striped" style="margin-left: auto; margin-right: auto;">
- <thead>
   <tr>
-   <th style="text-align:left;"> term </th>
-   <th style="text-align:right;"> estimate </th>
-   <th style="text-align:right;"> std.error </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
+   <td style="text-align:left;"> entityArgentina </td>
+   <td style="text-align:right;"> -17.522 </td>
+   <td style="text-align:right;"> 0.834 </td>
+   <td style="text-align:right;"> -21.0146 </td>
+   <td style="text-align:right;"> 0.000 </td>
   </tr>
- </thead>
-<tbody>
   <tr>
-   <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:right;"> 24.72684 </td>
+   <td style="text-align:left;"> entityAustralia </td>
+   <td style="text-align:right;"> -16.384 </td>
+   <td style="text-align:right;"> 1.029 </td>
+   <td style="text-align:right;"> -15.9269 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityAustria </td>
+   <td style="text-align:right;"> -16.163 </td>
+   <td style="text-align:right;"> 1.062 </td>
+   <td style="text-align:right;"> -15.2194 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBahrain </td>
+   <td style="text-align:right;"> -16.477 </td>
+   <td style="text-align:right;"> 0.952 </td>
+   <td style="text-align:right;"> -17.3025 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBangladesh </td>
+   <td style="text-align:right;"> -2.832 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -3.5234 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBelgium </td>
+   <td style="text-align:right;"> -16.369 </td>
+   <td style="text-align:right;"> 1.035 </td>
+   <td style="text-align:right;"> -15.8152 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBenin </td>
+   <td style="text-align:right;"> -5.327 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -6.6266 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBolivia </td>
+   <td style="text-align:right;"> -12.881 </td>
+   <td style="text-align:right;"> 0.806 </td>
+   <td style="text-align:right;"> -15.9807 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBosnia and Herzegovina </td>
+   <td style="text-align:right;"> -11.368 </td>
+   <td style="text-align:right;"> 0.810 </td>
+   <td style="text-align:right;"> -14.0314 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBotswana </td>
+   <td style="text-align:right;"> -12.147 </td>
+   <td style="text-align:right;"> 0.831 </td>
+   <td style="text-align:right;"> -14.6124 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBrazil </td>
+   <td style="text-align:right;"> -14.998 </td>
+   <td style="text-align:right;"> 0.821 </td>
+   <td style="text-align:right;"> -18.2734 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBulgaria </td>
+   <td style="text-align:right;"> -16.042 </td>
+   <td style="text-align:right;"> 0.819 </td>
+   <td style="text-align:right;"> -19.5845 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBurkina Faso </td>
+   <td style="text-align:right;"> -7.215 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -8.9755 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityBurundi </td>
+   <td style="text-align:right;"> -7.542 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -9.3824 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityCambodia </td>
+   <td style="text-align:right;"> -2.664 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -3.3142 </td>
+   <td style="text-align:right;"> 0.001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityCameroon </td>
+   <td style="text-align:right;"> -9.999 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -12.4330 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityCanada </td>
+   <td style="text-align:right;"> -16.162 </td>
+   <td style="text-align:right;"> 1.063 </td>
+   <td style="text-align:right;"> -15.2040 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityCentral African Republic </td>
+   <td style="text-align:right;"> -7.782 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -9.6811 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityChad </td>
+   <td style="text-align:right;"> -4.831 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -6.0100 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityChile </td>
+   <td style="text-align:right;"> -16.917 </td>
+   <td style="text-align:right;"> 0.834 </td>
+   <td style="text-align:right;"> -20.2963 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityChina </td>
+   <td style="text-align:right;"> -6.971 </td>
+   <td style="text-align:right;"> 0.805 </td>
+   <td style="text-align:right;"> -8.6548 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityColombia </td>
+   <td style="text-align:right;"> -15.109 </td>
+   <td style="text-align:right;"> 0.813 </td>
+   <td style="text-align:right;"> -18.5856 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityComoros </td>
+   <td style="text-align:right;"> -5.763 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -7.1695 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityCosta Rica </td>
+   <td style="text-align:right;"> -16.643 </td>
+   <td style="text-align:right;"> 0.819 </td>
+   <td style="text-align:right;"> -20.3294 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityCote d'Ivoire </td>
+   <td style="text-align:right;"> -8.548 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -10.6315 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityCroatia </td>
+   <td style="text-align:right;"> -17.259 </td>
+   <td style="text-align:right;"> 0.838 </td>
+   <td style="text-align:right;"> -20.5938 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityCuba </td>
+   <td style="text-align:right;"> -18.084 </td>
+   <td style="text-align:right;"> 0.815 </td>
+   <td style="text-align:right;"> -22.1959 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityDenmark </td>
+   <td style="text-align:right;"> -16.213 </td>
+   <td style="text-align:right;"> 1.058 </td>
+   <td style="text-align:right;"> -15.3216 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityDjibouti </td>
+   <td style="text-align:right;"> -12.418 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -15.4388 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityDominican Republic </td>
+   <td style="text-align:right;"> -14.131 </td>
+   <td style="text-align:right;"> 0.808 </td>
+   <td style="text-align:right;"> -17.4912 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityEcuador </td>
+   <td style="text-align:right;"> -16.501 </td>
+   <td style="text-align:right;"> 0.816 </td>
+   <td style="text-align:right;"> -20.2330 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityEgypt </td>
+   <td style="text-align:right;"> -18.336 </td>
+   <td style="text-align:right;"> 0.809 </td>
+   <td style="text-align:right;"> -22.6781 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityEl Salvador </td>
+   <td style="text-align:right;"> -12.106 </td>
+   <td style="text-align:right;"> 0.810 </td>
+   <td style="text-align:right;"> -14.9441 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityEquatorial Guinea </td>
+   <td style="text-align:right;"> -8.718 </td>
+   <td style="text-align:right;"> 0.813 </td>
+   <td style="text-align:right;"> -10.7298 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityEritrea </td>
+   <td style="text-align:right;"> -8.108 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -10.0867 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityEthiopia </td>
+   <td style="text-align:right;"> -5.763 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -7.1702 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityFinland </td>
+   <td style="text-align:right;"> -16.668 </td>
+   <td style="text-align:right;"> 0.995 </td>
+   <td style="text-align:right;"> -16.7533 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityFrance </td>
+   <td style="text-align:right;"> -16.560 </td>
+   <td style="text-align:right;"> 1.009 </td>
+   <td style="text-align:right;"> -16.4085 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityGabon </td>
+   <td style="text-align:right;"> -13.092 </td>
+   <td style="text-align:right;"> 0.855 </td>
+   <td style="text-align:right;"> -15.3166 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityGambia </td>
+   <td style="text-align:right;"> -5.852 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -7.2802 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityGermany </td>
+   <td style="text-align:right;"> -16.404 </td>
+   <td style="text-align:right;"> 1.032 </td>
+   <td style="text-align:right;"> -15.8935 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityGhana </td>
+   <td style="text-align:right;"> -9.457 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -11.7648 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityGreece </td>
+   <td style="text-align:right;"> -17.053 </td>
+   <td style="text-align:right;"> 0.934 </td>
+   <td style="text-align:right;"> -18.2607 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityGuatemala </td>
+   <td style="text-align:right;"> -8.041 </td>
+   <td style="text-align:right;"> 0.809 </td>
+   <td style="text-align:right;"> -9.9390 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityGuinea </td>
+   <td style="text-align:right;"> -5.154 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -6.4120 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityGuinea-Bissau </td>
+   <td style="text-align:right;"> -5.617 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -6.9878 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityHaiti </td>
+   <td style="text-align:right;"> -4.632 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -5.7622 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityHonduras </td>
+   <td style="text-align:right;"> -8.487 </td>
+   <td style="text-align:right;"> 0.806 </td>
+   <td style="text-align:right;"> -10.5329 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityHungary </td>
+   <td style="text-align:right;"> -15.996 </td>
+   <td style="text-align:right;"> 0.857 </td>
+   <td style="text-align:right;"> -18.6650 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityIceland </td>
+   <td style="text-align:right;"> -16.289 </td>
+   <td style="text-align:right;"> 1.047 </td>
+   <td style="text-align:right;"> -15.5614 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityIndia </td>
+   <td style="text-align:right;"> -6.961 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -8.6573 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityIndonesia </td>
+   <td style="text-align:right;"> -10.868 </td>
+   <td style="text-align:right;"> 0.805 </td>
+   <td style="text-align:right;"> -13.4940 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityIran </td>
+   <td style="text-align:right;"> -17.732 </td>
+   <td style="text-align:right;"> 0.826 </td>
+   <td style="text-align:right;"> -21.4671 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityIraq </td>
+   <td style="text-align:right;"> -16.769 </td>
+   <td style="text-align:right;"> 0.807 </td>
+   <td style="text-align:right;"> -20.7783 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityIreland </td>
+   <td style="text-align:right;"> -16.367 </td>
+   <td style="text-align:right;"> 1.033 </td>
+   <td style="text-align:right;"> -15.8389 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityIsrael </td>
+   <td style="text-align:right;"> -17.171 </td>
+   <td style="text-align:right;"> 0.934 </td>
+   <td style="text-align:right;"> -18.3849 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityItaly </td>
+   <td style="text-align:right;"> -16.685 </td>
+   <td style="text-align:right;"> 0.986 </td>
+   <td style="text-align:right;"> -16.9155 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityJamaica </td>
+   <td style="text-align:right;"> -15.083 </td>
+   <td style="text-align:right;"> 0.817 </td>
+   <td style="text-align:right;"> -18.4570 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityJapan </td>
+   <td style="text-align:right;"> -16.399 </td>
    <td style="text-align:right;"> 1.030 </td>
-   <td style="text-align:right;"> 24.014 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> life_exp </td>
-   <td style="text-align:right;"> -0.25967 </td>
-   <td style="text-align:right;"> 0.017 </td>
-   <td style="text-align:right;"> -14.896 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pop </td>
-   <td style="text-align:right;"> 0.00000 </td>
+   <td style="text-align:right;"> -15.9213 </td>
    <td style="text-align:right;"> 0.000 </td>
-   <td style="text-align:right;"> 4.693 </td>
-   <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> gdp_percap </td>
-   <td style="text-align:right;"> -0.00018 </td>
+   <td style="text-align:left;"> entityJordan </td>
+   <td style="text-align:right;"> -18.949 </td>
+   <td style="text-align:right;"> 0.807 </td>
+   <td style="text-align:right;"> -23.4826 </td>
    <td style="text-align:right;"> 0.000 </td>
-   <td style="text-align:right;"> -9.548 </td>
-   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityKenya </td>
+   <td style="text-align:right;"> -10.442 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -12.9891 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityKuwait </td>
+   <td style="text-align:right;"> -15.245 </td>
+   <td style="text-align:right;"> 1.193 </td>
+   <td style="text-align:right;"> -12.7741 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityLebanon </td>
+   <td style="text-align:right;"> -17.779 </td>
+   <td style="text-align:right;"> 0.825 </td>
+   <td style="text-align:right;"> -21.5558 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityLesotho </td>
+   <td style="text-align:right;"> -10.963 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -13.6375 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityLiberia </td>
+   <td style="text-align:right;"> -7.271 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -9.0454 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityLibya </td>
+   <td style="text-align:right;"> -17.458 </td>
+   <td style="text-align:right;"> 0.832 </td>
+   <td style="text-align:right;"> -20.9818 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMadagascar </td>
+   <td style="text-align:right;"> -3.251 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -4.0440 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMalawi </td>
+   <td style="text-align:right;"> -9.537 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -11.8655 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMalaysia </td>
+   <td style="text-align:right;"> -17.982 </td>
+   <td style="text-align:right;"> 0.831 </td>
+   <td style="text-align:right;"> -21.6345 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMali </td>
+   <td style="text-align:right;"> -7.248 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -9.0177 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMauritania </td>
+   <td style="text-align:right;"> -9.109 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -11.3298 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMauritius </td>
+   <td style="text-align:right;"> -17.537 </td>
+   <td style="text-align:right;"> 0.822 </td>
+   <td style="text-align:right;"> -21.3248 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMexico </td>
+   <td style="text-align:right;"> -15.497 </td>
+   <td style="text-align:right;"> 0.834 </td>
+   <td style="text-align:right;"> -18.5827 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMongolia </td>
+   <td style="text-align:right;"> -8.551 </td>
+   <td style="text-align:right;"> 0.805 </td>
+   <td style="text-align:right;"> -10.6291 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMontenegro </td>
+   <td style="text-align:right;"> -14.788 </td>
+   <td style="text-align:right;"> 0.818 </td>
+   <td style="text-align:right;"> -18.0853 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMorocco </td>
+   <td style="text-align:right;"> -14.316 </td>
+   <td style="text-align:right;"> 0.806 </td>
+   <td style="text-align:right;"> -17.7657 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMozambique </td>
+   <td style="text-align:right;"> -7.338 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -9.1292 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityMyanmar </td>
+   <td style="text-align:right;"> -2.398 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -2.9839 </td>
+   <td style="text-align:right;"> 0.003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityNamibia </td>
+   <td style="text-align:right;"> -10.878 </td>
+   <td style="text-align:right;"> 0.808 </td>
+   <td style="text-align:right;"> -13.4713 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityNepal </td>
+   <td style="text-align:right;"> -0.878 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -1.0918 </td>
+   <td style="text-align:right;"> 0.276 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityNetherlands </td>
+   <td style="text-align:right;"> -16.108 </td>
+   <td style="text-align:right;"> 1.073 </td>
+   <td style="text-align:right;"> -15.0143 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityNew Zealand </td>
+   <td style="text-align:right;"> -17.131 </td>
+   <td style="text-align:right;"> 0.938 </td>
+   <td style="text-align:right;"> -18.2611 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityNicaragua </td>
+   <td style="text-align:right;"> -8.187 </td>
+   <td style="text-align:right;"> 0.805 </td>
+   <td style="text-align:right;"> -10.1747 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityNiger </td>
+   <td style="text-align:right;"> -4.172 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -5.1899 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityNigeria </td>
+   <td style="text-align:right;"> -8.154 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -10.1406 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityNorway </td>
+   <td style="text-align:right;"> -15.024 </td>
+   <td style="text-align:right;"> 1.243 </td>
+   <td style="text-align:right;"> -12.0836 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityOman </td>
+   <td style="text-align:right;"> -14.850 </td>
+   <td style="text-align:right;"> 0.917 </td>
+   <td style="text-align:right;"> -16.1925 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityPakistan </td>
+   <td style="text-align:right;"> -5.579 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -6.9349 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityPanama </td>
+   <td style="text-align:right;"> -15.532 </td>
+   <td style="text-align:right;"> 0.819 </td>
+   <td style="text-align:right;"> -18.9558 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityParaguay </td>
+   <td style="text-align:right;"> -10.249 </td>
+   <td style="text-align:right;"> 0.807 </td>
+   <td style="text-align:right;"> -12.6932 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityPeru </td>
+   <td style="text-align:right;"> -13.843 </td>
+   <td style="text-align:right;"> 0.812 </td>
+   <td style="text-align:right;"> -17.0413 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityPhilippines </td>
+   <td style="text-align:right;"> -10.088 </td>
+   <td style="text-align:right;"> 0.805 </td>
+   <td style="text-align:right;"> -12.5320 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityPoland </td>
+   <td style="text-align:right;"> -16.239 </td>
+   <td style="text-align:right;"> 0.839 </td>
+   <td style="text-align:right;"> -19.3500 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityPortugal </td>
+   <td style="text-align:right;"> -17.261 </td>
+   <td style="text-align:right;"> 0.901 </td>
+   <td style="text-align:right;"> -19.1595 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityPuerto Rico </td>
+   <td style="text-align:right;"> -17.624 </td>
+   <td style="text-align:right;"> 0.890 </td>
+   <td style="text-align:right;"> -19.8112 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityRomania </td>
+   <td style="text-align:right;"> -15.260 </td>
+   <td style="text-align:right;"> 0.821 </td>
+   <td style="text-align:right;"> -18.5782 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityRwanda </td>
+   <td style="text-align:right;"> -7.269 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -9.0439 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySao Tome and Principe </td>
+   <td style="text-align:right;"> -4.182 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -5.2015 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySaudi Arabia </td>
+   <td style="text-align:right;"> -15.150 </td>
+   <td style="text-align:right;"> 0.933 </td>
+   <td style="text-align:right;"> -16.2346 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySenegal </td>
+   <td style="text-align:right;"> -8.262 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -10.2763 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySerbia </td>
+   <td style="text-align:right;"> -13.744 </td>
+   <td style="text-align:right;"> 0.823 </td>
+   <td style="text-align:right;"> -16.6932 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySierra Leone </td>
+   <td style="text-align:right;"> -5.618 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -6.9898 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySingapore </td>
+   <td style="text-align:right;"> -15.605 </td>
+   <td style="text-align:right;"> 1.127 </td>
+   <td style="text-align:right;"> -13.8478 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySlovenia </td>
+   <td style="text-align:right;"> -16.567 </td>
+   <td style="text-align:right;"> 0.910 </td>
+   <td style="text-align:right;"> -18.2042 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySomalia </td>
+   <td style="text-align:right;"> -4.344 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -5.4048 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySouth Africa </td>
+   <td style="text-align:right;"> -15.329 </td>
+   <td style="text-align:right;"> 0.820 </td>
+   <td style="text-align:right;"> -18.6868 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySpain </td>
+   <td style="text-align:right;"> -16.823 </td>
+   <td style="text-align:right;"> 0.953 </td>
+   <td style="text-align:right;"> -17.6556 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySri Lanka </td>
+   <td style="text-align:right;"> -10.828 </td>
+   <td style="text-align:right;"> 0.805 </td>
+   <td style="text-align:right;"> -13.4444 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySudan </td>
+   <td style="text-align:right;"> -4.165 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -5.1789 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySweden </td>
+   <td style="text-align:right;"> -16.505 </td>
+   <td style="text-align:right;"> 1.017 </td>
+   <td style="text-align:right;"> -16.2222 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySwitzerland </td>
+   <td style="text-align:right;"> -15.898 </td>
+   <td style="text-align:right;"> 1.105 </td>
+   <td style="text-align:right;"> -14.3839 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entitySyria </td>
+   <td style="text-align:right;"> -18.452 </td>
+   <td style="text-align:right;"> 0.807 </td>
+   <td style="text-align:right;"> -22.8648 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityTaiwan </td>
+   <td style="text-align:right;"> -15.747 </td>
+   <td style="text-align:right;"> 0.937 </td>
+   <td style="text-align:right;"> -16.8081 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityTanzania </td>
+   <td style="text-align:right;"> -8.603 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -10.7028 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityThailand </td>
+   <td style="text-align:right;"> -14.036 </td>
+   <td style="text-align:right;"> 0.813 </td>
+   <td style="text-align:right;"> -17.2737 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityTogo </td>
+   <td style="text-align:right;"> -7.209 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -8.9683 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityTrinidad and Tobago </td>
+   <td style="text-align:right;"> -18.191 </td>
+   <td style="text-align:right;"> 0.840 </td>
+   <td style="text-align:right;"> -21.6611 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityTunisia </td>
+   <td style="text-align:right;"> -17.900 </td>
+   <td style="text-align:right;"> 0.811 </td>
+   <td style="text-align:right;"> -22.0695 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityTurkey </td>
+   <td style="text-align:right;"> -17.814 </td>
+   <td style="text-align:right;"> 0.816 </td>
+   <td style="text-align:right;"> -21.8412 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityUganda </td>
+   <td style="text-align:right;"> -9.394 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -11.6871 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityUnited Kingdom </td>
+   <td style="text-align:right;"> -16.537 </td>
+   <td style="text-align:right;"> 1.014 </td>
+   <td style="text-align:right;"> -16.3033 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityUnited States </td>
+   <td style="text-align:right;"> -15.531 </td>
+   <td style="text-align:right;"> 1.161 </td>
+   <td style="text-align:right;"> -13.3791 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityUruguay </td>
+   <td style="text-align:right;"> -17.884 </td>
+   <td style="text-align:right;"> 0.825 </td>
+   <td style="text-align:right;"> -21.6731 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityVenezuela </td>
+   <td style="text-align:right;"> -18.129 </td>
+   <td style="text-align:right;"> 0.832 </td>
+   <td style="text-align:right;"> -21.7786 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityVietnam </td>
+   <td style="text-align:right;"> -6.997 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -8.7024 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityZambia </td>
+   <td style="text-align:right;"> -10.694 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -13.3041 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> entityZimbabwe </td>
+   <td style="text-align:right;"> -12.860 </td>
+   <td style="text-align:right;"> 0.804 </td>
+   <td style="text-align:right;"> -15.9990 </td>
+   <td style="text-align:right;"> 0.000 </td>
   </tr>
 </tbody>
 </table>
@@ -3101,7 +4802,7 @@ model_region_fit %>%
 :::
 
 
-### 1.12) Two-Sample t-test: Correlating GDP and Percent IAP by Group
+### 1.11) Two-Sample t-test: Correlating GDP and Percent IAP by Group
 
 In this analysis, several t-test will be performed to compare the mean percentages of premature deaths caused by indoor air pollution in countries with different ranges of GDP per capita using the worldbank.org 2021 averages for high- middle- and low- income GDP, as well as an additional high(er) income t-test to observe what happens to the t-value and degree of freedom when all countries included are more likely to have access to better technologies and health care. although the values for GDP are not adjusted for inflation, and likely do not represent accurate values for the purchasing power from 1992-2007, it will still provide valuable information for how significant the proportion changes with increasing GDP
 
@@ -3274,8 +4975,7 @@ mean in group above mean in group below
 :::
 
 
-::: {.callout-note style="color:gray" appearance="simple"}
-## Discussion
+# Discussion
 
 These multiple variables tests provide a stronger idea of the kinds of relationships this data can infer. Several of these observations were particularly interesting, while others may not be particularly valuable.
 
@@ -3283,101 +4983,69 @@ These multiple variables tests provide a stronger idea of the kinds of relations
 
 In total, this analysis found that for any given 1 year change, a global average change in percent of premature deaths from indoor air pollution decreased by 1.57 on average. This would suggest that, despite some countries facing new challenges due to socioeconomic changes, this global rate remains decreasing. This analysis ended up proving more beneficial then previously anticipated, and suggests that tracking the progress over time may provide important evidence for understanding the effectiveness of other factors like GDP and population size change over time.
 
-**Section 1.8** This analysis combines the major test questions for this analysis -- GDP and Region -- into a single graph and multiple variable analysis that was aimed at understanding how regional averages of GDP compound the relationship seen in Section 1.2 and 1.4. The single variable analysis for GDP (r\^2 = 50.8%, p \<0.001) and region (
+**Section 1.8** This analysis combines the major test questions for this analysis -- GDP and Region -- into a single graph and multiple variable analysis that was aimed at understanding how regional averages of GDP compound the relationship seen in Section 1.2 and 1.4.
 
-**Table 1.9**
+The results of the regression analysis performed to correlate the percentage of deaths and GDP seperated by region. The R\^2 value (0.7149) suggests a 71% of the variation in premature deaths can be predicted with GDP and Region. The model fitting this data for each region used a region-- East Asia and Pacific as an "intercept" for which all the subsequent coefficients are adding or subtracting from.
 
-**Table 1.10**
+**(p\<0.001 for all results except North America)**
 
-**Table 1.11**
+-   The coefficient for **East Asia and Pacific** describes the expected average percentage of premature deaths caused by indoor air pollution is 9.770%
 
-**Table 1.11** provided four different t-tests that compared the proportion in the percent of premature deaths seen in low- middle- high- and high(er)- income countries. This test found exceedingly strong correlation between GDP and Percent deaths from IAP, which was expected considering the results in section 1.4, 1.8, and 1.9. However, these results went much further in terms of explaining how this breaks down in economically grouped countries. The result of this analysis showed a strong relationship (p\<0.001) for every analysis except high(er) income countries, although this result was also significant (p = 0.02703).
+-   For countries in **Europe & Central Asia**, the average expected percentage of premature deaths caused by indoor air pollution is 6.908% (9.770 - 2.862) for a GDP of 0.
 
-The change in percentage of premature deaths between low income countries (avg= 13.15%) and middle income countries (avg = 4.42%) was found by this test to
-:::
+-   For countries in **Latin America & Caribbean**, the average expected percentage of premature deaths caused by indoor air pollution is 6.387% (9.770 - 3.383) for a GDP of 0.
+
+-   For countries in **Middle East & North Africa**, the average expected percentage of premature deaths caused by indoor air pollution is 4.593% (9.770 - 5.177) for a GDP of 0.
+
+-   For countries in **North America**, the average expected percentage of premature deaths caused by indoor air pollution is 9.007% (9.770 - 0.763) for a GDP of 0. **(p = 0.543)**
+
+    -   This value is likely significantly incorrect, and may be a result of an exceedingly small sample size that does not accurately predict the relationship between GDP and premature deaths in North America from IAP.
+
+-   For countries in **South Asia**, the average expected percentage of premature deaths caused by indoor air pollution is 15.192% (9.770 + 5.422) for a GDP of 0.
+
+-   For countries in **Sub-Saharan Africa**, the average expected percentage of premature deaths caused by indoor air pollution is 11.631% (9.770 + 1.861) for a GDP of 0.
+
+    In Summary this regression analysis suggests that there is a positive relationship between GDP and the percentage of premature deaths caused by indoor air pollution across regions, and that GDP is a significant predictor of this relationship.
+
+**Section 1.9** The goal of this section is aimed to determine how significant the relationship between GDP and country is for predicted the percentage of premature deaths. This result recieved the highest r-squared value of any test run in this analysis (r\^2 = 0.9612, p \<0.001) suggesting most of the variation can be interpreted through analyzing a given countries GDP. For this model fit the intercept is Afghanistan with the highest percentage of deaths when GDP is set to 0 at 19.45, \~10% higher then the global average recorded in the merged_df dataset.
+
+Considering the Region and GDP had an r-squared value of 0.7149, the second highest value in this dataset, it is clear that these three factors are the most significant predictive characteristics for percentage of indoor air pollution-related premature deaths. This Analysis, however, will not focus on this table in the conclusion since comparisons of countries is largely outside the scope of this study. Nonetheless, it is valuable to understand the amount of predictive power in these dependent variables.
+
+**Table 1.10** This section returns for a final interpretation of the single-variable test considering the relationship between GDP and population size fromSection 1.3, which found a significant correlation (p= 0.0122) with very little correlation to the variation in the dataset (r\^2 = 0.012). While these results were statistically significant, the multi-variable analysis controlling for GDP found a small t-statistic value (2.45) suggesting that the correlation is not significantly representative of a large portion of the sample.
+
+Considering these results, it is likely that a hypothesis testing impact of population size for a correlation with percentage of indoor air pollution-related deaths would be NULL
+
+**Table 1.11** provided four different t-tests that compared the proportion in the percent of premature deaths seen in low- middle- high- and high(er)- income countries. This test found exceedingly strong correlation between GDP and Percent deaths from IAP, which was expected considering the results in section 1.4, 1.8, and 1.9. However, these results went much further in terms of explaining how this breaks down in economically grouped countries. The result of this analysis showed a strong relationship (p=0.001) for every analysis except high(er) income countries, although this result was also significant (p = 0.02703).
+
+-   Low-Income countries (\$0 - \$1085 USD) were found in this analysis to have an average percentage of premature deaths to be 13.15%, while the average for all GDPs above this group = 4.42% (t = -23.628, df = 281.64, p-value \< 2.2e-16 )
+
+-   Middle-Income Countries (\$4256 - \$13205 USD) in this test, had an average % premature deaths of 9.96%, with all GDP's greater having an average of 1.76% (t = -21.997, df = 185.07, p-value \< 2.2e-16) Middle- income countries were found to have. on average, 3.20% less premature deaths, which is a significant increase considering the small increase in GDP as well as the fact that excluding these groups from the population brings the average below 2% premature deaths attributed to IAP
+
+-   High Income countries (\$4256 - \$13205 USD) were found to have an even smaller average, as expected, but dropping even more significantly then between low- and middle- income countries. The average percent deaths for high-income countries was found to be 2.93%, while the average for all GDP's above this range had an average of 0.43% (t = -10.262, df = 206.63, p-value \< 2.2e-16). The difference in average percentage of deaths between middle- and high- income countries was found to be 7.02% over twice the reduction as moving from low- to middle- income as a country
 
 
-::: {.cell}
 
-```{.r .cell-code}
-# Create a new column to indicate whether the GDP per capita is below or above 10000
-tt_merged_df <- merged_df %>%
-  mutate(gdp_cat = ifelse(gdp_percap < 15000, "below", "above")) %>%
-    
-  rename("percent_iap" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-  
-   mutate("region" = countrycode(entity,origin = "country.name",
-   destination= "region")) %>%
-  filter(!is.na(region))
 
-# Perform t-test
-ttest <- t.test(percent_iap ~ gdp_cat, data = tt_merged_df)
 
-# Print the t-test results
-print(ttest)
-```
 
-::: {.cell-output .cell-output-stdout}
-```
-
-	Welch Two Sample t-test
-
-data:  percent_iap by gdp_cat
-t = -27.785, df = 452.85, p-value < 2.2e-16
-alternative hypothesis: true difference in means between group above and group below is not equal to 0
-95 percent confidence interval:
- -8.333181 -7.232246
-sample estimates:
-mean in group above mean in group below 
-          0.2917933           8.0745069 
-```
-:::
-:::
-
-::: {.cell}
-
-```{.r .cell-code}
-# Create a new column to indicate whether the GDP per capita is below or above 10000
-tt_merged_df <- merged_df %>%
-  filter(gdp_percap > 10000) %>%
-  mutate(gdp_cat = ifelse(gdp_percap < 20000, "below", "above")) %>%
-    
-  rename("percent_iap" = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent) %>%
-  
-   mutate("region" = countrycode(entity,origin = "country.name",
-   destination= "region")) %>%
-  filter(!is.na(region))
-
-# Perform t-test
-ttest <- t.test(percent_iap ~ gdp_cat, data = tt_merged_df)
-
-# Print the t-test results
-print(ttest)
-```
-
-::: {.cell-output .cell-output-stdout}
-```
-
-	Welch Two Sample t-test
-
-data:  percent_iap by gdp_cat
-t = -5.3078, df = 65.058, p-value = 1.434e-06
-alternative hypothesis: true difference in means between group above and group below is not equal to 0
-95 percent confidence interval:
- -1.7414579 -0.7892595
-sample estimates:
-mean in group above mean in group below 
-          0.1612113           1.4265700 
-```
-:::
-:::
-
+------------------------------------------------------------------------
 
 # Conclusions
+
+This analysis aimed to answer the hypothesis proposes that countries with higher GDP and larger population size have lower percentages of premature deaths caused by indoor pollution from biofuels, and that significant differences in the percentage of premature deaths caused by indoor pollution from biofuels exist across regions even after controlling for GDP, population size, and other relevant factors.
+
+In Section 1.1, the low R\^2 value for the correlation between indoor air pollution deaths and year suggests that improvements in health care and disease prevention have played a larger role in reducing premature deaths than changes in indoor air quality over time. However, as the section notes, analyzing the relationship between year and indoor air pollution deaths on a regional basis could provide more insight into trends and disparities. The high R\^2 value for the correlation between region and indoor air pollution deaths in Section 1.2 supports the hypothesis that regional factors play a significant role in determining the prevalence of indoor air pollution and its associated health risks. This could be due to a variety of factors, such as differences in household fuel sources, housing quality, and cultural practices. Understanding these regional differences can help policymakers and public health officials target interventions and resources more effectively. While population size did not show a strong correlation with indoor air pollution deaths in Section 1.3, it is still an important factor to consider in the context of public health. For example, even if the percentage of premature deaths caused by indoor air pollution is low in a country with a large population, the absolute number of deaths could still be significant. Additionally, rapid population growth can exacerbate existing environmental and health challenges.The relationship between GDP and indoor air pollution deaths in Section 1.4 suggests that economic development can play a positive role in reducing indoor air pollution and its associated health risks. However, it is important to note that the relationship is not necessarily linear or straightforward. For example, while higher GDP can enable households to switch to cleaner fuel sources, it can also lead to increased industrialization and urbanization, which can create new sources of pollution.
+
+The relationship between indoor air pollution deaths and life expectancy in Section 1.5 highlights the broader impacts of indoor air pollution on population health. Improving indoor air quality could have significant benefits beyond reducing premature deaths, such as increasing overall life expectancy and reducing the burden of disease. The regional differences in indoor air pollution deaths shown in Section 1.7 further emphasize the importance of understanding and addressing the unique challenges faced by different regions. For example, household fuel sources in Sub-Saharan Africa may differ significantly from those in Europe and Central Asia, which could contribute to differences in indoor air quality and associated health risks.
+
+Overall, these observations suggest that indoor air pollution is a complex and multifaceted issue that requires a nuanced understanding of regional and socioeconomic factors. While GDP and population size are important predictors of indoor air pollution deaths, they cannot fully explain the variation seen across regions and countries. Further research and analysis are needed to develop targeted interventions and policies to address this critical public health issue.
+
+------------------------------------------------------------------------
 
 # Future Questions
 
 -   Studies suggest that in developed countries, people spend 80-90% of their lives indoors. The US, being the wealthiest nation, has the resources to reduce indoor air pollution through regulation, investment, and adequate medical care. However, countries with growing GDP and capitalistic societies may face increased time indoors without the resources to regulate indoor and outdoor environments, leading to greater exposure to pollutants and inadequate healthcare. As countries create economic opportunities and urbanize, indoor air pollution may increase. Analysis to Identifying the point at which GDP and premature deaths caused by indoor air pollution are correlated can inform targeted prevention efforts.
--   Using a t-test to run a qualitative comparison of the proportion of deaths occuring in countries that have
+
+------------------------------------------------------------------------
 
 # Citations
