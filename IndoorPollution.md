@@ -15,19 +15,19 @@ bibliography: C:/Users/trevo/OneDrive/Documents/R/BioStatisticalAnalysis/IndoorP
 
 ## Abstract
 
-Premature deaths related to indoor air pollution data, largely from the combustion of bio fuels like wood and coal, is a leading cause of death for many middle- and lower- income countries around the globe, with major health implications for even the developed parts of the world. This analysis aims to assess and infer the impacts of geographic features and economic/political factors related to the percent of premature deaths caused by indoor air pollution countries across the globe. This data has been collected for almost three decades (1990-2019) and will be utilized in this analysis, along with a somewhat smaller dataset for some tests, to infer two important characteristics that may offer insight into the cause of inadequate/unsafe indoor conditions. Impact of GDP as a determinant of access to clean fuel alternatives and healthcare is expected to be the significant, if not most correlated factor of premature deaths from indoor air pollution. Secondly, this analysis will interpret the regional differences contribute to the average premature deaths in that geographic group.
+This research paper investigates the impact of indoor air pollution on premature deaths and its correlation with factors such as GDP, population size, and region. The paper highlights indoor air pollution's significant risk to public health, particularly in low-income countries, and the need for targeted interventions to address the issue. The analysis finds that regional factors are crucial in determining indoor air pollution prevalence and associated health risks. While economic development can help reduce indoor air pollution, it can also create new sources of pollution. The analysis emphasizes the need for a nuanced understanding of the issue and further research to develop effective policies and interventions.
 
 ------------------------------------------------------------------------
 
 ## Introduction
 
-Since the earliest days of thinking about the dangers associated with pollution in the air, much of the conversation has been focused on the risks associated with our infrastructure --vehicles, energy, and manufacturing at the forefront. More recently, it has become apparent that we are also in need of considering the risks associated with out indoor air pollutants, which is now understood to be a source of premature deaths worthy of concern. Access to clean energy for households is one of the major challenges facing developing countries around the globe, with an estimated 3 billion impacted by the effects of indoor pollution and 4.3 of them suffering premature deaths in 2012 alone (Air quality and health, 2014) . The World Health Organization estimates that "Almost half of all deaths due to lower respiratory infection among children under 5 years of age are caused by inhaling particulate matter (soot) from household air pollution." and also estimates that as much as 90% of the premature deaths related to indoor, or household air pollution are found in middle- or low- income countries (Air quality and health, 2014), a fact that may suggest several disparities such as access to healthcare, clean energy, and regulatory protections for what can be installed in residential homes.
+Since the earliest days of thinking about the dangers associated with pollution in the air, much of the conversation has been focused on the risks associated with our infrastructure --vehicles, energy, and manufacturing at the forefront. More recently, it has become apparent that we are also in need of considering the risks associated with out indoor air pollutants, which is now understood to be a source of premature deaths worthy of concern. Access to clean energy for households is one of the major challenges facing developing countries around the globe, with an estimated 3 billion impacted by the effects of indoor pollution and 4.3 of them suffering premature deaths in 2012 alone [@air-quality-and-health-2014] . The World Health Organization estimates that "Almost half of all deaths due to lower respiratory infection among children under 5 years of age are caused by inhaling particulate matter (soot) from household air pollution." and also estimates that as much as 90% of the premature deaths related to indoor, or household air pollution are found in middle- or low- income countries [@air-quality-and-health-2014] , a fact that may suggest several disparities such as access to healthcare, clean energy, and regulatory protections for what can be installed in residential homes.
 
--   Indoor air pollutants can become well over 100x more concentrated in large, poorly ventilated indoor spaces both public and private. Moreover it has been documented that people living in developed regions spend 80-90% of our lives indoors which suggests significant prolonged exposure, even in high-income countries (González-Martín et al., 2021). While "indoor pollutants" represents a wide range of potential pollutants, some like those generated from combustion of bio fuels have particularly dangerous health implications when burned indoors.
+-   Indoor air pollutants can become well over 100x more concentrated in large, poorly ventilated indoor spaces both public and private. Moreover it has been documented that people living in developed regions spend 80-90% of our lives indoors which suggests significant prolonged exposure, even in high-income countries [@gonzalez-martin-2021]. While "indoor pollutants" represents a wide range of potential pollutants, some like those generated from combustion of bio fuels have particularly dangerous health implications when burned indoors.
 
--   WHO considered Sub-Saharan Africa to be the most significantly impacted by the combined affects of rapid population growth with relatively poor economies, and even worse access to clean energy technologies (Air quality and health, 2014).
+-   WHO considered Sub-Saharan Africa to be the most significantly impacted by the combined affects of rapid population growth with relatively poor economies, and even worse access to clean energy technologies [@air-quality-and-health-2014].
 
--   Some reports suggest as much as three billion individuals are impacted by toxic indoor air pollutants every day, with as many as 4 million deaths yearly being attributed to IAP exposure (Gordon et al., 2014)
+-   Some reports suggest as much as three billion individuals are impacted by toxic indoor air pollutants every day, with as many as 4 million deaths yearly being attributed to IAP exposure [@gordon-2014]
 
 ## Defining Indoor Air Pollutants
 
@@ -37,7 +37,7 @@ Since the earliest days of thinking about the dangers associated with pollution 
 
 -   **Particulate matter:** Dust, smoke, dirt, and other small particles created from many sources and suspended in moving air. Some of the most significant indoor air pollutants are produced by combustion from cooking, heating, or smoking. PM ranges from a mild irritant to a major cause of death depending on the concentration and extent of exposure.
 
-    -   Particulate matter represents the largest cause of premature deaths related to indoor air pollutants; Research has suggested that air pollution is responsible for 1 in 10 deaths globally (González-Martín et al., 2021).
+    -   Particulate matter represents the largest cause of premature deaths related to indoor air pollutants; Research has suggested that air pollution is responsible for 1 in 10 deaths globally [@gonzalez-martin-2021].
     -   Burning bio fuels like wood or crops produce significantly more hazardous particulate matter then fuels like ethanol or bio diesel. Wood contains heavy metals like arsenic, cadmium, and lead that can accumulate in soils and then get taken into the air, producing dust and ash from incomplete combustion. These sources of fuel are most common in developing countries, and regions with limited access to cleaner fuels.
 
 -   **Nitrogen Oxides:** Also an aspect of biofuel combustion, NOx compounds are known to have significant adverse health affects affecting the respiratory and cardiovascular system, which has been linked to asthma, bronchitis, eye/skin/throat irritation, headaches & nausea as well as a weakened immune system
@@ -48,7 +48,7 @@ Since the earliest days of thinking about the dangers associated with pollution 
 
 ### Bio Fuels and the reason for global concern
 
-In developed countries, regulatory requirements and consumer protections mean that most of the largest global threats have been largely minimized; homes are required to have chimneys for fireplaces, carbon monoxide sensors are a requirement for hotels and buildings with gas heaters or wood fireplaces. These preventative measure target the specific act of burning bio fuels inside homes which is by far the largest contributor to premature deaths caused by indoor air pollution, with a widely cited 2002 study by Ezzati and Kammen (2002) found bio fuel use is Uganda homes, related to three major activities (stove for cooking, heating water, and warmth), generated pollutant concentrations, particularly particulate matter as high as 140 times background levels. The risk associated to these indoor air pollutants from biofuels also represents a large contract from impact in males and females in a population, with Ezzati and Kammen (2002) finding women were receiving 75% of the exposure from being in increased proximity to household activities like cooking.
+In developed countries, regulatory requirements and consumer protections mean that most of the largest global threats have been largely minimized; homes are required to have chimneys for fireplaces, carbon monoxide sensors are a requirement for hotels and buildings with gas heaters or wood fireplaces. These preventative measure target the specific act of burning bio fuels inside homes which is by far the largest contributor to premature deaths caused by indoor air pollution, with a widely cited 2002 study by [@ezzati-2002] found bio fuel use is Uganda homes, related to three major activities (stove for cooking, heating water, and warmth), generated pollutant concentrations, particularly particulate matter as high as 140 times background levels. The risk associated to these indoor air pollutants from biofuels also represents a large contract from impact in males and females in a population, with [@ezzati-2002] finding women were receiving 75% of the exposure from being in increased proximity to household activities like cooking.
 
 ------------------------------------------------------------------------
 
@@ -98,40 +98,40 @@ kable(digits = c(1,0,0,2)) %>% ##apply significant figure contstraints to the ou
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Somalia </td>
-   <td style="text-align:left;"> SOM </td>
-   <td style="text-align:right;"> 2001 </td>
-   <td style="text-align:right;"> 14.75 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Puerto Rico </td>
-   <td style="text-align:left;"> PRI </td>
-   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:left;"> Sweden </td>
+   <td style="text-align:left;"> SWE </td>
+   <td style="text-align:right;"> 2013 </td>
    <td style="text-align:right;"> 0.00 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Costa Rica </td>
-   <td style="text-align:left;"> CRI </td>
-   <td style="text-align:right;"> 2013 </td>
-   <td style="text-align:right;"> 0.61 </td>
+   <td style="text-align:left;"> Central African Republic </td>
+   <td style="text-align:left;"> CAF </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 10.98 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Tonga </td>
-   <td style="text-align:left;"> TON </td>
-   <td style="text-align:right;"> 1999 </td>
-   <td style="text-align:right;"> 8.42 </td>
+   <td style="text-align:left;"> Botswana </td>
+   <td style="text-align:left;"> BWA </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 4.57 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Chile </td>
-   <td style="text-align:left;"> CHL </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 0.40 </td>
+   <td style="text-align:left;"> Marshall Islands </td>
+   <td style="text-align:left;"> MHL </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 9.24 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Trinidad and Tobago </td>
-   <td style="text-align:left;"> TTO </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 0.01 </td>
+   <td style="text-align:left;"> Tuvalu </td>
+   <td style="text-align:left;"> TUV </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 4.01 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Congo </td>
+   <td style="text-align:left;"> COG </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 8.36 </td>
   </tr>
 </tbody>
 </table>
@@ -323,18 +323,18 @@ model_region_fit <- model_region %>% fit(model_data)
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 0.0194 </td>
-   <td style="text-align:right;"> 0.0183 </td>
-   <td style="text-align:right;"> 5.65 </td>
-   <td style="text-align:right;"> 17.5788 </td>
+   <td style="text-align:right;"> 0.0326 </td>
+   <td style="text-align:right;"> 0.0315 </td>
+   <td style="text-align:right;"> 5.6 </td>
+   <td style="text-align:right;"> 30.0468 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> -2802.62 </td>
-   <td style="text-align:right;"> 5611.24 </td>
-   <td style="text-align:right;"> 5625.61 </td>
-   <td style="text-align:right;"> 28321.13 </td>
-   <td style="text-align:right;"> 888 </td>
-   <td style="text-align:right;"> 890 </td>
+   <td style="text-align:right;"> -2810.2 </td>
+   <td style="text-align:right;"> 5626.4 </td>
+   <td style="text-align:right;"> 5640.79 </td>
+   <td style="text-align:right;"> 27965.51 </td>
+   <td style="text-align:right;"> 893 </td>
+   <td style="text-align:right;"> 895 </td>
   </tr>
 </tbody>
 </table>
@@ -374,16 +374,16 @@ model_region_fit %>%
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:right;"> 189.2638 </td>
-   <td style="text-align:right;"> 43.9005 </td>
-   <td style="text-align:right;"> 4.3112 </td>
+   <td style="text-align:right;"> 240.4592 </td>
+   <td style="text-align:right;"> 42.9070 </td>
+   <td style="text-align:right;"> 5.6042 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> year </td>
-   <td style="text-align:right;"> -0.0918 </td>
-   <td style="text-align:right;"> 0.0219 </td>
-   <td style="text-align:right;"> -4.1927 </td>
+   <td style="text-align:right;"> -0.1174 </td>
+   <td style="text-align:right;"> 0.0214 </td>
+   <td style="text-align:right;"> -5.4815 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
 </tbody>
@@ -461,57 +461,57 @@ Caused by warning in `countrycode_convert()`:
   <tr>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
    <td style="text-align:right;"> 0.005 </td>
-   <td style="text-align:right;"> 22.7 </td>
-   <td style="text-align:right;"> 6.73 </td>
-   <td style="text-align:right;"> 6.7 </td>
-   <td style="text-align:right;"> 34 </td>
+   <td style="text-align:right;"> 23.3 </td>
+   <td style="text-align:right;"> 6.33 </td>
+   <td style="text-align:right;"> 6.9 </td>
+   <td style="text-align:right;"> 35 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:right;"> 0.002 </td>
-   <td style="text-align:right;"> 13.5 </td>
-   <td style="text-align:right;"> 1.41 </td>
+   <td style="text-align:right;"> 14.3 </td>
+   <td style="text-align:right;"> 1.52 </td>
    <td style="text-align:right;"> 2.6 </td>
-   <td style="text-align:right;"> 52 </td>
+   <td style="text-align:right;"> 50 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
    <td style="text-align:right;"> 0.003 </td>
-   <td style="text-align:right;"> 14.3 </td>
-   <td style="text-align:right;"> 2.97 </td>
-   <td style="text-align:right;"> 3.4 </td>
+   <td style="text-align:right;"> 15.8 </td>
+   <td style="text-align:right;"> 3.10 </td>
+   <td style="text-align:right;"> 3.8 </td>
    <td style="text-align:right;"> 35 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Middle East &amp; North Africa </td>
    <td style="text-align:right;"> 0.001 </td>
-   <td style="text-align:right;"> 9.0 </td>
-   <td style="text-align:right;"> 1.09 </td>
-   <td style="text-align:right;"> 2.1 </td>
-   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 16.4 </td>
+   <td style="text-align:right;"> 1.61 </td>
+   <td style="text-align:right;"> 3.4 </td>
+   <td style="text-align:right;"> 21 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> North America </td>
    <td style="text-align:right;"> 0.003 </td>
-   <td style="text-align:right;"> 0.9 </td>
-   <td style="text-align:right;"> 0.20 </td>
-   <td style="text-align:right;"> 0.3 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:right;"> 0.04 </td>
+   <td style="text-align:right;"> 0.1 </td>
    <td style="text-align:right;"> 3 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:right;"> 2.320 </td>
+   <td style="text-align:right;"> 2.810 </td>
    <td style="text-align:right;"> 19.7 </td>
-   <td style="text-align:right;"> 13.49 </td>
-   <td style="text-align:right;"> 4.8 </td>
+   <td style="text-align:right;"> 12.79 </td>
+   <td style="text-align:right;"> 4.3 </td>
    <td style="text-align:right;"> 8 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:right;"> 0.050 </td>
-   <td style="text-align:right;"> 17.3 </td>
-   <td style="text-align:right;"> 10.71 </td>
-   <td style="text-align:right;"> 3.8 </td>
+   <td style="text-align:right;"> 16.9 </td>
+   <td style="text-align:right;"> 10.30 </td>
+   <td style="text-align:right;"> 3.7 </td>
    <td style="text-align:right;"> 48 </td>
   </tr>
 </tbody>
@@ -572,7 +572,7 @@ BA_plot %>%
 
 ::: {.cell-output .cell-output-stderr}
 ```
-Warning: Removed 198 rows containing missing values (`geom_point()`).
+Warning: Removed 197 rows containing missing values (`geom_point()`).
 ```
 :::
 
@@ -632,7 +632,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `Regions = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Union, Andean Latin America, Central Asia, Central Latin America, Commonwealth, Commonwealth Low Income, Commonwealth Middle Income, East Asia & Pacific - World Bank region, Eastern sub-Saharan Africa, England, Europe & Central Asia - World Bank region, European Region, High-income, High-income Asia Pacific, High-income North America, High-middle SDI, Latin America & Caribbean - World Bank region, Low SDI, Micronesia (country), Middle East & North Africa, Nordic Region, Region of the Americas, Scotland, South-East Asia Region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern sub-Saharan Africa, Sub-Saharan Africa - World Bank region, Timor, Tropical Latin America, Western Pacific Region, Western sub-Saharan Africa, World, World Bank High Income, World Bank Low Income
+! Some values were not matched unambiguously: Africa, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Asia, Central Europe, Central Latin America, Central sub-Saharan Africa, Commonwealth High Income, Eastern Europe, Eastern sub-Saharan Africa, England, Europe, Europe & Central Asia - World Bank region, European Union, G20, High-income North America, High-middle SDI, Latin America & Caribbean - World Bank region, Middle SDI, Nordic Region, Northern Ireland, Oceania, Region of the Americas, South-East Asia Region, South Asia - World Bank region, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Timor, Tropical Latin America, Western Pacific Region, World Bank High Income, World Bank Low Income, World Bank Lower Middle Income
 ```
 :::
 
@@ -654,56 +654,56 @@ Caused by warning in `countrycode_convert()`:
   <tr>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
    <td style="text-align:right;"> 0.0046 </td>
-   <td style="text-align:right;"> 18.6228 </td>
+   <td style="text-align:right;"> 16.7902 </td>
+   <td style="text-align:right;"> 3 </td>
    <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 18 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:right;"> 0.0022 </td>
+   <td style="text-align:right;"> 0.0020 </td>
    <td style="text-align:right;"> 6.5176 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 26 </td>
+   <td style="text-align:right;"> 27 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:right;"> 0.0119 </td>
+   <td style="text-align:right;"> 0.0073 </td>
    <td style="text-align:right;"> 13.9483 </td>
+   <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 20 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Middle East &amp; North Africa </td>
-   <td style="text-align:right;"> 0.0007 </td>
-   <td style="text-align:right;"> 7.2581 </td>
+   <td style="text-align:right;"> 0.0014 </td>
+   <td style="text-align:right;"> 3.3523 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:right;"> 12 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> North America </td>
    <td style="text-align:right;"> 0.0030 </td>
-   <td style="text-align:right;"> 0.0055 </td>
+   <td style="text-align:right;"> 0.1532 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:right;"> 9.0752 </td>
-   <td style="text-align:right;"> 12.0990 </td>
+   <td style="text-align:right;"> 5.5914 </td>
+   <td style="text-align:right;"> 12.8791 </td>
    <td style="text-align:right;"> 11 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:right;"> 0.0505 </td>
-   <td style="text-align:right;"> 15.1508 </td>
-   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 16.5592 </td>
+   <td style="text-align:right;"> 10 </td>
    <td style="text-align:right;"> 4 </td>
    <td style="text-align:right;"> 26 </td>
   </tr>
@@ -982,18 +982,18 @@ model_region_fit <- model_region %>% fit(model_data)
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 0.5214 </td>
-   <td style="text-align:right;"> 0.5182 </td>
-   <td style="text-align:right;"> 3.96 </td>
-   <td style="text-align:right;"> 160.3308 </td>
+   <td style="text-align:right;"> 0.4658 </td>
+   <td style="text-align:right;"> 0.4622 </td>
+   <td style="text-align:right;"> 4.17 </td>
+   <td style="text-align:right;"> 129.0482 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> -2483.42 </td>
-   <td style="text-align:right;"> 4982.84 </td>
-   <td style="text-align:right;"> 5021.17 </td>
-   <td style="text-align:right;"> 13822.67 </td>
-   <td style="text-align:right;"> 883 </td>
-   <td style="text-align:right;"> 890 </td>
+   <td style="text-align:right;"> -2544.44 </td>
+   <td style="text-align:right;"> 5104.88 </td>
+   <td style="text-align:right;"> 5143.25 </td>
+   <td style="text-align:right;"> 15441.93 </td>
+   <td style="text-align:right;"> 888 </td>
+   <td style="text-align:right;"> 895 </td>
   </tr>
 </tbody>
 </table>
@@ -1033,51 +1033,51 @@ model_region_fit %>%
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:right;"> 6.7304 </td>
-   <td style="text-align:right;"> 0.3418 </td>
-   <td style="text-align:right;"> 19.6916 </td>
+   <td style="text-align:right;"> 6.3254 </td>
+   <td style="text-align:right;"> 0.3512 </td>
+   <td style="text-align:right;"> 18.0116 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> regionEurope &amp; Central Asia </td>
-   <td style="text-align:right;"> -5.3169 </td>
-   <td style="text-align:right;"> 0.4280 </td>
-   <td style="text-align:right;"> -12.4236 </td>
+   <td style="text-align:right;"> -4.8017 </td>
+   <td style="text-align:right;"> 0.4460 </td>
+   <td style="text-align:right;"> -10.7656 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> regionLatin America &amp; Caribbean </td>
-   <td style="text-align:right;"> -3.7608 </td>
-   <td style="text-align:right;"> 0.4595 </td>
-   <td style="text-align:right;"> -8.1849 </td>
+   <td style="text-align:right;"> -3.2295 </td>
+   <td style="text-align:right;"> 0.4782 </td>
+   <td style="text-align:right;"> -6.7527 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> regionMiddle East &amp; North Africa </td>
-   <td style="text-align:right;"> -5.6394 </td>
-   <td style="text-align:right;"> 0.5448 </td>
-   <td style="text-align:right;"> -10.3523 </td>
+   <td style="text-align:right;"> -4.7156 </td>
+   <td style="text-align:right;"> 0.5748 </td>
+   <td style="text-align:right;"> -8.2045 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> regionNorth America </td>
-   <td style="text-align:right;"> -6.5314 </td>
-   <td style="text-align:right;"> 1.1922 </td>
-   <td style="text-align:right;"> -5.4784 </td>
+   <td style="text-align:right;"> -6.2825 </td>
+   <td style="text-align:right;"> 1.3647 </td>
+   <td style="text-align:right;"> -4.6038 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> regionSouth Asia </td>
-   <td style="text-align:right;"> 6.7557 </td>
-   <td style="text-align:right;"> 0.8346 </td>
-   <td style="text-align:right;"> 8.0943 </td>
+   <td style="text-align:right;"> 6.4658 </td>
+   <td style="text-align:right;"> 0.7622 </td>
+   <td style="text-align:right;"> 8.4830 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> regionSub-Saharan Africa </td>
-   <td style="text-align:right;"> 3.9760 </td>
-   <td style="text-align:right;"> 0.4307 </td>
-   <td style="text-align:right;"> 9.2319 </td>
+   <td style="text-align:right;"> 3.9782 </td>
+   <td style="text-align:right;"> 0.4471 </td>
+   <td style="text-align:right;"> 8.8969 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
 </tbody>
@@ -1143,16 +1143,16 @@ model_region_fit <- model_region %>% fit(model_data)
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 0.9557 </td>
-   <td style="text-align:right;"> 0.9432 </td>
-   <td style="text-align:right;"> 1.32 </td>
-   <td style="text-align:right;"> 76.4651 </td>
+   <td style="text-align:right;"> 0.9485 </td>
+   <td style="text-align:right;"> 0.934 </td>
+   <td style="text-align:right;"> 1.43 </td>
+   <td style="text-align:right;"> 65.3064 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 264 </td>
-   <td style="text-align:right;"> -1890.17 </td>
-   <td style="text-align:right;"> 4312.34 </td>
-   <td style="text-align:right;"> 5666.52 </td>
-   <td style="text-align:right;"> 1637.12 </td>
+   <td style="text-align:right;"> -1986.51 </td>
+   <td style="text-align:right;"> 4505.03 </td>
+   <td style="text-align:right;"> 5859.21 </td>
+   <td style="text-align:right;"> 1922.02 </td>
    <td style="text-align:right;"> 936 </td>
    <td style="text-align:right;"> 1201 </td>
   </tr>
@@ -1236,18 +1236,18 @@ model_region_fit %>%
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 0.5534 </td>
-   <td style="text-align:right;"> 0.5468 </td>
-   <td style="text-align:right;"> 3.8371 </td>
-   <td style="text-align:right;"> 83.5133 </td>
+   <td style="text-align:right;"> 0.5028 </td>
+   <td style="text-align:right;"> 0.4954 </td>
+   <td style="text-align:right;"> 4.0391 </td>
+   <td style="text-align:right;"> 68.526 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 13 </td>
-   <td style="text-align:right;"> -2452.59 </td>
-   <td style="text-align:right;"> 4935.18 </td>
-   <td style="text-align:right;"> 5007.05 </td>
-   <td style="text-align:right;"> 12897.38 </td>
-   <td style="text-align:right;"> 876 </td>
-   <td style="text-align:right;"> 890 </td>
+   <td style="text-align:right;"> -2512.34 </td>
+   <td style="text-align:right;"> 5054.67 </td>
+   <td style="text-align:right;"> 5126.62 </td>
+   <td style="text-align:right;"> 14372.99 </td>
+   <td style="text-align:right;"> 881 </td>
+   <td style="text-align:right;"> 895 </td>
   </tr>
 </tbody>
 </table>
@@ -1615,7 +1615,7 @@ model_region_fit %>%
 model_region_fit %>%
   extract_fit_engine() %>%
   tidy() %>%
-  kable(digits = c(4,4,4,4)) %>%
+  kable(digits= 4) %>%
   kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
@@ -4802,7 +4802,7 @@ model_region_fit %>%
 :::
 
 
-### 1.11) Two-Sample t-test: Correlating GDP and Percent IAP by Group
+### 1.11) Two-Sample t-test: Correlating GDP and Percent IAP by income.
 
 In this analysis, several t-test will be performed to compare the mean percentages of premature deaths caused by indoor air pollution in countries with different ranges of GDP per capita using the worldbank.org 2021 averages for high- middle- and low- income GDP, as well as an additional high(er) income t-test to observe what happens to the t-value and degree of freedom when all countries included are more likely to have access to better technologies and health care. although the values for GDP are not adjusted for inflation, and likely do not represent accurate values for the purchasing power from 1992-2007, it will still provide valuable information for how significant the proportion changes with increasing GDP
 
@@ -5023,29 +5023,39 @@ Considering these results, it is likely that a hypothesis testing impact of popu
 
 -   High Income countries (\$4256 - \$13205 USD) were found to have an even smaller average, as expected, but dropping even more significantly then between low- and middle- income countries. The average percent deaths for high-income countries was found to be 2.93%, while the average for all GDP's above this range had an average of 0.43% (t = -10.262, df = 206.63, p-value \< 2.2e-16). The difference in average percentage of deaths between middle- and high- income countries was found to be 7.02% over twice the reduction as moving from low- to middle- income as a country
 
-
-
-
-
-
 ------------------------------------------------------------------------
 
 # Conclusions
 
-This analysis aimed to answer the hypothesis proposes that countries with higher GDP and larger population size have lower percentages of premature deaths caused by indoor pollution from biofuels, and that significant differences in the percentage of premature deaths caused by indoor pollution from biofuels exist across regions even after controlling for GDP, population size, and other relevant factors.
+This analysis aimed to answer the hypothesis proposes that countries with higher GDP and larger population sizes have lower percentages of premature deaths caused by indoor pollution from biofuels and that significant differences in the percentage of premature deaths caused by indoor pollution from biofuels exist across regions even after controlling for GDP, population size, and other relevant factors.
 
-In Section 1.1, the low R\^2 value for the correlation between indoor air pollution deaths and year suggests that improvements in health care and disease prevention have played a larger role in reducing premature deaths than changes in indoor air quality over time. However, as the section notes, analyzing the relationship between year and indoor air pollution deaths on a regional basis could provide more insight into trends and disparities. The high R\^2 value for the correlation between region and indoor air pollution deaths in Section 1.2 supports the hypothesis that regional factors play a significant role in determining the prevalence of indoor air pollution and its associated health risks. This could be due to a variety of factors, such as differences in household fuel sources, housing quality, and cultural practices. Understanding these regional differences can help policymakers and public health officials target interventions and resources more effectively. While population size did not show a strong correlation with indoor air pollution deaths in Section 1.3, it is still an important factor to consider in the context of public health. For example, even if the percentage of premature deaths caused by indoor air pollution is low in a country with a large population, the absolute number of deaths could still be significant. Additionally, rapid population growth can exacerbate existing environmental and health challenges.The relationship between GDP and indoor air pollution deaths in Section 1.4 suggests that economic development can play a positive role in reducing indoor air pollution and its associated health risks. However, it is important to note that the relationship is not necessarily linear or straightforward. For example, while higher GDP can enable households to switch to cleaner fuel sources, it can also lead to increased industrialization and urbanization, which can create new sources of pollution.
+In Section 1.1, the low R\^2 value for the correlation between indoor air pollution deaths and year suggests that health care and disease prevention improvements have played a more prominent role in reducing premature deaths than changes in indoor air quality over time. However, as the section notes, analyzing the relationship between year and indoor air pollution deaths on a regional basis could provide more insight into trends and disparities.
 
-The relationship between indoor air pollution deaths and life expectancy in Section 1.5 highlights the broader impacts of indoor air pollution on population health. Improving indoor air quality could have significant benefits beyond reducing premature deaths, such as increasing overall life expectancy and reducing the burden of disease. The regional differences in indoor air pollution deaths shown in Section 1.7 further emphasize the importance of understanding and addressing the unique challenges faced by different regions. For example, household fuel sources in Sub-Saharan Africa may differ significantly from those in Europe and Central Asia, which could contribute to differences in indoor air quality and associated health risks.
+The high R\^2 value for the correlation between the region and indoor air pollution deaths in Section 1.2 supports the hypothesis that regional factors play a significant role in determining the prevalence of indoor air pollution and its associated health risks. These regional discrepancies are likely related to several factors, such as differences in household fuel sources, housing quality, and cultural practices. Understanding these regional differences can help policymakers and public health officials effectively target interventions and resources. While population size did not strongly correlate with indoor air pollution deaths in Section 1.3, it is still an essential factor to consider in the context of public health. For example, even if the percentage of premature deaths caused by indoor air pollution is low in a country with a large population, the absolute number of deaths could still be significant. Additionally, rapid population growth can exacerbate existing environmental and health challenges.
 
-Overall, these observations suggest that indoor air pollution is a complex and multifaceted issue that requires a nuanced understanding of regional and socioeconomic factors. While GDP and population size are important predictors of indoor air pollution deaths, they cannot fully explain the variation seen across regions and countries. Further research and analysis are needed to develop targeted interventions and policies to address this critical public health issue.
+The relationship between GDP and indoor air pollution deaths in Section 1.4 suggests that economic development can positively reduce indoor air pollution and its associated health risks. However, it is essential to note that the relationship could be more linear and straightforward. For example, while higher GDP can enable households to switch to cleaner fuel sources, it can also lead to increased industrialization and urbanization, which can create new sources of pollution.
+
+The relationship between indoor air pollution deaths and life expectancy in Section 1.5 highlights the broader impacts of indoor air pollution on population health. Improving indoor air quality could have significant benefits beyond reducing premature deaths, such as increasing overall life expectancy and reducing disease burden. The regional differences in indoor air pollution deaths shown in Section 1.7 further emphasize the importance of understanding and prioritizing different regions' unique challenges.
+
+Overall, these observations suggest that indoor air pollution is a complex and multifaceted issue that requires a nuanced understanding of regional and socioeconomic factors. While GDP and population size are significant predictors of indoor air pollution deaths, they cannot fully explain the variation across regions and countries. Further research and analysis are needed to develop targeted interventions and policies to address this critical public health issue
 
 ------------------------------------------------------------------------
 
 # Future Questions
 
 -   Studies suggest that in developed countries, people spend 80-90% of their lives indoors. The US, being the wealthiest nation, has the resources to reduce indoor air pollution through regulation, investment, and adequate medical care. However, countries with growing GDP and capitalistic societies may face increased time indoors without the resources to regulate indoor and outdoor environments, leading to greater exposure to pollutants and inadequate healthcare. As countries create economic opportunities and urbanize, indoor air pollution may increase. Analysis to Identifying the point at which GDP and premature deaths caused by indoor air pollution are correlated can inform targeted prevention efforts.
+-   ANOVA tests would have been very beneficial for proving the hypothesis in this experiment. having an F-Statistic for the mean deaths from IAP within a region compared to the difference between regions may have provided a valuable correlation to show how significantly the regional differences were statistically.
 
 ------------------------------------------------------------------------
 
 # Citations
+
+Air quality and health. (2014, January 21). *WHO Guidelines for indoor air quality: Household fuel combustion*. https://www.who.int/publications/i/item/9789241548885
+
+Ezzati, M., & Kammen, D. M. (2002). The health impacts of exposure to indoor air pollution from solid fuels in developing countries: knowledge, gaps, and data needs. *Environmental Health Perspectives*, *110*(11), 1057--1068. https://doi.org/10.1289/ehp.021101057
+
+González-Martín, J., Kraakman, N. J. R., Pérez, C., Lebrero, R., & Muñoz, R. (2021). A state--of--the-art review on indoor air pollution and strategies for indoor air pollution control. *Chemosphere*, *262*, 128376. https://doi.org/10.1016/j.chemosphere.2020.128376
+
+Gordon, S. B., Bruce, N., Grigg, J., Hibberd, P. L., Kurmi, O. P., Lam, K., Mortimer, K., Asante, K. P., Balakrishnan, K., Balmes, J. R., Bar-Zeev, N., Bates, M. N., Breysse, P. N., Buist, S., Chen, Z., Havens, D., Jack, D., Jindal, S. K., Kan, H., . . . Martin, W. (2014). Respiratory risks from household air pollution in low and middle income countries. *The Lancet Respiratory Medicine*, *2*(10), 823--860. https://doi.org/10.1016/s2213-2600(14)70168-7
+
+*Household air pollution*. (2022, July 27). World Health Organization. https://www.who.int/news-room/fact-sheets/detail/household-air-pollution-and-health
