@@ -1281,17 +1281,3 @@ Overall, these observations suggest that indoor air pollution is a complex and m
 
 -   Studies suggest that in developed countries, people spend 80-90% of their lives indoors. The US, being the wealthiest nation, has the resources to reduce indoor air pollution through regulation, investment, and adequate medical care. However, countries with growing GDP and capitalistic societies may face increased time indoors without the resources to regulate indoor and outdoor environments, leading to greater exposure to pollutants and inadequate healthcare. As countries create economic opportunities and urbanize, indoor air pollution may increase. Analysis to Identifying the point at which GDP and premature deaths caused by indoor air pollution are correlated can inform targeted prevention efforts.
 -   ANOVA tests would have been very beneficial for proving the hypothesis in this experiment. having an F-Statistic for the mean deaths from IAP within a region compared to the difference between regions may have provided a valuable correlation to show how significantly the regional differences were statistically.
-
-------------------------------------------------------------------------
-
-# Citations
-
-Air quality and health. (2014, January 21). *WHO Guidelines for indoor air quality: Household fuel combustion*. https://www.who.int/publications/i/item/9789241548885
-
-Ezzati, M., & Kammen, D. M. (2002). The health impacts of exposure to indoor air pollution from solid fuels in developing countries: knowledge, gaps, and data needs. *Environmental Health Perspectives*, *110*(11), 1057--1068. https://doi.org/10.1289/ehp.021101057
-
-González-Martín, J., Kraakman, N. J. R., Pérez, C., Lebrero, R., & Muñoz, R. (2021). A state--of--the-art review on indoor air pollution and strategies for indoor air pollution control. *Chemosphere*, *262*, 128376. https://doi.org/10.1016/j.chemosphere.2020.128376
-
-Gordon, S. B., Bruce, N., Grigg, J., Hibberd, P. L., Kurmi, O. P., Lam, K., Mortimer, K., Asante, K. P., Balakrishnan, K., Balmes, J. R., Bar-Zeev, N., Bates, M. N., Breysse, P. N., Buist, S., Chen, Z., Havens, D., Jack, D., Jindal, S. K., Kan, H., . . . Martin, W. (2014). Respiratory risks from household air pollution in low and middle income countries. *The Lancet Respiratory Medicine*, *2*(10), 823--860. https://doi.org/10.1016/s2213-2600(14)70168-7
-
-*Household air pollution*. (2022, July 27). World Health Organization. https://www.who.int/news-room/fact-sheets/detail/household-air-pollution-and-health
