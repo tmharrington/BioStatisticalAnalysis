@@ -1071,15 +1071,6 @@ model_region_fit <- model_region %>% fit(model_data)
   
 ```
 
-```{r}
-model_region_fit %>%
-  extract_fit_engine() %>%
-  tidy() %>%
-   arrange(desc(estimate)) %>%
-  kable(digits = c(3,3,3,4)) %>%
-  kable_styling(bootstrap_options = c("hover", "striped"))
-```
-
 ### 1.10) [GDP and Population size, by Country]{.underline}
 
 ```{r}
@@ -1125,14 +1116,6 @@ model_region<-
   workflow() %>%
   add_model(model_region_temp) %>%
   add_recipe(model_region_reg) #combine the model and recipe to generate a regression analysis
-```
-
-```{r}
-model_region_fit %>%
-  extract_fit_engine() %>%
-  tidy() %>%
-  kable(digits = c(3,3,3,4)) %>%
-  kable_styling(bootstrap_options = c("hover", "striped"))
 ```
 
 ### 1.11) Two-Sample t-test: Correlating GDP and Percent IAP by income.
