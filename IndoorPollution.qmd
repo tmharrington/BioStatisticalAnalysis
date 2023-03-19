@@ -6,7 +6,7 @@ editor: visual
 keep-md: TRUE
 prefer-html: TRUE
 code-fold: TRUE
-bibliography: C:/Users/trevo/OneDrive/Documents/R/BioStatisticalAnalysis/IndoorPollution_files/2023-02-27 Bioinformatics part 1.bib
+bibliography: C:/School/23SPDAY/Biostatistics/Biostatistic Analysis/2023-03-19 Bioinformatics part 1.bib
 ---
 
 # Air Pollution and Global GDP/Climate trends

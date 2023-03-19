@@ -98,40 +98,40 @@ kable(digits = c(1,0,0,2)) %>% ##apply significant figure contstraints to the ou
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Asia </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 1995 </td>
-   <td style="text-align:right;"> 12.14 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Andorra </td>
-   <td style="text-align:left;"> AND </td>
-   <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.01 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lesotho </td>
-   <td style="text-align:left;"> LSO </td>
+   <td style="text-align:left;"> Uzbekistan </td>
+   <td style="text-align:left;"> UZB </td>
    <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;"> 8.49 </td>
+   <td style="text-align:right;"> 5.69 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Low SDI </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> 2017 </td>
-   <td style="text-align:right;"> 11.84 </td>
+   <td style="text-align:left;"> Mauritius </td>
+   <td style="text-align:left;"> MUS </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 0.29 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Sierra Leone </td>
-   <td style="text-align:left;"> SLE </td>
-   <td style="text-align:right;"> 2014 </td>
-   <td style="text-align:right;"> 12.08 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> United Arab Emirates </td>
-   <td style="text-align:left;"> ARE </td>
+   <td style="text-align:left;"> Guyana </td>
+   <td style="text-align:left;"> GUY </td>
    <td style="text-align:right;"> 2004 </td>
-   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 2.72 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Botswana </td>
+   <td style="text-align:left;"> BWA </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 11.35 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mexico </td>
+   <td style="text-align:left;"> MEX </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 3.05 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Northern Mariana Islands </td>
+   <td style="text-align:left;"> MNP </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 1.45 </td>
   </tr>
 </tbody>
 </table>
@@ -323,18 +323,18 @@ model_region_fit <- model_region %>% fit(model_data)
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 0.0111 </td>
-   <td style="text-align:right;"> 0.01 </td>
-   <td style="text-align:right;"> 5.53 </td>
-   <td style="text-align:right;"> 10.1401 </td>
+   <td style="text-align:right;"> 0.0239 </td>
+   <td style="text-align:right;"> 0.0228 </td>
+   <td style="text-align:right;"> 5.61 </td>
+   <td style="text-align:right;"> 21.9287 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> -2833.67 </td>
-   <td style="text-align:right;"> 5673.34 </td>
-   <td style="text-align:right;"> 5687.76 </td>
-   <td style="text-align:right;"> 27625.65 </td>
-   <td style="text-align:right;"> 904 </td>
-   <td style="text-align:right;"> 906 </td>
+   <td style="text-align:right;"> -2821.24 </td>
+   <td style="text-align:right;"> 5648.49 </td>
+   <td style="text-align:right;"> 5662.89 </td>
+   <td style="text-align:right;"> 28160.8 </td>
+   <td style="text-align:right;"> 896 </td>
+   <td style="text-align:right;"> 898 </td>
   </tr>
 </tbody>
 </table>
@@ -374,17 +374,17 @@ model_region_fit %>%
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:right;"> 143.0451 </td>
-   <td style="text-align:right;"> 43.2948 </td>
-   <td style="text-align:right;"> 3.3040 </td>
-   <td style="text-align:right;"> 0.0010 </td>
+   <td style="text-align:right;"> 211.8600 </td>
+   <td style="text-align:right;"> 44.1211 </td>
+   <td style="text-align:right;"> 4.8018 </td>
+   <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> year </td>
-   <td style="text-align:right;"> -0.0688 </td>
-   <td style="text-align:right;"> 0.0216 </td>
-   <td style="text-align:right;"> -3.1844 </td>
-   <td style="text-align:right;"> 0.0015 </td>
+   <td style="text-align:right;"> -0.1031 </td>
+   <td style="text-align:right;"> 0.0220 </td>
+   <td style="text-align:right;"> -4.6828 </td>
+   <td style="text-align:right;"> 0 </td>
   </tr>
 </tbody>
 </table>
@@ -461,57 +461,57 @@ Caused by warning in `countrycode_convert()`:
   <tr>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
    <td style="text-align:right;"> 0.005 </td>
-   <td style="text-align:right;"> 20.9 </td>
-   <td style="text-align:right;"> 6.20 </td>
-   <td style="text-align:right;"> 6.3 </td>
+   <td style="text-align:right;"> 23.0 </td>
+   <td style="text-align:right;"> 6.34 </td>
+   <td style="text-align:right;"> 6.6 </td>
    <td style="text-align:right;"> 35 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
    <td style="text-align:right;"> 0.002 </td>
-   <td style="text-align:right;"> 13.1 </td>
-   <td style="text-align:right;"> 1.55 </td>
-   <td style="text-align:right;"> 2.6 </td>
-   <td style="text-align:right;"> 52 </td>
+   <td style="text-align:right;"> 14.1 </td>
+   <td style="text-align:right;"> 1.37 </td>
+   <td style="text-align:right;"> 2.3 </td>
+   <td style="text-align:right;"> 51 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:right;"> 0.004 </td>
-   <td style="text-align:right;"> 15.8 </td>
-   <td style="text-align:right;"> 2.67 </td>
-   <td style="text-align:right;"> 3.3 </td>
-   <td style="text-align:right;"> 35 </td>
+   <td style="text-align:right;"> 0.002 </td>
+   <td style="text-align:right;"> 16.4 </td>
+   <td style="text-align:right;"> 2.79 </td>
+   <td style="text-align:right;"> 3.6 </td>
+   <td style="text-align:right;"> 34 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Middle East &amp; North Africa </td>
    <td style="text-align:right;"> 0.001 </td>
-   <td style="text-align:right;"> 16.4 </td>
-   <td style="text-align:right;"> 1.46 </td>
-   <td style="text-align:right;"> 2.8 </td>
-   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 12.0 </td>
+   <td style="text-align:right;"> 1.25 </td>
+   <td style="text-align:right;"> 2.1 </td>
+   <td style="text-align:right;"> 20 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> North America </td>
    <td style="text-align:right;"> 0.004 </td>
-   <td style="text-align:right;"> 0.6 </td>
-   <td style="text-align:right;"> 0.13 </td>
-   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:right;"> 1.1 </td>
+   <td style="text-align:right;"> 0.16 </td>
+   <td style="text-align:right;"> 0.4 </td>
    <td style="text-align:right;"> 3 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:right;"> 1.863 </td>
-   <td style="text-align:right;"> 19.9 </td>
-   <td style="text-align:right;"> 12.35 </td>
-   <td style="text-align:right;"> 4.3 </td>
+   <td style="text-align:right;"> 1.564 </td>
+   <td style="text-align:right;"> 19.6 </td>
+   <td style="text-align:right;"> 12.56 </td>
+   <td style="text-align:right;"> 5.1 </td>
    <td style="text-align:right;"> 8 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:right;"> 0.045 </td>
-   <td style="text-align:right;"> 16.5 </td>
-   <td style="text-align:right;"> 10.41 </td>
-   <td style="text-align:right;"> 3.8 </td>
+   <td style="text-align:right;"> 17.3 </td>
+   <td style="text-align:right;"> 10.31 </td>
+   <td style="text-align:right;"> 3.9 </td>
    <td style="text-align:right;"> 48 </td>
   </tr>
 </tbody>
@@ -572,7 +572,7 @@ BA_plot %>%
 
 ::: {.cell-output .cell-output-stderr}
 ```
-Warning: Removed 201 rows containing missing values (`geom_point()`).
+Warning: Removed 196 rows containing missing values (`geom_point()`).
 ```
 :::
 
@@ -632,7 +632,7 @@ Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `Regions = countrycode(entity, origin = "country.name",
   destination = "region")`.
 Caused by warning in `countrycode_convert()`:
-! Some values were not matched unambiguously: Africa, African Region, America, Andean Latin America, Central Europe, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Central sub-Saharan Africa, Commonwealth, Commonwealth High Income, Commonwealth Middle Income, East Asia & Pacific - World Bank region, Eastern Europe, Eastern sub-Saharan Africa, England, Europe, European Region, High-income, High-income Asia Pacific, High SDI, Latin America & Caribbean - World Bank region, Low SDI, North America, Northern Ireland, Oceania, OECD Countries, Scotland, South-East Asia Region, South Asia - World Bank region, Southeast Asia, Southeast Asia, East Asia, and Oceania, Southern Latin America, Southern sub-Saharan Africa, Timor, Tropical Latin America, Wales, Western Europe, Western Pacific Region, World Bank High Income, World Bank Low Income, World Bank Upper Middle Income
+! Some values were not matched unambiguously: Africa, African Union, America, Andean Latin America, Asia, Australasia, Caribbean, Central Europe, Eastern Europe, and Central Asia, Central Latin America, Commonwealth High Income, Commonwealth Low Income, Europe & Central Asia - World Bank region, European Region, European Union, G20, High-income Asia Pacific, High-income North America, High-middle SDI, High SDI, Low-middle SDI, Low SDI, Micronesia (country), Middle East & North Africa, Middle SDI, Nordic Region, North Africa and Middle East, Northern Ireland, Oceania, OECD Countries, South-East Asia Region, Southeast Asia, Timor, Wales, Western Europe, Western Pacific Region, Western sub-Saharan Africa, World Bank High Income
 ```
 :::
 
@@ -653,27 +653,27 @@ Caused by warning in `countrycode_convert()`:
 <tbody>
   <tr>
    <td style="text-align:left;"> East Asia &amp; Pacific </td>
-   <td style="text-align:right;"> 0.0053 </td>
-   <td style="text-align:right;"> 20.8554 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 0.0052 </td>
+   <td style="text-align:right;"> 20.6860 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Europe &amp; Central Asia </td>
-   <td style="text-align:right;"> 0.0019 </td>
-   <td style="text-align:right;"> 5.0327 </td>
+   <td style="text-align:right;"> 0.0020 </td>
+   <td style="text-align:right;"> 3.5799 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 29 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Latin America &amp; Caribbean </td>
-   <td style="text-align:right;"> 0.0065 </td>
-   <td style="text-align:right;"> 13.6812 </td>
+   <td style="text-align:right;"> 0.0025 </td>
+   <td style="text-align:right;"> 6.7068 </td>
+   <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 25 </td>
+   <td style="text-align:right;"> 20 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Middle East &amp; North Africa </td>
@@ -681,31 +681,31 @@ Caused by warning in `countrycode_convert()`:
    <td style="text-align:right;"> 6.5025 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 7 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> North America </td>
-   <td style="text-align:right;"> 0.0052 </td>
-   <td style="text-align:right;"> 0.1226 </td>
+   <td style="text-align:right;"> 0.0059 </td>
+   <td style="text-align:right;"> 0.1466 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> South Asia </td>
-   <td style="text-align:right;"> 1.8635 </td>
-   <td style="text-align:right;"> 14.4885 </td>
-   <td style="text-align:right;"> 11 </td>
-   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 1.5643 </td>
+   <td style="text-align:right;"> 12.3420 </td>
+   <td style="text-align:right;"> 6 </td>
    <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Sub-Saharan Africa </td>
    <td style="text-align:right;"> 0.0453 </td>
-   <td style="text-align:right;"> 16.4756 </td>
+   <td style="text-align:right;"> 15.2294 </td>
    <td style="text-align:right;"> 9 </td>
    <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 27 </td>
+   <td style="text-align:right;"> 26 </td>
   </tr>
 </tbody>
 </table>
@@ -982,18 +982,18 @@ model_region_fit <- model_region %>% fit(model_data)
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 0.5075 </td>
-   <td style="text-align:right;"> 0.5042 </td>
-   <td style="text-align:right;"> 3.91 </td>
-   <td style="text-align:right;"> 154.3982 </td>
+   <td style="text-align:right;"> 0.4865 </td>
+   <td style="text-align:right;"> 0.483 </td>
+   <td style="text-align:right;"> 4.08 </td>
+   <td style="text-align:right;"> 140.6767 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> -2517.88 </td>
-   <td style="text-align:right;"> 5051.75 </td>
-   <td style="text-align:right;"> 5090.23 </td>
-   <td style="text-align:right;"> 13758.18 </td>
-   <td style="text-align:right;"> 899 </td>
-   <td style="text-align:right;"> 906 </td>
+   <td style="text-align:right;"> -2532.86 </td>
+   <td style="text-align:right;"> 5081.73 </td>
+   <td style="text-align:right;"> 5120.13 </td>
+   <td style="text-align:right;"> 14815.25 </td>
+   <td style="text-align:right;"> 891 </td>
+   <td style="text-align:right;"> 898 </td>
   </tr>
 </tbody>
 </table>
@@ -1033,51 +1033,51 @@ model_region_fit %>%
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:right;"> 6.2042 </td>
-   <td style="text-align:right;"> 0.3194 </td>
-   <td style="text-align:right;"> 19.4237 </td>
+   <td style="text-align:right;"> 6.3359 </td>
+   <td style="text-align:right;"> 0.3275 </td>
+   <td style="text-align:right;"> 19.3446 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> regionEurope &amp; Central Asia </td>
-   <td style="text-align:right;"> -4.6506 </td>
-   <td style="text-align:right;"> 0.4131 </td>
-   <td style="text-align:right;"> -11.2577 </td>
+   <td style="text-align:right;"> -4.9649 </td>
+   <td style="text-align:right;"> 0.4327 </td>
+   <td style="text-align:right;"> -11.4746 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> regionLatin America &amp; Caribbean </td>
-   <td style="text-align:right;"> -3.5334 </td>
-   <td style="text-align:right;"> 0.4481 </td>
-   <td style="text-align:right;"> -7.8859 </td>
+   <td style="text-align:right;"> -3.5432 </td>
+   <td style="text-align:right;"> 0.4596 </td>
+   <td style="text-align:right;"> -7.7100 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> regionMiddle East &amp; North Africa </td>
-   <td style="text-align:right;"> -4.7440 </td>
-   <td style="text-align:right;"> 0.5097 </td>
-   <td style="text-align:right;"> -9.3074 </td>
+   <td style="text-align:right;"> -5.0892 </td>
+   <td style="text-align:right;"> 0.5296 </td>
+   <td style="text-align:right;"> -9.6094 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> regionNorth America </td>
-   <td style="text-align:right;"> -6.0787 </td>
-   <td style="text-align:right;"> 1.0594 </td>
-   <td style="text-align:right;"> -5.7380 </td>
+   <td style="text-align:right;"> -6.1748 </td>
+   <td style="text-align:right;"> 1.4784 </td>
+   <td style="text-align:right;"> -4.1766 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> regionSouth Asia </td>
-   <td style="text-align:right;"> 6.1465 </td>
-   <td style="text-align:right;"> 0.6593 </td>
-   <td style="text-align:right;"> 9.3223 </td>
+   <td style="text-align:right;"> 6.2206 </td>
+   <td style="text-align:right;"> 0.7305 </td>
+   <td style="text-align:right;"> 8.5155 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> regionSub-Saharan Africa </td>
-   <td style="text-align:right;"> 4.2072 </td>
-   <td style="text-align:right;"> 0.4142 </td>
-   <td style="text-align:right;"> 10.1566 </td>
+   <td style="text-align:right;"> 3.9692 </td>
+   <td style="text-align:right;"> 0.4230 </td>
+   <td style="text-align:right;"> 9.3829 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
 </tbody>
@@ -1143,17 +1143,17 @@ model_region_fit <- model_region %>% fit(model_data)
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 0.9483 </td>
-   <td style="text-align:right;"> 0.9336 </td>
-   <td style="text-align:right;"> 1.41 </td>
-   <td style="text-align:right;"> 64.4402 </td>
+   <td style="text-align:right;"> 0.9518 </td>
+   <td style="text-align:right;"> 0.9382 </td>
+   <td style="text-align:right;"> 1.39 </td>
+   <td style="text-align:right;"> 70.2884 </td>
    <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 266 </td>
-   <td style="text-align:right;"> -1969.84 </td>
-   <td style="text-align:right;"> 4475.67 </td>
-   <td style="text-align:right;"> 5840.03 </td>
-   <td style="text-align:right;"> 1869.37 </td>
-   <td style="text-align:right;"> 934 </td>
+   <td style="text-align:right;"> 263 </td>
+   <td style="text-align:right;"> -1952.45 </td>
+   <td style="text-align:right;"> 4434.91 </td>
+   <td style="text-align:right;"> 5784 </td>
+   <td style="text-align:right;"> 1816.04 </td>
+   <td style="text-align:right;"> 937 </td>
    <td style="text-align:right;"> 1201 </td>
   </tr>
 </tbody>
@@ -1236,18 +1236,18 @@ model_region_fit %>%
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 0.5233 </td>
-   <td style="text-align:right;"> 0.5164 </td>
-   <td style="text-align:right;"> 3.8637 </td>
-   <td style="text-align:right;"> 75.3304 </td>
+   <td style="text-align:right;"> 0.5183 </td>
+   <td style="text-align:right;"> 0.5112 </td>
+   <td style="text-align:right;"> 3.9648 </td>
+   <td style="text-align:right;"> 73.1723 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 13 </td>
-   <td style="text-align:right;"> -2503.08 </td>
-   <td style="text-align:right;"> 5036.17 </td>
-   <td style="text-align:right;"> 5108.3 </td>
-   <td style="text-align:right;"> 13316.17 </td>
-   <td style="text-align:right;"> 892 </td>
-   <td style="text-align:right;"> 906 </td>
+   <td style="text-align:right;"> -2504.12 </td>
+   <td style="text-align:right;"> 5038.23 </td>
+   <td style="text-align:right;"> 5110.24 </td>
+   <td style="text-align:right;"> 13896.49 </td>
+   <td style="text-align:right;"> 884 </td>
+   <td style="text-align:right;"> 898 </td>
   </tr>
 </tbody>
 </table>
